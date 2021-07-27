@@ -1,3 +1,20 @@
 {
-  "message": "bonjour i18n !!"
+  "home": "Accueil",
+  "productions": "Productions",
+  "association": "Association",
+  "contact": "Contact",
+
+  "motto": "Devise / Phrase d'accroche",
+  "read_more": "En savoir plus...",
+  "main_productions": "Productions principales",
+  "watch": "Regarder",
+  "making_of": "Making-Of",
+  "star_wars_quest_justice": "Star Wars: Une quête de justice",
+  "star_wars_quest_justice_summary": "La galaxie est déchirée par la guerre entre les Jedi et les Sith. Dans ce contexte mouvementé, la notion de justice est incertaine, chaque camp se l’appropriant pour servir ses intérêts. Mais certains n'hésitent pas à se dresser face à cet affrontement sans fin...",
+  "star_wars_quest_justice_poster": "Poster de Star Wars : Une quête de justice",
+  "summer_among_friends": "Un été entre amis",
+  "summer_among_friends_summary": "Trois amis s'apprêtent à profiter de vacances assez banales à la campagne. Mais des aventures bien plus palpitantes que prévu les attendent, et leurs caractères aussi bien trempés que divergents ne vont pas arranger les choses...",
+  "summer_among_friends_poster": "Poster d'Un été entre amis",
+
+  "the_association": "L'association"
 }

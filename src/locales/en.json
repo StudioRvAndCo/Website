@@ -1,3 +1,20 @@
 {
-  "message": "hello i18n !!"
+  "home": "Home",
+  "productions": "Productions",
+  "association": "Association",
+  "contact": "Contact",
+
+  "motto": "Motto / Catchphrase",
+  "read_more": "Read more...",
+  "main_productions": "Main productions",
+  "watch": "Watch",
+  "making_of": "Making-Of",
+  "star_wars_quest_justice": "Star Wars: A quest for justice",
+  "star_wars_quest_justice_summary": "The galaxy is torn apart by the war between the Jedi and the Sith. In the midst of this turmoil, the notion of justice is uncertain, as each side appropriates it to serve its own interests. But there are those who do not hesitate to stand up to this endless confrontation...",
+  "star_wars_quest_justice_poster": "Poster of Star Wars: A Quest for Justice",
+  "summer_among_friends": "A summer among friends",
+  "summer_among_friends_summary": "Three friends are about to enjoy a rather ordinary vacation in the countryside. But adventures much more exciting than expected await them, and their characters, as well tempered as divergent, are not going to arrange things...",
+  "summer_among_friends_poster": "Poster of A summer among friends",
+
+  "the_association": "The association"
 }
