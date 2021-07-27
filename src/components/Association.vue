@@ -2,23 +2,53 @@
   <div id="association">
     <h2>{{ $t('the_association') }}</h2>
     <article id="main_content">
-      <p>Le Studio Rv & Co est un regroupement d'amis passionnés par le monde du cinéma. Ensemble, nous produisons du début à la fin des courts-métrages ou des séries amateurs sur des thèmes variés qui nous plaisent.</p>
+      <p>{{ $t('association_summary') }}</p>
 
-      <h3>Quelques chiffres</h3>
+      <h3>{{ $t('some_numbers') }}</h3>
       <section id="numbers">
+        <div>
+          <h4>{{ $t('creation_date') }}</h4>
+          <p>{{ $t('creation_date_value') }}</p>
+        </div>
+        <div>
+          <h4>{{ $t('size') }}</h4>
+          <p>10 {{ $t('members') }}.</p>
+        </div>
+        <div>
+          <h4>{{ $t('projects') }}</h4>
+          <p>2</p>
+        </div>
+        <div>
+          <h4>{{ $t('views') }}</h4>
+          <!-- TODO: Link to Youtube API -->
+          <p>1000</p>
+        </div>
+        <div>
+          <h4>{{ $t('subscribers') }}</h4>
+          <!-- TODO: Link to Youtube API -->
+          <p>67</p>
+        </div>
+      </section>
+
+      <h3>{{ $t('members')}}</h3>
+      <!-- TODO: Add crawlable members -->
+      <section id="members">
 
       </section>
 
-      <h3>Membres</h3>
-      <!-- Add crawlable members -->
-      <h3>Créateur de contenus</h3>
+      <h3>{{ $t('content_creator') }}</h3>
+      <!-- TODO: Get featured channels from Youtube -->
+      <section id="channels">
 
-      <h3>Photos</h3>
+      </section>
+
+      <h3>{{ $t('pictures') }}</h3>
+      <!-- TODO: Link to Instagram API -->
       <section id="pictures">
 
       </section>
       <section id="button">
-        <button class="btn primary-btn" type="button" @click="goto('https://www.instagram.com/studiorvandco')">Plus de photos...</button>
+        <button class="btn primary-btn" type="button" @click="goto('https://www.instagram.com/studiorvandco')">{{ $t('more_pictures') }}</button>
       </section>
     </article>
   </div>
@@ -80,6 +110,29 @@ h2::after {
   font-size: 1.6em;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+#numbers {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px 0;
+  justify-content: center;
+}
+
+#numbers div {
+  flex: 0 0 calc(100%/3);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0 8px;
+}
+
+#numbers div h4 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.3em;
 }
 
 #button {
