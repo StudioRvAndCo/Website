@@ -8,18 +8,21 @@
 
     <Productions />
     <Association />
+    <Contact />
   </article>
 </template>
 
 <script>
 import Productions from "@/components/Productions";
 import Association from "@/components/Association";
+import Contact from "@/components/Contact";
 
 export default {
   name: 'Home',
   components: {
     Productions,
-    Association
+    Association,
+    Contact
   }
 }
 </script>

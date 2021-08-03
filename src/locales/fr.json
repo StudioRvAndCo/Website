@@ -28,5 +28,17 @@
   "subscribers": "Nombre d'abonnés :",
   "content_creator": "Créateur de contenus",
   "pictures": "Photos",
-  "more_pictures": "Plus de photos..."
+  "more_pictures": "Plus de photos...",
+
+  "contact_us": "Nous contacter",
+  "by_phone": "Par téléphone :",
+  "by_postal": "Par voie postale :",
+  "on_twitter": "Sur Twitter :",
+  "on_instagram": "Sur Instagram :",
+  "or": "ou",
+  "your_name": "Votre nom :",
+  "your_email": "Votre adresse email :",
+  "subject_request": "Objet de la demande :",
+  "your_message": "Votre message :",
+  "submit": "Envoyer"
 }

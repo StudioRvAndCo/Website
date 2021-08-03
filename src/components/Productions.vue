@@ -3,7 +3,7 @@
     <h2>{{ $t('main_productions') }}</h2>
 
     <div id="main_productions">
-      <article class="flex">
+      <article>
         <img src="@/assets/star_wars.jpg" :alt="$t('star_wars_quest_justice_poster')">
         <section>
           <div>
@@ -16,7 +16,7 @@
           </div>
         </section>
       </article>
-      <article class="flex-alt">
+      <article>
         <img src="@/assets/ete_entre_amis.jpg" :alt="$t('summer_among_friends_poster')">
         <section>
           <div>
@@ -70,6 +70,13 @@ h2::after {
 #main_productions article {
   padding: 40px 15vw;
   gap: 0 50px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#main_productions article:nth-child(even) {
+  background-color: var(--container);
+  flex-flow: row-reverse nowrap;
 }
 
 #main_productions article img {
@@ -99,17 +106,6 @@ h2::after {
   text-align: justify;
   line-height: 1.36;
   color: var(--secondary-text);
-}
-
-.flex {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.flex-alt {
-  background-color: var(--container);
-  display: flex;
-  flex-flow: row-reverse nowrap;
 }
 
 .flex-btn {
