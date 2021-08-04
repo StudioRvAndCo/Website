@@ -44,7 +44,6 @@ export default {
 </script>
 
 <style scoped>
-/* TODO: Improve Responsive design */
 #productions {
   padding: 50px 0 0;
 }
