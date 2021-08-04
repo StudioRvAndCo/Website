@@ -44,6 +44,8 @@ export default {
 </script>
 
 <style scoped>
+/* TODO: Improve Responsive design */
+
 h2::before {
   border-top: .0625em solid;
   content: "";

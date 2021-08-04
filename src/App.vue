@@ -28,7 +28,9 @@
       </a>
     </section>
   </header>
+
   <router-view />
+
   <footer id="footer">
     <p id="copyright">&copy; {{ currentYear }} &nbsp;|&nbsp; <a href="/">RvandCo.fr</a></p>
     <p>Site Web créé par <a href="https://github.com/Minarox">Minarox</a>.</p>
@@ -47,7 +49,14 @@ export default {
 </script>
 
 <style>
-/* TODO: Add animations */
+/* TODO: Add animations
+   TODO: Add Hamburger menu for mobile users
+   TODO: Fix nav links
+   TODO: Change Favicon with night / day theme support
+   TODO: Responsive design for buttons
+   TODO: Script for APIs with crontab
+   TODO: Add max-width for very large screens */
+
 :root {
   --background-color: #393939;
   --background-nav: rgba(57, 57, 57, .8);
@@ -62,6 +71,7 @@ export default {
 
 body {
   margin: 0;
+  padding: 0;
   background-color: var(--background-color);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -73,7 +83,7 @@ body {
 }
 
 #navbar {
-  width: 100%;
+  padding: 0 12vw;
   height: 70px;
   position: sticky;
   top: 0;
@@ -94,7 +104,6 @@ body {
 #navbar img:first-child {
   width: 46px;
   height: 46px;
-  margin-left: 12vw;
 }
 
 #navbar nav a {
@@ -107,7 +116,6 @@ body {
 }
 
 #navbar section {
-  margin-right: 12vw;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -149,20 +157,17 @@ body {
 }
 
 #footer {
-
+  padding: 14px 12vw;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   color: var(--secondary-text) !important;
+  font-size: .86em !important;
 }
 
-#footer p:first-of-type {
-  padding-left: 12vw;
-}
-
-#footer p:last-of-type {
-  padding-right: 12vw;
+#footer p {
+  margin: 0;
 }
 
 #footer a {
@@ -188,5 +193,34 @@ body {
 
 ::-webkit-scrollbar-button {
   display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  #navbar {
+    padding: 0 3vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #navbar section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #navbar nav {
+    display: none;
+  }
+
+  #footer {
+    padding: 14px 3vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #footer {
+    flex-flow: column nowrap;
+    gap: 10px 0;
+  }
 }
 </style>
