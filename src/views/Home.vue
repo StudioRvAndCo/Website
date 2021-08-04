@@ -1,9 +1,11 @@
 <template>
   <article id="home">
-    <img id="banner" alt="Vue logo" src="@/assets/DSCN8325.jpg">
     <section>
-      <h1>{{ $t('motto') }}</h1>
-      <button class="btn primary-btn" type="button">{{ $t('read_more') }}</button>
+      <img id="banner" alt="Vue logo" src="@/assets/DSCN8325.jpg">
+      <div>
+        <h1>{{ $t('motto') }}</h1>
+        <button class="btn primary-btn" type="button">{{ $t('read_more') }}</button>
+      </div>
     </section>
 
     <Productions />
@@ -36,16 +38,36 @@ export default {
 }
 
 #home section {
-  margin: -200px 0 126px 12vw;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
+  z-index: 0;
+  position: relative;
+  margin-bottom: -4px;
+}
+
+#home section div {
+  padding: 0 12vw;
+  position: absolute;
+  bottom: 70px;
 }
 
 #home section h1 {
   margin: 0 0 14px;
-  font-size: 2.5em;
+  font-size: 2.4em;
   text-transform: uppercase;
+}
 
+@media screen and (max-width: 600px) {
+  #home section div {
+    padding: 0 3vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #home section div h1 {
+    text-align: center;
+  }
+
+  #home section div button {
+    width: 100%;
+  }
 }
 </style>

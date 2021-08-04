@@ -2,8 +2,8 @@
   <div id="productions">
     <h2>{{ $t('main_productions') }}</h2>
 
-    <div id="main_productions">
-      <article>
+    <article>
+      <div class="container">
         <img src="@/assets/star_wars.jpg" :alt="$t('star_wars_quest_justice_poster')">
         <section>
           <div>
@@ -12,11 +12,12 @@
           </div>
           <div class="flex-btn">
             <button class="btn primary-btn" type="button">{{ $t('watch') }}</button>
-            <button class="btn secondary-btn" type="button">{{ $t('making_of') }}</button>
           </div>
         </section>
-      </article>
-      <article>
+      </div>
+    </article>
+    <article>
+      <div class="container c_reverse">
         <img src="@/assets/ete_entre_amis.jpg" :alt="$t('summer_among_friends_poster')">
         <section>
           <div>
@@ -25,11 +26,10 @@
           </div>
           <div class="flex-btn">
             <button class="btn primary-btn" type="button">{{ $t('watch') }}</button>
-            <button class="btn tertiary-btn" type="button">{{ $t('making_of') }}</button>
           </div>
         </section>
-      </article>
-    </div>
+      </div>
+    </article>
 
     <!-- TODO: Add crawlable productions -->
     <!-- <div id="other_productions"></div> -->
@@ -45,6 +45,9 @@ export default {
 
 <style scoped>
 /* TODO: Improve Responsive design */
+#productions {
+  padding: 50px 0 0;
+}
 
 h2::before {
   border-top: .0625em solid;
@@ -54,7 +57,7 @@ h2::before {
 }
 
 h2 {
-  margin: 0 12vw -10px;
+  margin: 0 12vw 30px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -69,19 +72,31 @@ h2::after {
   margin: 0 .1em 0 16px;
 }
 
-#main_productions article {
-  padding: 40px 15vw;
-  gap: 0 50px;
-  display: flex;
-  flex-flow: row nowrap;
+article {
+  padding: 40px 0;
 }
 
-#main_productions article:nth-child(even) {
+article:first-of-type {
+  padding-top: 0;
+}
+
+article:nth-child(odd) {
   background-color: var(--container);
+}
+
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0 40px;
+  padding: 0 15vw;
+}
+
+.c_reverse {
   flex-flow: row-reverse nowrap;
 }
 
-#main_productions article img {
+.container img {
   width: auto;
   height: 200px;
   object-fit: cover;
@@ -90,6 +105,34 @@ h2::after {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
 }
 
+.container section {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.container section h3 {
+  margin: 0 0 12px;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.container section p {
+  margin: 0 0 12px;
+  font-size: 1.2em;
+  text-align: justify;
+  line-height: 1.36;
+  color: var(--secondary-text);
+}
+
+.flex-btn {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 0 40px;
+}
+
+/*
 #main_productions article section {
   display: flex;
   flex-flow: column nowrap;
@@ -115,5 +158,16 @@ h2::after {
   flex-flow: row nowrap;
   justify-content: flex-start;
   gap: 0 50px;
+}
+ */
+
+@media screen and (max-width: 600px) {
+  h2 {
+    margin: 0 3vw 30px;
+  }
+
+  #main_content {
+    padding: 0 6vw;
+  }
 }
 </style>

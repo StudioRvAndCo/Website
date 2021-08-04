@@ -83,6 +83,7 @@ body {
 }
 
 #navbar {
+  z-index: 1000;
   padding: 0 12vw;
   height: 70px;
   position: sticky;

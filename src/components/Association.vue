@@ -1,7 +1,7 @@
 <template>
   <div id="association">
     <h2>{{ $t('the_association') }}</h2>
-    <article id="main_content">
+    <article>
       <p>{{ $t('association_summary') }}</p>
 
       <h3>{{ $t('some_numbers') }}</h3>
@@ -71,7 +71,7 @@ export default {
   background-color: var(--alt-container);
 }
 
-#main_content {
+article {
   padding: 0 15vw;
 }
 
@@ -98,14 +98,14 @@ h2::after {
   margin: 0 .1em 0 16px;
 }
 
-#main_content p {
+article p {
   margin: 0;
   font-size: 1.3em;
   text-align: justify;
   line-height: 1.36;
 }
 
-#main_content h3 {
+article h3 {
   margin: 50px 0 30px;
   font-size: 1.6em;
   font-weight: bold;
@@ -138,5 +138,21 @@ h2::after {
 #button {
   width: 100%;
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  h2 {
+    margin: 0 3vw 30px;
+  }
+
+  article {
+    padding: 0 6vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #button button {
+    width: 100%;
+  }
 }
 </style>
