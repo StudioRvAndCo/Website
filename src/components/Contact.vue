@@ -27,9 +27,9 @@
       <p id="separator">{{ $t('or') }}</p>
       <form>
         <label for="name">{{ $t('your_name') }}</label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" required autocomplete="name">
         <label for="email">{{ $t('your_email') }}</label>
-        <input type="text" name="email" id="email" required>
+        <input type="text" name="email" id="email" required autocomplete="email">
         <label for="object">{{ $t('subject_request') }}</label>
         <input type="text" name="object" id="object">
         <label for="message">{{ $t('your_message') }}</label>

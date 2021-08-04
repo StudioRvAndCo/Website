@@ -11,7 +11,7 @@
             <p>{{ $t('star_wars_quest_justice_summary') }}</p>
           </div>
           <div class="flex-btn">
-            <button class="btn primary-btn" type="button">{{ $t('watch') }}</button>
+            <button class="btn primary-btn" type="button" @click="goto('https://www.youtube.com/playlist?list=PL6VuKkKwjE2Gfmj5gKlQIHvaFHqoq0sq1')">{{ $t('watch') }}</button>
           </div>
         </section>
       </div>
@@ -25,7 +25,7 @@
             <p>{{ $t('summer_among_friends_summary') }}</p>
           </div>
           <div class="flex-btn">
-            <button class="btn primary-btn" type="button">{{ $t('watch') }}</button>
+            <button class="btn primary-btn" type="button" @click="goto('https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB')">{{ $t('watch') }}</button>
           </div>
         </section>
       </div>
@@ -40,6 +40,11 @@
 <script>
 export default {
   name: 'Productions',
+  methods: {
+    goto(url) {
+      window.location = url;
+    }
+  }
 }
 </script>
 
@@ -107,7 +112,6 @@ article:nth-child(odd) {
 .container section {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
 }
 
 .container section h3 {

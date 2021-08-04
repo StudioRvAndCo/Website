@@ -4,7 +4,7 @@
       <img id="banner" alt="Vue logo" src="@/assets/DSCN8325.jpg">
       <div>
         <h1>{{ $t('motto') }}</h1>
-        <button class="btn primary-btn" type="button">{{ $t('read_more') }}</button>
+        <button class="btn primary-btn" type="button" @click="goto('#association')">{{ $t('read_more') }}</button>
       </div>
     </section>
 
@@ -25,6 +25,11 @@ export default {
     Productions,
     Association,
     Contact
+  },
+  methods: {
+    goto(url) {
+      window.location = url;
+    }
   }
 }
 </script>
