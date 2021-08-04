@@ -1,11 +1,11 @@
 <template>
   <header id="navbar">
-    <img alt="Rv And Co Logo" src="@/assets/Logo.png">
+    <img alt="Rv And Co Logo" src="@/assets/Logo.png" @click="goto('/')">
     <nav>
-      <router-link to="/">{{ $t('home') }}</router-link>
-      <router-link to="/">{{ $t('productions') }}</router-link>
-      <router-link to="/">{{ $t('association') }}</router-link>
-      <router-link to="/">{{ $t('contact') }}</router-link>
+      <router-link :to="{name: 'home'}">{{ $t('home') }}</router-link>
+      <router-link :to="{name: 'home', hash: '#productions'}">{{ $t('productions') }}</router-link>
+      <router-link :to="{name: 'home', hash: '#association'}">{{ $t('association') }}</router-link>
+      <router-link :to="{name: 'home', hash: '#contact'}">{{ $t('contact') }}</router-link>
     </nav>
     <section>
       <!-- Youtube -->
@@ -40,20 +40,22 @@
 <script>
 export default {
   name: 'App',
+  methods: {
+    goto(url) {
+      window.location = url;
+    }
+  },
   computed: {
     currentYear() {
       return new Date().getFullYear();
     }
-  }
+  },
 }
 </script>
 
 <style>
 /* TODO: Add animations
    TODO: Add Hamburger menu for mobile users
-   TODO: Fix nav links
-   TODO: Change Favicon with night / day theme support
-   TODO: Responsive design for buttons
    TODO: Script for APIs with crontab
    TODO: Add max-width for very large screens */
 
@@ -105,6 +107,7 @@ body {
 #navbar img:first-child {
   width: 46px;
   height: 46px;
+  cursor: pointer;
 }
 
 #navbar nav a {
@@ -114,13 +117,19 @@ body {
   color: var(--primary-text);
   text-decoration: none;
   text-transform: uppercase;
+  transition: color .2s;
+}
+
+#navbar nav a:hover {
+  color: var(--secondary-text);
+  transition: color .2s;
 }
 
 #navbar section {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  gap: 0 20px;
+  gap: 0 26px;
 }
 
 #navbar section a {
@@ -130,6 +139,13 @@ body {
 #navbar section a svg {
   width: auto;
   height: 22px;
+  filter: brightness(100%);
+  transition: filter .2s;
+}
+
+#navbar section a svg:hover {
+  filter: brightness(70%);
+  transition: filter .2s;
 }
 
 .btn {
@@ -147,14 +163,32 @@ body {
 
 .primary-btn {
   background-color: var(--primary-btn);
+  transition: background-color .2s;
 }
 
 .secondary-btn {
   background-color: var(--secondary-btn);
+  transition: background-color .2s;
 }
 
 .tertiary-btn {
   background-color: var(--tertiary-btn);
+  transition: background-color .2s;
+}
+
+.primary-btn:hover {
+  background-color: rgb(156, 0, 0);
+  transition: background-color .2s;
+}
+
+.secondary-btn:hover {
+  background-color: rgb(76, 76, 76);
+  transition: background-color .2s;
+}
+
+.tertiary-btn:hover {
+  background-color: rgb(36, 36, 36);
+  transition: background-color .2s;
 }
 
 #footer {
