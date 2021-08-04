@@ -4,17 +4,25 @@
 
     <article>
       <section>
-        <h3>{{ $t('by_phone') }}</h3>
-        <p>(+33)6 00 00 00 00</p>
-        <h3>{{ $t('by_postal') }}</h3>
-        <p>
-          000, Avenue de Lorem Ipsum<br>
-          00000 Ipsum City, France
-        </p>
-        <h3>{{ $t('on_twitter') }}</h3>
-        <a href="https://twitter.com/studiorvandco">@StudioRvAndCo</a>
-        <h3>{{ $t('on_instagram') }}</h3>
-        <a href="https://www.instagram.com/studiorvandco">@StudioRvAndCo</a>
+        <div>
+          <h3>{{ $t('by_phone') }}</h3>
+          <p>(+33)6 00 00 00 00</p>
+        </div>
+        <div>
+          <h3>{{ $t('by_postal') }}</h3>
+          <p>
+            000, Avenue de Lorem Ipsum<br>
+            00000 Ipsum City, France
+          </p>
+        </div>
+        <div>
+          <h3>{{ $t('on_twitter') }}</h3>
+          <a href="https://twitter.com/studiorvandco">@StudioRvAndCo</a>
+        </div>
+        <div>
+          <h3>{{ $t('on_instagram') }}</h3>
+          <a href="https://www.instagram.com/studiorvandco">@StudioRvAndCo</a>
+        </div>
       </section>
       <p id="separator">{{ $t('or') }}</p>
       <form>
@@ -35,12 +43,11 @@
 <script>
 export default {
   name: 'Contact',
+  // TODO: Send email with form
 }
 </script>
 
 <style scoped>
-/* TODO: Improve responsive design */
-
 #contact {
   padding: 50px 0;
   background-color: var(--container);
@@ -80,6 +87,7 @@ article {
 
 article section {
   width: 25%;
+  min-width: 251px;
 }
 
 article section, article form {
@@ -95,26 +103,28 @@ article section, article form {
   padding: 0;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1.4em;
+  font-size: 1.6em;
 }
 
-article section h3 {
+article section {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 30px 0;
+}
+
+article section div h3 {
   margin: 0 0 6px;
   font-weight: bold;
   font-size: 1.3em;
 }
 
-article section p, article section a {
-  color: white !important;
+article section div p, article section div a {
+  color: var(--primary-text) !important;
   text-decoration: none !important;
   font-weight: normal;
-  font-size: 1.1em;
-  margin: 0 0 24px;
-  display: inline-block;
-}
-
-article section a:last-of-type {
+  font-size: 1.2em;
   margin: 0;
+  display: inline-block;
 }
 
 form {
@@ -130,18 +140,61 @@ form label {
 form input, form textarea {
   margin: 0 0 12px;
   border-radius: 6px;
-  font-size: 1em;
+  font-size: 1.2em;
   padding: 6px;
   border: none;
 }
 
+/* TODO: Change scrollbar */
 form textarea {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  min-height: 140px;
+  min-height: 120px;
   resize: vertical;
 }
 
 form button {
+  margin-top: 4px;
   width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  article {
+    flex-flow: column nowrap;
+    gap: 20px 0;
+  }
+
+  article section {
+    width: 100%;
+    flex-flow: row wrap;
+  }
+
+  article section > div {
+    flex: 50%;
+    margin: 0;
+  }
+
+  article form {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h2 {
+    margin: 0 3vw 30px;
+  }
+
+  article {
+    margin: 0 6vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  article section > div {
+    flex: 100%;
+  }
+
+  article section {
+    flex-flow: column wrap;
+  }
 }
 </style>
