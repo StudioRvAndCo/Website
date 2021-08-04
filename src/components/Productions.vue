@@ -132,42 +132,34 @@ article:nth-child(odd) {
   gap: 0 40px;
 }
 
-/*
-#main_productions article section {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-}
-
-#main_productions article section h3 {
-  margin: 0 0 12px;
-  font-size: 1.6em;
-  font-weight: bold;
-}
-
-#main_productions article section p {
-  margin: 0;
-  font-size: 1.3em;
-  text-align: justify;
-  line-height: 1.36;
-  color: var(--secondary-text);
-}
-
-.flex-btn {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  gap: 0 50px;
-}
- */
-
-@media screen and (max-width: 600px) {
-  h2 {
-    margin: 0 3vw 30px;
+@media screen and (max-width: 1000px) {
+  .container {
+    flex-flow: column nowrap;
+    gap: 20px 0;
   }
 
-  #main_content {
+  .container h3 {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .flex-btn {
+    flex-flow: column-reverse nowrap;
+  }
+
+  .flex-btn button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
     padding: 0 6vw;
+  }
+
+  h2 {
+    margin: 0 3vw 30px;
   }
 }
 </style>
