@@ -1,10 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Sync from "@/views/Sync";
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/views/Home.vue';
 
 const routes = [
   { path: '/', name: 'home', component: Home, meta: { scrollToTop: true }},
-  { path: '/sync/:target', name: 'sync', component: Sync },
 ]
 
 const router = createRouter({
