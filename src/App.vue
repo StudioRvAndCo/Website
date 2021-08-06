@@ -155,10 +155,16 @@ body {
   border-radius: 8px;
   font-size: 1.2em;
   font-weight: bold;
+  text-align: center;
   text-transform: uppercase;
+  text-decoration: none !important;
   cursor: pointer;
   color: var(--primary-text);
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
+}
+
+.btn p {
+  margin: 9px 0;
 }
 
 .primary-btn {

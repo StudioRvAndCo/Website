@@ -27,6 +27,7 @@ content_creators = []
 
 for i in range(len(content_creators_request['items'])):
     content_creators.append({
+        'id': content_creators_request['items'][i]['id'],
         'name': content_creators_request['items'][i]['snippet']['title'],
         'picture': content_creators_request['items'][i]['snippet']['thumbnails']['default']['url']
     })
@@ -49,9 +50,7 @@ for playlistId in playlists_requests['items']:
     items_ids = ''
 
     for playlistItem in playlists_items_requests['items']:
-        title = playlistItem['snippet']['title'].split(' | ')
         playlists_items.append({
-            'title': title[1],
             'id': playlistItem['snippet']['resourceId']['videoId'],
             'thumbnails': playlistItem['snippet']['thumbnails']
         })
@@ -62,15 +61,32 @@ for playlistId in playlists_requests['items']:
                                              '&prettyPrint=true&fields=items'
                                              '&key=AIzaSyCLWuAoSdikH2e-fgBIykXy5hWhJSJBPDk').json()
 
+    del items_ids
+
+    view_count = like_count = dislike_count = 0
+
     for i in range(len(playlists_items)):
         playlists_items[i]['statistics'] = playlists_videos_requests['items'][i]['statistics']
+        view_count += int(playlists_videos_requests['items'][i]['statistics']['viewCount'])
+        like_count += int(playlists_videos_requests['items'][i]['statistics']['likeCount'])
+        dislike_count += int(playlists_videos_requests['items'][i]['statistics']['dislikeCount'])
 
-    items_ids = ''
+    stats = {'viewCount': view_count, 'likeCount': like_count, 'dislikeCount': dislike_count}
+
+    infos = ''
+
+    if playlistId['id'] == 'PL6VuKkKwjE2Gfmj5gKlQIHvaFHqoq0sq1':
+        infos = {'title': 'star_wars_quest_justice_title', 'description': 'star_wars_quest_justice_description'}
+    elif playlistId['id'] == 'PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB':
+        infos = {'title': 'summer_among_friends_title', 'description': 'summer_among_friends_description'}
+
     playlists.append({
         'playlistId': playlistId['id'],
-        'videos': playlists_items
+        'infos': infos,
+        'thumbnail': playlistId['snippet']['thumbnails'],
+        'videos': playlists_items,
+        'statistics': stats
     })
-
 
 # --- Write statistics to file ---
 file = open('statistics.json', 'w')

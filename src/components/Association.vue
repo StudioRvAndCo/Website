@@ -16,15 +16,15 @@
         </div>
         <div>
           <h4>{{ $t('projects') }}</h4>
-          <p>{{ $store.state.YT_Playlists.length }}</p>
+          <p>{{ YT_Playlists.length }}</p>
         </div>
         <div>
           <h4>{{ $t('views') }}</h4>
-          <p>{{ $store.state.YT_Stats['viewCount'] }}</p>
+          <p>{{ YT_Stats['viewCount'] }}</p>
         </div>
         <div>
           <h4>{{ $t('subscribers') }}</h4>
-          <p>{{ $store.state.YT_Stats['subscriberCount'] }}</p>
+          <p>{{ YT_Stats['subscriberCount'] }}</p>
         </div>
       </section>
 
@@ -35,9 +35,11 @@
       </section>
 
       <h3>{{ $t('content_creator') }}</h3>
-      <!-- TODO: Get featured channels from Youtube -->
-      <section id="channels">
-
+      <section id="creators">
+        <a v-for="content_creator in YT_Content_Creators" :key="content_creator" :href="'https://www.youtube.com/channel/'+content_creator['id']">
+          <img :src="content_creator['picture']" :alt="content_creator['name']">
+          <p>{{ content_creator['name'] }}</p>
+        </a>
       </section>
 
       <h3>{{ $t('pictures') }}</h3>
@@ -53,12 +55,17 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: 'Association',
   methods: {
     goto(url) {
       window.location = url;
     }
+  },
+  computed: {
+    ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists'])
   }
 }
 </script>
@@ -131,6 +138,38 @@ article h3 {
   margin: 0;
   font-weight: bold;
   font-size: 1.3em;
+}
+
+#creators {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0 40px;
+}
+
+#creators a {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 8px 0;
+}
+
+#creators a img {
+  width: auto;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 100%;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
+}
+
+#creators a {
+  color: var(--primary-text);
+  text-decoration: none !important;
+  transition: color .2s;
+}
+
+#creators a:hover {
+  color: var(--secondary-text);
+  transition: color .2s;
 }
 
 #button {

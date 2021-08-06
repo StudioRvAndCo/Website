@@ -2,35 +2,21 @@
   <div id="productions">
     <h2>{{ $t('main_productions') }}</h2>
 
-    <article>
-      <div class="container">
-        <img :src="$store.state.YT_Playlists[0]['snippet']['thumbnails']['medium']['url']" :alt="$t('star_wars_quest_justice_poster')">
+    <article v-for="i in YT_Playlists.length" :key="i">
+      <div class="container" :class="i % 2 === 0 ? ' c_reverse' : ''">
+        <img :src="YT_Playlists[i-1]['thumbnail']['medium']['url']" :alt="$t(YT_Playlists[i-1]['infos']['title'])">
         <section>
-          <div>
-            <h3>{{ $t('star_wars_quest_justice') }}</h3>
-            <p>{{ $t('star_wars_quest_justice_summary') }}</p>
+          <div class="infos">
+            <h3>{{ $t(YT_Playlists[i-1]['infos']['title']) }}</h3>
+            <p>{{ $t(YT_Playlists[i-1]['infos']['description']) }}</p>
           </div>
           <div class="flex-btn">
-            <button class="btn primary-btn" type="button" @click="goto('https://www.youtube.com/playlist?list=PL6VuKkKwjE2Gfmj5gKlQIHvaFHqoq0sq1')">{{ $t('watch') }}</button>
+            <router-link :to="{name: 'playlist', params: {id: (i-1)}}" class="btn primary-btn"><p>{{ $t('watch') }}</p></router-link>
             <div class="stats">
-              {{ $store.state.YT_Playlists[0]['contentDetails']['itemCount'] }}
-            </div>
-          </div>
-        </section>
-      </div>
-    </article>
-    <article>
-      <div class="container c_reverse">
-        <img :src="$store.state.YT_Playlists[1]['snippet']['thumbnails']['medium']['url']" :alt="$t('summer_among_friends_poster')">
-        <section>
-          <div>
-            <h3>{{ $t('summer_among_friends') }}</h3>
-            <p>{{ $t('summer_among_friends_summary') }}</p>
-          </div>
-          <div class="flex-btn">
-            <button class="btn primary-btn" type="button" @click="goto('https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB')">{{ $t('watch') }}</button>
-            <div class="stats">
-              {{ $store.state.YT_Playlists[1]['contentDetails']['itemCount'] }}
+              <p>{{ YT_Playlists[i-1]['videos'].length }}</p>
+              <p>{{ YT_Playlists[i-1]['statistics']['viewCount'] }}</p>
+              <p>{{ YT_Playlists[i-1]['statistics']['likeCount'] }}</p>
+              <p>{{ YT_Playlists[i-1]['statistics']['dislikeCount'] }}</p>
             </div>
           </div>
         </section>
@@ -44,12 +30,17 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: 'Productions',
   methods: {
     goto(url) {
       window.location = url;
     }
+  },
+  computed: {
+    ...mapState(['YT_Playlists'])
   }
 }
 </script>
@@ -122,13 +113,13 @@ article:nth-child(odd) {
   flex-flow: column nowrap;
 }
 
-.container section h3 {
+.container .infos h3 {
   margin: 0 0 12px;
   font-size: 1.6em;
   font-weight: bold;
 }
 
-.container section p {
+.container .infos p {
   margin: 0 0 12px;
   font-size: 1.2em;
   text-align: justify;
@@ -139,8 +130,22 @@ article:nth-child(odd) {
 .flex-btn {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 0 40px;
+}
+
+.stats {
+  height: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0 10px;
+}
+
+.stats p {
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (max-width: 1000px) {
