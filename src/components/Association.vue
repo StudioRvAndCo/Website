@@ -16,17 +16,15 @@
         </div>
         <div>
           <h4>{{ $t('projects') }}</h4>
-          <p>2</p>
+          <p>{{ $store.state.YT_Playlists.length }}</p>
         </div>
         <div>
           <h4>{{ $t('views') }}</h4>
-          <!-- TODO: Link to Youtube API -->
-          <p>1000</p>
+          <p>{{ $store.state.YT_Stats['viewCount'] }}</p>
         </div>
         <div>
           <h4>{{ $t('subscribers') }}</h4>
-          <!-- TODO: Link to Youtube API -->
-          <p>67</p>
+          <p>{{ $store.state.YT_Stats['subscriberCount'] }}</p>
         </div>
       </section>
 

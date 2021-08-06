@@ -4,7 +4,7 @@
 
     <article>
       <div class="container">
-        <img src="@/assets/star_wars.jpg" :alt="$t('star_wars_quest_justice_poster')">
+        <img :src="$store.state.YT_Playlists[0]['snippet']['thumbnails']['medium']['url']" :alt="$t('star_wars_quest_justice_poster')">
         <section>
           <div>
             <h3>{{ $t('star_wars_quest_justice') }}</h3>
@@ -12,13 +12,16 @@
           </div>
           <div class="flex-btn">
             <button class="btn primary-btn" type="button" @click="goto('https://www.youtube.com/playlist?list=PL6VuKkKwjE2Gfmj5gKlQIHvaFHqoq0sq1')">{{ $t('watch') }}</button>
+            <div class="stats">
+              {{ $store.state.YT_Playlists[0]['contentDetails']['itemCount'] }}
+            </div>
           </div>
         </section>
       </div>
     </article>
     <article>
       <div class="container c_reverse">
-        <img src="@/assets/ete_entre_amis.jpg" :alt="$t('summer_among_friends_poster')">
+        <img :src="$store.state.YT_Playlists[1]['snippet']['thumbnails']['medium']['url']" :alt="$t('summer_among_friends_poster')">
         <section>
           <div>
             <h3>{{ $t('summer_among_friends') }}</h3>
@@ -26,6 +29,9 @@
           </div>
           <div class="flex-btn">
             <button class="btn primary-btn" type="button" @click="goto('https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB')">{{ $t('watch') }}</button>
+            <div class="stats">
+              {{ $store.state.YT_Playlists[1]['contentDetails']['itemCount'] }}
+            </div>
           </div>
         </section>
       </div>
@@ -49,6 +55,8 @@ export default {
 </script>
 
 <style scoped>
+/* TODO: Add statistics for playlists */
+
 #productions {
   padding: 50px 0 0;
 }
