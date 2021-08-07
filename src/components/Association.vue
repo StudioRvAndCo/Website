@@ -7,24 +7,27 @@
       <h3>{{ $t('some_numbers') }}</h3>
       <section id="numbers">
         <div>
-          <h4>{{ $t('creation_date') }}</h4>
-          <p>{{ $t('creation_date_value') }}</p>
+          <h4>{{ association_age }}</h4>
+          <p>
+            <span v-if="association_age > 1">{{ $tc('year', 2) }}</span>
+            <span v-else>{{ $tc('year', 1) }}</span>
+          </p>
         </div>
         <div>
-          <h4>{{ $t('size') }}</h4>
-          <p>10 {{ $t('members') }}.</p>
+          <h4>10</h4>
+          <p>{{ $t('members') }}</p>
         </div>
         <div>
-          <h4>{{ $t('projects') }}</h4>
-          <p>{{ YT_Playlists.length }}</p>
+          <h4>{{ YT_Playlists.length }}</h4>
+          <p>{{ $t('projects') }}</p>
         </div>
         <div>
-          <h4>{{ $t('views') }}</h4>
-          <p>{{ YT_Stats['viewCount'] }}</p>
+          <h4>{{ YT_Stats['viewCount'] }}</h4>
+          <p>{{ $t('views') }}</p>
         </div>
         <div>
-          <h4>{{ $t('subscribers') }}</h4>
-          <p>{{ YT_Stats['subscriberCount'] }}</p>
+          <h4>{{ YT_Stats['subscriberCount'] }}</h4>
+          <p>{{ $t('subscribers') }}</p>
         </div>
       </section>
 
@@ -65,7 +68,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists'])
+    ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists']),
+    association_age() {
+      let age = Date.now() - new Date(2020, 9, 9).getTime();
+      return Math.abs(new Date(age).getUTCFullYear() - 1970);
+    }
   }
 }
 </script>
@@ -121,23 +128,29 @@ article h3 {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  gap: 20px 0;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px 40px;
 }
 
 #numbers div {
-  flex: 0 0 calc(100%/3);
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  gap: 0 8px;
+  gap: 10px 0;
 }
 
 #numbers div h4 {
   margin: 0;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.6em;
+}
+
+#numbers div p {
+  margin: 0;
+  font-size: .9em;
+  text-transform: uppercase;
 }
 
 #creators {
