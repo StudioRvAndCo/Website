@@ -1,6 +1,9 @@
 import requests
 import json
 
+# Crontab command
+# */10 * * * * python3 /home/web/rvandco/Website/src/store/data/sync.py >/dev/null 2>&1
+
 # --- Get statistics ---
 statistics = requests.get('https://youtube.googleapis.com/youtube/v3/channels'
                           '?part=statistics&id=UCbTaxj24z8viOFR6NXMKurQ'
