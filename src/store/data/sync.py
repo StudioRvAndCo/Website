@@ -1,8 +1,12 @@
+import os
 import requests
 import json
 
 # Crontab command
 # */10 * * * * python3 /home/web/rvandco/Website/src/store/data/sync.py >/dev/null 2>&1
+
+# Script path
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 # --- Get statistics ---
 statistics = requests.get('https://youtube.googleapis.com/youtube/v3/channels'
@@ -92,16 +96,16 @@ for playlistId in playlists_requests['items']:
     })
 
 # --- Write statistics to file ---
-file = open('statistics.json', 'w')
+file = open(os.path.join(__location__, 'statistics.json'), 'w')
 file.write(json.dumps(statistics, indent=4))
 file.close()
 
 # --- Write content creators to file ---
-file = open('content_creators.json', 'w')
+file = open(os.path.join(__location__, 'content_creators.json'), 'w')
 file.write(json.dumps(content_creators, indent=4))
 file.close()
 
 # --- Write playlists to file ---
-file = open('playlists.json', 'w')
+file = open(os.path.join(__location__, 'playlists.json'), 'w')
 file.write(json.dumps(playlists, indent=4))
 file.close()
