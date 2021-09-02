@@ -95,6 +95,11 @@ for playlistId in playlists_requests['items']:
         'statistics': stats
     })
 
+# --- Get Instagram posts ---
+posts = requests.get('https://graph.instagram.com/v11.0/me/media' +
+                     '?fields=id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp' +
+                     '&access_token=IGQVJXUWdCREJPZAHNPY3VzUzlhSWF3eDI2TVVXcU5UaXlYOXhGUXhyZA0ZAKbTZAlZAktQNHAzZA2h0OU9hVm9VWHdlMDBsaHJNdG0xQ0s0MzFEYnVxWDJkak5HRVM1cnUxWkFYLU0zRU5hQlpvRGpxUC04egZDZD').json()
+
 # --- Write statistics to file ---
 file = open(os.path.join(__location__, 'statistics.json'), 'w')
 file.write(json.dumps(statistics, indent=4))
@@ -108,4 +113,9 @@ file.close()
 # --- Write playlists to file ---
 file = open(os.path.join(__location__, 'playlists.json'), 'w')
 file.write(json.dumps(playlists, indent=4))
+file.close()
+
+# --- Write posts to file ---
+file = open(os.path.join(__location__, 'posts.json'), 'w')
+file.write(json.dumps(posts, indent=4))
 file.close()
