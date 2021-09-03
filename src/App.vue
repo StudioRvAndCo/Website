@@ -65,7 +65,7 @@ export default {
 
 #navbar {
   z-index: 100000;
-  height: 70px;
+  height: 64px;
   position: sticky;
   top: 0;
   left: 0;
@@ -90,8 +90,8 @@ export default {
 }
 
 #logo, #logo * {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
 }
 
 #navbar nav a {
@@ -132,7 +132,7 @@ export default {
 footer {
   margin: 0 auto;
   padding: 12px;
-  max-width: 1200px;
+  max-width: 1280px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;

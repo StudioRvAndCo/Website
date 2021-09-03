@@ -13,7 +13,7 @@ const router = createRouter({
     if (to.hash) {
       let id = window.location.href.split("#")[1];
       if (id.length) {
-        let yOffset = -70;
+        let yOffset = -64;
         let element = document.getElementById(id);
         let y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' })

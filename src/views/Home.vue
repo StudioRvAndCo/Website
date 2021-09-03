@@ -1,10 +1,8 @@
 <template>
-  <article id="home">
-    <Presentation />
-    <Productions />
-    <Association />
-    <Contact />
-  </article>
+  <Presentation />
+  <Productions />
+  <Association />
+  <Contact />
 </template>
 
 <script>
@@ -20,11 +18,6 @@ export default {
     Productions,
     Association,
     Contact
-  },
-  methods: {
-    goto(url) {
-      window.location = url;
-    }
   }
 }
 </script>

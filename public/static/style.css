@@ -18,16 +18,37 @@ body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
     user-select: none;
     color: var(--primary-text);
     overflow: overlay;
     scroll-behavior: smooth;
 }
 
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+/* --- Super title --- */
+.super_title::before, .super_title::after {
+    border-top: .07em solid;
+    content: "";
+    flex: 1;
+    margin: 0 12px;
+}
+
+
 /* --- Buttons --- */
 .btn {
+    display: inline-block;
     width: 270px;
-    height: 40px;
     border: none;
     border-radius: 8px;
     font-size: 1.2em;
@@ -35,13 +56,10 @@ body {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none !important;
+    line-height: 2.2em;
     cursor: pointer;
     color: var(--primary-text);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
-}
-
-.btn p {
-    margin: 9px 0;
 }
 
 .primary-btn {
