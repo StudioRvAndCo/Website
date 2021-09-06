@@ -37,18 +37,36 @@ img {
 }
 
 /* --- Super title --- */
+.super_title {
+    padding: 40px 0;
+    margin: 0 auto;
+    max-width: 1280px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 1.8em;
+    text-transform: uppercase;
+}
+
 .super_title::before, .super_title::after {
     border-top: .07em solid;
     content: "";
     flex: 1;
-    margin: 0 12px;
+    padding: 0 0 0 12px;
+    margin: 0 12px 0 0;
+}
+
+.super_title::after {
+    padding: 0 12px 0 0;
+    margin: 0 0 0 12px;
 }
 
 
 /* --- Buttons --- */
 .btn {
+    padding: 0 12px;
     display: inline-block;
-    width: 270px;
+    width: calc(270px - 12px * 2);
     border: none;
     border-radius: 8px;
     font-size: 1.2em;
