@@ -1,4 +1,6 @@
 /* --- Global --- */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
 :root {
     --background-color: #393939;
     --background-nav: rgba(57, 57, 57, .8);
@@ -7,33 +9,37 @@
     --primary-text: white;
     --secondary-text: #cdcdcd;
     --primary-btn: #BE0000;
-    --secondary-btn: var(--container);
-    --tertiary-btn: var(--background-color);
 }
 
 body {
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    /* TODO: Ajouter d'autres polices */
+    font-family: Apercu;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-user-select: none;
+    /*-webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
-    user-select: none;
+    user-select: none;*/
     color: var(--primary-text);
     overflow: overlay;
     scroll-behavior: smooth;
 }
 
-img {
+/*img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
+}*/
+
+h1, h2, h3, h4, h5, h6, #navbar nav, form label, .super_title, .btn {
+    /* TODO: Rajouter d'autres polices */
+    font-family: "Open Sans";
 }
 
 /* --- Super title --- */
@@ -61,53 +67,29 @@ img {
     margin: 0 0 0 12px;
 }
 
-
 /* --- Buttons --- */
 .btn {
-    padding: 0 12px;
+    padding: 0 10px;
     display: inline-block;
-    width: calc(270px - 12px * 2);
+    width: calc(250px - 12px * 2);
     border: none;
     border-radius: 8px;
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: Manrope, Helvetica, Arial, sans-serif;
     text-align: center;
-    text-transform: uppercase;
     text-decoration: none !important;
-    line-height: 2.2em;
+    line-height: 2.4em;
     cursor: pointer;
     color: var(--primary-text);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
-}
-
-.primary-btn {
     background-color: var(--primary-btn);
-    transition: background-color .2s;
+    transition: background-color .15s;
 }
 
-.primary-btn:hover {
+.btn:hover {
     background-color: rgb(156, 0, 0);
-    transition: background-color .2s;
-}
-
-.secondary-btn {
-    background-color: var(--secondary-btn);
-    transition: background-color .2s;
-}
-
-.secondary-btn:hover {
-    background-color: rgb(76, 76, 76);
-    transition: background-color .2s;
-}
-
-.tertiary-btn {
-    background-color: var(--tertiary-btn);
-    transition: background-color .2s;
-}
-
-.tertiary-btn:hover {
-    background-color: rgb(36, 36, 36);
-    transition: background-color .2s;
+    transition: background-color .15s;
 }
 
 /* --- Scroll Bar --- */

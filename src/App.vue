@@ -1,19 +1,26 @@
 <template>
   <div id="navbar">
     <header>
-      <!-- Logo -->
-      <router-link to="/" id="logo">
-        <img alt="Rv And Co Logo" src="@/assets/Logo.png">
-      </router-link>
-      <!-- Links for Phone -->
-      <!-- TODO: Phone menu -->
-      <!-- Links for PC -->
-      <nav>
-        <router-link to="/">{{ $t('home') }}</router-link>
-        <router-link to="/#productions">{{ $t('productions') }}</router-link>
-        <router-link to="/#association">{{ $t('association') }}</router-link>
-        <router-link to="/#contact">{{ $t('contact') }}</router-link>
-      </nav>
+      <article>
+        <!-- Logo -->
+        <router-link to="/" id="logo">
+          <img alt="Rv And Co Logo" src="@/assets/Logo.png">
+        </router-link>
+        <!-- Links for Phone -->
+        <a href="#" id="mobile_menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="#fff" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+            </path>
+          </svg>
+        </a>
+        <!-- Links for PC -->
+        <nav>
+          <router-link to="/">{{ $t('home') }}</router-link>
+          <router-link to="/#productions">{{ $t('productions') }}</router-link>
+          <router-link to="/#association">{{ $t('association') }}</router-link>
+          <router-link to="/#contact">{{ $t('contact') }}</router-link>
+        </nav>
+      </article>
       <!-- Social -->
       <article>
         <!-- Youtube -->
@@ -59,9 +66,7 @@ export default {
 
 <style scoped>
 /* TODO: Add animations
-   TODO: Add Hamburger menu for mobile users
-   TODO: Script for APIs with crontab
-   TODO: Add max-width for very large screens */
+   TODO: Add mobile menu */
 
 #navbar {
   z-index: 100000;
@@ -81,7 +86,7 @@ export default {
 #navbar header {
   margin: 0 auto;
   padding: 0 12px;
-  max-width: 1500px;
+  max-width: 1420px;
   height: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -90,23 +95,32 @@ export default {
 }
 
 #logo, #logo * {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
+}
+
+#navbar article:first-of-type a svg {
+  display: none;
+  padding: 18px;
+  width: auto;
+  height: 26px;
+  color: var(--primary-text);
+  filter: brightness(100%);
+  transition: filter .15s;
 }
 
 #navbar nav a {
-  padding: 16px;
-  font-size: 1.2em;
-  font-weight: bold;
+  padding: 18px;
+  font-size: 1.1em;
+  font-weight: 600;
   color: var(--primary-text);
   text-decoration: none;
-  text-transform: uppercase;
-  transition: color .2s;
+  transition: color .15s;
 }
 
 #navbar nav a:hover {
   color: var(--secondary-text);
-  transition: color .2s;
+  transition: color .15s;
 }
 
 #navbar article {
@@ -115,30 +129,31 @@ export default {
   align-items: center;
 }
 
-#navbar article a svg {
+#navbar article:last-of-type a svg {
   display: block;
   padding: 16px;
   width: auto;
-  height: 22px;
+  height: 18px;
   filter: brightness(100%);
-  transition: filter .2s;
+  transition: filter .15s;
 }
 
 #navbar article a svg:hover {
   filter: brightness(70%);
-  transition: filter .2s;
+  transition: filter .15s;
 }
 
 footer {
   margin: 0 auto;
   padding: 12px;
-  max-width: 1280px;
+  max-width: 1420px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   color: var(--secondary-text) !important;
-  font-size: .9em !important;
+  font-size: .9em;
+  font-weight: 300;
 }
 
 footer p {
@@ -157,22 +172,29 @@ footer a:hover {
 }
 
 
-@media screen and (max-width: 950px) {
-  #navbar header {
-    padding-right: 0;
-  }
-
-  #navbar article {
+@media screen and (max-width: 750px) {
+  #navbar header article:last-of-type {
     display: none;
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 550px) {
+  #navbar header {
+    padding-right: 0;
+  }
+
   #navbar nav {
     display: none;
   }
 
-  /* Display Hamburger button */
+  #navbar article:first-of-type {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  #navbar article:first-of-type a svg {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 400px) {
