@@ -7,6 +7,7 @@
         <router-link class="btn primary-btn" to="/#association">{{ $t('read_more') }}</router-link>
       </section>
     </div>
+    <img src="@/assets/separator_1.svg" :alt="$t('separator')">
   </article>
 </template>
 
@@ -25,28 +26,36 @@ article {
 video {
   width: 100%;
   min-height: 350px;
-  max-height: 600px;
+  max-height: 580px;
   margin-top: -64px;
   object-fit: cover;
 }
 
 div {
   position: absolute;
-  bottom: 80px;
+  bottom: 102px;
   width: 100%;
 }
 
 section {
   margin: 0 auto;
   padding: 0 12px;
-  max-width: 1280px;
+  max-width: 1120px;
 }
 
 h1 {
-  margin: 0 0 12px;
-  font-size: 2.4em;
+  margin: 0 0 20px;
+  font-size: 2.5em;
+  font-weight: 800;
   text-transform: uppercase;
   text-shadow: 0 0 .8em var(--background-color), 0 0 0.2em var(--background-color);
+}
+
+img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 @media screen and (max-width: 950px) {

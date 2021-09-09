@@ -69,17 +69,15 @@ h1, h2, h3, h4, h5, h6, #navbar nav, form label, .super_title, .btn {
 
 /* --- Buttons --- */
 .btn {
-    padding: 0 10px;
     display: inline-block;
-    width: calc(250px - 12px * 2);
+    width: 270px;
     border: none;
     border-radius: 8px;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: Manrope, Helvetica, Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
     text-align: center;
     text-decoration: none !important;
-    line-height: 2.4em;
+    line-height: 2.15em;
     cursor: pointer;
     color: var(--primary-text);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
