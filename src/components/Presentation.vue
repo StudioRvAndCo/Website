@@ -73,4 +73,10 @@ img {
     text-align: center;
   }
 }
+
+@media screen and (max-width: 350px) {
+  a {
+    width: 100%;
+  }
+}
 </style>
