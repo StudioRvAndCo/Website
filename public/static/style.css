@@ -7,7 +7,7 @@
     --container: #606060;
     --alt-container: rgba(190, 0, 0, 0.23);
     --primary-text: white;
-    --secondary-text: #cdcdcd;
+    --secondary-text: #DFDFDF;
     --primary-btn: #BE0000;
 }
 
@@ -44,27 +44,26 @@ h1, h2, h3, h4, h5, h6, #navbar nav, form label, .super_title, .btn {
 
 /* --- Super title --- */
 .super_title {
-    padding: 40px 0;
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1120px;
     display: flex;
     align-items: center;
     text-align: center;
-    font-size: 1.8em;
+    font-size: 1.6em;
     text-transform: uppercase;
 }
 
 .super_title::before, .super_title::after {
-    border-top: .07em solid;
+    border-top: .08em solid;
     content: "";
     flex: 1;
-    padding: 0 0 0 12px;
+    padding: 0 0 0 14px;
     margin: 0 12px 0 0;
 }
 
 .super_title::after {
     padding: 0 12px 0 0;
-    margin: 0 0 0 12px;
+    margin: 0 0 0 14px;
 }
 
 /* --- Buttons --- */
@@ -77,7 +76,7 @@ h1, h2, h3, h4, h5, h6, #navbar nav, form label, .super_title, .btn {
     font-weight: 600;
     text-align: center;
     text-decoration: none !important;
-    line-height: 2.15em;
+    line-height: 2.18em;
     cursor: pointer;
     color: var(--primary-text);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
