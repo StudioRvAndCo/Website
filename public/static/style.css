@@ -5,7 +5,7 @@
     --background-color: #393939;
     --background-nav: rgba(57, 57, 57, .8);
     --container: #606060;
-    --alt-container: rgba(190, 0, 0, 0.23);
+    --alt-container: #612626;
     --primary-text: white;
     --secondary-text: #DFDFDF;
     --primary-btn: #BE0000;
@@ -40,6 +40,11 @@ body {
 h1, h2, h3, h4, h5, h6, #navbar nav, form label, .super_title, .btn {
     /* TODO: Rajouter d'autres polices */
     font-family: "Open Sans";
+}
+
+#separator {
+    width: 100%;
+    height: auto;
 }
 
 /* --- Super title --- */

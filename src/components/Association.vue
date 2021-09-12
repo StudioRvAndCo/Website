@@ -1,32 +1,35 @@
 <template>
   <div id="association">
-    <h2>{{ $t('the_association') }}</h2>
+    <img id="separator" src="@/assets/separator_presentation.svg" :alt="$t('separator')">
+
+    <h2 class="super_title">{{ $t('the_association') }}</h2>
+
     <article>
       <p>{{ $t('association_summary') }}</p>
 
       <h3>{{ $t('some_numbers') }}</h3>
       <section id="numbers">
         <div>
-          <h4>{{ association_age }}</h4>
+          <h4 id="int_association_age"></h4>
           <p>
             <span v-if="association_age > 1">{{ $tc('year', 2) }}</span>
             <span v-else>{{ $tc('year', 1) }}</span>
           </p>
         </div>
         <div>
-          <h4>10</h4>
+          <h4 id="int_members"></h4>
           <p>{{ $t('members') }}</p>
         </div>
         <div>
-          <h4>{{ YT_Playlists.length }}</h4>
+          <h4 id="int_projects"></h4>
           <p>{{ $t('projects') }}</p>
         </div>
         <div>
-          <h4>{{ YT_Stats['viewCount'] }}</h4>
+          <h4 id="int_views"></h4>
           <p>{{ $t('views') }}</p>
         </div>
         <div>
-          <h4>{{ YT_Stats['subscriberCount'] }}</h4>
+          <h4 id="int_subscribers"></h4>
           <p>{{ $t('subscribers') }}</p>
         </div>
       </section>
@@ -34,7 +37,7 @@
       <h3>{{ $t('members')}}</h3>
       <!-- TODO: Add crawlable members -->
       <section id="members">
-
+        Coucou 👋
       </section>
 
       <h3>{{ $t('content_creator') }}</h3>
@@ -46,12 +49,14 @@
       </section>
 
       <h3>{{ $t('pictures') }}</h3>
-      <!-- TODO: Link to Instagram API -->
       <section id="pictures">
-
+        <a v-for="post in Insta_Posts['data']" :key="post" :href="post.permalink">
+          <img :src="post.media_url" alt="Instagram post">
+        </a>
       </section>
+
       <section id="button">
-        <button class="btn primary-btn" type="button" @click="goto('https://www.instagram.com/studiorvandco')">{{ $t('more_pictures') }}</button>
+        <a class="btn primary-btn" href="https://www.instagram.com/studiorvandco">{{ $t('more_pictures') }}</a>
       </section>
     </article>
   </div>
@@ -62,132 +67,194 @@ import {mapState} from "vuex";
 
 export default {
   name: 'Association',
-  methods: {
-    goto(url) {
-      window.location = url;
-    }
-  },
   computed: {
-    ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists']),
+    ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists', 'Insta_Posts']),
     association_age() {
       let age = Date.now() - new Date(2020, 9, 9).getTime();
       return Math.abs(new Date(age).getUTCFullYear() - 1970);
     }
+  },
+  mounted() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.getElementById('int_association_age').style.setProperty('--num', this.association_age.toString());
+          document.getElementById('int_members').style.setProperty('--num', '10');
+          document.getElementById('int_projects').style.setProperty('--num', this.YT_Playlists.length.toString());
+          document.getElementById('int_views').style.setProperty('--num', this.YT_Stats['viewCount'].toString());
+          document.getElementById('int_subscribers').style.setProperty('--num', this.YT_Stats['subscriberCount'].toString());
+        }
+      })
+    })
+    observer.observe(document.getElementById('numbers'))
   }
 }
 </script>
 
 <style scoped>
 #association {
-  padding: 50px 0;
+  position: relative;
+  background-image: url("../assets/background_association.svg");
   background-color: var(--alt-container);
 }
 
+#separator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.super_title {
+  padding: 70px 0 20px;
+}
+
 article {
-  padding: 0 15vw;
-}
-
-h2::before {
-  border-top: .0625em solid;
-  content: "";
-  flex: 1;
-  margin: 0 16px 0 .1em;
-}
-
-h2 {
-  margin: 0 12vw 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-size: 2em;
-  text-transform: uppercase;
-}
-
-h2::after {
-  border-top: .0625em solid;
-  content: "";
-  flex: 1;
-  margin: 0 .1em 0 16px;
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 1120px;
 }
 
 article p {
   margin: 0;
-  font-size: 1.3em;
-  text-align: justify;
-  line-height: 1.36;
+  text-align: center;
+  line-height: 1.3;
+  font-size: 1.1em;
+  font-weight: 300;
 }
 
 article h3 {
-  margin: 50px 0 30px;
-  font-size: 1.6em;
-  font-weight: bold;
+  margin: 30px 0 20px;
+  font-size: 1.4em;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
 #numbers {
-  width: 100%;
+  padding: 18px;
+  border-radius: 8px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
-  gap: 30px 40px;
+  gap: 30px 0;
+  background-color: var(--background-color);
+  box-shadow: inset 0 0 5px 5px #2a2a2a;
 }
 
 #numbers div {
+  flex: 1 1 auto;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  gap: 10px 0;
+  gap: 6px 0;
+  border-right: 2px solid var(--container);
+}
+
+#numbers div:last-of-type {
+  border: none;
+}
+
+#numbers div + #numbers div {
+  border-left: solid 1px white;
+}
+
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
 }
 
 #numbers div h4 {
   margin: 0;
   font-weight: bold;
   font-size: 1.6em;
+  animation: counter 3.2s alternate ease-out;
+  counter-reset: num var(--num);
+}
+
+#numbers div h4::after {
+  content: counter(num);
+}
+
+@keyframes counter {
+  from {
+    --num: 0;
+  }
 }
 
 #numbers div p {
   margin: 0;
-  font-size: .9em;
-  text-transform: uppercase;
+  font-size: .94em;
 }
 
 #creators {
   display: flex;
   flex-flow: row wrap;
-  gap: 0 40px;
-}
-
-#creators a {
-  display: flex;
-  flex-flow: column nowrap;
   align-items: center;
-  gap: 8px 0;
+  justify-content: space-around;
+  gap: 0 40px;
 }
 
 #creators a img {
   width: auto;
-  height: 88px;
+  height: 90px;
   object-fit: cover;
   border-radius: 100%;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
 }
 
 #creators a {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 10px 0;
   color: var(--primary-text);
   text-decoration: none !important;
-  transition: color .2s;
+  transition: transform .15s;
 }
 
 #creators a:hover {
-  color: var(--secondary-text);
-  transition: color .2s;
+  transform: scale(1.1);
+  transition: transform .15s;
+}
+
+#creators a p {
+  font-weight: 400;
 }
 
 #button {
   width: 100%;
   text-align: center;
+  padding-bottom: 40px;
+}
+
+#pictures {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 calc(100%/3);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+#pictures a {
+  transition: transform .15s;
+}
+
+#pictures a:hover {
+  transform: scale(1.04);
+  transition: transform .15s;
+}
+
+#pictures a img {
+  display: block;
+  width: auto;
+  max-width: 25vh;
+  height: auto;
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 600px) {
@@ -200,9 +267,29 @@ article h3 {
   }
 }
 
+@media screen and (max-width: 520px) and (min-width: 360px) {
+  #numbers div {
+    flex: 1 1 30%;
+  }
+
+  #numbers div:nth-child(3) {
+    border: none;
+  }
+}
+
 @media screen and (max-width: 450px) {
   #button button {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #numbers div {
+    flex: 1 1 40%;
+  }
+
+  #numbers div:nth-child(even) {
+    border: none;
   }
 }
 </style>

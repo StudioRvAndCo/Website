@@ -31,8 +31,17 @@
     </div>
   </article>
 
-  <!-- TODO: Add crawlable productions -->
-  <!-- <div id="other_productions"></div> -->
+  <div id="other_productions">
+    <h3>Autres productions</h3>
+    <article>
+      <router-link v-for="i in YT_Playlists.length" :key="i" :to="{name: 'playlist', params: {id: (i-1)}}">
+        <img :src="YT_Playlists[i-1]['thumbnail']['medium']['url']" :alt="$t(YT_Playlists[i-1]['infos']['title'])">
+        <div>
+          <h3>{{ $t(YT_Playlists[i-1]['infos']['title']) }}</h3>
+        </div>
+      </router-link>
+    </article>
+  </div>
 </template>
 
 <script>
@@ -137,6 +146,61 @@ article:nth-child(odd) {
   padding: 0;
   color: var(--secondary-text);
   font-size: .9em;
+}
+
+#other_productions {
+  margin: 0 auto;
+  max-width: 1120px;
+}
+
+#other_productions h3 {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  padding: 0 12px;
+}
+
+#other_productions article {
+  padding: 0 0 20px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px 40px;
+}
+
+#other_productions article a {
+  display: inline-block;
+  position: relative;
+  transition: transform .15s;
+}
+
+#other_productions article a:hover {
+  transform: scale(1.04);
+  transition: transform .15s;
+}
+
+#other_productions article img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
+}
+
+#other_productions div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(57, 57, 57, 0.8);
+  border-radius: 0 0 8px 8px;
+}
+
+#other_productions article h3 {
+  margin: 0;
+  padding: 10px 12px;
+  color: var(--primary-text);
+  text-decoration: none;
+  text-align: center;
+  font-size: 1em;
+  text-transform: none;
 }
 
 @media screen and (max-width: 880px) {
