@@ -15,31 +15,29 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
-    /* TODO: Ajouter d'autres polices */
-    font-family: Apercu;
+    font-family: Apercu, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /*-webkit-user-select: none;
+    -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
-    user-select: none;*/
+    user-select: none;
     color: var(--primary-text);
     overflow: overlay;
     scroll-behavior: smooth;
 }
 
-/*img {
+img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
-}*/
+}
 
 h1, h2, h3, h4, h5, h6, #navbar nav, form label, .super_title, .btn {
-    /* TODO: Rajouter d'autres polices */
-    font-family: "Open Sans";
+    font-family: "Open Sans", Roboto, Arial, sans-serif;
 }
 
 #separator {
