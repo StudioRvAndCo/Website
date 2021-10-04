@@ -128,11 +128,16 @@ form input, form textarea {
   border: none;
 }
 
-/* TODO: Change scrollbar */
 form textarea {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   min-height: 100px;
   resize: vertical;
+}
+
+form textarea::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 14px 14px var(--background-color);
+  border: solid 4px transparent;
+  border-radius: 14px;
 }
 
 form button {

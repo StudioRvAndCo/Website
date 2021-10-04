@@ -1,8 +1,7 @@
 <template>
-
   <h2 class="super_title">{{ $t('main_productions') }}</h2>
 
-  <article v-for="i in YT_Playlists.length" :key="i">
+  <article v-for="i in YT_Playlists.length" :key="i" :class="i % 2 === 0 ? ' container_alt' : ''">
     <div class="container" :class="i % 2 === 0 ? ' container_alt' : ''">
       <img :src="YT_Playlists[i-1]['thumbnail']['medium']['url']" :alt="$t(YT_Playlists[i-1]['infos']['title'])">
       <section>
@@ -31,7 +30,7 @@
     </div>
   </article>
 
-  <div id="other_productions">
+<!--  <div id="other_productions">
     <h3>Autres productions</h3>
     <article>
       <router-link v-for="i in YT_Playlists.length" :key="i" :to="{name: 'playlist', params: {id: (i-1)}}">
@@ -41,14 +40,19 @@
         </div>
       </router-link>
     </article>
-  </div>
+  </div>-->
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: 'Productions',
+  created() {
+    if (this.$store.state.YT_Playlists.length % 2 === 0) {
+      this.$emit('even')
+    }
+  },
   computed: {
     ...mapState(['YT_Playlists'])
   }
@@ -151,12 +155,12 @@ article:nth-child(odd) {
 #other_productions {
   margin: 0 auto;
   max-width: 1120px;
+  padding: 0 12px;
 }
 
 #other_productions h3 {
   font-size: 1.5em;
   text-transform: uppercase;
-  padding: 0 12px;
 }
 
 #other_productions article {

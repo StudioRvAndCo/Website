@@ -1,23 +1,28 @@
 <template>
-  <Presentation />
-  <Productions />
-  <Association />
-  <Contact />
+  <presentation />
+  <productions @even="this.change_color = true" />
+  <association :color="change_color" />
+  <contact />
 </template>
 
 <script>
-import Presentation from "@/components/Presentation";
-import Productions from "@/components/Productions";
-import Association from "@/components/Association";
-import Contact from "@/components/Contact";
+import presentation from "@/components/home/presentation";
+import productions from "@/components/home/productions";
+import association from "@/components/home/association";
+import contact from "@/components/home/contact";
 
 export default {
   name: 'Home',
+  data() {
+    return {
+      change_color: false
+    }
+  },
   components: {
-    Presentation,
-    Productions,
-    Association,
-    Contact
+    presentation,
+    productions,
+    association,
+    contact
   }
 }
 </script>

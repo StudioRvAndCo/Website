@@ -2,8 +2,10 @@ import os
 import requests
 import json
 
+# TODO: Remove stats for playlists and videos
+
 # Crontab command
-# */10 * * * * python3 /home/web/rvandco/Website/src/store/data/sync.py >/dev/null 2>&1
+# */20 * * * * python3 /home/web/rvandco/Website/src/store/data/sync.py >/dev/null 2>&1
 
 # Script path
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -98,7 +100,10 @@ for playlistId in playlists_requests['items']:
 # --- Get Instagram posts ---
 posts = requests.get('https://graph.instagram.com/v11.0/me/media' +
                      '?fields=id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp' +
-                     '&access_token=IGQVJXUWdCREJPZAHNPY3VzUzlhSWF3eDI2TVVXcU5UaXlYOXhGUXhyZA0ZAKbTZAlZAktQNHAzZA2h0OU9hVm9VWHdlMDBsaHJNdG0xQ0s0MzFEYnVxWDJkak5HRVM1cnUxWkFYLU0zRU5hQlpvRGpxUC04egZDZD').json()
+                     '&access_token=IGQVJXUWdCREJPZAHNPY3VzUzlhSWF3eDI2TVVXcU5UaXlYOXhGUXhyZA0ZAKbTZAlZA' +
+                     'ktQNHAzZA2h0OU9hVm9VWHdlMDBsaHJNdG0xQ0s0MzFEYnVxWDJkak5HRVM1cnUxWkFYLU0zRU5hQlpvRG' +
+                     'pxUC04egZDZD').json()
+posts = posts['data']
 
 # --- Write statistics to file ---
 file = open(os.path.join(__location__, 'statistics.json'), 'w')

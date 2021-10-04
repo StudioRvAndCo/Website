@@ -1,34 +1,26 @@
 <template>
-  <div id="playlist">
-    <img id="banner" :src="YT_Playlists[id]['thumbnail']['maxres']['url']" :alt="$t(YT_Playlists[id]['infos']['title'])">
-    <h1>{{ $t(YT_Playlists[id]['infos']['title']) }}</h1>
-    <p>{{ $t(YT_Playlists[id]['infos']['description']) }}</p>
+  <presentation/>
+  <episodes/>
 
-    <article>
-      <section v-for="i in YT_Playlists[id]['videos'].length" :key="i">
-        <img :src="YT_Playlists[id]['videos'][i-1]['thumbnails']['medium']['url']" :alt="$t(YT_Playlists[id]['infos']['title']+'_'+(i-1))">
-        <h2>{{ $t(YT_Playlists[id]['infos']['title']+'_'+(i-1)) }}</h2>
-        <p>{{ $t(YT_Playlists[id]['infos']['description']+'_'+(i-1)) }}</p>
-        <p>{{ YT_Playlists[id]['videos'][i-1]['statistics'] }}</p>
-      </section>
-    </article>
-
+  <div>
+    <router-link to="/" class="btn">{{ $t('back_home') }}</router-link>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
+import presentation from "@/components/playlist/presentation";
+import episodes from "@/components/playlist/episodes";
 
 export default {
   name: 'Home',
+  components: {
+    presentation,
+    episodes
+  },
   data() {
     return {
       id: this.$route.params.id
-    }
-  },
-  methods: {
-    goto(url) {
-      window.location = url;
     }
   },
   computed: {
@@ -38,10 +30,11 @@ export default {
 </script>
 
 <style scoped>
-#banner {
-  width: 100%;
-  height: 650px;
-  margin-top: -70px;
-  object-fit: cover;
+div {
+  padding: 20px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
 }
 </style>
