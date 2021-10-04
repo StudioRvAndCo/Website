@@ -68,7 +68,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: 'Association',
+  name: 'association',
   props: ['color'],
   computed: {
     ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists', 'Insta_Posts']),

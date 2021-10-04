@@ -5,6 +5,7 @@ import Playlist from "@/views/Playlist";
 const routes = [
   { path: '/', name: 'home', component: Home, meta: { scrollToTop: true }},
   { path: '/playlist/:id', name: 'playlist', component: Playlist, meta: { scrollToTop: true }},
+  { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 
 const router = createRouter({

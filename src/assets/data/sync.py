@@ -2,10 +2,8 @@ import os
 import requests
 import json
 
-# TODO: Remove stats for playlists and videos
-
 # Crontab command
-# */20 * * * * python3 /home/web/rvandco/Website/src/store/data/sync.py >/dev/null 2>&1
+# */15 * * * * python3 /home/web/rvandco/Website/src/assets/data/sync.py >/dev/null 2>&1
 
 # Script path
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -65,36 +63,27 @@ for playlistId in playlists_requests['items']:
         })
         items_ids += '&id=' + playlistItem['snippet']['resourceId']['videoId']
 
-    playlists_videos_requests = requests.get('https://youtube.googleapis.com/youtube/v3/videos'
-                                             '?part=statistics' + items_ids +
-                                             '&prettyPrint=true&fields=items'
-                                             '&key=AIzaSyCLWuAoSdikH2e-fgBIykXy5hWhJSJBPDk').json()
-
     del items_ids
-
-    view_count = like_count = dislike_count = 0
-
-    for i in range(len(playlists_items)):
-        playlists_items[i]['statistics'] = playlists_videos_requests['items'][i]['statistics']
-        view_count += int(playlists_videos_requests['items'][i]['statistics']['viewCount'])
-        like_count += int(playlists_videos_requests['items'][i]['statistics']['likeCount'])
-        dislike_count += int(playlists_videos_requests['items'][i]['statistics']['dislikeCount'])
-
-    stats = {'viewCount': view_count, 'likeCount': like_count, 'dislikeCount': dislike_count}
-
     infos = ''
 
     if playlistId['id'] == 'PL6VuKkKwjE2Gfmj5gKlQIHvaFHqoq0sq1':
-        infos = {'title': 'star_wars_quest_justice_title', 'description': 'star_wars_quest_justice_description'}
+        infos = {
+            'title': 'star_wars_quest_justice_title',
+            'description': 'star_wars_quest_justice_description',
+            'banner': 'star_wars_quest_justice.jpg'
+        }
     elif playlistId['id'] == 'PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB':
-        infos = {'title': 'summer_among_friends_title', 'description': 'summer_among_friends_description'}
+        infos = {
+            'title': 'summer_among_friends_title',
+            'description': 'summer_among_friends_description',
+            'banner': 'summer_among_friends.jpg'
+        }
 
     playlists.append({
         'playlistId': playlistId['id'],
         'infos': infos,
         'thumbnail': playlistId['snippet']['thumbnails'],
-        'videos': playlists_items,
-        'statistics': stats
+        'videos': playlists_items
     })
 
 # --- Get Instagram posts ---
@@ -107,20 +96,20 @@ posts = posts['data']
 
 # --- Write statistics to file ---
 file = open(os.path.join(__location__, 'statistics.json'), 'w')
-file.write(json.dumps(statistics, indent=4))
+file.write(json.dumps(statistics, indent=2))
 file.close()
 
 # --- Write content creators to file ---
 file = open(os.path.join(__location__, 'content_creators.json'), 'w')
-file.write(json.dumps(content_creators, indent=4))
+file.write(json.dumps(content_creators, indent=2))
 file.close()
 
 # --- Write playlists to file ---
 file = open(os.path.join(__location__, 'playlists.json'), 'w')
-file.write(json.dumps(playlists, indent=4))
+file.write(json.dumps(playlists, indent=2))
 file.close()
 
-# --- Write posts to file ---
+# # --- Write posts to file ---
 file = open(os.path.join(__location__, 'posts.json'), 'w')
-file.write(json.dumps(posts, indent=4))
+file.write(json.dumps(posts, indent=2))
 file.close()

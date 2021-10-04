@@ -18,11 +18,6 @@ export default {
     presentation,
     episodes
   },
-  data() {
-    return {
-      id: this.$route.params.id
-    }
-  },
   computed: {
     ...mapState(['YT_Playlists'])
   }
