@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  name: 'contact',
+  name: 'Contact',
   methods: {
     // TODO: Send email with form
   }
