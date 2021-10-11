@@ -7,12 +7,18 @@
           <img alt="Rv And Co Logo" src="@/assets/Logo.png">
         </router-link>
         <!-- Links for Phone -->
-        <a href="#" id="mobile_menu">
+        <a id="mobile_menu" @click.prevent="toggleMenu">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path fill="#fff" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
             </path>
           </svg>
         </a>
+        <section id="nav_mobile_menu" @click="toggleMenu">
+          <router-link tabindex="-1" to="/">{{ $t('home') }}</router-link>
+          <router-link tabindex="-1" to="/#productions">{{ $t('productions') }}</router-link>
+          <router-link tabindex="-1" to="/#association">{{ $t('association') }}</router-link>
+          <router-link tabindex="-1" to="/#contact">{{ $t('contact') }}</router-link>
+        </section>
         <!-- Links for PC -->
         <nav>
           <router-link to="/">{{ $t('home') }}</router-link>
@@ -56,6 +62,24 @@
 <script>
 export default {
   name: 'App',
+  data() {
+    return {
+      toggle: false
+    }
+  },
+  methods: {
+    toggleMenu() {
+      let nav = document.getElementById('nav_mobile_menu');
+      if (this.toggle) {
+        nav.style.maxHeight = '0';
+        nav.style.clipPath = 'inset(0 0 252px 0)';
+      } else {
+        nav.style.maxHeight = '252px';
+        nav.style.clipPath = 'inset(0 0 0 0)';
+      }
+      this.toggle = !this.toggle;
+    }
+  },
   computed: {
     currentYear() {
       return new Date().getFullYear();
@@ -65,9 +89,6 @@ export default {
 </script>
 
 <style scoped>
-/* TODO: Add animations
-   TODO: Add mobile menu */
-
 #navbar {
   z-index: 100000;
   height: 64px;
@@ -99,14 +120,52 @@ export default {
   height: 46px;
 }
 
-#navbar article:first-of-type a svg {
+#navbar #mobile_menu {
   display: none;
+  cursor: pointer;
+}
+
+#navbar article:first-of-type a svg {
   padding: 18px;
   width: auto;
   height: 26px;
   color: var(--primary-text);
   filter: brightness(100%);
   transition: filter .15s;
+}
+
+#navbar #nav_mobile_menu {
+  max-height: 0;
+  clip-path: inset(0 0 252px 0);
+  width: 100%;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: rgba(57, 57, 57, 0.96);
+  transition: max-height .3s linear, clip-path .3s linear;
+}
+
+#navbar #nav_mobile_menu a {
+  width: calc(100% - 84px);
+  text-align: center;
+  padding: 18px;
+  font-size: 1.4em;
+  color: white;
+  text-decoration: none;
+  transform: scale(1);
+  transition: transform .15s;
+}
+
+#navbar #nav_mobile_menu a:hover {
+  padding: 18px;
+  font-size: 1.4em;
+  color: white;
+  text-decoration: none;
+  transform: scale(1.1);
+  transition: transform .15s;
 }
 
 #navbar nav a {
@@ -192,7 +251,7 @@ footer a:hover {
     justify-content: space-between;
   }
 
-  #navbar article:first-of-type a svg {
+  #navbar #mobile_menu {
     display: block;
   }
 }
