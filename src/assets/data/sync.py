@@ -3,7 +3,7 @@ import requests
 import json
 
 # Crontab command
-# */15 * * * * python3 /home/web/rvandco/Website/src/assets/data/sync.py >/dev/null 2>&1
+# */10 * * * * python3 /home/web/rvandco/Website/src/assets/data/sync.py >/dev/null 2>&1
 
 # Script path
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
