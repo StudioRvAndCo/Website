@@ -1,12 +1,13 @@
 <template>
-  <presentation />
+  <!-- Import components -->
+  <introduction />
   <productions @even="this.change_color = true" />
   <association :color="change_color" />
   <contact />
 </template>
 
 <script>
-import presentation from "@/components/home/presentation";
+import introduction from "@/components/home/introduction";
 import productions from "@/components/home/productions";
 import association from "@/components/home/association";
 import contact from "@/components/home/contact";
@@ -19,7 +20,7 @@ export default {
     }
   },
   components: {
-    presentation,
+    introduction,
     productions,
     association,
     contact

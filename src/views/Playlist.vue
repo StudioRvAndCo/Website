@@ -1,7 +1,8 @@
 <template>
-  <presentation/>
-  <episodes/>
-
+  <!-- Import components -->
+  <presentation />
+  <episodes />
+  <!-- Back to home button -->
   <div>
     <router-link to="/" class="btn">{{ $t('back_home') }}</router-link>
   </div>
@@ -31,5 +32,12 @@ div {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 400px) {
+  a {
+    margin: 0 12px;
+    width: 100%;
+  }
 }
 </style>
