@@ -1,47 +1,49 @@
 <template>
   <div id="association">
+    <!-- Separator -->
     <svg id="separator" xmlns="http://www.w3.org/2000/svg" width="1920" height="78.802" viewBox="0 0 1920 78.802">
       <path id="separator_path" d="M0,1033l45.7-7.7c45.6-7.6,137-23,228.5-23.1,91.5-.2,183.1,14.8,274.6,26.1,91.5,11.4,182.9,19,274.2,26.4,91.3,7.3,182.7,14.3,274,11.1,91.3-3.1,182.7-16.5,274.2-20.3s183.1,1.8,274.6.7c91.5-1.2,182.9-9.2,228.5-13.2l45.7-4v52H0Z" transform="translate(0 -1002.198)" fill="#393939" />
     </svg>
-
+    <!-- Title -->
     <h2 class="super_title">{{ $t('the_association') }}</h2>
-
+    <!-- Main content -->
     <article>
+      <!-- Summary -->
       <p>{{ $t('association_summary') }}</p>
-
       <h3>{{ $t('some_numbers') }}</h3>
+      <!-- Numbers -->
       <section id="numbers">
         <div>
-          <h4 id="int_association_age"></h4>
+          <h4 id="int_association_age">0</h4>
           <p>
             <span v-if="association_age > 1">{{ $tc('year', 2) }}</span>
             <span v-else>{{ $tc('year', 1) }}</span>
           </p>
         </div>
         <div>
-          <h4 id="int_members"></h4>
+          <h4 id="int_members">0</h4>
           <p>{{ $t('members') }}</p>
         </div>
         <div>
-          <h4 id="int_projects"></h4>
+          <h4 id="int_projects">0</h4>
           <p>{{ $t('projects') }}</p>
         </div>
         <div>
-          <h4 id="int_views"></h4>
+          <h4 id="int_views">0</h4>
           <p>{{ $t('views') }}</p>
         </div>
         <div>
-          <h4 id="int_subscribers"></h4>
+          <h4 id="int_subscribers">0</h4>
           <p>{{ $t('subscribers') }}</p>
         </div>
       </section>
-
+      <!-- Members -->
       <h3>{{ $t('members')}}</h3>
       <!-- TODO: Add crawlable members -->
       <section id="members">
         Coucou 👋
       </section>
-
+      <!-- Content creator -->
       <h3>{{ $t('content_creator') }}</h3>
       <section id="creators">
         <a v-for="content_creator in YT_Content_Creators" :key="content_creator" :href="'https://www.youtube.com/channel/'+content_creator['id']">
@@ -49,14 +51,14 @@
           <p>{{ content_creator['name'] }}</p>
         </a>
       </section>
-
+      <!-- Instagram feed -->
       <h3>{{ $t('pictures') }}</h3>
       <section id="pictures">
         <a v-for="post in Insta_Posts['data']" :key="post" :href="post.permalink">
           <img :src="post.media_url" alt="Instagram post">
         </a>
       </section>
-
+      <!-- Go to Instagram button -->
       <section id="button">
         <a class="btn primary-btn" href="https://www.instagram.com/studiorvandco">{{ $t('more_pictures') }}</a>
       </section>
@@ -70,6 +72,11 @@ import { mapState } from "vuex";
 export default {
   name: 'association',
   props: ['color'],
+  data() {
+    return {
+      animate: true
+    }
+  },
   computed: {
     ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists', 'Insta_Posts']),
     association_age() {
@@ -77,21 +84,37 @@ export default {
       return Math.abs(new Date(age).getUTCFullYear() - 1970);
     }
   },
+  watch: {
+    color() {
+      if (this.color) document.getElementById('separator_path').style.fill = "var(--container)";
+    }
+  },
+  methods: {
+    animateValue(obj, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) window.requestAnimationFrame(step);
+      };
+      window.requestAnimationFrame(step);
+    }
+  },
   mounted() {
-    if (this.color) document.getElementById('separator_path').style.fill = "#606060";
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          document.getElementById('int_association_age').style.setProperty('--num', this.association_age.toString());
-          document.getElementById('int_members').style.setProperty('--num', '10');
-          document.getElementById('int_projects').style.setProperty('--num', this.YT_Playlists.length.toString());
-          document.getElementById('int_views').style.setProperty('--num', this.YT_Stats['viewCount'].toString());
-          document.getElementById('int_subscribers').style.setProperty('--num', this.YT_Stats['subscriberCount'].toString());
+        if (entry.isIntersecting && this.animate) {
+          this.animateValue(document.getElementById('int_association_age'), 0, this.association_age, 1000);
+          this.animateValue(document.getElementById('int_members'), 0, 10, 2250);
+          this.animateValue(document.getElementById('int_projects'), 0, this.YT_Playlists.length, 1500);
+          this.animateValue(document.getElementById('int_views'), 0, this.YT_Stats['viewCount'], 2250);
+          this.animateValue(document.getElementById('int_subscribers'), 0, this.YT_Stats['subscriberCount'], 2250);
+          this.animate = false;
         }
       })
-    })
-    observer.observe(document.getElementById('numbers'))
+    }, { threshold: 1.0 })
+    observer.observe(document.getElementById('numbers'));
   }
 }
 </script>
@@ -105,13 +128,13 @@ export default {
 
 #separator {
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
   transform: rotate(180deg);
 }
 
 .super_title {
-  padding: 70px 0 20px;
+  padding: 70px 12px 20px;
 }
 
 article {
@@ -165,28 +188,10 @@ article h3 {
   border-left: solid 1px white;
 }
 
-@property --num {
-  syntax: "<integer>";
-  initial-value: 0;
-  inherits: false;
-}
-
 #numbers div h4 {
   margin: 0;
   font-weight: bold;
   font-size: 1.6em;
-  animation: counter 3.2s alternate ease-out;
-  counter-reset: num var(--num);
-}
-
-#numbers div h4::after {
-  content: counter(num);
-}
-
-@keyframes counter {
-  from {
-    --num: 0;
-  }
 }
 
 #numbers div p {
