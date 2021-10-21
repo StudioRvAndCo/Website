@@ -47,7 +47,7 @@ article a {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  gap: 30px;
+  gap: 20px 30px;
   text-decoration: none !important;
 }
 
@@ -76,5 +76,15 @@ article a img {
   font-size: 1em;
   font-weight: 300;
   color: var(--secondary-text);
+}
+
+@media screen and (max-width: 700px) {
+  article a {
+    flex-flow: column nowrap;
+  }
+
+  .infos h2 {
+    margin: 0 0 8px;
+  }
 }
 </style>
