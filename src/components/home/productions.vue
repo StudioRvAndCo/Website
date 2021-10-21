@@ -1,61 +1,90 @@
 <template>
+  <!-- Ttile -->
   <h2 class="super_title" id="productions">{{ $t('main_productions') }}</h2>
-
-  <article v-for="i in YT_Playlists.length" :key="i" :class="i % 2 === 0 ? ' container_alt' : ''">
-    <div class="container" :class="i % 2 === 0 ? ' container_alt' : ''">
-      <img :src="YT_Playlists[i-1]['thumbnail']['medium']['url']" :alt="$t(YT_Playlists[i-1]['infos']['title'])">
-      <section>
-        <div class="infos">
-          <h3>{{ $t(YT_Playlists[i-1]['infos']['title']) }}</h3>
-          <p>{{ $t(YT_Playlists[i-1]['infos']['description']) }}</p>
+  <!-- Main playlists -->
+  <div id="main_productions">
+    <div v-for="i in YT_Playlists.length" :key="i">
+      <article class="playlist" v-if="YT_Playlists[i-1]['frontPage']">
+        <div class="container">
+          <img :src="YT_Playlists[i-1]['thumbnail']" :alt="$t(YT_Playlists[i-1]['title'][locale])">
+          <section>
+            <div class="infos">
+              <h3>{{ $t(YT_Playlists[i-1]['title'][locale]) }}</h3>
+              <p>{{ $t(YT_Playlists[i-1]['description'][locale]) }}</p>
+            </div>
+            <router-link :to="{name: 'playlist', params: {id: (i-1)}}" class="btn">{{ $t('watch') }}</router-link>
+          </section>
         </div>
-        <div class="flex-btn">
-          <router-link :to="{name: 'playlist', params: {id: (i-1)}}" class="btn">{{ $t('watch') }}</router-link>
-        </div>
-      </section>
+      </article>
     </div>
-  </article>
-
-  <div id="other_productions">
-    <h3>Autres productions</h3>
-    <article>
-      <router-link v-for="i in YT_Playlists.length" :key="i" :to="{name: 'playlist', params: {id: (i-1)}}">
-        <img :src="YT_Playlists[i-1]['thumbnail']['medium']['url']" :alt="$t(YT_Playlists[i-1]['infos']['title'])">
-        <div>
-          <h3>{{ $t(YT_Playlists[i-1]['infos']['title']) }}</h3>
-        </div>
-      </router-link>
-    </article>
+  </div>
+  <!-- Other playlists -->
+  <div id="other_productions" v-if="frontPageCount > 0 && YT_Playlists.length !== frontPageCount">
+    <div>
+      <h3>{{ $t('other_productions') }}</h3>
+      <div v-for="i in YT_Playlists.length" :key="i">
+        <article v-if="!YT_Playlists[i-1]['frontPage']">
+          <router-link :to="{name: 'playlist', params: {id: (i-1)}}">
+            <img :src="YT_Playlists[i-1]['thumbnail']" :alt="$t(YT_Playlists[i-1]['title'][locale])">
+            <section>
+              <h3>{{ $t(YT_Playlists[i-1]['title'][locale]) }}</h3>
+            </section>
+          </router-link>
+        </article>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 
 export default {
-  name: 'Productions',
+  name: 'productions',
   computed: {
-    ...mapState(['YT_Playlists'])
+    ...mapState(['YT_Playlists']),
+    locale() {
+      if (this.$i18n.locale === 'fr-FR') return 1;
+      return 0;
+    },
+    frontPageCount() {
+      let i = 0;
+      for (const playlist in this.YT_Playlists) {
+        if (this.YT_Playlists[playlist]['frontPage']) i++;
+      }
+      return i;
+    }
+  },
+  mounted() {
+    let playlist = document.getElementsByClassName('playlist');
+    for (let i = 0; i < playlist.length; i++) {
+      if (i % 2 !== 0) {
+        playlist[i].style.backgroundColor = 'var(--container)';
+        playlist[i].firstChild.style.flexDirection = 'row-reverse';
+      }
+    }
+    if (this.frontPageCount !== this.YT_Playlists.length) {
+      if (this.frontPageCount % 2 !== 0) {
+        document.getElementById('other_productions').style.backgroundColor = "var(--container)";
+        this.$emit('even');
+      }
+    } else if (this.frontPageCount % 2 === 0) {
+      this.$emit('even');
+    }
   }
 }
 </script>
 
 <style scoped>
-/* TODO: Remove .flex-btn */
-
 .super_title {
-  padding: 20px 0 0;
+  padding: 20px 12px 0;
 }
 
-article {
+#main_productions article {
   padding: 30px 0;
 }
 
-article:nth-child(odd) {
-  background-color: var(--container);
-}
-
-.container {
+#main_productions .container {
   margin: 0 auto;
   display: flex;
   flex-flow: row nowrap;
@@ -65,11 +94,7 @@ article:nth-child(odd) {
   max-width: 1120px;
 }
 
-.container_alt {
-  flex-direction: row-reverse;
-}
-
-.container img {
+#main_productions .container img {
   width: auto;
   height: 180px;
   object-fit: cover;
@@ -78,20 +103,20 @@ article:nth-child(odd) {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
 }
 
-.container section {
+#main_productions .container section {
   height: 180px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
 }
 
-.container .infos h3 {
+#main_productions .container .infos h3 {
   margin: -4px 0 8px;
   font-size: 1.3em;
   font-weight: 700;
 }
 
-.container .infos p {
+#main_productions .container .infos p {
   margin: 0 0 12px;
   text-align: justify;
   line-height: 1.3;
@@ -99,30 +124,24 @@ article:nth-child(odd) {
   color: var(--secondary-text);
 }
 
-.flex-btn {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 0 30px;
-}
-
-#other_productions {
+#other_productions > div:first-child {
   margin: 0 auto;
   max-width: 1120px;
-  padding: 0 12px;
+  padding: 20px 12px;
 }
 
 #other_productions h3 {
+  margin: 0 0 20px;
   font-size: 1.5em;
   text-transform: uppercase;
 }
 
 #other_productions article {
-  padding: 0 0 20px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
-  gap: 20px 40px;
+  gap: 26px 40px;
 }
 
 #other_productions article a {
@@ -141,13 +160,13 @@ article:nth-child(odd) {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
 }
 
-#other_productions div {
+#other_productions section {
   position: absolute;
-  bottom: 0;
+  bottom: 4px;
   left: 0;
   width: 100%;
   background-color: rgba(57, 57, 57, 0.8);
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 7px 7px;
 }
 
 #other_productions article h3 {
@@ -161,38 +180,26 @@ article:nth-child(odd) {
 }
 
 @media screen and (max-width: 880px) {
-  .container {
-    flex-direction: column;
+  #main_productions .container {
+    flex-direction: column !important;
     gap: 26px 0;
     text-align: center;
   }
 
-  .container section {
+  #main_productions .container section {
     height: auto;
+    align-items: center;
     gap: 20px 0;
   }
 
-  .container .infos p {
+  #main_productions .container .infos p {
     margin: 0;
-  }
-
-  .flex-btn {
-    justify-content: center;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .flex-btn {
-    flex-direction: column;
-    gap: 4px 0;
-  }
-
-  .flex-btn a, .flex-btn .stats {
+  #main_productions .container section a {
     width: 100%;
-  }
-
-  .stats {
-    justify-content: space-evenly;
   }
 }
 </style>
