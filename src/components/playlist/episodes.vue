@@ -2,7 +2,7 @@
   <!-- Episodes -->
   <article v-for="i in YT_Playlists[id]['videos'].length" :key="i">
     <a :href="'https://www.youtube.com/watch?v=' + YT_Playlists[id]['videos'][i-1]['id']">
-      <img :src="YT_Playlists[id]['videos'][i-1]['thumbnails']" :alt="$t(YT_Playlists[id]['videos'][i-1]['title'][locale])">
+      <img :src="YT_Playlists[id]['videos'][i-1]['thumbnails']" :alt="YT_Playlists[id]['videos'][i-1]['title'][locale]">
       <div class="infos">
         <h2>{{ YT_Playlists[id]['videos'][i-1]['title'][locale] }}</h2>
         <p>{{ YT_Playlists[id]['videos'][i-1]['description'][locale] }}</p>

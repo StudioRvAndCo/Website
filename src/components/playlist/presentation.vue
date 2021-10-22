@@ -1,11 +1,11 @@
 <template>
   <article id="presentation">
     <!-- Background image -->
-    <img id="banner" :src="require('../../assets/banners/' + YT_Playlists[id]['playlistId'] + '.jpg')" :alt="$t(YT_Playlists[id]['title'][locale])">
+    <img id="banner" :src="require('../../assets/banners/' + YT_Playlists[id]['playlistId'] + '.jpg')" :alt="YT_Playlists[id]['title'][locale]">
     <!-- Title, description and link to playlist -->
     <section>
       <div>
-        <img id="poster" :src="YT_Playlists[id]['thumbnail']" :alt="$t(YT_Playlists[id]['title'][locale])">
+        <img id="poster" :src="YT_Playlists[id]['thumbnail']" :alt="YT_Playlists[id]['title'][locale]">
         <div>
           <h1>{{ YT_Playlists[id]['title'][locale] }}</h1>
           <p>{{ YT_Playlists[id]['description'][locale] }}</p>

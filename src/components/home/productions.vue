@@ -6,11 +6,11 @@
     <div v-for="i in YT_Playlists.length" :key="i">
       <article class="playlist" v-if="YT_Playlists[i-1]['frontPage']">
         <div class="container">
-          <img :src="YT_Playlists[i-1]['thumbnail']" :alt="$t(YT_Playlists[i-1]['title'][locale])">
+          <img :src="YT_Playlists[i-1]['thumbnail']" :alt="YT_Playlists[i-1]['title'][locale]">
           <section>
             <div class="infos">
-              <h3>{{ $t(YT_Playlists[i-1]['title'][locale]) }}</h3>
-              <p>{{ $t(YT_Playlists[i-1]['description'][locale]) }}</p>
+              <h3>{{ YT_Playlists[i-1]['title'][locale] }}</h3>
+              <p>{{ YT_Playlists[i-1]['description'][locale] }}</p>
             </div>
             <router-link :to="{name: 'playlist', params: {id: (i-1)}}" class="btn">{{ $t('watch') }}</router-link>
           </section>
@@ -25,9 +25,9 @@
       <div v-for="i in YT_Playlists.length" :key="i">
         <article v-if="!YT_Playlists[i-1]['frontPage']">
           <router-link :to="{name: 'playlist', params: {id: (i-1)}}">
-            <img :src="YT_Playlists[i-1]['thumbnail']" :alt="$t(YT_Playlists[i-1]['title'][locale])">
+            <img :src="YT_Playlists[i-1]['thumbnail']" :alt="YT_Playlists[i-1]['title'][locale]">
             <section>
-              <h3>{{ $t(YT_Playlists[i-1]['title'][locale]) }}</h3>
+              <h3>{{ YT_Playlists[i-1]['title'][locale] }}</h3>
             </section>
           </router-link>
         </article>

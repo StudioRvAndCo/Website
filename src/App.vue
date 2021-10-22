@@ -84,7 +84,7 @@ export default {
     currentYear() {
       return new Date().getFullYear();
     }
-  },
+  }
 }
 </script>
 
@@ -229,7 +229,6 @@ footer a:hover {
   color: var(--primary-text);
   transition: color .15s;
 }
-
 
 @media screen and (max-width: 750px) {
   #navbar header article:last-of-type {

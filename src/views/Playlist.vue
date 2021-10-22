@@ -14,7 +14,7 @@ import presentation from "@/components/playlist/presentation";
 import episodes from "@/components/playlist/episodes";
 
 export default {
-  name: 'Home',
+  name: 'Playlist',
   components: {
     presentation,
     episodes
