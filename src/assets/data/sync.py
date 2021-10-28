@@ -89,9 +89,8 @@ for i in range(len(content_creators_request['items'])):
 # --- Get Instagram posts ---
 posts = requests.get('https://graph.instagram.com/v11.0/me/media' +
                      '?fields=id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp' +
-                     '&access_token=IGQVJXUWdCREJPZAHNPY3VzUzlhSWF3eDI2TVVXcU5UaXlYOXhGUXhyZA0ZAKbTZAlZA' +
-                     'ktQNHAzZA2h0OU9hVm9VWHdlMDBsaHJNdG0xQ0s0MzFEYnVxWDJkak5HRVM1cnUxWkFYLU0zRU5hQlpvRG' +
-                     'pxUC04egZDZD').json()
+                     '&access_token=IGQVJVSzFBeVBORXBrblRHUTRjd25YR1JucnhMU2NWeUotTC1VYm9xSlZAuWTNEOXZAQ' +
+                     'U2kydWJrVGw2ZAGY2cS1aRUlMZAk4yWk9XUkplWXNOcEFzSERPSFdKS2ZAwVzVtdEtDMXg0TjBR').json()
 posts = posts['data']
 
 # --- Write statistics to file ---

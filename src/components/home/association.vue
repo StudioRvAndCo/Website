@@ -54,7 +54,7 @@
       <!-- Instagram feed -->
       <h3>{{ $t('pictures') }}</h3>
       <section id="pictures">
-        <a v-for="post in Insta_Posts['data']" :key="post" :href="post.permalink">
+        <a v-for="post in Insta_Posts" :key="post" :href="post.permalink">
           <img :src="post.media_url" alt="Instagram post">
         </a>
       </section>
