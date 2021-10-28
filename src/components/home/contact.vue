@@ -13,10 +13,6 @@
     <article>
       <section>
         <div>
-          <h3>{{ $t('by_phone') }}</h3>
-          <p>(+33)6 00 00 00 00</p>
-        </div>
-        <div>
           <h3>{{ $t('by_postal') }}</h3>
           <p>
             4 Lotissement Cantalause<br>
@@ -167,6 +163,10 @@ form button {
 }
 
 @media screen and (max-width: 520px) {
+  article section {
+    min-width: 0;
+  }
+
   article section > div {
     flex: 100%;
   }
