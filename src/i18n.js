@@ -1,4 +1,4 @@
-import { createI18n } from 'vue-i18n'
+import { createI18n } from 'vue-i18n/index'
 
 function loadLocaleMessages() {
   const locales = require.context('./locales', true, /[A-Za-z0-9-_,\s]+\.json$/i)
@@ -13,8 +13,21 @@ function loadLocaleMessages() {
   return messages
 }
 
+let language = '';
+switch (navigator.language) {
+  case 'fr':
+    language = 'fr';
+    break;
+  case 'fr-FR':
+    language = 'fr';
+    break;
+  default:
+    language = "en-US"
+    break;
+}
+
 export default createI18n({
-  locale: navigator.language || navigator.userLanguage || process.env.VUE_APP_I18N_LOCALE || 'en-US',
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en-US',
+  locale: language || 'en',
+  fallbackLocale: 'en',
   messages: loadLocaleMessages()
 })

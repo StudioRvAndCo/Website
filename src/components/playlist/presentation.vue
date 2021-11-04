@@ -33,7 +33,7 @@ export default {
   computed: {
     ...mapState(['YT_Playlists']),
     locale() {
-      if (this.$i18n.locale === 'fr-FR') return 1;
+      if (this.$i18n.locale === 'fr') return 1;
       return 0;
     }
   }

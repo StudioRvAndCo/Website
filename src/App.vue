@@ -55,7 +55,7 @@
 
   <footer>
     <p>&copy; {{ currentYear }} &nbsp;|&nbsp; <router-link to="/">RvandCo.fr</router-link></p>
-    <p>Site Web créé par <a href="https://github.com/Minarox">Minarox</a>.</p>
+    <p>{{ $t('website_created_by') }} <a href="https://github.com/Minarox">Minarox</a>.</p>
   </footer>
 </template>
 
