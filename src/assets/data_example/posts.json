@@ -1,0 +1,11 @@
+[
+  {
+    "id": "#################",
+    "caption": "example_post_description",
+    "media_type": "MEDIA TYPE",
+    "media_url": "https://example.com/link_to_picture",
+    "permalink": "https://example.com/permalink_to_instagram_post",
+    "username": "instagram username",
+    "timestamp": "0000-00-00T00:00:00+0000"
+  }
+]
