@@ -35,16 +35,16 @@
       <!-- Small separator -->
       <p id="separator_contact">{{ $t('or') }}</p>
       <!-- Email form -->
-      <form>
+      <form method="post">
         <label for="name">{{ $t('your_name') }}</label>
         <input type="text" name="name" id="name" required autocomplete="name">
         <label for="email">{{ $t('your_email') }}</label>
         <input type="text" name="email" id="email" required autocomplete="email">
-        <label for="object">{{ $t('subject_request') }}</label>
-        <input type="text" name="object" id="object">
-        <label>{{ $t('your_message') }}</label>
-        <textarea name="message" required></textarea>
-        <button class="btn primary-btn" type="submit">{{ $t('submit') }}</button>
+        <label for="subject">{{ $t('subject_request') }}</label>
+        <input type="text" name="subject" id="subject" required>
+        <label for="message">{{ $t('your_message') }}</label>
+        <textarea name="message" id="message" required></textarea>
+        <button class="btn primary-btn" type="submit" @click.prevent="sendEmail">{{ $t('submit') }}</button>
       </form>
     </article>
   </div>
@@ -54,7 +54,15 @@
 export default {
   name: 'contact',
   methods: {
-    // TODO: Send email with form
+    async sendEmail() {
+      let params = new URLSearchParams();
+      params.append("name", document.getElementById("name").value);
+      params.append("email", document.getElementById("email").value);
+      params.append("subject", document.getElementById("subject").value);
+      params.append("message", document.getElementById("message").value);
+
+      await this.axios.post("../../../public/send_mail.php", params);
+    }
   }
 }
 </script>
