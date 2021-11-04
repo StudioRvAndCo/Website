@@ -7,9 +7,9 @@
       <div>
         <img id="poster" :src="YT_Playlists[id]['thumbnail']" :alt="YT_Playlists[id]['title'][locale]">
         <div>
-          <h1>{{ YT_Playlists[id]['title'][locale] }}</h1>
-          <p>{{ YT_Playlists[id]['description'][locale] }}</p>
-          <a class="btn primary-btn" :href="'https://www.youtube.com/playlist?list=' + YT_Playlists[id]['playlistId']">{{ $t('watch_yt') }}</a>
+          <h1>{{ YT_Playlists[id]["title"][locale] }}</h1>
+          <p>{{ YT_Playlists[id]["description"][locale] }}</p>
+          <a class="btn primary-btn" :href="'https://www.youtube.com/playlist?list=' + YT_Playlists[id]['playlistId']">{{ $t("watch_yt") }}</a>
         </div>
       </div>
     </section>
@@ -21,19 +21,19 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 
 export default {
-  name: 'presentation',
+  name: "presentation",
   data() {
     return {
       id: this.$route.params.id,
     }
   },
   computed: {
-    ...mapState(['YT_Playlists']),
+    ...mapState(["YT_Playlists"]),
     locale() {
-      if (this.$i18n.locale === 'fr') return 1;
+      if (this.$i18n.locale === "fr") return 1;
       return 0;
     }
   }

@@ -4,8 +4,8 @@
     <a :href="'https://www.youtube.com/watch?v=' + YT_Playlists[id]['videos'][i-1]['id']">
       <img :src="YT_Playlists[id]['videos'][i-1]['thumbnails']" :alt="YT_Playlists[id]['videos'][i-1]['title'][locale]">
       <div class="infos">
-        <h2>{{ YT_Playlists[id]['videos'][i-1]['title'][locale] }}</h2>
-        <p>{{ YT_Playlists[id]['videos'][i-1]['description'][locale] }}</p>
+        <h2>{{ YT_Playlists[id]["videos"][i-1]["title"][locale] }}</h2>
+        <p>{{ YT_Playlists[id]["videos"][i-1]["description"][locale] }}</p>
       </div>
     </a>
   </article>
@@ -15,16 +15,16 @@
 import { mapState } from "vuex";
 
 export default {
-  name: 'episodes',
+  name: "episodes",
   data() {
     return {
       id: this.$route.params.id,
     }
   },
   computed: {
-    ...mapState(['YT_Playlists']),
+    ...mapState(["YT_Playlists"]),
     locale() {
-      if (this.$i18n.locale === 'fr') return 1;
+      if (this.$i18n.locale === "fr") return 1;
       return 0;
     }
   }

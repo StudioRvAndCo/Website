@@ -4,23 +4,23 @@
   <episodes />
   <!-- Back to home button -->
   <div>
-    <router-link to="/" class="btn">{{ $t('back_home') }}</router-link>
+    <router-link to="/" class="btn">{{ $t("back_home") }}</router-link>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 import presentation from "@/components/playlist/presentation";
 import episodes from "@/components/playlist/episodes";
 
 export default {
-  name: 'Playlist',
+  name: "Playlist",
   components: {
     presentation,
     episodes
   },
   computed: {
-    ...mapState(['YT_Playlists'])
+    ...mapState(["YT_Playlists"])
   }
 }
 </script>

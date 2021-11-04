@@ -8,43 +8,43 @@
       <path id="Tracé_21" d="M0,25l40-2.2c40-2.1,120-6.5,200-9s160-3.1,240-.5c80,2.7,160,8.7,240,9,80,.4,160-5,240-5.6,80-.7,160,3.3,240,3.1,80-.1,160-4.5,240-5.1,80-.7,160,2.3,240,4.5,80,2.1,160,3.5,200,4.1l40,.7V0H0Z" fill="#612626"/>
     </svg>
     <!-- Title -->
-    <h2 class="super_title">{{ $t('contact_us') }}</h2>
+    <h2 class="super_title">{{ $t("contact_us") }}</h2>
     <!-- Contact information -->
     <article>
       <section>
         <div>
-          <h3>{{ $t('by_email') }}</h3>
+          <h3>{{ $t("by_email") }}</h3>
           <a href="mailto:studio@rvandco.fr">studio@rvandco.fr</a>
         </div>
         <div>
-          <h3>{{ $t('by_postal') }}</h3>
+          <h3>{{ $t("by_postal") }}</h3>
           <p>
             4 Lotissement Cantalause<br>
             31450 Montgiscard, France
           </p>
         </div>
         <div>
-          <h3>{{ $t('on_twitter') }}</h3>
+          <h3>{{ $t("on_twitter") }}</h3>
           <a href="https://twitter.com/studiorvandco">@StudioRvAndCo</a>
         </div>
         <div>
-          <h3>{{ $t('on_instagram') }}</h3>
+          <h3>{{ $t("on_instagram") }}</h3>
           <a href="https://www.instagram.com/studiorvandco">@StudioRvAndCo</a>
         </div>
       </section>
       <!-- Small separator -->
-      <p id="separator_contact">{{ $t('or') }}</p>
+      <p id="separator_contact">{{ $t("or") }}</p>
       <!-- Email form -->
       <form method="post">
-        <label for="name">{{ $t('your_name') }}</label>
+        <label for="name">{{ $t("your_name") }}</label>
         <input type="text" name="name" id="name" required autocomplete="name">
-        <label for="email">{{ $t('your_email') }}</label>
+        <label for="email">{{ $t("your_email") }}</label>
         <input type="text" name="email" id="email" required autocomplete="email">
-        <label for="subject">{{ $t('subject_request') }}</label>
+        <label for="subject">{{ $t("subject_request") }}</label>
         <input type="text" name="subject" id="subject" required>
-        <label for="message">{{ $t('your_message') }}</label>
+        <label for="message">{{ $t("your_message") }}</label>
         <textarea name="message" id="message" required></textarea>
-        <button class="btn primary-btn" type="submit" @click.prevent="sendEmail">{{ $t('submit') }}</button>
+        <button class="btn primary-btn" type="submit" @click.prevent="sendEmail">{{ $t("submit") }}</button>
       </form>
     </article>
   </div>
@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  name: 'contact',
+  name: "contact",
   methods: {
     async sendEmail() {
       let params = new URLSearchParams();
@@ -62,6 +62,7 @@ export default {
       params.append("message", document.getElementById("message").value);
 
       await this.axios.post("../../../public/send_mail.php", params);
+      // TODO: Add succes message on click
     }
   }
 }

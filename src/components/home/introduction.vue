@@ -5,8 +5,8 @@
     <!-- Title and button -->
     <section>
       <div>
-        <h1>{{ $t('motto') }}</h1>
-        <router-link class="btn primary-btn" to="/#association">{{ $t('read_more') }}</router-link>
+        <h1>{{ $t("motto") }}</h1>
+        <router-link class="btn primary-btn" to="/#association">{{ $t("read_more") }}</router-link>
       </div>
     </section>
     <!-- Separator -->
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'introduction'
+  name: "introduction"
 }
 </script>
 

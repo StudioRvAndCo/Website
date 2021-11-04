@@ -14,17 +14,17 @@
           </svg>
         </a>
         <section id="nav_mobile_menu" @click="toggleMenu">
-          <router-link tabindex="-1" to="/">{{ $t('home') }}</router-link>
-          <router-link tabindex="-1" to="/#productions">{{ $t('productions') }}</router-link>
-          <router-link tabindex="-1" to="/#association">{{ $t('association') }}</router-link>
-          <router-link tabindex="-1" to="/#contact">{{ $t('contact') }}</router-link>
+          <router-link tabindex="-1" to="/">{{ $t("home") }}</router-link>
+          <router-link tabindex="-1" to="/#productions">{{ $t("productions") }}</router-link>
+          <router-link tabindex="-1" to="/#association">{{ $t("association") }}</router-link>
+          <router-link tabindex="-1" to="/#contact">{{ $t("contact") }}</router-link>
         </section>
         <!-- Links for PC -->
         <nav>
-          <router-link to="/">{{ $t('home') }}</router-link>
-          <router-link to="/#productions">{{ $t('productions') }}</router-link>
-          <router-link to="/#association">{{ $t('association') }}</router-link>
-          <router-link to="/#contact">{{ $t('contact') }}</router-link>
+          <router-link to="/">{{ $t("home") }}</router-link>
+          <router-link to="/#productions">{{ $t("productions") }}</router-link>
+          <router-link to="/#association">{{ $t("association") }}</router-link>
+          <router-link to="/#contact">{{ $t("contact") }}</router-link>
         </nav>
       </article>
       <!-- Social -->
@@ -55,13 +55,13 @@
 
   <footer>
     <p>&copy; {{ currentYear }} &nbsp;|&nbsp; <router-link to="/">RvandCo.fr</router-link></p>
-    <p>{{ $t('website_created_by') }} <a href="https://github.com/Minarox">Minarox</a>.</p>
+    <p>{{ $t("website_created_by") }} <a href="https://github.com/Minarox">Minarox</a>.</p>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
       toggle: false
@@ -69,13 +69,13 @@ export default {
   },
   methods: {
     toggleMenu() {
-      let nav = document.getElementById('nav_mobile_menu');
+      let nav = document.getElementById("nav_mobile_menu");
       if (this.toggle) {
         nav.style.maxHeight = '0';
-        nav.style.clipPath = 'inset(0 0 252px 0)';
+        nav.style.clipPath = "inset(0 0 252px 0)";
       } else {
-        nav.style.maxHeight = '252px';
-        nav.style.clipPath = 'inset(0 0 0 0)';
+        nav.style.maxHeight = "252px";
+        nav.style.clipPath = "inset(0 0 0 0)";
       }
       this.toggle = !this.toggle;
     }

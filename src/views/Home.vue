@@ -13,7 +13,7 @@ import association from "@/components/home/association";
 import contact from "@/components/home/contact";
 
 export default {
-  name: 'Home',
+  name: "Home",
   data() {
     return {
       change_color: false

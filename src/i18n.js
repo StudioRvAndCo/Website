@@ -1,7 +1,7 @@
-import { createI18n } from 'vue-i18n/index'
+import { createI18n } from "vue-i18n/index"
 
 function loadLocaleMessages() {
-  const locales = require.context('./locales', true, /[A-Za-z0-9-_,\s]+\.json$/i)
+  const locales = require.context("./locales", true, /[A-Za-z0-9-_,\s]+\.json$/i)
   const messages = {}
   locales.keys().forEach(key => {
     const matched = key.match(/([A-Za-z0-9-_]+)\./i)
@@ -15,11 +15,11 @@ function loadLocaleMessages() {
 
 let language = '';
 switch (navigator.language) {
-  case 'fr':
-    language = 'fr';
+  case "fr":
+    language = "fr";
     break;
-  case 'fr-FR':
-    language = 'fr';
+  case "fr-FR":
+    language = "fr";
     break;
   default:
     language = "en-US"
@@ -27,7 +27,7 @@ switch (navigator.language) {
 }
 
 export default createI18n({
-  locale: language || 'en',
-  fallbackLocale: 'en',
+  locale: language || "en",
+  fallbackLocale: "en",
   messages: loadLocaleMessages()
 })

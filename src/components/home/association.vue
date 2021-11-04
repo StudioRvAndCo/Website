@@ -5,57 +5,56 @@
       <path id="separator_path" d="M0,1033l45.7-7.7c45.6-7.6,137-23,228.5-23.1,91.5-.2,183.1,14.8,274.6,26.1,91.5,11.4,182.9,19,274.2,26.4,91.3,7.3,182.7,14.3,274,11.1,91.3-3.1,182.7-16.5,274.2-20.3s183.1,1.8,274.6.7c91.5-1.2,182.9-9.2,228.5-13.2l45.7-4v52H0Z" transform="translate(0 -1002.198)" fill="#393939" />
     </svg>
     <!-- Title -->
-    <h2 class="super_title">{{ $t('the_association') }}</h2>
+    <h2 class="super_title">{{ $t("the_association") }}</h2>
     <!-- Main content -->
     <article>
       <!-- Summary -->
-      <p>{{ $t('association_summary') }}</p>
-      <h3>{{ $t('some_numbers') }}</h3>
+      <p>{{ $t("association_summary") }}</p>
+      <h3>{{ $t("some_numbers") }}</h3>
       <!-- Numbers -->
       <section id="numbers">
         <div>
           <h4 id="int_association_age">0</h4>
           <p>
-            <span v-if="association_age > 1">{{ $tc('year', 2) }}</span>
-            <span v-else>{{ $tc('year', 1) }}</span>
+            <span v-if="association_age > 1">{{ $tc("year", 2) }}</span>
+            <span v-else>{{ $tc("year", 1) }}</span>
           </p>
         </div>
         <div>
           <h4 id="int_members">0</h4>
-          <p>{{ $t('members') }}</p>
+          <p>{{ $t("members") }}</p>
         </div>
         <div>
           <h4 id="int_projects">0</h4>
-          <p>{{ $t('projects') }}</p>
+          <p>{{ $t("projects") }}</p>
         </div>
         <div>
           <h4 id="int_views">0</h4>
-          <p>{{ $t('views') }}</p>
+          <p>{{ $t("views") }}</p>
         </div>
         <div>
           <h4 id="int_subscribers">0</h4>
-          <p>{{ $t('subscribers') }}</p>
+          <p>{{ $t("subscribers") }}</p>
         </div>
       </section>
       <!-- Members -->
-      <h3>{{ $t('members')}}</h3>
-      <!-- TODO: Add crawlable members -->
+      <h3>{{ $t("members")}}</h3>
       <section id="members">
         <div v-for="member in Members" :key="member">
           <img :src="require('@/assets/members/' + member['picture'])" :alt="member['name']">
-          <p>{{ member['name'] }}</p>
+          <p>{{ member["name"] }}</p>
         </div>
       </section>
       <!-- Content creator -->
-      <h3>{{ $t('content_creator') }}</h3>
+      <h3>{{ $t("content_creator") }}</h3>
       <section id="creators">
-        <a v-for="content_creator in YT_Content_Creators" :key="content_creator" :href="'https://www.youtube.com/channel/'+content_creator['id']">
+        <a v-for="content_creator in YT_Content_Creators" :key="content_creator" :href="'https://www.youtube.com/channel/' + content_creator['id']">
           <img :src="content_creator['picture']" :alt="content_creator['name']">
-          <p>{{ content_creator['name'] }}</p>
+          <p>{{ content_creator["name"] }}</p>
         </a>
       </section>
       <!-- Instagram feed -->
-      <h3>{{ $t('pictures') }}</h3>
+      <h3>{{ $t("pictures") }}</h3>
       <section id="pictures">
         <a v-for="post in Insta_Posts" :key="post" :href="post.permalink">
           <img :src="post.media_url" alt="Instagram post">
@@ -63,7 +62,7 @@
       </section>
       <!-- Go to Instagram button -->
       <section id="button">
-        <a class="btn primary-btn" href="https://www.instagram.com/studiorvandco">{{ $t('more_pictures') }}</a>
+        <a class="btn primary-btn" href="https://www.instagram.com/studiorvandco">{{ $t("more_pictures") }}</a>
       </section>
     </article>
   </div>
@@ -73,8 +72,8 @@
 import { mapState } from "vuex";
 
 export default {
-  name: 'association',
-  props: ['color'],
+  name: "association",
+  props: ["color"],
   data() {
     return {
       animate: true
@@ -89,7 +88,7 @@ export default {
   },
   watch: {
     color() {
-      if (this.color) document.getElementById('separator_path').style.fill = "var(--container)";
+      if (this.color) document.getElementById("separator_path").style.fill = "var(--container)";
     }
   },
   methods: {
@@ -108,16 +107,16 @@ export default {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting && this.animate) {
-          this.animateValue(document.getElementById('int_association_age'), 0, this.association_age, 1000);
-          this.animateValue(document.getElementById('int_members'), 0, 10, 2250);
-          this.animateValue(document.getElementById('int_projects'), 0, this.YT_Playlists.length, 1500);
-          this.animateValue(document.getElementById('int_views'), 0, this.YT_Stats['viewCount'], 2250);
-          this.animateValue(document.getElementById('int_subscribers'), 0, this.YT_Stats['subscriberCount'], 2250);
+          this.animateValue(document.getElementById("int_association_age"), 0, this.association_age, 1000);
+          this.animateValue(document.getElementById("int_members"), 0, 10, 2250);
+          this.animateValue(document.getElementById("int_projects"), 0, this.YT_Playlists.length, 1500);
+          this.animateValue(document.getElementById("int_views"), 0, this.YT_Stats['viewCount'], 2250);
+          this.animateValue(document.getElementById("int_subscribers"), 0, this.YT_Stats['subscriberCount'], 2250);
           this.animate = false;
         }
       })
     }, { threshold: 1.0 })
-    observer.observe(document.getElementById('numbers'));
+    observer.observe(document.getElementById("numbers"));
   }
 }
 </script>

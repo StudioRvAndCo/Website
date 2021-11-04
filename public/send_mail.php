@@ -4,12 +4,10 @@ declare(strict_types=1);
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, origin");
 
-echo "test";
-
-if ($_SERVER['REQUEST_METHOD'] != "POST")
+if ($_SERVER["REQUEST_METHOD"] != "POST")
     return;
 
-$to = "mathis.sema@gmail.com";
+$to = "studio@rvandco.fr";
 $name = $_POST["name"];
 $email = $_POST["email"];
 $subject = $_POST["subject"];

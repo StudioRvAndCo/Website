@@ -1,6 +1,6 @@
 <template>
   <!-- Ttile -->
-  <h2 class="super_title" id="productions">{{ $t('main_productions') }}</h2>
+  <h2 class="super_title" id="productions">{{ $t("main_productions") }}</h2>
   <!-- Main playlists -->
   <div id="main_productions">
     <div v-for="i in YT_Playlists.length" :key="i">
@@ -9,10 +9,10 @@
           <img :src="YT_Playlists[i-1]['thumbnail']" :alt="YT_Playlists[i-1]['title'][locale]">
           <section>
             <div class="infos">
-              <h3>{{ YT_Playlists[i-1]['title'][locale] }}</h3>
-              <p>{{ YT_Playlists[i-1]['description'][locale] }}</p>
+              <h3>{{ YT_Playlists[i-1]["title"][locale] }}</h3>
+              <p>{{ YT_Playlists[i-1]["description"][locale] }}</p>
             </div>
-            <router-link :to="{name: 'playlist', params: {id: (i-1)}}" class="btn">{{ $t('watch') }}</router-link>
+            <router-link :to="{name: 'playlist', params: {id: (i-1)}}" class="btn">{{ $t("watch") }}</router-link>
           </section>
         </div>
       </article>
@@ -21,13 +21,13 @@
   <!-- Other playlists -->
   <div id="other_productions" v-if="frontPageCount > 0 && YT_Playlists.length !== frontPageCount">
     <div>
-      <h3>{{ $t('other_productions') }}</h3>
+      <h3>{{ $t("other_productions") }}</h3>
       <div v-for="i in YT_Playlists.length" :key="i">
         <article v-if="!YT_Playlists[i-1]['frontPage']">
           <router-link :to="{name: 'playlist', params: {id: (i-1)}}">
             <img :src="YT_Playlists[i-1]['thumbnail']" :alt="YT_Playlists[i-1]['title'][locale]">
             <section>
-              <h3>{{ YT_Playlists[i-1]['title'][locale] }}</h3>
+              <h3>{{ YT_Playlists[i-1]["title"][locale] }}</h3>
             </section>
           </router-link>
         </article>
@@ -40,37 +40,37 @@
 import { mapState } from "vuex";
 
 export default {
-  name: 'productions',
+  name: "productions",
   emits: ["even"],
   computed: {
-    ...mapState(['YT_Playlists']),
+    ...mapState(["YT_Playlists"]),
     locale() {
-      if (this.$i18n.locale === 'fr') return 1;
+      if (this.$i18n.locale === "fr") return 1;
       return 0;
     },
     frontPageCount() {
       let i = 0;
       for (const playlist in this.YT_Playlists) {
-        if (this.YT_Playlists[playlist]['frontPage']) i++;
+        if (this.YT_Playlists[playlist]["frontPage"]) i++;
       }
       return i;
     }
   },
   mounted() {
-    let playlist = document.getElementsByClassName('playlist');
+    let playlist = document.getElementsByClassName("playlist");
     for (let i = 0; i < playlist.length; i++) {
       if (i % 2 !== 0) {
-        playlist[i].style.backgroundColor = 'var(--container)';
-        playlist[i].firstChild.style.flexDirection = 'row-reverse';
+        playlist[i].style.backgroundColor = "var(--container)";
+        playlist[i].firstChild.style.flexDirection = "row-reverse";
       }
     }
     if (this.frontPageCount !== this.YT_Playlists.length) {
       if (this.frontPageCount % 2 !== 0) {
-        document.getElementById('other_productions').style.backgroundColor = "var(--container)";
-        this.$emit('even');
+        document.getElementById("other_productions").style.backgroundColor = "var(--container)";
+        this.$emit("even");
       }
     } else if (this.frontPageCount % 2 === 0) {
-      this.$emit('even');
+      this.$emit("even");
     }
   }
 }

@@ -1,5 +1,5 @@
 /* --- Global --- */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
 :root {
     --background-color: #393939;
@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6, #navbar nav, form label, .super_title, .btn {
 
 .super_title::before, .super_title::after {
     border-top: .08em solid;
-    content: "";
+    content: '';
     flex: 1;
     padding: 0 0 0 14px;
     margin: 0 12px 0 0;
