@@ -13,6 +13,10 @@
     <article>
       <section>
         <div>
+          <h3>{{ $t('by_email') }}</h3>
+          <a href="mailto:studio@rvandco.fr">studio@rvandco.fr</a>
+        </div>
+        <div>
           <h3>{{ $t('by_postal') }}</h3>
           <p>
             4 Lotissement Cantalause<br>
@@ -163,10 +167,6 @@ form button {
 }
 
 @media screen and (max-width: 520px) {
-  article section {
-    min-width: 0;
-  }
-
   article section > div {
     flex: 100%;
   }
