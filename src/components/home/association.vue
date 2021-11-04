@@ -41,7 +41,10 @@
       <h3>{{ $t('members')}}</h3>
       <!-- TODO: Add crawlable members -->
       <section id="members">
-        Coucou 👋
+        <div v-for="member in Members" :key="member">
+          <img :src="require('@/assets/members/' + member['picture'])" :alt="member['name']">
+          <p>{{ member['name'] }}</p>
+        </div>
       </section>
       <!-- Content creator -->
       <h3>{{ $t('content_creator') }}</h3>
@@ -78,7 +81,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['YT_Stats', 'YT_Content_Creators', 'YT_Playlists', 'Insta_Posts']),
+    ...mapState(["YT_Stats", "YT_Content_Creators", "YT_Playlists", "Insta_Posts", "Members"]),
     association_age() {
       let age = Date.now() - new Date(2020, 9, 9).getTime();
       return Math.abs(new Date(age).getUTCFullYear() - 1970);
@@ -199,7 +202,7 @@ article h3 {
   font-size: .94em;
 }
 
-#creators {
+#creators, #members {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -207,7 +210,7 @@ article h3 {
   gap: 0 40px;
 }
 
-#creators a img {
+#creators a img, #members div img {
   width: auto;
   height: 90px;
   object-fit: cover;
@@ -215,7 +218,7 @@ article h3 {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);
 }
 
-#creators a {
+#creators a, #members div {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -230,8 +233,9 @@ article h3 {
   transition: transform .15s;
 }
 
-#creators a p {
+#creators a p, #members div p {
   font-weight: 400;
+  white-space: pre;
 }
 
 #button {
