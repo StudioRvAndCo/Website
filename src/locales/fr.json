@@ -36,5 +36,6 @@
   "your_email": "Votre adresse email :",
   "subject_request": "Objet de la demande :",
   "your_message": "Votre message :",
-  "submit": "Envoyer"
+  "submit": "Envoyer",
+  "confirm_submit": "Le message à bien été envoyé."
 }

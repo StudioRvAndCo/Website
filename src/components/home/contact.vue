@@ -45,8 +45,12 @@
         <label for="message">{{ $t("your_message") }}</label>
         <textarea name="message" id="message" required></textarea>
         <button class="btn primary-btn" type="submit" @click.prevent="sendEmail">{{ $t("submit") }}</button>
+        <div id="alert_form">
+            {{ $t("confirm_submit") }}
+        </div>
       </form>
     </article>
+
   </div>
 </template>
 
@@ -54,15 +58,22 @@
 export default {
   name: "contact",
   methods: {
-    async sendEmail() {
-      let params = new URLSearchParams();
-      params.append("name", document.getElementById("name").value);
-      params.append("email", document.getElementById("email").value);
-      params.append("subject", document.getElementById("subject").value);
-      params.append("message", document.getElementById("message").value);
+    sendEmail() {
+      let name = document.getElementById("name");
+      let email = document.getElementById("email");
+      let subject = document.getElementById("subject");
+      let message = document.getElementById("message");
 
-      await this.axios.post("../../../public/send_mail.php", params);
-      // TODO: Add succes message on click
+      let params = new URLSearchParams();
+      params.append("name", name.value);
+      params.append("email", email.value);
+      params.append("subject", subject.value);
+      params.append("message", message.value);
+
+      this.axios.post("../../../public/send_mail.php", params);
+      name.value = email.value = subject.value = message.value = '';
+      document.getElementById("alert_form").classList.remove("slide");
+      document.getElementById("alert_form").classList.add("slide");
     }
   }
 }
@@ -128,6 +139,7 @@ article section, article form {
 
 form {
   width: 52%;
+  position: relative;
 }
 
 form input, form textarea {
@@ -153,6 +165,30 @@ form textarea::-webkit-scrollbar-thumb {
 form button {
   margin-top: 4px;
   width: 100%;
+}
+
+#alert_form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background-color: forestgreen;
+  width: calc(100% - 12px * 2);
+  border-radius: 8px 8px 0 0;
+  font-weight: normal;
+  padding: 18px 12px;
+  clip-path: inset(0 0 100% 0);
+}
+
+.slide {
+  animation: slide 4.6s ease;
+}
+
+@keyframes slide {
+  0% { clip-path: inset(0 0 100% 0); }
+  25% { clip-path: inset(0 0 0 0); }
+  75% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 100% 0); }
 }
 
 @media screen and (max-width: 880px) {
