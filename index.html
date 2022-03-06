@@ -261,5 +261,20 @@
         <!-- Créateur -->
         <p>Site Web créé par <a href="https://github.com/Minarox">Minarox</a>.</p>
     </footer>
+
+    <script>
+        // Smooth scroll to anchor
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                window.scroll({
+                    top: (document.querySelector(this.getAttribute('href')).offsetTop - 60),
+                    left: 0,
+                    behavior: 'smooth'
+                })
+            });
+        });
+    </script>
 </body>
 </html>
