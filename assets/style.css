@@ -115,6 +115,20 @@ img {
 }
 
 
+/* --- Reveal effect --- */
+.reveal {
+    position: relative;
+    transform: translateY(120px);
+    opacity: 0;
+    transition: .75s all ease;
+}
+
+.reveal.active {
+    transform: initial;
+    opacity: 1;
+}
+
+
 /* --- Header --- */
 header {
     z-index: 100000;
@@ -268,7 +282,7 @@ main {
     padding: 0 16px;
     text-align: center;
     font-size: 1.5em;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 #accueil section:last-of-type > div {
@@ -485,4 +499,3 @@ footer a:hover {
 }
 
 /* TODO: Ombres sous les éléments */
-/* TODO: Scroll fluide jusqu'aux points d'encrage */

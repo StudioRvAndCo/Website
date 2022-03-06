@@ -95,7 +95,7 @@
                 <h2 class="super_title">Nos productions</h2>
                 <section id="main-prod">
                     <!-- 1ère production -->
-                    <article>
+                    <article class="reveal">
                         <section>
                             <img src="assets/img/un_chemin.jpg" alt="Miniature du court-métrage 'Un Chemin'.">
                         </section>
@@ -113,7 +113,7 @@
                     </article>
 
                     <!-- 2ᵉ production -->
-                    <article>
+                    <article class="reveal">
                         <section>
                             <img src="assets/img/star_wars_une_quete_de_justice.jpg" alt="Miniature du fan film 'Star Wars : Une quête de justice'.">
                         </section>
@@ -127,7 +127,7 @@
                     </article>
 
                     <!-- 3ᵉ production -->
-                    <article>
+                    <article class="reveal">
                         <section>
                             <img src="assets/img/un_ete_entre_amis.jpg" alt="Miniature de la série 'Un été entre amis'.">
                         </section>
@@ -147,10 +147,10 @@
         <!-- Projets -->
         <div id="projets">
             <article class="main-container">
-                <h2 class="super_title">Projets annexes</h2>
+                <h2 class="super_title reveal">Projets annexes</h2>
 
                 <!-- Bannières -->
-                <section id="project-banners">
+                <section id="project-banners" class="reveal">
                     <img src="assets/img/mosaique.png" alt="">
                     <div>
                         <hr>
@@ -165,15 +165,15 @@
         <!-- Association -->
         <div id="association">
             <article class="main-container">
-                <h2 class="super_title">L'association</h2>
+                <h2 class="super_title reveal">L'association</h2>
 
                 <!-- Présentation de l'association -->
-                <p>
+                <p class="reveal">
                     Le Studio Rv & Co est un regroupement d'amis passionnés par le monde du cinéma. Ensemble, nous produisons du début à la fin des courts-métrages ou des séries amateurs sur des thèmes variés qui nous plaisent.
                 </p>
 
                 <!-- Membres -->
-                <section id="members">
+                <section id="members" class="reveal">
                     <div>
                         <img src="assets/img/logo/logo.png" alt="">
                         <p>Prénom</p>
@@ -227,10 +227,10 @@
                         <p>Prénom</p>
                     </div>
                 </section>
-                <hr>
+                <hr class="reveal">
 
                 <!-- Posts Instagram -->
-                <section id="instagram-posts">
+                <section id="instagram-posts" class="reveal">
                     <img src="assets/img/mosaique.png" alt="">
                     <img src="assets/img/mosaique.png" alt="">
                     <img src="assets/img/mosaique.png" alt="">
@@ -241,7 +241,7 @@
                     <img src="assets/img/mosaique.png" alt="">
                     <img src="assets/img/mosaique.png" alt="">
                 </section>
-                <a class="btn" href="https://www.instagram.com/studiorvandco">Plus de photos...</a>
+                <a class="btn reveal" href="https://www.instagram.com/studiorvandco">Plus de photos...</a>
             </article>
         </div>
 
@@ -263,6 +263,33 @@
     </footer>
 
     <script>
+        function reveal() {
+            // Sélection des éléments avec la classe "reveal"
+            let reveals = document.querySelectorAll(".reveal");
+
+            // Boucle pour chacun des éléments avec la classe
+            for (let i = 0; i < reveals.length; i++) {
+                // Détection de la zone visible
+                let windowHeight = window.innerHeight;
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                let elementVisible = 50;
+
+                // Apparition si l'élément est dans la zone visible
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+
+                    // Suppression de l'événement une fois tous les éléments affichés
+                    if (i === 10) {
+                        window.removeEventListener("scroll", reveal);
+                    }
+                }
+            }
+        }
+
+        // Lancement de la fonction une premiere fois, puis au scroll
+        reveal();
+        window.addEventListener("scroll", reveal);
+
         // Smooth scroll to anchor
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
