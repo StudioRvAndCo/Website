@@ -74,15 +74,15 @@
                 <section>
                     <p>Quelques chiffres</p>
                     <div>
-                        <p><strong>10</strong> Membres</p>
+                        <p><strong class="countup">10</strong> Membres</p>
                         <hr>
-                        <p><strong>3</strong> Projets</p>
+                        <p><strong class="countup">3</strong> Projets</p>
                         <hr>
-                        <p><strong>2 962</strong> Vues</p>
+                        <p><strong class="countup">2962</strong> Vues</p>
                         <hr>
-                        <p><strong>96</strong> Abonnés</p>
+                        <p><strong class="countup">96</strong> Abonnés</p>
                         <hr>
-                        <p><strong>1</strong> an</p>
+                        <p><strong class="countup">1</strong> an</p>
                     </div>
                     <a class="btn" href="#association">En savoir plus</a>
                 </section>
@@ -92,7 +92,7 @@
         <!-- Productions -->
         <div id="productions">
             <article class="main-container">
-                <h2 class="super_title">Nos productions</h2>
+                <h2 class="super_title reveal">Nos productions</h2>
                 <section id="main-prod">
                     <!-- 1ère production -->
                     <article class="reveal">
@@ -263,30 +263,49 @@
     </footer>
 
     <script>
+        const animationDuration = 2600;
+        const frameDuration = 1000 / 60;
+        const totalFrames = Math.round(animationDuration / frameDuration);
+        const easeOutQuad = t => t * (2 - t);
+
+        const animateCountUp = el => {
+            let frame = 0;
+            const countTo = parseInt(el.innerHTML, 10);
+            const counter = setInterval(() => {
+                frame++;
+                const progress = easeOutQuad(frame / totalFrames);
+                const currentCount = Math.round(countTo * progress);
+
+                if (parseInt(el.innerHTML, 10) !== currentCount) {
+                    el.innerHTML = currentCount;
+                }
+
+                if (frame === totalFrames) {
+                    clearInterval(counter);
+                }
+            }, frameDuration);
+        };
+
+        document.querySelectorAll('.countup').forEach(animateCountUp);
+
         function reveal() {
-            // Sélection des éléments avec la classe "reveal"
             let reveals = document.querySelectorAll(".reveal");
 
-            // Boucle pour chacun des éléments avec la classe
             for (let i = 0; i < reveals.length; i++) {
-                // Détection de la zone visible
                 let windowHeight = window.innerHeight;
                 let elementTop = reveals[i].getBoundingClientRect().top;
-                let elementVisible = 50;
+                let elementVisible = 44;
 
-                // Apparition si l'élément est dans la zone visible
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
 
-                    // Suppression de l'événement une fois tous les éléments affichés
-                    if (i === 10) {
+                    if (i === 11) {
                         window.removeEventListener("scroll", reveal);
                     }
                 }
             }
         }
 
-        // Lancement de la fonction une premiere fois, puis au scroll
         reveal();
         window.addEventListener("scroll", reveal);
 
