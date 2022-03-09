@@ -92,7 +92,7 @@
         <!-- Productions -->
         <div id="productions">
             <article class="main-container">
-                <h2 class="super_title reveal">Nos productions</h2>
+                <h2 class="super_title">Nos productions</h2>
                 <section id="main-prod">
                     <!-- 1ère production -->
                     <article class="reveal">
@@ -140,17 +140,17 @@
                         </section>
                     </article>
                 </section>
-                <!-- Séparateur et liste d'autres productions -->
             </article>
         </div>
 
         <!-- Projets -->
         <div id="projets">
             <article class="main-container">
-                <h2 class="super_title reveal">Projets annexes</h2>
+                <h2 class="super_title">Projets annexes</h2>
 
                 <!-- Bannières -->
-                <section id="project-banners" class="reveal">
+                <!-- TODO: Carousel de bannières -->
+                <section id="project-banners">
                     <img src="assets/img/mosaique.png" alt="">
                     <div>
                         <hr>
@@ -165,7 +165,7 @@
         <!-- Association -->
         <div id="association">
             <article class="main-container">
-                <h2 class="super_title reveal">L'association</h2>
+                <h2 class="super_title">L'association</h2>
 
                 <!-- Présentation de l'association -->
                 <p class="reveal">
@@ -241,7 +241,7 @@
                     <img src="assets/img/mosaique.png" alt="">
                     <img src="assets/img/mosaique.png" alt="">
                 </section>
-                <a class="btn reveal" href="https://www.instagram.com/studiorvandco">Plus de photos...</a>
+                <a class="btn" href="https://www.instagram.com/studiorvandco">Plus de photos...</a>
             </article>
         </div>
 
@@ -339,7 +339,7 @@
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
 
-                    if (i === 11) {
+                    if (i === 6) {
                         window.removeEventListener("scroll", reveal);
                     }
                 }
