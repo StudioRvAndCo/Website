@@ -43,7 +43,7 @@ img {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .main-container {
@@ -210,7 +210,7 @@ header article section:nth-of-type(3) a img {
     height: 18px;
 }
 
-#on-air {
+.on-air {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -221,7 +221,7 @@ header article section:nth-of-type(3) a img {
     filter: brightness(100%);
 }
 
-#on-air i {
+.on-air i {
     display: block;
     width: 9px;
     height: 9px;
@@ -470,6 +470,80 @@ main {
 #association article > a {
     display: block;
     margin: 30px auto 0;
+}
+
+#contact section {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 80px;
+}
+
+#contact section div h3 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#contact section div p:last-of-type strong {
+    font-weight: 600;
+}
+
+#contact section div p:last-of-type a {
+    text-decoration: none;
+    transition: filter .2s;
+}
+
+#contact section div p:last-of-type {
+    margin-top: 20px;
+}
+
+#contact section hr {
+    margin: auto 0;
+    width: 1px;
+    height: 90px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 8px;
+}
+
+#contact section > div:last-of-type div {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+#contact section > div:last-of-type div a {
+    position: relative;
+    padding: 8px;
+    transition: filter .2s;
+}
+
+#contact section > div:last-of-type div a:hover,
+#contact section div p:last-of-type a:hover {
+    filter: brightness(80%);
+}
+
+#contact section > div:last-of-type div a .on-air {
+    transform: scale(1.6);
+    top: 4px;
+    right: 6px;
+}
+
+#contact section > div:last-of-type div a img {
+    width: 36px;
+    display: block;
+}
+
+#contact section > img {
+    width: auto;
+    height: 128px;
+    display: block;
 }
 
 
