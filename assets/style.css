@@ -489,6 +489,10 @@ main {
     margin-bottom: 8px;
 }
 
+#contact section div p, #contact section div p * {
+    color: var(--secondary-text);
+}
+
 #contact section div p:last-of-type strong {
     font-weight: 600;
 }
