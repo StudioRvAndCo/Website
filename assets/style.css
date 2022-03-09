@@ -420,6 +420,7 @@ main {
 }
 
 #members {
+    margin-top: 40px;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
