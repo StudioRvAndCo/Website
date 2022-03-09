@@ -552,7 +552,7 @@ footer {
     height: 42px;
     margin: 0 auto;
     padding: 12px;
-    max-width: 1500px;
+    max-width: 1250px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
