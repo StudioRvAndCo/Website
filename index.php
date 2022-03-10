@@ -7,20 +7,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Studio Rv & Co">
+    <meta name="description" content="Studio Rv & Co.">
 
     <link rel="icon" href="assets/img/logos/favicon/favicon.ico" media="(prefers-color-scheme:no-preference)">
     <link rel="icon" href="assets/img/logos/favicon/favicon-light.ico" media="(prefers-color-scheme:dark)">
     <link rel="icon" href="assets/img/logos/favicon/favicon.ico" media="(prefers-color-scheme:light)">
     <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
+<body onload="load()">
     <header>
         <article>
             <!-- Logo et titre -->
             <section>
                 <a href="https://rvandco.fr">
-                    <img src="assets/img/logos/rv_and_co.png" alt="Logo du Studio Rv & Co">
+                    <img src="assets/img/logos/rv_and_co.png" alt="Logo de l'association Rv & Co.">
                     <p>Studio Rv & Co</p>
                 </a>
             </section>
@@ -38,20 +38,20 @@
             <section>
                 <!-- YouTube -->
                 <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-                    <img src="assets/img/medias/youtube.svg" alt="Logo du site YouTube">
+                    <img src="assets/img/medias/youtube.svg" alt="Logo du site YouTube.">
                 </a>
                 <!-- Twitter -->
                 <a href="https://twitter.com/studiorvandco">
-                    <img src="assets/img/medias/twitter.svg" alt="Logo du site Twitter">
+                    <img src="assets/img/medias/twitter.svg" alt="Logo du site Twitter.">
                 </a>
                 <!-- Instagram -->
                 <a href="https://www.instagram.com/studiorvandco">
-                    <img src="assets/img/medias/instagram.svg" alt="Logo du site Instagram">
+                    <img src="assets/img/medias/instagram.svg" alt="Logo du site Instagram.">
                 </a>
                 <!-- Twitch -->
                 <a href="https://www.twitch.tv/studiorvandco">
                     <div class="on-air hidden"><i></i></div>
-                    <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch">
+                    <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch.">
                 </a>
             </section>
         </article>
@@ -175,19 +175,19 @@
                 <!-- Membres -->
                 <section id="members" class="reveal">
                     <div>
-                        <img src="assets/img/members/Mael.jpg" alt="Maël">
+                        <img src="assets/img/members/Mael.jpg" alt="Maël.">
                         <p>Maël</p>
                     </div>
                     <div>
-                        <img src="assets/img/members/Thomas.jpg" alt="Thomas">
+                        <img src="assets/img/members/Thomas.jpg" alt="Thomas.">
                         <p>Thomas</p>
                     </div>
                     <div>
-                        <img src="assets/img/members/Florent.jpg" alt="Florent">
+                        <img src="assets/img/members/Florent.jpg" alt="Florent.">
                         <p>Florent</p>
                     </div>
                     <div>
-                        <img src="assets/img/members/Mathis.jpg" alt="Mathis">
+                        <img src="assets/img/members/Mathis.jpg" alt="Mathis.">
                         <p>Mathis</p>
                     </div>
                 </section>
@@ -232,28 +232,27 @@
                         <div>
                             <!-- YouTube -->
                             <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-                                <img src="assets/img/medias/youtube.svg" alt="Logo du site YouTube">
+                                <img src="assets/img/medias/youtube.svg" alt="Logo du site YouTube.">
                             </a>
                             <!-- Twitter -->
                             <a href="https://twitter.com/studiorvandco">
-                                <img src="assets/img/medias/twitter.svg" alt="Logo du site Twitter">
+                                <img src="assets/img/medias/twitter.svg" alt="Logo du site Twitter.">
                             </a>
                             <!-- Instagram -->
                             <a href="https://www.instagram.com/studiorvandco">
-                                <img src="assets/img/medias/instagram.svg" alt="Logo du site Instagram">
+                                <img src="assets/img/medias/instagram.svg" alt="Logo du site Instagram.">
                             </a>
                             <!-- Twitch -->
                             <a href="https://www.twitch.tv/studiorvandco">
                                 <div class="on-air hidden"><i></i></div>
-                                <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch">
+                                <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch.">
                             </a>
                         </div>
                     </div>
                     <hr>
 
                     <!-- Logo Studio Rv & Co -->
-                    <!-- TODO: Changer l'image -->
-                    <img src="assets/img/mosaique.png" alt="">
+                    <img src="assets/img/logos/studio_rv_and_co.png" alt="Logo alternatif de l'association Rv & Co.">
                 </section>
             </article>
         </div>
@@ -291,8 +290,6 @@
             }, frameDuration);
         };
 
-        document.querySelectorAll('.countup').forEach(animateCountUp);
-
         function reveal() {
             let reveals = document.querySelectorAll(".reveal");
 
@@ -311,21 +308,25 @@
             }
         }
 
-        reveal();
-        window.addEventListener("scroll", reveal);
+        function load() {
+            reveal();
+            window.addEventListener("scroll", reveal);
 
-        // Smooth scroll to anchor
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+            // Smooth scroll to anchor
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
 
-                window.scroll({
-                    top: (document.querySelector(this.getAttribute('href')).offsetTop - 60),
-                    left: 0,
-                    behavior: 'smooth'
-                })
+                    window.scroll({
+                        top: (document.querySelector(this.getAttribute('href')).offsetTop - 60),
+                        left: 0,
+                        behavior: 'smooth'
+                    })
+                });
             });
-        });
+
+            document.querySelectorAll('.countup').forEach(animateCountUp);
+        }
     </script>
 </body>
 </html>

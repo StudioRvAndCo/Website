@@ -481,7 +481,7 @@ main {
     flex-flow: row nowrap;
     align-items: flex-start;
     justify-content: space-evenly;
-    gap: 80px;
+    gap: 30px;
 }
 
 #contact section div h3 {
