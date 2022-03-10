@@ -78,11 +78,11 @@
                         <hr>
                         <p><strong class="countup">3</strong> Projets</p>
                         <hr>
-                        <p><strong class="countup">2962</strong> Vues</p>
+                        <p><strong class="countup"><?= json_decode(file_get_contents(__DIR__ . "/assets/data/statistics.json"), true)["viewCount"] ?></strong> Vues</p>
                         <hr>
-                        <p><strong class="countup">96</strong> Abonnés</p>
+                        <p><strong class="countup"><?= json_decode(file_get_contents(__DIR__ . "/assets/data/statistics.json"), true)["subscriberCount"] ?></strong> Abonnés</p>
                         <hr>
-                        <p><strong class="countup">1</strong> an</p>
+                        <p><strong class="countup"><?= date_diff(date_create("2020-09-09"), date_create())->format("%y") ?></strong> an</p>
                     </div>
                     <a class="btn" href="#association">En savoir plus</a>
                 </section>
