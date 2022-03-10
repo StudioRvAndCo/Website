@@ -261,14 +261,14 @@ main {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 60px;
 }
 
 #accueil video {
     display: block;
     width: 100%;
-    height: auto;
+    height: 460px;
     border-radius: 8px;
 }
 
@@ -276,6 +276,7 @@ main {
     background-color: var(--background-color);
     border-radius: 8px;
     padding: 16px;
+    height: 460px;
 }
 
 #accueil section:last-of-type > p {
