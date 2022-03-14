@@ -179,12 +179,18 @@
                         <p>Maël</p>
                     </div>
                     <div>
-                        <img src="assets/img/members/Thomas.jpg" alt="Thomas.">
-                        <p>Thomas</p>
+                        <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg">
+                            <img src="assets/img/members/Thomas.jpg" alt="Thomas.">
+                            <p>Thomas</p>
+                            <hr>
+                        </a>
                     </div>
                     <div>
-                        <img src="assets/img/members/Florent.jpg" alt="Florent.">
-                        <p>Florent</p>
+                        <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA">
+                            <img src="assets/img/members/Florent.jpg" alt="Florent.">
+                            <p>Florent</p>
+                            <hr>
+                        </a>
                     </div>
                     <div>
                         <img src="assets/img/members/Mathis.jpg" alt="Mathis.">
