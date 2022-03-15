@@ -61,3 +61,11 @@ write(
         "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UCbTaxj24z8viOFR6NXMKurQ&alt=json&fields=items&prettyPrint=true&key=" . CONFIG["youtube"]
     ))[0]["items"][0]["statistics"]
 );
+
+write(
+    "posts.json",
+    (request(
+        "GET",
+        "https://graph.instagram.com/v11.0/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp&access_token=" . CONFIG["instagram"]
+    ))[0]["data"]
+);
