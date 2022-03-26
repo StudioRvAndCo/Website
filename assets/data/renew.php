@@ -38,34 +38,26 @@ function request(string $method, string $url, array $body = []): array
     return $response;
 }
 
-// Create and write in files
-function write(string $file, array|object $content) {
-    // Open or create file
-    $file = fopen(__DIR__ . "/" . $file, 'w');
-
-    // Write content
-    fwrite(
-        $file,
-        json_encode($content)
-    );
-
-    // Close file
-    fclose($file);
+// Change config.ini content
+function write(string $section, string $key, string $content) {
+    $config_data = parse_ini_file(__DIR__ . "/../../config.ini", true);
+    $config_data[$section][$key] = $content;
+    $new_content = '';
+    foreach ($config_data as $section => $section_content) {
+        $section_content = array_map(function($value, $key) {
+            return "$key='$value'";
+        }, array_values($section_content), array_keys($section_content));
+        $section_content = implode("\n", $section_content);
+        $new_content .= "[$section]\n$section_content\n";
+    }
+    file_put_contents(__DIR__ . "/../config.ini", $new_content);
 }
 
-// Get statistics from YouTube API
+// Renew instagram token
 write(
-    "statistics.json",
+    "APIs", "instagram",
     (request(
         "GET",
-        "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UCbTaxj24z8viOFR6NXMKurQ&alt=json&fields=items&prettyPrint=true&key=" . CONFIG["youtube"]
-    ))[0]["items"][0]["statistics"]
-);
-
-write(
-    "posts.json",
-    (request(
-        "GET",
-        "https://graph.instagram.com/v11.0/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp&access_token=" . CONFIG["instagram"]
-    ))[0]["data"]
+        "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . CONFIG["instagram"]
+    ))[0]["access_token"]
 );
