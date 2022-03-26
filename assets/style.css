@@ -484,7 +484,16 @@ main {
     gap: 20px;
 }
 
-#instagram-posts img {
+#instagram-posts a {
+    transform: scale(1);
+    transition: all .2s;
+}
+
+#instagram-posts a:hover {
+    transform: scale(1.05);
+}
+
+#instagram-posts a img {
     flex: 1 0 0;
     display: block;
     width: 300px;

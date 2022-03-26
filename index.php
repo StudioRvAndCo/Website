@@ -202,15 +202,21 @@
                 <!-- Posts Instagram -->
                 <!-- TODO: Synchronisation avec l'API Instagram -->
                 <section id="instagram-posts" class="reveal">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <img src="assets/img/mosaique.jpg" alt="">
+                    <a href="#">
+                        <img src="assets/img/mosaique.jpg" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="assets/img/mosaique.jpg" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="assets/img/mosaique.jpg" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="assets/img/mosaique.jpg" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="assets/img/mosaique.jpg" alt="">
+                    </a>
                 </section>
                 <a class="btn" href="https://www.instagram.com/studiorvandco">Plus de photos...</a>
             </article>
