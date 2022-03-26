@@ -64,7 +64,7 @@
             <article>
                 <!-- Vidéo teaser -->
                 <section>
-                    <video autoplay muted loop preload="none" poster="assets/img/mosaique.png">
+                    <video autoplay muted loop preload="none" poster="assets/img/thumbnail.png">
                         <source src="assets/vid/teaser.mp4" type="video/mp4">
                     </video>
                 </section>
