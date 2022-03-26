@@ -151,7 +151,7 @@
                 <!-- Bannières -->
                 <!-- TODO: Carousel de bannières -->
                 <section id="project-banners">
-                    <img src="assets/img/mosaique.png" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
                     <div>
                         <hr>
                         <hr>
@@ -196,15 +196,15 @@
                 <!-- Posts Instagram -->
                 <!-- TODO: Synchronisation avec l'API Instagram -->
                 <section id="instagram-posts" class="reveal">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
-                    <img src="assets/img/mosaique.png" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
+                    <img src="assets/img/mosaique.jpg" alt="">
                 </section>
                 <a class="btn" href="https://www.instagram.com/studiorvandco">Plus de photos...</a>
             </article>
