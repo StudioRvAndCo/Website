@@ -27,7 +27,9 @@ function request(string $method, string $url, array $body = []): array
     curl_setopt($curl, CURLOPT_HEADER, false);
 
     if ($method == "POST" || $method == "PUT") {
-        if ($method == "POST") curl_setopt($curl, CURLOPT_POST, true);
+        if ($method == "POST") {
+            curl_setopt($curl, CURLOPT_POST, true);
+        }
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
     }
 
@@ -39,17 +41,24 @@ function request(string $method, string $url, array $body = []): array
 }
 
 // Change config.ini content
-function write(string $section, string $key, string $content) {
-    $config_data = parse_ini_file(__DIR__ . "/../../config.ini", true);
+function write(string $section, string $key, string $content)
+{
+    $config_data                 = parse_ini_file(__DIR__ . "/../../config.ini", true);
     $config_data[$section][$key] = $content;
-    $new_content = '';
+    $new_content                 = '';
+
     foreach ($config_data as $section => $section_content) {
-        $section_content = array_map(function($value, $key) {
-            return "$key='$value'";
-        }, array_values($section_content), array_keys($section_content));
-        $section_content = implode("\n", $section_content);
-        $new_content .= "[$section]\n$section_content\n";
+        $section_content = array_map(
+            function ($value, $key) {
+                return "$key='$value'";
+            },
+            array_values($section_content),
+            array_keys($section_content));
+
+        $section_content  = implode("\n", $section_content);
+        $new_content     .= "[$section]\n$section_content\n";
     }
+
     file_put_contents(__DIR__ . "/../config.ini", $new_content);
 }
 

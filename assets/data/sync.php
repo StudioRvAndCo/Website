@@ -27,7 +27,9 @@ function request(string $method, string $url, array $body = []): array
     curl_setopt($curl, CURLOPT_HEADER, false);
 
     if ($method == "POST" || $method == "PUT") {
-        if ($method == "POST") curl_setopt($curl, CURLOPT_POST, true);
+        if ($method == "POST") {
+            curl_setopt($curl, CURLOPT_POST, true);
+        }
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
     }
 
@@ -39,7 +41,8 @@ function request(string $method, string $url, array $body = []): array
 }
 
 // Create and write in files
-function write(string $file, array|object $content) {
+function write(string $file, array|object $content)
+{
     // Open or create file
     $file = fopen(__DIR__ . "/" . $file, 'w');
 
