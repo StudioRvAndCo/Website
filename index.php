@@ -64,7 +64,7 @@
             <article>
                 <!-- Vidéo teaser -->
                 <section>
-                    <video autoplay muted loop preload="none" poster="assets/img/thumbnail.png">
+                    <video autoplay muted loop preload="none" poster="assets/img/productions/thumbnail.png">
                         <source src="assets/vid/teaser.mp4" type="video/mp4">
                     </video>
                 </section>
@@ -97,7 +97,7 @@
                     <!-- 1ère production -->
                     <article class="reveal">
                         <section>
-                            <img src="assets/img/un_chemin.jpg" alt="Miniature du court-métrage 'Un Chemin'.">
+                            <img src="assets/img/productions/un_chemin.jpg" alt="Miniature du court-métrage 'Un Chemin'.">
                         </section>
                         <section>
                             <div>
@@ -115,7 +115,7 @@
                     <!-- 2ᵉ production -->
                     <article class="reveal">
                         <section>
-                            <img src="assets/img/star_wars_une_quete_de_justice.jpg" alt="Miniature du fan film 'Star Wars : Une quête de justice'.">
+                            <img src="assets/img/productions/star_wars_une_quete_de_justice.jpg" alt="Miniature du fan film 'Star Wars : Une quête de justice'.">
                         </section>
                         <section>
                             <h3>Star Wars : Une quête de justice</h3>
@@ -129,7 +129,7 @@
                     <!-- 3ᵉ production -->
                     <article class="reveal">
                         <section>
-                            <img src="assets/img/un_ete_entre_amis.jpg" alt="Miniature de la série 'Un été entre amis'.">
+                            <img src="assets/img/productions/un_ete_entre_amis.jpg" alt="Miniature de la série 'Un été entre amis'.">
                         </section>
                         <section>
                             <h3>Un été entre amis</h3>
