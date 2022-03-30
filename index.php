@@ -193,8 +193,11 @@
                         </a>
                     </div>
                     <div>
-                        <img src="assets/img/members/Mathis.jpg" alt="Mathis.">
-                        <p>Mathis</p>
+                        <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ">
+                            <img src="assets/img/members/Mathis.jpg" alt="Mathis.">
+                            <p>Mathis</p>
+                            <hr>
+                        </a>
                     </div>
                 </section>
                 <hr class="reveal">
