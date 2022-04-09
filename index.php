@@ -12,7 +12,8 @@
     <link rel="icon" href="assets/img/logos/favicon/favicon.ico" media="(prefers-color-scheme:no-preference)">
     <link rel="icon" href="assets/img/logos/favicon/favicon-light.ico" media="(prefers-color-scheme:dark)">
     <link rel="icon" href="assets/img/logos/favicon/favicon.ico" media="(prefers-color-scheme:light)">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/splide.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body onload="load()">
     <header>
@@ -94,7 +95,7 @@
             <article class="main-container">
                 <h2 class="super_title">Nos productions</h2>
                 <section id="main-prod">
-                    <!-- 1ère production -->
+                    <!-- 1ᵉ production -->
                     <article class="reveal">
                         <section>
                             <img src="assets/img/productions/un_chemin.jpg" alt="Miniature du court-métrage 'Un Chemin'.">
@@ -150,13 +151,28 @@
 
                 <!-- Bannières -->
                 <!-- TODO: Carousel de bannières -->
-                <section id="project-banners">
+                <!--<section id="project-banners">
                     <img src="assets/img/mosaique.jpg" alt="">
                     <div>
                         <hr>
                         <hr>
                         <hr>
                         <hr>
+                    </div>
+                </section>-->
+                <section id="image-carousel" class="splide" aria-label="Projets annexes">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <img src="assets/img/mosaique.jpg" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/mosaique.jpg" alt="">
+                            </li>
+                            <li class="splide__slide">
+                                <img src="assets/img/mosaique.jpg" alt="">
+                            </li>
+                        </ul>
                     </div>
                 </section>
             </article>
