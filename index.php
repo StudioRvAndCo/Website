@@ -297,7 +297,7 @@
         <p>Site Web créé par <a href="https://github.com/Minarox" target="_blank" rel="noopener">Minarox</a>.</p>
     </footer>
 
-    <script src="assets/js/splide.min.js"></script>
-    <script src="assets/js/animation.js"></script>
+    <script type="text/javascript" src="assets/js/splide.min.js"></script>
+    <script type="text/javascript" src="assets/js/animation.js"></script>
 </body>
 </html>
