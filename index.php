@@ -38,19 +38,19 @@
             <!-- Liens externes -->
             <section>
                 <!-- YouTube -->
-                <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+                <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ" target="_blank" rel="noopener">
                     <img src="assets/img/medias/youtube.svg" alt="Logo du site YouTube.">
                 </a>
                 <!-- Twitter -->
-                <a href="https://twitter.com/studiorvandco">
+                <a href="https://twitter.com/studiorvandco" target="_blank" rel="noopener">
                     <img src="assets/img/medias/twitter.svg" alt="Logo du site Twitter.">
                 </a>
                 <!-- Instagram -->
-                <a href="https://www.instagram.com/studiorvandco">
+                <a href="https://www.instagram.com/studiorvandco" target="_blank" rel="noopener">
                     <img src="assets/img/medias/instagram.svg" alt="Logo du site Instagram.">
                 </a>
                 <!-- Twitch -->
-                <a href="https://www.twitch.tv/studiorvandco">
+                <a href="https://www.twitch.tv/studiorvandco" target="_blank" rel="noopener">
                     <div class="on-air hidden"><i></i></div>
                     <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch.">
                 </a>
@@ -109,7 +109,7 @@
                                 Tandis que l'humanité est terrassée par une pandémie dévastatrice, deux amis tentent de survivre.<br>
                                 Pour cela, ils devront s'engager ensemble sur un long chemin...
                             </p>
-                            <a class="btn" href="https://www.youtube.com/watch?v=GXBSu6fq4Wc">Regarder</a>
+                            <a class="btn" href="https://www.youtube.com/watch?v=GXBSu6fq4Wc" target="_blank" rel="noopener">Regarder</a>
                         </section>
                     </article>
 
@@ -123,7 +123,7 @@
                             <p>
                                 La galaxie est déchirée par la guerre entre les Jedi et les Sith. Dans ce contexte mouvementé, la notion de justice est incertaine, chaque camp se l’appropriant pour servir ses intérêts. Mais certains n'hésitent pas à se dresser face à cet affrontement sans fin...
                             </p>
-                            <a class="btn" href="https://www.youtube.com/watch?v=RAmWSDmg0so">Regarder</a>
+                            <a class="btn" href="https://www.youtube.com/watch?v=RAmWSDmg0so" target="_blank" rel="noopener">Regarder</a>
                         </section>
                     </article>
 
@@ -137,7 +137,7 @@
                             <p>
                                 Trois amis s'apprêtent à profiter de vacances assez banales à la campagne. Mais des aventures bien plus palpitantes que prévu les attendent et leurs caractères aussi bien trempés que divergents ne vont pas arranger les choses...
                             </p>
-                            <a class="btn" href="https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB">Regarder</a>
+                            <a class="btn" href="https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB" target="_blank" rel="noopener">Regarder</a>
                         </section>
                     </article>
                 </section>
@@ -195,21 +195,21 @@
                         <p>Maël</p>
                     </div>
                     <div>
-                        <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg">
+                        <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg" target="_blank" rel="noopener">
                             <img src="assets/img/members/Thomas.jpg" alt="Thomas.">
                             <p>Thomas</p>
                             <hr>
                         </a>
                     </div>
                     <div>
-                        <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA">
+                        <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA" target="_blank" rel="noopener">
                             <img src="assets/img/members/Florent.jpg" alt="Florent.">
                             <p>Florent</p>
                             <hr>
                         </a>
                     </div>
                     <div>
-                        <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ">
+                        <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ" target="_blank" rel="noopener">
                             <img src="assets/img/members/Mathis.jpg" alt="Mathis.">
                             <p>Mathis</p>
                             <hr>
@@ -237,7 +237,7 @@
                         <img src="assets/img/mosaique.jpg" alt="">
                     </a>
                 </section>
-                <a class="btn" href="https://www.instagram.com/studiorvandco">Plus de photos...</a>
+                <a class="btn" href="https://www.instagram.com/studiorvandco" target="_blank" rel="noopener">Plus de photos...</a>
             </article>
         </div>
 
@@ -262,19 +262,19 @@
                         <h3>Réseaux sociaux</h3>
                         <div>
                             <!-- YouTube -->
-                            <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+                            <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ" target="_blank" rel="noopener">
                                 <img src="assets/img/medias/youtube.svg" alt="Logo du site YouTube.">
                             </a>
                             <!-- Twitter -->
-                            <a href="https://twitter.com/studiorvandco">
+                            <a href="https://twitter.com/studiorvandco" target="_blank" rel="noopener">
                                 <img src="assets/img/medias/twitter.svg" alt="Logo du site Twitter.">
                             </a>
                             <!-- Instagram -->
-                            <a href="https://www.instagram.com/studiorvandco">
+                            <a href="https://www.instagram.com/studiorvandco" target="_blank" rel="noopener">
                                 <img src="assets/img/medias/instagram.svg" alt="Logo du site Instagram.">
                             </a>
                             <!-- Twitch -->
-                            <a href="https://www.twitch.tv/studiorvandco">
+                            <a href="https://www.twitch.tv/studiorvandco" target="_blank" rel="noopener">
                                 <div class="on-air hidden"><i></i></div>
                                 <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch.">
                             </a>
@@ -294,7 +294,7 @@
         <p>&copy; <script>document.write(new Date().getFullYear().toString());</script> &nbsp;|&nbsp; <a href="https://rvandco.fr">RvAndCo.fr</a></p>
 
         <!-- Créateur -->
-        <p>Site Web créé par <a href="https://github.com/Minarox">Minarox</a>.</p>
+        <p>Site Web créé par <a href="https://github.com/Minarox" target="_blank" rel="noopener">Minarox</a>.</p>
     </footer>
 
     <script src="assets/js/splide.min.js"></script>
