@@ -12,7 +12,7 @@ const animateCountUp = el => {
         const currentCount = Math.round(countTo * progress);
 
         if (parseInt(el.innerHTML, 10) !== currentCount) {
-            el.innerHTML = currentCount;
+            el.innerHTML = currentCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");;
         }
 
         if (frame === totalFrames) {
@@ -39,7 +39,7 @@ function reveal() {
     }
 }
 
-function load() {
+window.onload = () => {
     reveal();
     window.addEventListener("scroll", reveal);
 
@@ -57,5 +57,5 @@ function load() {
     });
 
     document.querySelectorAll('.countup').forEach(animateCountUp);
-    new Splide( '.splide' ).mount();
+    new Splide('.splide').mount();
 }

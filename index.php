@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/splide.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body onload="load()">
+<body>
     <header>
         <article>
             <!-- Logo et titre -->
