@@ -51,7 +51,7 @@
                 </a>
                 <!-- Twitch -->
                 <a href="https://www.twitch.tv/studiorvandco" target="_blank" rel="noopener">
-                    <div class="on-air hidden"><i></i></div>
+                    <div class="on-air <?= !empty(json_decode(file_get_contents(__DIR__ . "/assets/data/stream.json"), true)) ?: 'hidden' ?>"><i></i></div>
                     <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch.">
                 </a>
             </section>
@@ -275,7 +275,7 @@
                             </a>
                             <!-- Twitch -->
                             <a href="https://www.twitch.tv/studiorvandco" target="_blank" rel="noopener">
-                                <div class="on-air hidden"><i></i></div>
+                                <div class="on-air <?= !empty(json_decode(file_get_contents(__DIR__ . "/assets/data/stream.json"), true)) ?: 'hidden' ?>"><i></i></div>
                                 <img src="assets/img/medias/twitch.svg" alt="Logo du site Twitch.">
                             </a>
                         </div>

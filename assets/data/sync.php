@@ -1,23 +1,25 @@
 <?php
 
 // Load APIs keys
-define("CONFIG", parse_ini_file(__DIR__ . "/../../config.ini"));
+define("CONFIG", parse_ini_file(__DIR__ . "/../../config.ini", true));
 
 // Create HTTP requests
-function request(string $method, string $url, array $body = []): array
+function request(string $url, array $headers = [])
 {
     // Add header information
-    $headers = array(
-        "Content-type: application/x-www-form-urlencoded",
-        "Cache-control: no-cache"
-    );
+    if (empty($headers)) {
+        $headers = array(
+            "Content-type: application/x-www-form-urlencoded",
+            "Cache-control: no-cache"
+        );
+    }
 
     // Init curl
     $curl = curl_init();
 
     // Curl params
     curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_ENCODING, "");
@@ -26,16 +28,8 @@ function request(string $method, string $url, array $body = []): array
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curl, CURLOPT_HEADER, false);
 
-    if ($method == "POST" || $method == "PUT") {
-        if ($method == "POST") {
-            curl_setopt($curl, CURLOPT_POST, true);
-        }
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($body));
-    }
-
     // Return response and close curl
-    $response[] = json_decode(curl_exec($curl), true);
-    $response[] = curl_getinfo($curl);
+    $response = json_decode(curl_exec($curl), true);
     curl_close($curl);
     return $response;
 }
@@ -60,15 +54,24 @@ function write(string $file, array|object $content)
 write(
     "statistics.json",
     (request(
-        "GET",
-        "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UCbTaxj24z8viOFR6NXMKurQ&alt=json&fields=items&prettyPrint=true&key=" . CONFIG["youtube"]
-    ))[0]["items"][0]["statistics"]
+        "https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=UCbTaxj24z8viOFR6NXMKurQ&alt=json&fields=items&prettyPrint=true&key=" . CONFIG["youtube"]["api_key"]
+    ))["items"][0]["statistics"] ?? (object) []
+);
+
+write(
+    "stream.json",
+    (request(
+        "https://api.twitch.tv/helix/streams?user_login=" . CONFIG["twitch"]["target_user"],
+        array(
+            "Authorization: Bearer " . CONFIG["twitch"]["api_key"],
+            "Client-Id: " . CONFIG["twitch"]["client_id"]
+        )
+    ))["data"][0] ?? (object) []
 );
 
 write(
     "posts.json",
     (request(
-        "GET",
-        "https://graph.instagram.com/v11.0/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp&access_token=" . CONFIG["instagram"]
-    ))[0]["data"]
+        "https://graph.instagram.com/v11.0/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp&access_token=" . CONFIG["instagram"]["api_key"]
+    ))["data"] ?? (object) []
 );

@@ -1,10 +1,10 @@
 <?php
 
 // Load APIs keys
-define("CONFIG", parse_ini_file(__DIR__ . "/../../config.ini"));
+define("CONFIG", parse_ini_file(__DIR__ . "/../../config.ini", true));
 
 // Create HTTP requests
-function request(string $method, string $url, array $body = []): array
+function request(string $method, string $url, array $body = [])
 {
     // Add header information
     $headers = array(
@@ -34,8 +34,7 @@ function request(string $method, string $url, array $body = []): array
     }
 
     // Return response and close curl
-    $response[] = json_decode(curl_exec($curl), true);
-    $response[] = curl_getinfo($curl);
+    $response = json_decode(curl_exec($curl), true);
     curl_close($curl);
     return $response;
 }
@@ -59,14 +58,28 @@ function write(string $section, string $key, string $content)
         $new_content     .= "[$section]\n$section_content\n";
     }
 
-    file_put_contents(__DIR__ . "/../config.ini", $new_content);
+    file_put_contents(__DIR__ . "/../../config.ini", $new_content);
 }
 
 // Renew instagram token
 write(
-    "APIs", "instagram",
+    "instagram", "api_key",
     (request(
         "GET",
-        "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . CONFIG["instagram"]
-    ))[0]["access_token"]
+        "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=" . CONFIG["instagram"]["api_key"]
+    ))["access_token"] ?? ''
+);
+
+// Renew twitch token
+write(
+    "twitch", "api_key",
+    (request(
+        "POST",
+        "https://id.twitch.tv/oauth2/token",
+        [
+            "client_id" => CONFIG["twitch"]["client_id"],
+            "client_secret" => CONFIG["twitch"]["client_secret"],
+            "grant_type" => "client_credentials"
+        ]
+    ))["access_token"] ?? ''
 );
