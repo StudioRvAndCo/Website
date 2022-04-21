@@ -57,5 +57,11 @@ window.onload = () => {
     });
 
     document.querySelectorAll('.countup').forEach(animateCountUp);
-    new Splide('.splide').mount();
+    new Splide('.splide', {
+        speed    : 800,
+        type     : 'loop',
+        interval : 7000,
+        autoplay : true,
+        lazyLoad : 'sequential'
+    }).mount();
 }

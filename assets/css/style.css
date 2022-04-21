@@ -378,6 +378,32 @@ main {
 
 #projets {
     background-color: var(--container);
+    padding-bottom: 20px;
+}
+
+.splide__arrow {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 95%);
+    opacity: 1;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+    font-size: 1.6em;
+}
+
+.splide__arrow:last-of-type {
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 95%);
+    border-radius: 0 8px 8px 0;
+}
+
+.splide__arrow svg {
+    fill: white;
+}
+
+.splide__arrow--prev {
+    left: 0;
+}
+
+.splide__arrow--next {
+    right: 0;
 }
 
 .splide__slide img {
@@ -386,6 +412,20 @@ main {
     max-height: 240px;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.splide__pagination {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 26px;
+    bottom: -30px;
+}
+
+.splide__pagination button {
+    width: 50px;
+    border-radius: 8px;
+    transform: scale(1) !important;
+    transition: all .2s ease-in-out;
 }
 
 #association {

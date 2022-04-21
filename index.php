@@ -73,7 +73,6 @@
                 <!-- Quelques chiffres -->
                 <section>
                     <p>Quelques chiffres</p>
-                    <!-- TODO: Synchroniser avec l'API YouTube -->
                     <div>
                         <p><strong class="countup">10</strong> Membres</p>
                         <hr>
@@ -150,27 +149,36 @@
                 <h2 class="super_title">Projets annexes</h2>
 
                 <!-- Bannières -->
-                <!-- TODO: Carousel de bannières -->
-                <!--<section id="project-banners">
-                    <img src="assets/img/mosaique.jpg" alt="">
-                    <div>
-                        <hr>
-                        <hr>
-                        <hr>
-                        <hr>
-                    </div>
-                </section>-->
                 <section id="image-carousel" class="splide" aria-label="Projets annexes">
+                    <div class="splide__arrows">
+                        <button class="splide__arrow splide__arrow--prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                <path d="M118.6 105.4l128 127.1C252.9 239.6 256 247.8 256 255.1s-3.125 16.38-9.375 22.63l-128 127.1c-9.156 9.156-22.91 11.9-34.88 6.943S64 396.9 64 383.1V128c0-12.94 7.781-24.62 19.75-29.58S109.5 96.23 118.6 105.4z"/>
+                            </svg>
+                        </button>
+                        <button class="splide__arrow splide__arrow--next">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                                <path d="M118.6 105.4l128 127.1C252.9 239.6 256 247.8 256 255.1s-3.125 16.38-9.375 22.63l-128 127.1c-9.156 9.156-22.91 11.9-34.88 6.943S64 396.9 64 383.1V128c0-12.94 7.781-24.62 19.75-29.58S109.5 96.23 118.6 105.4z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- TODO: Titre, description et lien vers les projets -->
                     <div class="splide__track">
                         <ul class="splide__list">
                             <li class="splide__slide">
-                                <img src="assets/img/mosaique.jpg" alt="">
+                                <!--<div>
+                                    <h3>Concert PolyBand</h3>
+                                    <p>Description du projet</p>
+                                </div>-->
+                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/concert_polyband.jpg" alt="Concert du groupe Polyband.">
                             </li>
                             <li class="splide__slide">
-                                <img src="assets/img/mosaique.jpg" alt="">
-                            </li>
-                            <li class="splide__slide">
-                                <img src="assets/img/mosaique.jpg" alt="">
+                                <!--<div>
+                                    <h3>Émission Les chroniques</h3>
+                                    <p>Description du projet</p>
+                                </div>-->
+                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/les_chroniques.jpg" alt="Émission 'Les Chroniques'.">
                             </li>
                         </ul>
                     </div>
