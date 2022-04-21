@@ -48,14 +48,14 @@ img {
 
 .main-container {
     margin: 0 auto;
-    padding: 40px 12px;
+    padding: 42px 12px;
     max-width: 1250px;
 }
 
 
 /* --- Super title --- */
 .super_title {
-    margin: 0 auto 30px;
+    margin: 0 auto 36px;
     max-width: 1120px;
     display: flex;
     align-items: center;
@@ -637,3 +637,4 @@ footer a:hover {
 
 /* TODO: Ombres sous les éléments */
 /* TODO: Responsive design */
+/* TODO: Animations */
