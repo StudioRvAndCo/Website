@@ -191,26 +191,26 @@
                 <!-- Membres -->
                 <section id="members" class="reveal">
                     <div>
-                        <img src="assets/img/members/Mael.jpg" alt="Maël.">
+                        <img src="assets/img/members/mael.jpg" alt="Maël.">
                         <p>Maël</p>
                     </div>
                     <div>
                         <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg" target="_blank" rel="noopener">
-                            <img src="assets/img/members/Thomas.jpg" alt="Thomas.">
+                            <img src="assets/img/members/thomas.jpg" alt="Thomas.">
                             <p>Thomas</p>
                             <hr>
                         </a>
                     </div>
                     <div>
                         <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA" target="_blank" rel="noopener">
-                            <img src="assets/img/members/Florent.jpg" alt="Florent.">
+                            <img src="assets/img/members/florent.jpg" alt="Florent.">
                             <p>Florent</p>
                             <hr>
                         </a>
                     </div>
                     <div>
                         <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ" target="_blank" rel="noopener">
-                            <img src="assets/img/members/Mathis.jpg" alt="Mathis.">
+                            <img src="assets/img/members/mathis.jpg" alt="Mathis.">
                             <p>Mathis</p>
                             <hr>
                         </a>
