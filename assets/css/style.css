@@ -320,7 +320,7 @@ main {
 }
 
 #productions {
-    background-color: var(--background-color);
+    background: radial-gradient(circle, rgb(57, 57, 57) 0%, rgb(44, 44, 44) 100%);
 }
 
 #main-prod {
