@@ -65,6 +65,7 @@ img {
     font-size: 1.6em;
     font-weight: 700;
     text-transform: uppercase;
+    text-shadow: 0 0 0.8em rgba(0, 0, 0, .1), 0 0 0.2em rgba(0, 0, 0, .1);
 }
 
 .super_title::before, .super_title::after {
@@ -88,7 +89,7 @@ img {
     line-height: 2.18em;
     cursor: pointer;
     color: var(--primary-text);
-    /*box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .25);*/
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
     background-color: var(--primary-btn);
     transition: background-color .15s;
 }
@@ -275,6 +276,7 @@ main {
 
 #accueil section:last-of-type {
     background-color: var(--background-color);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
     border-radius: 8px;
     padding: 16px;
     height: 460px;
@@ -344,6 +346,7 @@ main {
     height: 100%;
     max-height: 260px;
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
 }
 
 #main-prod article > section:last-of-type div {
@@ -359,6 +362,7 @@ main {
     border-radius: 8px;
     padding: 6px 12px;
     font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
 }
 
 #main-prod article > section:last-of-type h3 {
@@ -379,6 +383,10 @@ main {
 #projets {
     background-color: var(--container);
     padding-bottom: 20px;
+}
+
+.splide {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
 }
 
 .splide__arrow {
@@ -492,6 +500,7 @@ main {
     height: 100px;
     border-radius: 100%;
     object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
 }
 
 #members > div a {
@@ -549,6 +558,7 @@ main {
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
 }
 
 #association article > a {
@@ -557,7 +567,8 @@ main {
 }
 
 #contact section {
-    background-color: var(--background-color);
+    background: radial-gradient(circle, rgb(48, 48, 48) 0%, rgb(57, 57, 57) 100%);
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
     border-radius: 8px;
     padding: 30px;
     display: flex;
@@ -660,6 +671,5 @@ footer a:hover {
     color: var(--primary-text);
 }
 
-/* TODO: Ombres sous les éléments */
 /* TODO: Responsive design */
 /* TODO: Animations */
