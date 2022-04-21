@@ -463,6 +463,7 @@ main {
 
 #association {
     background-color: var(--alt-container);
+    background-image: url("/assets/img/members/background.svg");
 }
 
 #association article > p {
