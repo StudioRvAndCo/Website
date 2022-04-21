@@ -12,7 +12,7 @@ const animateCountUp = el => {
         const currentCount = Math.round(countTo * progress);
 
         if (parseInt(el.innerHTML, 10) !== currentCount) {
-            el.innerHTML = currentCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");;
+            el.innerHTML = currentCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         }
 
         if (frame === totalFrames) {
@@ -56,12 +56,19 @@ window.onload = () => {
         });
     });
 
+    // Add shadow on play
+    const video = document.querySelector('video');
+    video.onplay = () => {
+        video.style.boxShadow = "0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%)";
+    };
+
     document.querySelectorAll('.countup').forEach(animateCountUp);
     new Splide('.splide', {
         speed    : 800,
         type     : 'loop',
         interval : 7000,
         autoplay : true,
-        lazyLoad : 'sequential'
+        lazyLoad : 'sequential',
+        height   : 240
     }).mount();
 }

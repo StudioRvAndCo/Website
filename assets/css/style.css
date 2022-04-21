@@ -383,7 +383,7 @@ main {
 
 .splide__arrow {
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 95%);
-    opacity: 1;
+    opacity: 1 !important;
     height: 100%;
     border-radius: 8px 0 0 8px;
     font-size: 1.6em;
@@ -412,6 +412,31 @@ main {
     max-height: 240px;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.splide__slide div {
+    position: absolute;
+    border-radius: 8px;
+    padding: 10px 0 10px 60px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(35deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+    width: 100%;
+    height: 100%;
+}
+
+.splide__slide div h3 {
+    font-size: 1.4em;
+    font-weight: 600;
+    text-shadow: 0 0 0.8em rgba(0, 0, 0, 0.5), 0 0 0.2em rgba(0, 0, 0, 0.5);
+}
+
+.splide__slide div p {
+    font-size: .9em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 0.8em rgba(0, 0, 0, 0.5), 0 0 0.2em rgba(0, 0, 0, 0.5);
 }
 
 .splide__pagination {

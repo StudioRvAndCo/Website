@@ -167,18 +167,20 @@
                     <div class="splide__track">
                         <ul class="splide__list">
                             <li class="splide__slide">
-                                <!--<div>
-                                    <h3>Concert PolyBand</h3>
-                                    <p>Description du projet</p>
-                                </div>-->
-                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/concert_polyband.jpg" alt="Concert du groupe Polyband.">
+                                <div>
+                                    <h3>Émission Les chroniques</h3>
+                                    <p>Talkshow diffusé en direct sur Twitch.</p>
+                                    <a class="btn" href="https://www.youtube.com/watch?v=GuYfV7U6w8E&list=PLSBzstMGFp53S9n77CvdrQG132hMXSBBM" target="_blank" rel="noopener">Voir</a>
+                                </div>
+                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/les_chroniques.jpg" alt="Émission 'Les Chroniques'.">
                             </li>
                             <li class="splide__slide">
-                                <!--<div>
-                                    <h3>Émission Les chroniques</h3>
-                                    <p>Description du projet</p>
-                                </div>-->
-                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/les_chroniques.jpg" alt="Émission 'Les Chroniques'.">
+                                <div>
+                                    <h3>Concert PolyBand</h3>
+                                    <p>Captation vidéo et sonore du concert du 17 mars 2022.</p>
+                                    <a class="btn" href="https://www.facebook.com/Polyband-BDA-Polytech-Grenoble-114697373596248/" target="_blank" rel="noopener">Voir</a>
+                                </div>
+                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/concert_polyband.jpg" alt="Concert du groupe Polyband.">
                             </li>
                         </ul>
                     </div>
