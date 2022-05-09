@@ -531,7 +531,7 @@ main {
 .splide__slide div {
     position: absolute;
     border-radius: 8px;
-    padding: 10px 0 10px 60px;
+    padding: 10px 60px 10px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -920,6 +920,10 @@ footer a:hover {
 
     #main-prod article > section:last-of-type h3 {
         text-align: center;
+    }
+
+    .splide__slide div .btn {
+        width: 100%;
     }
 
     #contact section > div:last-of-type div {
