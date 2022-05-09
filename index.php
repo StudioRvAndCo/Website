@@ -232,7 +232,7 @@
                     <?php
                         $posts = json_decode(file_get_contents(__DIR__ . "/assets/data/posts.json"), true);
                         for ($i = 0; $i < 9; $i++) {
-                            echo "<a href='" . $posts[$i]['permalink'] . "'>";
+                            echo "<a href='" . $posts[$i]['permalink'] . "' target='_blank'>";
                             if ($posts[$i]['media_type'] === 'VIDEO') {
                                 echo '<img src="' . $posts[$i]['thumbnail_url'] . '" alt="' . str_replace('"', "'", explode('>>>', $posts[$i]['caption'])[0]) . '" title="' . str_replace('"', "'", explode('>>>', $posts[$i]['caption'])[0]) . '">';
                             } else {
