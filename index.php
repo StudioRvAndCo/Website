@@ -163,7 +163,6 @@
                         </button>
                     </div>
 
-                    <!-- TODO: Titre, description et lien vers les projets -->
                     <div class="splide__track">
                         <ul class="splide__list">
                             <li class="splide__slide">
@@ -172,7 +171,7 @@
                                     <p>Talkshow diffusé en direct sur Twitch.</p>
                                     <a class="btn" href="https://www.youtube.com/watch?v=GuYfV7U6w8E&list=PLSBzstMGFp53S9n77CvdrQG132hMXSBBM" target="_blank" rel="noopener">Voir</a>
                                 </div>
-                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/les_chroniques.jpg" alt="Émission 'Les Chroniques'.">
+                                <img src="" data-splide-lazy="assets/img/projects/les_chroniques.jpg" alt="Émission 'Les Chroniques'.">
                             </li>
                             <li class="splide__slide">
                                 <div>
@@ -180,7 +179,7 @@
                                     <p>Captation vidéo et sonore du concert du 17 mars 2022.</p>
                                     <a class="btn" href="https://www.facebook.com/Polyband-BDA-Polytech-Grenoble-114697373596248/" target="_blank" rel="noopener">Voir</a>
                                 </div>
-                                <img src="data:image/jpg;base64" data-splide-lazy="assets/img/projects/concert_polyband.jpg" alt="Concert du groupe Polyband.">
+                                <img src="" data-splide-lazy="assets/img/projects/concert_polyband.jpg" alt="Concert du groupe Polyband.">
                             </li>
                         </ul>
                     </div>
@@ -229,23 +228,19 @@
                 <hr class="reveal">
 
                 <!-- Posts Instagram -->
-                <!-- TODO: Synchronisation avec l'API Instagram -->
                 <section id="instagram-posts" class="reveal">
-                    <a href="#">
-                        <img src="assets/img/mosaique.jpg" alt="">
-                    </a>
-                    <a href="#">
-                        <img src="assets/img/mosaique.jpg" alt="">
-                    </a>
-                    <a href="#">
-                        <img src="assets/img/mosaique.jpg" alt="">
-                    </a>
-                    <a href="#">
-                        <img src="assets/img/mosaique.jpg" alt="">
-                    </a>
-                    <a href="#">
-                        <img src="assets/img/mosaique.jpg" alt="">
-                    </a>
+                    <?php
+                        $posts = json_decode(file_get_contents(__DIR__ . "/assets/data/posts.json"), true);
+                        for ($i = 0; $i < 9; $i++) {
+                            echo "<a href='" . $posts[$i]['permalink'] . "'>";
+                            if ($posts[$i]['media_type'] === 'VIDEO') {
+                                echo '<img src="' . $posts[$i]['thumbnail_url'] . '" alt="' . str_replace('"', "'", explode('>>>', $posts[$i]['caption'])[0]) . '" title="' . str_replace('"', "'", explode('>>>', $posts[$i]['caption'])[0]) . '">';
+                            } else {
+                                echo '<img src="' . $posts[$i]['media_url'] . '" alt="' . str_replace('"', "'", explode('>>>', $posts[$i]['caption'])[0]) . '" title="' . str_replace('"', "'", explode('>>>', $posts[$i]['caption'])[0]) . '">';
+                            }
+                            echo '</a>';
+                        }
+                    ?>
                 </section>
                 <a class="btn" href="https://www.instagram.com/studiorvandco" target="_blank" rel="noopener">Plus de photos...</a>
             </article>
