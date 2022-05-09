@@ -58,6 +58,7 @@ write(
     ))["items"][0]["statistics"] ?? (object) []
 );
 
+// Get stream status from Twith API
 write(
     "stream.json",
     (request(
@@ -69,6 +70,7 @@ write(
     ))["data"][0] ?? (object) []
 );
 
+// Get posts from Instagram API
 write(
     "posts.json",
     (request(
