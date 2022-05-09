@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Studio Rv & Co.">
+    <meta name="description" content="Le Studio Rv & Co est une association regroupant des amis passionnés par le monde du cinéma.">
 
     <link rel="icon" href="assets/img/logos/favicon/favicon.ico" media="(prefers-color-scheme:no-preference)">
     <link rel="icon" href="assets/img/logos/favicon/favicon-light.ico" media="(prefers-color-scheme:dark)">
