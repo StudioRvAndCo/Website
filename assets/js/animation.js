@@ -72,4 +72,14 @@ window.onload = () => {
         lazyLoad : 'sequential',
         height   : 240
     }).mount();
+
+    const mobile_menu = document.getElementById("mobile_menu");
+    const nav = document.getElementsByClassName("dropdown")[0];
+    mobile_menu.addEventListener('click', () => {
+        if (nav.classList.contains("open")) {
+            nav.classList.remove('open');
+        } else {
+            nav.classList.add('open');
+        }
+    })
 }
