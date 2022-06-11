@@ -93,7 +93,7 @@
                     <div>
                         <p><strong class="countup">10</strong> Membres</p>
                         <hr>
-                        <p><strong class="countup">3</strong> Projets</p>
+                        <p><strong class="countup">6</strong> Projets</p>
                         <hr>
                         <p><strong class="countup"><?= json_decode(file_get_contents(__DIR__ . "/assets/data/statistics.json"), true)["viewCount"] ?></strong> Vues</p>
                         <hr>
@@ -114,11 +114,27 @@
                     <!-- 1ᵉ production -->
                     <article class="reveal">
                         <section>
-                            <img src="assets/img/productions/un_chemin.jpg" alt="Miniature du court-métrage 'Un Chemin'.">
+                            <img src="assets/img/productions/en_sursis.jpg" alt="Miniature du court-métrage 'Un Chemin'.">
                         </section>
                         <section>
                             <div>
                                 <span class="new">Nouveau</span>
+                                <h3>En Sursis</h3>
+                            </div>
+                            <p>
+                                Grâce au jeune lieutenant Jules, le capitaine Patrick Corbier aperçoit enfin sa chance d'atteindre l'insaisissable Vincent, qu'il traque en solitaire depuis de nombreuses années.
+                            </p>
+                            <a class="btn" href="https://www.youtube.com/watch?v=JVPWEmjVV7g" target="_blank" rel="noopener">Regarder</a>
+                        </section>
+                    </article>
+
+                    <!-- 2ᵉ production -->
+                    <article class="reveal">
+                        <section>
+                            <img src="assets/img/productions/un_chemin.jpg" alt="Miniature du court-métrage 'Un Chemin'.">
+                        </section>
+                        <section>
+                            <div>
                                 <h3>Un Chemin</h3>
                             </div>
                             <p>
@@ -129,7 +145,7 @@
                         </section>
                     </article>
 
-                    <!-- 2ᵉ production -->
+                    <!-- 3ᵉ production -->
                     <article class="reveal">
                         <section>
                             <img src="assets/img/productions/star_wars_une_quete_de_justice.jpg" alt="Miniature du fan film 'Star Wars : Une quête de justice'.">
@@ -143,7 +159,7 @@
                         </section>
                     </article>
 
-                    <!-- 3ᵉ production -->
+                    <!-- 4ᵉ production -->
                     <article class="reveal">
                         <section>
                             <img src="assets/img/productions/un_ete_entre_amis.jpg" alt="Miniature de la série 'Un été entre amis'.">
