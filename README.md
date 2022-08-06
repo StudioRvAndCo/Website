@@ -67,7 +67,6 @@ Website of the association Rv & Co promoting the productions and social networks
 - [Sass](https://sass-lang.com/)
 - [Vue-i18n](https://vue-i18n.intlify.dev/)
 - [Vue-router](https://router.vuejs.org/)
-- [Vue-my-photos](https://github.com/am283721/vue-my-photos)
 - [Vue-observe-visibility](https://github.com/Akryum/vue-observe-visibility)
 - [Fontawesome](https://fontawesome.com/)
 - [SplideJS](https://splidejs.com/)
