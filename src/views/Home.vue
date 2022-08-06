@@ -2,18 +2,21 @@
   <main>
     <Teaser />
     <Productions />
+    <Projects />
   </main>
 </template>
 
 <script>
 import Teaser from "@/components/Teaser";
 import Productions from "@/components/Productions";
+import Projects from "@/components/Projects";
 
 export default {
   name: "HomeView",
   components: {
     Teaser,
     Productions,
+    Projects,
   },
 };
 </script>
