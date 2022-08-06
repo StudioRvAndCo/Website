@@ -50,7 +50,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/mixin.scss";
 $height: 70px;
 
 header {
