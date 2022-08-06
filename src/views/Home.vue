@@ -22,10 +22,6 @@ export default {
 main {
   background-image: url("../assets/img/background.webp");
   background-attachment: fixed;
-  display: flex;
-  flex-flow: column nowrap;
-  gap: var(--spacing);
-  padding: var(--spacing) 0;
 
   & > article {
     @include max-width(var(--max-width-content));

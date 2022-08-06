@@ -39,90 +39,94 @@ export default {
 </script>
 
 <style scoped lang="scss">
-h2 {
-  font-size: 2.3em;
-  font-weight: 800;
-  text-shadow: 0 0 0.8em var(--background-color),
-    0 0 0.2em var(--background-color);
+article {
+  padding: var(--spacing) 0;
 
-  &::before,
-  &::after {
-    content: none;
-  }
-}
+  h2 {
+    font-size: 2.3em;
+    font-weight: 800;
+    text-shadow: 0 0 0.8em var(--background-color),
+      0 0 0.2em var(--background-color);
 
-section {
-  display: grid;
-  grid-template-columns: 1.6fr 0.6fr;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-
-  video {
-    @include box-shadow;
-    width: 100%;
-    aspect-ratio: 16/9;
-    border-radius: var(--border-radius);
+    &::before,
+    &::after {
+      content: none;
+    }
   }
 
-  & > div {
-    height: 100%;
-    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%),
-      0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
-    background-color: var(--bg-color);
-    border-radius: var(--border-radius);
-    padding: 1rem;
-    display: flex;
-    flex-flow: column nowrap;
+  section {
+    display: grid;
+    grid-template-columns: 1.6fr 0.6fr;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 3rem;
 
-    h3 {
-      text-align: center;
-      font-size: 1.5em;
+    video {
+      @include box-shadow;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--border-radius);
     }
 
     & > div {
-      width: 100%;
-      height: inherit;
-      background-color: var(--projects-bg-color);
+      height: 100%;
+      box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%),
+        0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
+      background-color: var(--bg-color);
       border-radius: var(--border-radius);
+      padding: 1rem;
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0;
+      gap: 1rem;
 
-      p {
-        width: inherit;
-        padding: 1rem;
-        position: relative;
-        display: inline-flex;
+      h3 {
+        text-align: center;
+        font-size: 1.5em;
+      }
+
+      & > div {
+        width: 100%;
+        height: inherit;
+        background-color: var(--projects-bg-color);
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-flow: column nowrap;
         align-items: center;
-        justify-content: center;
-        font-size: 1.2em;
-        gap: 8px;
+        justify-content: space-between;
+        gap: 0;
 
-        &::after {
-          content: "";
-          position: absolute;
-          left: 2.2em;
-          right: 2.2em;
-          bottom: -6%;
-          height: 2px;
-          border-radius: var(--border-radius);
-          background-color: rgba(255, 255, 255, 0.15);
-        }
+        p {
+          width: inherit;
+          padding: 1rem;
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2em;
+          gap: 8px;
 
-        &:last-of-type::after {
-          content: none;
-        }
+          &::after {
+            content: "";
+            position: absolute;
+            left: 2.2em;
+            right: 2.2em;
+            bottom: -6%;
+            height: 2px;
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.15);
+          }
 
-        span {
-          padding-bottom: 2px;
-          font-size: 1.3em;
-          font-weight: 700;
+          &:last-of-type::after {
+            content: none;
+          }
+
+          span {
+            padding-bottom: 2px;
+            font-size: 1.3em;
+            font-weight: 700;
+          }
         }
       }
     }
