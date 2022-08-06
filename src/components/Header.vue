@@ -14,13 +14,13 @@
       <router-link to="/#productions">
         {{ $t("header.productions") }}
       </router-link>
-      <router-link to="/projects">
+      <router-link to="/#projects">
         {{ $t("header.projects") }}
       </router-link>
-      <router-link to="/association">
+      <router-link to="/#association">
         {{ $t("header.association") }}
       </router-link>
-      <router-link to="/contact">
+      <router-link to="/#contact">
         {{ $t("header.contact") }}
       </router-link>
     </nav>
@@ -61,7 +61,6 @@ header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  justify-items: center;
 
   a {
     transition: color 200ms;
@@ -93,15 +92,22 @@ header {
   nav {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    justify-items: center;
+
+    a {
+      padding: 1rem 1.5rem;
+    }
   }
 
   section {
     justify-self: end;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.3rem;
     font-size: 1.3em;
+
+    a {
+      padding: 1rem 0.75rem;
+    }
   }
 }
 </style>
