@@ -34,6 +34,7 @@ export default {
   --max-width-content: 1250px;
   --max-width-header: 1500px;
   --spacing: 4rem;
+  --border-radius: 8px;
 }
 
 * {
@@ -96,7 +97,7 @@ body {
       border-top: 0.08em solid;
       content: "";
       flex: 1;
-      border-radius: 8px;
+      border-radius: var(--border-radius);
     }
   }
 }
