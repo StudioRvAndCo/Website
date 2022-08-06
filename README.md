@@ -52,7 +52,7 @@ Website of the association Rv & Co promoting the productions and social networks
 
 ### Features
 
-- Video trailer with important numbers
+- Video teaser with important numbers
 - Our productions
 - Other projects with carousel
 - Association's presentation with its members and Instagram posts
@@ -133,7 +133,7 @@ A new `dist` folder will appear containing the entire compiled website.
 
 ## Roadmap
 
-- [ ] Video Trailer with numbers
+- [ ] Video teaser with numbers
 - [ ] List of productions
 - [ ] Carousel of other projects
 - [ ] Presentation of the association
