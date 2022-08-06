@@ -1,5 +1,0 @@
-# Sync data
-*/10 * * * * /usr/bin/php8.1 /home/web/rvandco/website/assets/data/sync.php >/dev/null 2>&1
-
-# Renew tokens
-0 0 * * * /usr/bin/php8.1 /home/web/rvandco/website/assets/data/renew.php >/dev/null 2>&1
