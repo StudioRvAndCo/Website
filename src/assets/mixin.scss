@@ -1,0 +1,10 @@
+@mixin full-width-background-color($colour) {
+  background-color: $colour;
+  box-shadow: 0 0 0 100vmax $colour;
+  clip-path: inset(0 -100vmax);
+}
+
+@mixin max-width($width) {
+  width: min(100% - 2rem, $width);
+  margin-inline: auto;
+}
