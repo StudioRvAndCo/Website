@@ -107,4 +107,26 @@ body {
   margin-inline: auto;
   padding: 40px 0;
 }
+
+.btn {
+  display: inline-block;
+  width: 270px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none !important;
+  line-height: 2.18em;
+  cursor: pointer;
+  color: var(--primary-text);
+  box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
+  background-color: var(--btn-color);
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: rgb(156, 0, 0);
+  }
+}
 </style>
