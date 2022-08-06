@@ -80,12 +80,13 @@ body {
   }
 
   h2 {
-    margin: 0 auto 36px;
-    max-width: 1120px;
+    width: min(100%, 1120px);
+    margin-inline: auto;
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 1rem;
     text-align: center;
     font-size: 1.6em;
     font-weight: 700;
