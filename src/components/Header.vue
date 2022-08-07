@@ -53,6 +53,7 @@ export default {
 $height: 70px;
 
 header {
+  z-index: 100;
   @include full-width-background-color(var(--bg-color));
   @include max-width(var(--max-width-header));
   height: $height;
