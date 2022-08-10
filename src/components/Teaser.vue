@@ -43,6 +43,7 @@ article {
   padding: var(--spacing) 0;
 
   h2 {
+    margin-bottom: 2rem;
     font-size: 2.3em;
     font-weight: 800;
     text-shadow: 0 0 0.8em var(--background-color),

@@ -92,7 +92,7 @@ article {
   padding: var(--spacing) 0;
 
   & > article {
-    padding: 1rem 0 0;
+    padding: 0;
 
     section {
       display: flex;

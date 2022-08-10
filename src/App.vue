@@ -82,7 +82,7 @@ body {
   h2 {
     width: min(100%, 1120px);
     margin-inline: auto;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,7 +106,7 @@ body {
 .content {
   width: min(100% - 2rem, 1350px);
   margin-inline: auto;
-  padding: 40px 0;
+  padding: 3rem 0;
 }
 
 .btn {
