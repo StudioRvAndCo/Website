@@ -29,6 +29,7 @@ export default {
 footer {
   @include full-width-background-color(var(--bg-color));
   @include max-width(var(--max-width-content));
+  font-size: 0.9em;
   padding: 0.8rem 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
