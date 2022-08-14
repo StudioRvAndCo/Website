@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article id="projects">
     <!-- Title -->
     <h2>Projets annexes</h2>
     <Splide
@@ -58,7 +58,7 @@ export default {
         type: "loop",
         rewind: true,
         rewindByDrag: true,
-        autoplay: true,
+        autoplay: false,
         keyboard: true,
         cover: true,
         arrows: false,
@@ -82,20 +82,37 @@ export default {
 </script>
 
 <style scoped lang="scss">
-article {
+#projects {
   @include full-width-background-color(var(--projects-bg-color));
   padding: var(--spacing) 0;
-}
 
-.splide {
-  // height: 100px;
-  border-radius: var(--border-radius);
-
-  .splide__slide {
+  .splide {
     border-radius: var(--border-radius);
-  }
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
 
-  border: 1px solid red;
-  //box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
+    .splide__slide {
+      height: 330px !important;
+
+      div {
+        padding: 4rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+        justify-content: center;
+        background: linear-gradient(
+          35deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+
+        p {
+          margin-bottom: 1.4rem;
+        }
+      }
+    }
+  }
 }
 </style>
