@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article id="productions">
     <!-- Title -->
     <h2>Nos productions</h2>
     <article>
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-article {
+#productions {
   @include full-width-background-color(var(--bg-color));
   padding: var(--spacing) 0;
 
