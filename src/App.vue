@@ -103,12 +103,6 @@ body {
   }
 }
 
-.content {
-  width: min(100% - 2rem, 1350px);
-  margin-inline: auto;
-  padding: 3rem 0;
-}
-
 .btn {
   display: inline-block;
   width: 270px;
