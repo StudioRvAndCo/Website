@@ -3,6 +3,7 @@
     <Teaser />
     <Productions />
     <Projects />
+    <Association />
   </main>
 </template>
 
@@ -10,6 +11,7 @@
 import Teaser from "@/components/Teaser";
 import Productions from "@/components/Productions";
 import Projects from "@/components/Projects";
+import Association from "@/components/Association";
 
 export default {
   name: "HomeView",
@@ -17,6 +19,7 @@ export default {
     Teaser,
     Productions,
     Projects,
+    Association,
   },
 };
 </script>
