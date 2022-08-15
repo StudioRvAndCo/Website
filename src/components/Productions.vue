@@ -88,6 +88,7 @@ export default {
 
 <style scoped lang="scss">
 #productions {
+  @include max-width(var(--max-width-content));
   @include full-width-background-color(var(--bg-color));
   padding: var(--spacing) 0;
 

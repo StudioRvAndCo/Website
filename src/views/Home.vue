@@ -25,9 +25,5 @@ export default {
 main {
   background-image: url("../assets/img/background.webp");
   background-attachment: fixed;
-
-  & > article {
-    @include max-width(var(--max-width-content));
-  }
 }
 </style>

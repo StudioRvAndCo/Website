@@ -83,6 +83,7 @@ export default {
 
 <style scoped lang="scss">
 #projects {
+  @include max-width(var(--max-width-content));
   @include full-width-background-color(var(--projects-bg-color));
   padding: var(--spacing) 0;
 

@@ -40,6 +40,7 @@ export default {
 
 <style scoped lang="scss">
 article {
+  @include max-width(var(--max-width-content));
   padding: var(--spacing) 0;
 
   h2 {
