@@ -37,7 +37,7 @@
         <a href="https://www.instagram.com/studiorvandco">
           <font-awesome-icon icon="fa-brands fa-instagram" />
         </a>
-        <a href="https://www.twitch.tv/studiorvandco">
+        <a href="https://www.twitch.tv/studiorvandco" class="on-air">
           <font-awesome-icon icon="fa-brands fa-twitch" />
         </a>
       </section>
@@ -117,8 +117,41 @@ header {
       font-size: 1.3em;
 
       a {
+        display: inline-flex;
+        justify-content: center;
         padding: 1rem 0.75rem;
       }
+    }
+  }
+}
+
+.on-air {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 13px;
+    right: 11px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--btn-color);
+  }
+
+  &::after {
+    animation: pulse-scale 2.6s infinite;
+  }
+
+  @keyframes pulse-scale {
+    0% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2.4);
     }
   }
 }
