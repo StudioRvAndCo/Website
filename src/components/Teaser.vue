@@ -44,8 +44,8 @@ article {
   padding: var(--spacing) 0;
 
   h2 {
-    margin-bottom: 2rem;
-    font-size: 2.3em;
+    margin-bottom: calc(var(--spacing) / 2);
+    font-size: 2.2em;
     font-weight: 800;
     text-shadow: 0 0 0.8em var(--background-color),
       0 0 0.2em var(--background-color);
@@ -58,10 +58,10 @@ article {
 
   section {
     display: grid;
-    grid-template-columns: 1.6fr 0.6fr;
+    grid-template-columns: 1.7fr 0.7fr;
     align-items: center;
     justify-content: space-between;
-    gap: 3rem;
+    gap: var(--spacing);
 
     video {
       @include box-shadow;
@@ -70,7 +70,7 @@ article {
       border-radius: var(--border-radius);
     }
 
-    & > div {
+    > div {
       height: 100%;
       box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%),
         0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
@@ -88,7 +88,11 @@ article {
         font-size: 1.5em;
       }
 
-      & > div {
+      .btn {
+        width: 100%;
+      }
+
+      > div {
         width: 100%;
         height: inherit;
         background-color: var(--projects-bg-color);
