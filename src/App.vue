@@ -31,9 +31,9 @@ export default {
 
   --btn-color: #be0000;
 
-  --max-width-content: 1250px;
-  --max-width-header: 1500px;
-  --spacing: 4rem;
+  --max-width-content: 1200px;
+  --max-width-header: 1450px;
+  --spacing: 3.6rem;
   --border-radius: 8px;
 }
 
@@ -82,7 +82,7 @@ body {
   h2 {
     width: min(100%, 1120px);
     margin-inline: auto;
-    margin-bottom: 3rem;
+    margin-bottom: calc(var(--spacing) / 1.25);
     display: flex;
     align-items: center;
     justify-content: center;
