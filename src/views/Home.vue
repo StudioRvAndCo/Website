@@ -4,6 +4,7 @@
     <Productions />
     <Projects />
     <Association />
+    <Contact />
   </main>
 </template>
 
@@ -12,6 +13,7 @@ import Teaser from "@/components/Teaser";
 import Productions from "@/components/Productions";
 import Projects from "@/components/Projects";
 import Association from "@/components/Association";
+import Contact from "@/components/Contact";
 
 export default {
   name: "HomeView",
@@ -20,6 +22,7 @@ export default {
     Productions,
     Projects,
     Association,
+    Contact,
   },
 };
 </script>
