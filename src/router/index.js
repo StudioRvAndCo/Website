@@ -20,7 +20,7 @@ const router = createRouter({
     if (to.hash) {
       let id = window.location.href.split("#")[1];
       if (id.length) {
-        let yOffset = -90;
+        let yOffset = -40;
         let element = document.getElementById(id);
         if (element) {
           let y =
