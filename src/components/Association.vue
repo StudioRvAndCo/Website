@@ -36,7 +36,38 @@
         <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
           <img src="@/assets/img/logo.png" alt="Logo" />
         </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+          <img src="@/assets/img/logo.png" alt="Logo" />
+        </a>
       </section>
+
+      <a href="https://www.instagram.com/studiorvandco" class="btn">
+        Plus de photos...
+      </a>
     </div>
   </article>
 </template>
@@ -61,6 +92,12 @@ export default {
       color: var(--subtext-color);
     }
 
+    .btn {
+      margin-top: 3rem;
+      display: block;
+      margin-inline: auto;
+    }
+
     section:first-of-type {
       margin-top: calc(var(--spacing) / 1.5);
       display: flex;
@@ -82,6 +119,10 @@ export default {
         img {
           max-height: 120px;
           border-radius: 50%;
+        }
+
+        p {
+          color: var(--text-color);
         }
       }
 
@@ -105,9 +146,25 @@ export default {
 
     hr {
       margin: calc(var(--spacing) / 1.5) auto;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
       width: 50%;
       border-radius: var(--border-radius);
+    }
+
+    section:last-of-type {
+      display: flex;
+      gap: 3rem 4rem;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+
+      a {
+        transform: scale(1);
+        transition: transform 250ms;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
     }
   }
 }
