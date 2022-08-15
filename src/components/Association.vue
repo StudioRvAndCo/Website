@@ -12,19 +12,27 @@
       <!-- Members -->
       <section>
         <div>
-          <img src="@/assets/img/association/mael.webp" alt="Maël" />
+          <div>
+            <img src="@/assets/img/association/mael.webp" alt="Maël" />
+          </div>
           <p>Maël</p>
         </div>
         <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg">
-          <img src="@/assets/img/association/thomas.webp" alt="Thomas" />
+          <div>
+            <img src="@/assets/img/association/thomas.webp" alt="Thomas" />
+          </div>
           <p>Thomas</p>
         </a>
         <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA">
-          <img src="@/assets/img/association/florent.webp" alt="Florent" />
+          <div>
+            <img src="@/assets/img/association/florent.webp" alt="Florent" />
+          </div>
           <p>Florent</p>
         </a>
         <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ">
-          <img src="@/assets/img/association/mathis.webp" alt="Mathis" />
+          <div>
+            <img src="@/assets/img/association/mathis.webp" alt="Mathis" />
+          </div>
           <p>Mathis</p>
         </a>
       </section>
@@ -105,7 +113,8 @@ export default {
       gap: 2rem;
 
       a,
-      div {
+      > div {
+        font-weight: 600;
         width: max-content;
         display: flex;
         flex-flow: column nowrap;
@@ -116,9 +125,19 @@ export default {
         transition: transform 250ms;
         text-decoration: none;
 
-        img {
-          max-height: 120px;
+        div {
+          width: 120px;
+          height: 120px;
           border-radius: 50%;
+          overflow: hidden;
+          box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            transform: scale(1);
+            transition: transform 250ms;
+          }
         }
 
         p {
@@ -132,14 +151,14 @@ export default {
           height: 2px;
           position: absolute;
           bottom: -0.5rem;
-          left: 2.5rem;
-          right: 2.5rem;
+          left: 2.7rem;
+          right: 2.7rem;
           border-radius: var(--border-radius);
           background-color: var(--subtext-color);
         }
 
-        &:hover {
-          transform: scale(1.05);
+        &:hover div img {
+          transform: scale(1.06);
         }
       }
     }
