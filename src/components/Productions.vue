@@ -92,15 +92,15 @@ export default {
   @include full-width-background-color(var(--bg-color));
   padding: var(--spacing) 0;
 
-  & > article {
+  > article {
     padding: 0;
 
     section {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      gap: 3rem;
-      margin-bottom: 4rem;
+      gap: calc(var(--spacing) / 1.25);
+      margin-bottom: var(--spacing);
 
       &:first-of-type {
         h3 {
