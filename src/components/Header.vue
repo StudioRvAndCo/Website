@@ -40,16 +40,23 @@
 
       <!-- Links -->
       <section>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
+        <a
+          href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ"
+          title="YouTube"
+        >
           <font-awesome-icon icon="fa-brands fa-youtube" />
         </a>
-        <a href="https://twitter.com/studiorvandco">
+        <a href="https://twitter.com/studiorvandco" title="Twitter">
           <font-awesome-icon icon="fa-brands fa-twitter" />
         </a>
-        <a href="https://www.instagram.com/studiorvandco">
+        <a href="https://www.instagram.com/studiorvandco" title="Instagram">
           <font-awesome-icon icon="fa-brands fa-instagram" />
         </a>
-        <a href="https://www.twitch.tv/studiorvandco" class="on-air">
+        <a
+          href="https://www.twitch.tv/studiorvandco"
+          class="on-air"
+          title="Twitch"
+        >
           <font-awesome-icon icon="fa-brands fa-twitch" />
         </a>
       </section>
