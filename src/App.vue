@@ -123,5 +123,9 @@ body {
   &:hover {
     background-color: rgb(156, 0, 0);
   }
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 }
 </style>

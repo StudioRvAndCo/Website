@@ -104,9 +104,10 @@ export default {
 
     section:first-of-type {
       margin-top: calc(var(--spacing) / 1.5);
+      flex-wrap: wrap;
       display: flex;
       justify-content: space-around;
-      gap: 2rem;
+      gap: 3rem;
 
       a,
       > div {

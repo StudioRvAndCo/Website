@@ -116,6 +116,10 @@ export default {
 
         img {
           max-height: 320px;
+          height: 100%;
+          max-width: 569px;
+          width: 100%;
+          aspect-ratio: 16/9;
         }
       }
 
@@ -128,7 +132,10 @@ export default {
       }
 
       img {
+        height: 100%;
         max-height: 260px;
+        width: 100%;
+        max-width: 462px;
         border-radius: var(--border-radius);
         @include box-shadow;
       }
@@ -146,6 +153,21 @@ export default {
         p {
           color: var(--subtext-color);
           margin-bottom: 1rem;
+        }
+      }
+
+      @media (max-width: 940px) {
+        flex-flow: column nowrap !important;
+        text-align: center;
+        gap: 2rem;
+        margin-bottom: calc(var(--spacing) * 1.25);
+
+        h3 {
+          justify-content: center;
+        }
+
+        .btn {
+          margin-inline: auto;
         }
       }
     }

@@ -103,5 +103,17 @@ export default {
       }
     }
   }
+
+  @media (max-width: 450px) {
+    width: 100%;
+
+    h2 {
+      @include max-width(var(--max-width-content));
+    }
+
+    .splide {
+      border-radius: unset;
+    }
+  }
 }
 </style>

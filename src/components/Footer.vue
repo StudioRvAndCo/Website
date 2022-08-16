@@ -48,5 +48,16 @@ footer {
   p:last-of-type {
     justify-self: end;
   }
+
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.4rem;
+
+    p {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
 </style>

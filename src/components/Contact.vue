@@ -55,8 +55,9 @@ export default {
     background-color: var(--bg-color);
     border-radius: var(--border-radius);
     padding: calc(var(--spacing) / 2);
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 0.01fr 1fr 0.01fr 1fr;
+    justify-items: center;
     gap: 2rem;
 
     hr {
@@ -112,6 +113,46 @@ export default {
           }
         }
       }
+    }
+
+    @media (max-width: 870px) {
+      grid-template-columns: 1fr 0.01fr 1fr;
+
+      div:last-of-type,
+      hr:last-of-type {
+        display: none;
+      }
+    }
+
+    @media (max-width: 580px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto minmax(0, 1fr);
+      align-items: unset;
+
+      hr {
+        height: 1px;
+        width: 120px;
+      }
+
+      > div {
+        text-align: center;
+
+        > section a {
+          padding: 0 0.7rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    width: 100%;
+
+    h2 {
+      @include max-width(var(--max-width-content));
+    }
+
+    > section {
+      border-radius: unset;
     }
   }
 }

@@ -142,6 +142,30 @@ header {
         padding: 1rem 0.75rem;
       }
     }
+
+    @media (max-width: 1080px) {
+      grid-template-columns: repeat(2, 1fr);
+
+      section {
+        display: none;
+      }
+    }
+
+    @media (max-width: 850px) {
+      h1 {
+        display: none;
+      }
+    }
+
+    @media (max-width: 660px) {
+      nav {
+        display: none;
+      }
+
+      h1 {
+        display: unset;
+      }
+    }
   }
 }
 
