@@ -16,7 +16,6 @@ import {
 library.add(faYoutube, faTwitter, faInstagram, faTwitch);
 
 createApp(App)
-  .use(i18n)
   .use(router)
   .use(i18n)
   .use(VueObserveVisibility)

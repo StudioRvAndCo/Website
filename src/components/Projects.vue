@@ -2,7 +2,7 @@
   <article id="projects">
     <!-- Title -->
     <h2>Projets annexes</h2>
-    <Splide :options="options" :aria-label="$t('tournaments.self')">
+    <Splide :options="options" aria-label="Projets annexes">
       <SplideSlide>
         <div>
           <h3>Émission Les chroniques</h3>
