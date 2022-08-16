@@ -14,9 +14,7 @@
             <span>{{ $t("productions.new") }}</span>
             {{ $t("productions.en-sursis.self") }}
           </h3>
-          <p>
-            {{ $t("productions.en-sursis.description") }}
-          </p>
+          <p>{{ $t("productions.en-sursis.description") }}</p>
           <a href="https://www.youtube.com/watch?v=JVPWEmjVV7g" class="btn">
             Regarder
           </a>
@@ -31,9 +29,7 @@
         />
         <div>
           <h3>{{ $t("productions.un-chemin.self") }}</h3>
-          <p>
-            {{ $t("productions.un-chemin.description") }}
-          </p>
+          <p>{{ $t("productions.un-chemin.description") }}</p>
           <a href="https://www.youtube.com/watch?v=GXBSu6fq4Wc" class="btn">
             Regarder
           </a>
@@ -65,9 +61,7 @@
         />
         <div>
           <h3>{{ $t("productions.un-ete-entre-amis.self") }}</h3>
-          <p>
-            {{ $t("productions.un-ete-entre-amis.description") }}
-          </p>
+          <p>{{ $t("productions.un-ete-entre-amis.description") }}</p>
           <a
             href="https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB"
             class="btn"
