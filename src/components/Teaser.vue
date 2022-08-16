@@ -1,7 +1,7 @@
 <template>
   <article>
     <!-- Title -->
-    <h2>Ouais, on produit des trucs 😎</h2>
+    <h2>{{ $t("teaser.catchphrase") }}</h2>
     <section>
       <!-- Teaser -->
       <video
@@ -16,17 +16,17 @@
 
       <!-- Numbers -->
       <div>
-        <h3>Quelques chiffres</h3>
+        <h3>{{ $t("teaser.numbers") }}</h3>
         <div>
-          <p><span>10</span> Membres</p>
-          <p><span>6</span> Projets</p>
-          <p><span>5 236</span> Vues</p>
-          <p><span>112</span> Abonnées</p>
-          <p><span>1</span> An</p>
+          <p><span>10</span> {{ $t("teaser.members") }}</p>
+          <p><span>6</span> {{ $t("teaser.projects") }}</p>
+          <p><span>5 236</span> {{ $t("teaser.views") }}</p>
+          <p><span>112</span> {{ $t("teaser.subscribers") }}</p>
+          <p><span>1</span> {{ $t("teaser.year") }}</p>
         </div>
-        <router-link to="/#association" class="btn"
-          >En savoir plus...</router-link
-        >
+        <router-link to="/#association" class="btn">
+          {{ $t("teaser.read-more") }}
+        </router-link>
       </div>
     </section>
   </article>

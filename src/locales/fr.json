@@ -5,5 +5,15 @@
     "projects": "Projets",
     "association": "Association",
     "contact": "Contact"
+  },
+  "teaser": {
+    "catchphrase": "Ouais, on produit des trucs 😎",
+    "numbers": "Quelques chiffres",
+    "members": "Membres",
+    "projects": "Projets",
+    "views": "Vues",
+    "subscribers": "Abonnées",
+    "year": "an",
+    "read-more": "En savoir plus..."
   }
 }
