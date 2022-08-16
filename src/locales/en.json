@@ -36,5 +36,11 @@
       "self": "Un été entre amis",
       "description": "Three friends are about to enjoy a rather ordinary vacation in the countryside. But adventures much more exciting than expected are waiting for them and their characters as well tempered as divergent will not arrange things..."
     }
-  }
+  },
+  "association": {
+    "self": "The association",
+    "description": "Studio Rv & Co is a group of friends who are passionate about the world of cinema. Together, we produce from start to finish short films or amateur series on various themes that we like.",
+    "more-pictures": "More pictures..."
+  },
+  "social-networks": "Réseaux sociaux"
 }

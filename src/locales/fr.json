@@ -36,5 +36,11 @@
       "self": "Un été entre amis",
       "description": "Trois amis s'apprêtent à profiter de vacances assez banales à la campagne. Mais des aventures bien plus palpitantes que prévu les attendent et leurs caractères aussi bien trempés que divergents ne vont pas arranger les choses..."
     }
-  }
+  },
+  "association": {
+    "self": "L'association",
+    "description": "Le Studio Rv & Co est un regroupement d'amis passionnés par le monde du cinéma. Ensemble, nous produisons du début à la fin des courts-métrages ou des séries amateurs sur des thèmes variés qui nous plaisent.",
+    "more-pictures": "Plus de photos..."
+  },
+  "social-networks": "Réseaux sociaux"
 }

@@ -2,12 +2,8 @@
   <article id="association">
     <div>
       <!-- Title -->
-      <h2>L'association</h2>
-      <p>
-        Le Studio Rv & Co est un regroupement d'amis passionnés par le monde du
-        cinéma. Ensemble, nous produisons du début à la fin des courts-métrages
-        ou des séries amateurs sur des thèmes variés qui nous plaisent.
-      </p>
+      <h2>{{ $t("association.self") }}</h2>
+      <p>{{ $t("association.description") }}</p>
 
       <!-- Members -->
       <section>
@@ -74,7 +70,7 @@
       </section>
 
       <a href="https://www.instagram.com/studiorvandco" class="btn">
-        Plus de photos...
+        {{ $t("association.more-pictures") }}
       </a>
     </div>
   </article>

@@ -13,7 +13,7 @@
       </div>
       <hr />
       <div>
-        <h3>Réseaux sociaux</h3>
+        <h3>{{ $t("social-networks") }}</h3>
         <section>
           <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
             <font-awesome-icon icon="fa-brands fa-youtube" />
