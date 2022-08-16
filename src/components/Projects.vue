@@ -1,40 +1,42 @@
 <template>
   <article id="projects">
     <!-- Title -->
-    <h2>Projets annexes</h2>
-    <Splide :options="options" aria-label="Projets annexes">
+    <h2>{{ $t("projects.self") }}</h2>
+    <Splide :options="options" :aria-label="$t('projects.self')">
       <SplideSlide>
         <div>
-          <h3>Émission Les chroniques</h3>
-          <p>Talkshow diffusé en direct sur Twitch.</p>
+          <h3>{{ $t("projects.les-chroniques.self") }}</h3>
+          <p>{{ $t("projects.les-chroniques.description") }}</p>
           <a
             class="btn"
             href="https://www.youtube.com/watch?v=GuYfV7U6w8E&list=PLSBzstMGFp53S9n77CvdrQG132hMXSBBM"
             target="_blank"
             rel="noopener"
-            >Voir</a
           >
+            Voir
+          </a>
         </div>
         <img
           src="@/assets/img/projects/les_chroniques.webp"
-          alt="Émission 'Les Chroniques'."
+          :alt="$t('projects.les-chroniques.self')"
         />
       </SplideSlide>
       <SplideSlide>
         <div>
-          <h3>Concert PolyBand</h3>
-          <p>Captation vidéo et sonore du concert du 17 mars 2022.</p>
+          <h3>{{ $t("projects.concert-polyband-2022.self") }}</h3>
+          <p>{{ $t("projects.concert-polyband-2022.description") }}</p>
           <a
             class="btn"
-            href="https://www.facebook.com/Polyband-BDA-Polytech-Grenoble-114697373596248/"
+            href="https://www.youtube.com/playlist?list=PLSBzstMGFp53nJ4RpcZImbOLHwMvDiJH4"
             target="_blank"
             rel="noopener"
-            >Voir</a
           >
+            Voir
+          </a>
         </div>
         <img
           src="@/assets/img/projects/concert_polyband.webp"
-          alt="Concert du groupe Polyband."
+          :alt="$t('projects.concert-polyband-2022.self')"
         />
       </SplideSlide>
     </Splide>

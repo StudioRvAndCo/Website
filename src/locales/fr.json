@@ -37,6 +37,18 @@
       "description": "Trois amis s'apprêtent à profiter de vacances assez banales à la campagne. Mais des aventures bien plus palpitantes que prévu les attendent et leurs caractères aussi bien trempés que divergents ne vont pas arranger les choses..."
     }
   },
+  "projects": {
+    "self": "Projets annexes",
+    "view": "Voir",
+    "les-chroniques": {
+      "self": "Les Chroniques",
+      "description": "Talkshow diffusé en direct sur Twitch."
+    },
+    "concert-polyband-2022": {
+      "self": "Concert PolyBand 2022",
+      "description": "Captation vidéo et sonore du concert du 17 mars 2022."
+    }
+  },
   "association": {
     "self": "L'association",
     "description": "Le Studio Rv & Co est un regroupement d'amis passionnés par le monde du cinéma. Ensemble, nous produisons du début à la fin des courts-métrages ou des séries amateurs sur des thèmes variés qui nous plaisent.",
