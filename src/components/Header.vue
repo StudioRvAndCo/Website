@@ -9,30 +9,30 @@
 
       <!-- Navigation -->
       <nav>
-        <router-link to="/" :class="position === 'home' ? 'current' : ''">
+        <router-link to="/" :class="nav === 'home' ? 'current' : ''">
           {{ $t("header.home") }}
         </router-link>
         <router-link
           to="/#productions"
-          :class="position === 'productions' ? 'current' : ''"
+          :class="nav === 'productions' ? 'current' : ''"
         >
           {{ $t("header.productions") }}
         </router-link>
         <router-link
           to="/#projects"
-          :class="position === 'projects' ? 'current' : ''"
+          :class="nav === 'projects' ? 'current' : ''"
         >
           {{ $t("header.projects") }}
         </router-link>
         <router-link
           to="/#association"
-          :class="position === 'association' ? 'current' : ''"
+          :class="nav === 'association' ? 'current' : ''"
         >
           {{ $t("header.association") }}
         </router-link>
         <router-link
           to="/#contact"
-          :class="position === 'contact' ? 'current' : ''"
+          :class="nav === 'contact' ? 'current' : ''"
         >
           {{ $t("header.contact") }}
         </router-link>
@@ -67,7 +67,7 @@
 <script>
 export default {
   name: "HeaderComponent",
-  props: ["position"],
+  props: ["nav"],
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  <Header :nav="position" />
 
   <router-view />
 
@@ -11,6 +11,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default {
+  data() {
+    return {
+      position: "home",
+    };
+  },
   components: {
     Header,
     Footer,
