@@ -9,19 +9,31 @@
 
       <!-- Navigation -->
       <nav>
-        <router-link to="/">
+        <router-link to="/" :class="position === 'home' ? 'current' : ''">
           {{ $t("header.home") }}
         </router-link>
-        <router-link to="/#productions">
+        <router-link
+          to="/#productions"
+          :class="position === 'productions' ? 'current' : ''"
+        >
           {{ $t("header.productions") }}
         </router-link>
-        <router-link to="/#projects">
+        <router-link
+          to="/#projects"
+          :class="position === 'projects' ? 'current' : ''"
+        >
           {{ $t("header.projects") }}
         </router-link>
-        <router-link to="/#association">
+        <router-link
+          to="/#association"
+          :class="position === 'association' ? 'current' : ''"
+        >
           {{ $t("header.association") }}
         </router-link>
-        <router-link to="/#contact">
+        <router-link
+          to="/#contact"
+          :class="position === 'contact' ? 'current' : ''"
+        >
           {{ $t("header.contact") }}
         </router-link>
       </nav>
@@ -48,6 +60,7 @@
 <script>
 export default {
   name: "HeaderComponent",
+  props: ["position"],
 };
 </script>
 
@@ -123,6 +136,10 @@ header {
       }
     }
   }
+}
+
+.current {
+  color: var(--text-color) !important;
 }
 
 .on-air {
