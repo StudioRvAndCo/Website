@@ -22,7 +22,9 @@
           <p><span>6</span> {{ $t("teaser.projects") }}</p>
           <p><span>5 236</span> {{ $t("teaser.views") }}</p>
           <p><span>112</span> {{ $t("teaser.subscribers") }}</p>
-          <p><span>1</span> {{ $t("teaser.year") }}</p>
+          <p>
+            <span>{{ yearOld }}</span> {{ $t("teaser.year") }}
+          </p>
         </div>
         <router-link to="/#association" class="btn">
           {{ $t("teaser.read-more") }}
@@ -35,6 +37,13 @@
 <script>
 export default {
   name: "TeaserComponent",
+  computed: {
+    yearOld() {
+      return Math.abs(
+        new Date(Date.now() - new Date("2020-09-09")).getUTCFullYear() - 1970
+      );
+    },
+  },
 };
 </script>
 
