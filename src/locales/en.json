@@ -54,6 +54,9 @@
     "description": "Studio Rv & Co is a group of friends who are passionate about the world of cinema. Together, we produce from start to finish short films or amateur series on various themes that we like.",
     "more-pictures": "More pictures..."
   },
-  "social-networks": "Réseaux sociaux",
+  "contact": {
+    "self": "Contact us",
+    "social-networks": "Social networks"
+  },
   "created-by": "Website created by"
 }

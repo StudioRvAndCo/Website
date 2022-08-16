@@ -1,7 +1,7 @@
 <template>
   <article id="contact">
     <!-- Title -->
-    <h2>Nous contacter</h2>
+    <h2>{{ $t("contact.self") }}</h2>
     <section>
       <div>
         <h3>Studio Rv & Co</h3>
@@ -13,7 +13,7 @@
       </div>
       <hr />
       <div>
-        <h3>{{ $t("social-networks") }}</h3>
+        <h3>{{ $t("contact.social-networks") }}</h3>
         <section>
           <a
             href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ"
