@@ -1,17 +1,21 @@
 <template>
   <article id="productions">
     <!-- Title -->
-    <h2>Nos productions</h2>
+    <h2>{{ $t("productions.self") }}</h2>
     <article>
       <!-- En Sursis -->
       <section>
-        <img src="@/assets/img/productions/en_sursis.webp" alt="En Sursis" />
+        <img
+          src="@/assets/img/productions/en_sursis.webp"
+          :alt="$t('productions.en-sursis.self')"
+        />
         <div>
-          <h3><span>Nouveau</span> En Sursis</h3>
+          <h3>
+            <span>{{ $t("productions.new") }}</span>
+            {{ $t("productions.en-sursis.self") }}
+          </h3>
           <p>
-            Grâce au jeune lieutenant Jules, le capitaine Patrick Corbier
-            aperçoit enfin sa chance d'atteindre l'insaisissable Vincent, qu'il
-            traque en solitaire depuis de nombreuses années.
+            {{ $t("productions.en-sursis.description") }}
           </p>
           <a href="https://www.youtube.com/watch?v=JVPWEmjVV7g" class="btn">
             Regarder
@@ -21,12 +25,14 @@
 
       <!-- Un Chemin -->
       <section>
-        <img src="@/assets/img/productions/un_chemin.webp" alt="Un Chemin" />
+        <img
+          src="@/assets/img/productions/un_chemin.webp"
+          :alt="$t('productions.un-chemin.self')"
+        />
         <div>
-          <h3>Un Chemin</h3>
+          <h3>{{ $t("productions.un-chemin.self") }}</h3>
           <p>
-            Tandis que l'humanité est terrassée par une pandémie dévastatrice,
-            deux amis tentent de survivre.
+            {{ $t("productions.un-chemin.description") }}
           </p>
           <a href="https://www.youtube.com/watch?v=GXBSu6fq4Wc" class="btn">
             Regarder
@@ -38,15 +44,12 @@
       <section>
         <img
           src="@/assets/img/productions/star_wars_une_quete_de_justice.webp"
-          alt="Star Wars : Une quête de justice"
+          :alt="$t('productions.star-wars-une-quete-de-justice.self')"
         />
         <div>
-          <h3>Star Wars : Une quête de justice</h3>
+          <h3>{{ $t("productions.star-wars-une-quete-de-justice.self") }}</h3>
           <p>
-            La galaxie est déchirée par la guerre entre les Jedi et les Sith.
-            Dans ce contexte mouvementé, la notion de justice est incertaine,
-            chaque camp se l’appropriant pour servir ses intérêts. Mais certains
-            n'hésitent pas à se dresser face à cet affrontement sans fin...
+            {{ $t("productions.star-wars-une-quete-de-justice.description") }}
           </p>
           <a href="https://www.youtube.com/watch?v=RAmWSDmg0so" class="btn">
             Regarder
@@ -58,15 +61,12 @@
       <section>
         <img
           src="@/assets/img/productions/un_ete_entre_amis.webp"
-          alt="Un été entre amis"
+          :alt="$t('productions.un-ete-entre-amis.self')"
         />
         <div>
-          <h3>Un été entre amis</h3>
+          <h3>{{ $t("productions.un-ete-entre-amis.self") }}</h3>
           <p>
-            Trois amis s'apprêtent à profiter de vacances assez banales à la
-            campagne. Mais des aventures bien plus palpitantes que prévu les
-            attendent et leurs caractères aussi bien trempés que divergents ne
-            vont pas arranger les choses...
+            {{ $t("productions.un-ete-entre-amis.description") }}
           </p>
           <a
             href="https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB"

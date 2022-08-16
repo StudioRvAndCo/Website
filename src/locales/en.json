@@ -15,5 +15,26 @@
     "subscribers": "Subscribers",
     "year": "Year",
     "read-more": "Read more..."
+  },
+  "productions": {
+    "self": "Our productions",
+    "new": "New",
+    "watch": "Watch",
+    "en-sursis": {
+      "self": "En Sursis",
+      "description": "Thanks to the young officer Jules, Captain Patrick Corbier finally sees his chance to reach the elusive Vincent, whom he has been tracking alone for many years."
+    },
+    "un-chemin": {
+      "self": "Un Chemin",
+      "description": "While humanity is struck down by a devastating pandemic, two friends try to survive."
+    },
+    "star-wars-une-quete-de-justice": {
+      "self": "Star Wars : Une quête de justice",
+      "description": "The galaxy is torn apart by the war between the Jedi and the Sith. In the midst of this turmoil, the notion of justice is uncertain, as each side appropriates it to serve its own interests. But there are those who do not hesitate to stand up to this endless confrontation..."
+    },
+    "un-ete-entre-amis": {
+      "self": "Un été entre amis",
+      "description": "Three friends are about to enjoy a rather ordinary vacation in the countryside. But adventures much more exciting than expected are waiting for them and their characters as well tempered as divergent will not arrange things..."
+    }
   }
 }

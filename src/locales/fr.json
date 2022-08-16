@@ -15,5 +15,26 @@
     "subscribers": "Abonnées",
     "year": "an",
     "read-more": "En savoir plus..."
+  },
+  "productions": {
+    "self": "Nos productions",
+    "new": "Nouveau",
+    "watch": "Regarder",
+    "en-sursis": {
+      "self": "En Sursis",
+      "description": "Grâce au jeune lieutenant Jules, le capitaine Patrick Corbier aperçoit enfin sa chance d'atteindre l'insaisissable Vincent, qu'il traque en solitaire depuis de nombreuses années."
+    },
+    "un-chemin": {
+      "self": "Un Chemin",
+      "description": "Tandis que l'humanité est terrassée par une pandémie dévastatrice, deux amis tentent de survivre."
+    },
+    "star-wars-une-quete-de-justice": {
+      "self": "Star Wars : Une quête de justice",
+      "description": "La galaxie est déchirée par la guerre entre les Jedi et les Sith. Dans ce contexte mouvementé, la notion de justice est incertaine, chaque camp se l’appropriant pour servir ses intérêts. Mais certains n'hésitent pas à se dresser face à cet affrontement sans fin..."
+    },
+    "un-ete-entre-amis": {
+      "self": "Un été entre amis",
+      "description": "Trois amis s'apprêtent à profiter de vacances assez banales à la campagne. Mais des aventures bien plus palpitantes que prévu les attendent et leurs caractères aussi bien trempés que divergents ne vont pas arranger les choses..."
+    }
   }
 }
