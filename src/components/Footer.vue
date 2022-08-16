@@ -5,7 +5,7 @@
       <a href="https://rvandco.fr" class="">RvAndCo.fr</a>
     </p>
     <p>
-      Site Web créé par
+      {{ $t("created-by") }}
       <a href="https://github.com/Minarox" target="_blank" rel="noopener">
         Mathis</a
       >.
