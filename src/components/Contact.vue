@@ -31,7 +31,7 @@
       </div>
       <hr />
       <div>
-        <img src="@/assets/img/logo_complet.png" alt="Studio Rv & Co" />
+        <img src="@/assets/img/full_logo.png" alt="Studio Rv & Co" />
       </div>
     </section>
   </article>
