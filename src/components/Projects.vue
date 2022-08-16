@@ -2,13 +2,7 @@
   <article id="projects">
     <!-- Title -->
     <h2>Projets annexes</h2>
-    <Splide
-      :options="options"
-      :aria-label="$t('tournaments.self')"
-      @splide:autoplay:play="updateDOM"
-      @splide:autoplay:pause="updateDOM"
-      @splide:active="updateDOM"
-    >
+    <Splide :options="options" :aria-label="$t('tournaments.self')">
       <SplideSlide>
         <div>
           <h3>Émission Les chroniques</h3>
@@ -69,14 +63,6 @@ export default {
         interval: 7500,
       },
     };
-  },
-  methods: {
-    updateDOM() {
-      this.DOM = document.getElementById("carousel").innerHTML;
-    },
-  },
-  beforeUnmount() {
-    document.getElementById("carousel").innerHTML = this.DOM;
   },
 };
 </script>
