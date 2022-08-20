@@ -12,8 +12,9 @@ import {
   faInstagram,
   faTwitch,
 } from "@fortawesome/free-brands-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faYoutube, faTwitter, faInstagram, faTwitch);
+library.add(faYoutube, faTwitter, faInstagram, faTwitch, faBars);
 
 createApp(App)
   .use(VueObserveVisibility)

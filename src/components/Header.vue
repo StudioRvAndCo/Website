@@ -2,41 +2,62 @@
   <header>
     <div>
       <!-- Logo -->
-      <router-link :to="{ name: 'home' }">
+      <router-link :to="{ name: 'home' }" @click="mobile = false">
         <img src="@/assets/img/logo.png" alt="Studio Rv & Co" />
         <h1>Studio Rv & Co</h1>
       </router-link>
 
       <!-- Navigation -->
       <nav>
-        <router-link to="/" :class="nav === 'home' ? 'current' : ''">
-          {{ $t("header.home") }}
-        </router-link>
-        <router-link
-          to="/#productions"
-          :class="nav === 'productions' ? 'current' : ''"
-        >
-          {{ $t("header.productions") }}
-        </router-link>
-        <router-link
-          to="/#projects"
-          :class="nav === 'projects' ? 'current' : ''"
-        >
-          {{ $t("header.projects") }}
-        </router-link>
-        <router-link
-          to="/#association"
-          :class="nav === 'association' ? 'current' : ''"
-        >
-          {{ $t("header.association") }}
-        </router-link>
-        <router-link to="/#contact" :class="nav === 'contact' ? 'current' : ''">
-          {{ $t("header.contact") }}
-        </router-link>
+        <font-awesome-icon
+          icon="fa-solid fa-bars"
+          id="mobile"
+          @click="mobile = !mobile"
+        />
+        <section :class="mobile ? 'appear' : ''">
+          <div>
+            <router-link
+              to="/"
+              :class="nav === 'home' ? 'current' : ''"
+              @click="mobile = false"
+            >
+              {{ $t("header.home") }}
+            </router-link>
+            <router-link
+              to="/#productions"
+              :class="nav === 'productions' ? 'current' : ''"
+              @click="mobile = false"
+            >
+              {{ $t("header.productions") }}
+            </router-link>
+            <router-link
+              to="/#projects"
+              :class="nav === 'projects' ? 'current' : ''"
+              @click="mobile = false"
+            >
+              {{ $t("header.projects") }}
+            </router-link>
+            <router-link
+              to="/#association"
+              :class="nav === 'association' ? 'current' : ''"
+              @click="mobile = false"
+            >
+              {{ $t("header.association") }}
+            </router-link>
+            <router-link
+              to="/#contact"
+              :class="nav === 'contact' ? 'current' : ''"
+              @click="mobile = false"
+            >
+              {{ $t("header.contact") }}
+            </router-link>
+          </div>
+        </section>
+        <span :class="mobile ? 'appear' : ''" @click="mobile = false"></span>
       </nav>
 
       <!-- Links -->
-      <section>
+      <section :class="mobile ? 'appear' : ''">
         <a
           href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ"
           title="YouTube"
@@ -65,6 +86,21 @@
 export default {
   name: "HeaderComponent",
   props: ["nav", "livestream"],
+  data() {
+    return {
+      mobile: false,
+      body: document.getElementsByTagName("body")[0],
+    };
+  },
+  watch: {
+    mobile(active) {
+      if (active) {
+        this.body.style.overflowY = "hidden";
+      } else {
+        this.body.style.overflowY = "overlay";
+      }
+    },
+  },
 };
 </script>
 
@@ -83,12 +119,13 @@ header {
     0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
     0 8px 16px rgba(0, 0, 0, 0.11);
 
-  div {
+  > div {
     max-width: var(--max-width-header);
     margin-inline: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+    position: relative;
 
     a {
       transition: color 200ms;
@@ -117,17 +154,33 @@ header {
       }
     }
 
-    nav {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      justify-items: center;
+    > nav {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      #mobile {
+        display: none;
+        font-size: 1.4em;
+        padding: 1rem;
+        cursor: pointer;
+      }
+
+      section div {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        justify-items: center;
+      }
+      span {
+        display: none;
+      }
 
       a {
         padding: 1rem 1.5rem;
       }
     }
 
-    section {
+    > section {
       justify-self: end;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -143,7 +196,7 @@ header {
     @media (max-width: 1080px) {
       grid-template-columns: repeat(2, 1fr);
 
-      section {
+      > section {
         display: none;
       }
     }
@@ -155,12 +208,100 @@ header {
     }
 
     @media (max-width: 660px) {
+      grid-template-columns: 1.5fr 0.5fr;
+
+      .appear {
+        transform: translateX(0) !important;
+      }
+
       nav {
-        display: none;
+        justify-self: end;
+
+        #mobile {
+          display: unset;
+        }
+
+        span {
+          z-index: -1;
+          position: absolute;
+          top: $height - 3px;
+          right: -16px;
+          width: 100vw;
+          height: calc(100vh - $height);
+
+          &.appear {
+            display: block;
+          }
+        }
+
+        section {
+          z-index: auto;
+          position: absolute;
+          top: $height - 3px;
+          right: -16px;
+          left: -142px;
+          height: calc(100vh - $height);
+          background-color: rgba(57, 57, 57, 0.96);
+          backdrop-filter: blur(4px);
+          transform: translateX(220px);
+          transition: transform 250ms;
+          overflow: hidden;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11),
+            0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11),
+            0 6px 8px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.11);
+
+          div {
+            width: 100%;
+            height: calc(100vh - $height - 66px);
+            display: flex;
+            flex-flow: column nowrap;
+            overflow-y: overlay;
+          }
+
+          a {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      > section {
+        position: absolute;
+        top: calc(100vh - $height);
+        z-index: 1;
+        display: unset;
+        transform: translateX(220px);
+        transition: transform 250ms;
       }
 
       h1 {
         display: unset;
+      }
+    }
+
+    @media (max-width: 320px) {
+      h1 {
+        display: none;
+      }
+
+      nav {
+        span.appear {
+          display: none;
+        }
+
+        section {
+          border: 1px solid red;
+          width: 100vw;
+          left: unset;
+          transform: translateX(320px);
+        }
+      }
+
+      > section {
+        width: 100%;
+        text-align: center;
+        transform: translateX(320px);
       }
     }
   }

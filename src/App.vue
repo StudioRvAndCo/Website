@@ -80,7 +80,8 @@ body {
   -o-user-select: none;
   user-select: none;
   scroll-behavior: smooth;
-  overflow: overlay;
+  overflow-x: hidden;
+  overflow-y: overlay;
   font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
   color: var(--text-color);
   background-color: var(--bg-color);
