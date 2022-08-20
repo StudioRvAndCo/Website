@@ -1,7 +1,7 @@
 <template>
-  <Header :nav="position" />
+  <Header :nav="position" :livestream="livestream" />
 
-  <router-view />
+  <router-view @nav="navPosition" @livestream="livestreamStatus" />
 
   <Footer />
 </template>
@@ -14,11 +14,20 @@ export default {
   data() {
     return {
       position: "home",
+      livestream: false,
     };
   },
   components: {
     Header,
     Footer,
+  },
+  methods: {
+    navPosition(payload) {
+      this.position = payload;
+    },
+    livestreamStatus(payload) {
+      this.livestream = payload;
+    },
   },
 };
 </script>

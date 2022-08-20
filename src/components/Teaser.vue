@@ -20,8 +20,16 @@
         <div>
           <p><span>10</span> {{ $t("teaser.members") }}</p>
           <p><span>6</span> {{ $t("teaser.projects") }}</p>
-          <p><span>5 236</span> {{ $t("teaser.views") }}</p>
-          <p><span>112</span> {{ $t("teaser.subscribers") }}</p>
+          <p>
+            <span v-if="statistics">{{ statistics.viewCount }}</span>
+            <span v-else>0</span>
+            {{ $t("teaser.views") }}
+          </p>
+          <p>
+            <span v-if="statistics">{{ statistics.subscriberCount }}</span>
+            <span v-else>0</span>
+            {{ $t("teaser.subscribers") }}
+          </p>
           <p>
             <span>{{ yearOld }}</span> {{ $t("teaser.year") }}
           </p>
@@ -37,6 +45,7 @@
 <script>
 export default {
   name: "TeaserComponent",
+  props: ["statistics"],
   computed: {
     yearOld() {
       return Math.abs(

@@ -33,45 +33,23 @@
         </a>
       </section>
 
-      <hr />
+      <!-- TODO: Uncomment once the sync with the Instagram API fixed -->
+      <!--<hr v-if="posts" />
 
-      <!-- Instagram posts -->
-      <section>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="https://www.youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ">
-          <img src="@/assets/img/logo.png" alt="Logo" />
+      &lt;!&ndash; Instagram posts &ndash;&gt;
+      <section v-if="posts">
+        <a v-for="post in posts" :key="post" :href="post.permalink">
+          <img :src="post.media_url" alt="Instagram post" />
         </a>
       </section>
 
-      <a href="https://www.instagram.com/studiorvandco" class="btn">
+      <a
+        v-if="posts"
+        href="https://www.instagram.com/studiorvandco"
+        class="btn"
+      >
         {{ $t("association.more-pictures") }}
-      </a>
+      </a>-->
     </div>
   </article>
 </template>
@@ -79,6 +57,7 @@
 <script>
 export default {
   name: "AssociationComponent",
+  props: ["posts"],
 };
 </script>
 

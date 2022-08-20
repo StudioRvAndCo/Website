@@ -30,10 +30,7 @@
         >
           {{ $t("header.association") }}
         </router-link>
-        <router-link
-          to="/#contact"
-          :class="nav === 'contact' ? 'current' : ''"
-        >
+        <router-link to="/#contact" :class="nav === 'contact' ? 'current' : ''">
           {{ $t("header.contact") }}
         </router-link>
       </nav>
@@ -54,7 +51,7 @@
         </a>
         <a
           href="https://www.twitch.tv/studiorvandco"
-          class="on-air"
+          :class="livestream ? 'on-air' : ''"
           title="Twitch"
         >
           <font-awesome-icon icon="fa-brands fa-twitch" />
@@ -67,7 +64,7 @@
 <script>
 export default {
   name: "HeaderComponent",
-  props: ["nav"],
+  props: ["nav", "livestream"],
 };
 </script>
 

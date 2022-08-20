@@ -1,10 +1,39 @@
 <template>
   <main>
-    <Teaser />
-    <Productions />
-    <Projects />
-    <Association />
-    <Contact />
+    <Teaser :statistics="data.statistics" />
+    <Productions
+      v-observe-visibility="{
+        callback: productions,
+        intersection: {
+          rootMargin: '-200px',
+        },
+      }"
+    />
+    <Projects
+      v-observe-visibility="{
+        callback: projects,
+        intersection: {
+          rootMargin: '-200px',
+        },
+      }"
+    />
+    <Association
+      :posts="data.posts"
+      v-observe-visibility="{
+        callback: association,
+        intersection: {
+          rootMargin: '-200px',
+        },
+      }"
+    />
+    <Contact
+      v-observe-visibility="{
+        callback: contact,
+        intersection: {
+          rootMargin: '-200px',
+        },
+      }"
+    />
   </main>
 </template>
 
@@ -17,12 +46,61 @@ import Contact from "@/components/Contact";
 
 export default {
   name: "HomeView",
+  data() {
+    return {
+      data: {},
+      nav: {
+        productions: false,
+        projects: false,
+        association: false,
+        contact: false,
+      },
+    };
+  },
   components: {
     Teaser,
     Productions,
     Projects,
     Association,
     Contact,
+  },
+  methods: {
+    productions(visible) {
+      this.nav.productions = visible;
+      this.updateNav();
+    },
+    projects(visible) {
+      this.nav.projects = visible;
+      this.updateNav();
+    },
+    association(visible) {
+      this.nav.association = visible;
+      this.updateNav();
+    },
+    contact(visible) {
+      this.nav.contact = visible;
+      this.updateNav();
+    },
+    updateNav() {
+      if (this.nav.contact) {
+        this.$emit("nav", "contact");
+      } else if (this.nav.association) {
+        this.$emit("nav", "association");
+      } else if (this.nav.projects) {
+        this.$emit("nav", "projects");
+      } else if (this.nav.productions) {
+        this.$emit("nav", "productions");
+      } else {
+        this.$emit("nav", "home");
+      }
+    },
+  },
+  async mounted() {
+    let response = await fetch("https://api.minarox.fr/rvandco", {
+      cache: "default",
+    });
+    this.data = await response.json();
+    this.$emit("livestream", this.data.livestream);
   },
 };
 </script>
