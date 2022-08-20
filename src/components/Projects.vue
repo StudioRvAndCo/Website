@@ -15,7 +15,7 @@
             <p>{{ $t("projects.les-chroniques.description") }}</p>
             <a
               class="btn"
-              href="https://www.youtube.com/watch?v=GuYfV7U6w8E&list=PLSBzstMGFp53S9n77CvdrQG132hMXSBBM"
+              href="https://www.youtube.com/playlist?list=PLSBzstMGFp53S9n77CvdrQG132hMXSBBM"
               target="_blank"
               rel="noopener"
             >
