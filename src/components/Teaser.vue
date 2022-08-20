@@ -154,6 +154,55 @@ article {
         }
       }
     }
+
+    @media (max-width: 950px) {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 2rem;
+
+      video {
+        height: 280px;
+
+        @media (max-width: 500px) {
+          height: 100%;
+        }
+      }
+
+      > div {
+        width: 100%;
+        align-items: start;
+
+        @media (max-width: 450px) {
+          align-items: center;
+        }
+
+        > div {
+          padding: 1.4rem;
+          flex-flow: row wrap;
+          align-items: center;
+          justify-content: space-around;
+          gap: 1.4rem 3rem;
+
+          p {
+            padding: 0;
+            width: auto;
+
+            &::after {
+              content: unset;
+            }
+          }
+        }
+
+        .btn {
+          align-self: center;
+          width: 270px;
+
+          @media (max-width: 450px) {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
 </style>
