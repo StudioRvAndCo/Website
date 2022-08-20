@@ -64,7 +64,7 @@ export default {
         association: false,
         contact: false,
       },
-      rootMargin: "-30%",
+      rootMargin: "-40%",
     };
   },
   components: {
