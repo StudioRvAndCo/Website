@@ -1,11 +1,19 @@
 <template>
   <main>
-    <Teaser :statistics="data.statistics" />
+    <Teaser
+      :statistics="data.statistics"
+      v-observe-visibility="{
+        callback: teaser,
+        intersection: {
+          rootMargin: rootMargin,
+        },
+      }"
+    />
     <Productions
       v-observe-visibility="{
         callback: productions,
         intersection: {
-          rootMargin: '-200px',
+          rootMargin: rootMargin,
         },
       }"
     />
@@ -13,7 +21,7 @@
       v-observe-visibility="{
         callback: projects,
         intersection: {
-          rootMargin: '-200px',
+          rootMargin: rootMargin,
         },
       }"
     />
@@ -22,7 +30,7 @@
       v-observe-visibility="{
         callback: association,
         intersection: {
-          rootMargin: '-200px',
+          rootMargin: rootMargin,
         },
       }"
     />
@@ -30,7 +38,7 @@
       v-observe-visibility="{
         callback: contact,
         intersection: {
-          rootMargin: '-200px',
+          rootMargin: rootMargin,
         },
       }"
     />
@@ -50,11 +58,13 @@ export default {
     return {
       data: {},
       nav: {
+        teaser: false,
         productions: false,
         projects: false,
         association: false,
         contact: false,
       },
+      rootMargin: "-30%",
     };
   },
   components: {
@@ -65,6 +75,10 @@ export default {
     Contact,
   },
   methods: {
+    teaser(visible) {
+      this.nav.teaser = visible;
+      this.updateNav();
+    },
     productions(visible) {
       this.nav.productions = visible;
       this.updateNav();
@@ -82,7 +96,9 @@ export default {
       this.updateNav();
     },
     updateNav() {
-      if (this.nav.contact) {
+      if (this.nav.teaser) {
+        this.$emit("nav", "home");
+      } else if (this.nav.contact) {
         this.$emit("nav", "contact");
       } else if (this.nav.association) {
         this.$emit("nav", "association");
