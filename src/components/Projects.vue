@@ -19,7 +19,7 @@
               target="_blank"
               rel="noopener"
             >
-              Voir
+              {{ $t("projects.view") }}
             </a>
           </div>
           <img
@@ -37,7 +37,7 @@
               target="_blank"
               rel="noopener"
             >
-              Voir
+              {{ $t("projects.view") }}
             </a>
           </div>
           <img
