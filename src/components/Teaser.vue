@@ -82,9 +82,10 @@ article {
     gap: var(--spacing);
 
     video {
+      object-fit: cover;
       @include box-shadow;
       width: 100%;
-      aspect-ratio: 16/9;
+      height: 100%;
       border-radius: var(--border-radius);
     }
 
@@ -123,7 +124,7 @@ article {
 
         p {
           width: inherit;
-          padding: 1rem;
+          padding: 0.8rem;
           position: relative;
           display: inline-flex;
           align-items: center;
@@ -136,7 +137,7 @@ article {
             position: absolute;
             left: 2.2em;
             right: 2.2em;
-            bottom: -6%;
+            bottom: -1%;
             height: 2px;
             border-radius: var(--border-radius);
             background-color: rgba(255, 255, 255, 0.15);
