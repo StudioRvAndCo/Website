@@ -65,8 +65,7 @@ article {
     margin-bottom: calc(var(--spacing) / 2);
     font-size: 2.2em;
     font-weight: 800;
-    text-shadow: 0 0 0.8em var(--background-color),
-      0 0 0.2em var(--background-color);
+    text-shadow: 0 0 0.8em var(--bg-color), 0 0 0.2em var(--bg-color);
 
     &::before,
     &::after {
