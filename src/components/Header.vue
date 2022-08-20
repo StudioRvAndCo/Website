@@ -170,7 +170,24 @@ header {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         justify-items: center;
+
+        a {
+          position: relative;
+
+          &::after {
+            transition: all 250ms;
+            opacity: 0;
+            border: 1px solid var(--text-color);
+            border-radius: var(--border-radius);
+            content: "";
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: 0.4rem;
+          }
+        }
       }
+
       span {
         display: none;
       }
@@ -309,6 +326,13 @@ header {
 
 .current {
   color: var(--text-color) !important;
+  position: relative;
+
+  &::after {
+    opacity: 1;
+    left: 1.7rem;
+    right: 1.7rem;
+  }
 }
 
 .on-air {
