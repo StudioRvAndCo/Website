@@ -18,7 +18,7 @@
       <div>
         <h3>{{ $t("teaser.numbers") }}</h3>
         <div>
-          <p><span>10</span> {{ $t("teaser.members") }}</p>
+          <p><span>15</span> {{ $t("teaser.members") }}</p>
           <p><span>6</span> {{ $t("teaser.projects") }}</p>
           <p>
             <span v-if="statistics">{{ statistics.viewCount }}</span>
