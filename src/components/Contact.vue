@@ -51,6 +51,10 @@ export default {
   @include max-width(var(--max-width-content));
   padding: var(--spacing) 0;
 
+  h2 {
+    text-shadow: #393939 0 0 12px;
+  }
+
   > section {
     background-color: var(--bg-color);
     border-radius: var(--border-radius);

@@ -106,7 +106,6 @@ body {
     font-size: 1.6em;
     font-weight: 700;
     text-transform: uppercase;
-    text-shadow: 0 0 0.8em rgba(0, 0, 0, 0.1), 0 0 0.2em rgba(0, 0, 0, 0.1);
 
     &::before,
     &::after {
