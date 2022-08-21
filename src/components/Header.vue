@@ -252,17 +252,15 @@ header {
         }
 
         section {
-          z-index: auto;
-          position: absolute;
-          top: $height - 3px;
-          right: -16px;
-          left: -142px;
+          position: fixed;
+          top: $height;
+          right: 0;
+          width: 212px;
           height: calc(100vh - $height);
           background-color: rgba(57, 57, 57, 0.96);
           backdrop-filter: blur(4px);
-          transform: translateX(220px);
+          transform: translateX(212px);
           transition: transform 250ms;
-          overflow: hidden;
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11),
             0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11),
             0 6px 8px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.11);
@@ -284,11 +282,12 @@ header {
       }
 
       > section {
-        position: absolute;
-        top: calc(100vh - $height);
+        position: fixed;
+        bottom: 0.35rem;
+        right: 1rem;
         z-index: 1;
         display: unset;
-        transform: translateX(220px);
+        transform: translateX(212px);
         transition: transform 250ms;
       }
 
