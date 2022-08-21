@@ -79,7 +79,7 @@ export default {
         type: "loop",
         rewind: true,
         rewindByDrag: true,
-        autoplay: false,
+        autoplay: true,
         keyboard: true,
         cover: true,
         heightRatio: 0.4,
