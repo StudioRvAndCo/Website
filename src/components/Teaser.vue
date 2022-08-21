@@ -18,20 +18,18 @@
       <div>
         <h3>{{ $t("teaser.numbers") }}</h3>
         <div>
-          <p><span>15</span> {{ $t("teaser.members") }}</p>
-          <p><span>6</span> {{ $t("teaser.projects") }}</p>
+          <p><span id="nb-members">15</span> {{ $t("teaser.members") }}</p>
+          <p><span id="nb-projects">6</span> {{ $t("teaser.projects") }}</p>
           <p>
-            <span v-if="statistics">{{ statistics.viewCount }}</span>
-            <span v-else>0</span>
+            <span id="nb-views">0</span>
             {{ $t("teaser.views") }}
           </p>
           <p>
-            <span v-if="statistics">{{ statistics.subscriberCount }}</span>
-            <span v-else>0</span>
+            <span id="nb-subscribers">0</span>
             {{ $t("teaser.subscribers") }}
           </p>
           <p>
-            <span>{{ yearOld }}</span> {{ $t("teaser.year") }}
+            <span id="nb-old">{{ yearOld }}</span> {{ $t("teaser.year") }}
           </p>
         </div>
         <router-link to="/#association" class="btn">
@@ -43,9 +41,43 @@
 </template>
 
 <script>
+import { CountUp } from "countup.js";
+
 export default {
   name: "TeaserComponent",
   props: ["statistics"],
+  data() {
+    return {
+      members: {},
+      projects: {},
+      views: {},
+      subscribers: {},
+      old: {},
+      options: {
+        duration: 3,
+        enableScrollSpy: true,
+        scrollSpyOnce: true,
+        separator: " ",
+      },
+    };
+  },
+  watch: {
+    statistics() {
+      this.members = new CountUp("nb-members", 15, this.options);
+      this.projects = new CountUp("nb-projects", 6, this.options);
+      this.views = new CountUp(
+        "nb-views",
+        this.statistics.viewCount,
+        this.options
+      );
+      this.subscribers = new CountUp(
+        "nb-subscribers",
+        this.statistics.subscriberCount,
+        this.options
+      );
+      this.old = new CountUp("nb-old", this.yearOld, this.options);
+    },
+  },
   computed: {
     yearOld() {
       return Math.abs(
