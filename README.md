@@ -134,13 +134,17 @@ A new `dist` folder will appear containing the entire compiled website.
 ## Roadmap
 
 - [x] Video teaser with numbers
-- [x] List of productions
+  - [x] Sync with YouTube API for statistics
+  - [x] Animate numbers
+- [x] Productions
+  - [x] New production
+  - [x] List of productions
+  - [ ] Other productions
 - [x] Carousel of other projects
 - [x] Presentation of the association
-- [x] Presentation of the members
+  - [x] Presentation of the members
+  - [ ] Sync with Instagram API for latest posts
 - [x] Contact
-- [x] Sync with YouTube API for statistics
-- [ ] Sync with Instagram API for latest posts
 - [x] Sync with Twitch API for live notification
 
 <p align="right">(<a href="#top">back to top</a>)</p>
