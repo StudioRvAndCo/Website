@@ -11,7 +11,7 @@
 ![GitHub deployments](https://img.shields.io/github/deployments/StudioRvAndCo/Website/github-pages?label=Deployment)&nbsp;
 ![Website version](https://img.shields.io/github/package-json/v/StudioRvAndCo/Website?label=Version)&nbsp;
 ![Project License](https://img.shields.io/github/license/StudioRvAndCo/Website?label=License)&nbsp;
-![Website build size](https://img.shields.io/badge/Build%20size-11.0%20MB-blue)
+![Website build size](https://img.shields.io/badge/Build%20size-11.1%20MB-blue)
 
   <p align="center">
     Website of the Studio Rv & Co association.
@@ -134,13 +134,17 @@ A new `dist` folder will appear containing the entire compiled website.
 ## Roadmap
 
 - [x] Video teaser with numbers
-- [x] List of productions
+  - [x] Sync with YouTube API for statistics
+  - [x] Animate numbers
+- [x] Productions
+  - [x] New production
+  - [x] List of productions
+  - [ ] Other productions
 - [x] Carousel of other projects
 - [x] Presentation of the association
-- [x] Presentation of the members
+  - [x] Presentation of the members
+  - [ ] Sync with Instagram API for latest posts
 - [x] Contact
-- [x] Sync with YouTube API for statistics
-- [ ] Sync with Instagram API for latest posts
 - [x] Sync with Twitch API for live notification
 
 <p align="right">(<a href="#top">back to top</a>)</p>

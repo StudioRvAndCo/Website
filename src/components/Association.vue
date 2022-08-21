@@ -9,28 +9,94 @@
       <section>
         <div>
           <div>
-            <img src="@/assets/img/association/mael.webp" alt="Maël" />
+            <img src="@/assets/img/members/default.webp" alt="Amandine" />
           </div>
-          <p>Maël</p>
+          <p>Amandine</p>
         </div>
-        <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg">
+        <div>
           <div>
-            <img src="@/assets/img/association/thomas.webp" alt="Thomas" />
+            <img src="@/assets/img/members/default.webp" alt="Baptiste" />
           </div>
-          <p>Thomas</p>
-        </a>
+          <p>Baptiste</p>
+        </div>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Bastien" />
+          </div>
+          <p>Bastien</p>
+        </div>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Corentin" />
+          </div>
+          <p>Corentin</p>
+        </div>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Damian" />
+          </div>
+          <p>Damian</p>
+        </div>
         <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA">
           <div>
-            <img src="@/assets/img/association/florent.webp" alt="Florent" />
+            <img src="@/assets/img/members/florent.webp" alt="Florent" />
           </div>
           <p>Florent</p>
         </a>
+        <div>
+          <div>
+            <img src="@/assets/img/members/joshua.webp" alt="Joshua" />
+          </div>
+          <p>Joshua</p>
+        </div>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Lucas" />
+          </div>
+          <p>Lucas</p>
+        </div>
+        <div>
+          <div>
+            <img src="@/assets/img/members/mael.webp" alt="Maël" />
+          </div>
+          <p>Maël</p>
+        </div>
         <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ">
           <div>
-            <img src="@/assets/img/association/mathis.webp" alt="Mathis" />
+            <img src="@/assets/img/members/mathis.webp" alt="Mathis" />
           </div>
           <p>Mathis</p>
         </a>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Maxence" />
+          </div>
+          <p>Maxence</p>
+        </div>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Maxime" />
+          </div>
+          <p>Maxime</p>
+        </div>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Quentin" />
+          </div>
+          <p>Quentin</p>
+        </div>
+        <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg">
+          <div>
+            <img src="@/assets/img/members/thomas.webp" alt="Thomas" />
+          </div>
+          <p>Thomas</p>
+        </a>
+        <div>
+          <div>
+            <img src="@/assets/img/members/default.webp" alt="Tiffany" />
+          </div>
+          <p>Tiffany</p>
+        </div>
       </section>
 
       <!-- TODO: Uncomment once the sync with the Instagram API fixed -->
@@ -48,7 +114,7 @@
         href="https://www.instagram.com/studiorvandco"
         class="btn"
       >
-        {{ $t("association.more-pictures") }}
+        {{ $t("members.more-pictures") }}
       </a>-->
     </div>
   </article>
@@ -157,7 +223,7 @@ export default {
         transition: transform 250ms;
 
         &:hover {
-          transform: scale(1.05);
+          transform: scale(1.02);
         }
       }
     }
