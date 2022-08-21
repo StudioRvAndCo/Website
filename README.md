@@ -135,7 +135,7 @@ A new `dist` folder will appear containing the entire compiled website.
 
 - [x] Video teaser with numbers
 - [x] List of productions
-- [ ] Carousel of other projects
+- [x] Carousel of other projects
 - [x] Presentation of the association
 - [x] Presentation of the members
 - [x] Contact
