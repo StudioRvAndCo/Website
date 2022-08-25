@@ -99,13 +99,20 @@
         </div>
       </section>
 
-      <!-- TODO: Uncomment once the sync with the Instagram API fixed -->
-      <!--<hr v-if="posts" />
+      <hr v-if="posts" />
 
-      &lt;!&ndash; Instagram posts &ndash;&gt;
+      <!-- Instagram posts -->
       <section v-if="posts">
-        <a v-for="post in posts" :key="post" :href="post.permalink">
-          <img :src="post.media_url" alt="Instagram post" />
+        <a v-for="post in posts" :key="post.id" :href="post.permalink">
+          <img
+            v-if="
+              post.media_type === 'IMAGE' ||
+              post.media_type === 'CAROUSEL_ALBUM'
+            "
+            :src="post.media_url"
+            alt="Instagram post"
+          />
+          <img v-else :src="post.thumbnail_url" alt="Instagram post" />
         </a>
       </section>
 
@@ -114,8 +121,8 @@
         href="https://www.instagram.com/studiorvandco"
         class="btn"
       >
-        {{ $t("members.more-pictures") }}
-      </a>-->
+        {{ $t("association.more-pictures") }}
+      </a>
     </div>
   </article>
 </template>
@@ -152,7 +159,7 @@ export default {
       flex-wrap: wrap;
       display: flex;
       justify-content: space-around;
-      gap: 3rem;
+      gap: 4rem;
 
       a,
       > div {
@@ -222,8 +229,16 @@ export default {
         transform: scale(1);
         transition: transform 250ms;
 
+        img {
+          border-radius: var(--border-radius);
+          width: 220px;
+          height: 220px;
+          object-fit: cover;
+          box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
+        }
+
         &:hover {
-          transform: scale(1.02);
+          transform: scale(1.04);
         }
       }
     }
