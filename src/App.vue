@@ -48,7 +48,7 @@ export default {
   --max-width-content: 1200px;
   --max-width-header: 1450px;
   --spacing: 3.6rem;
-  --border-radius: 8px;
+  --border-radius: 6px;
 }
 
 * {
