@@ -284,6 +284,7 @@ export default {
           img {
             max-width: 100%;
             max-height: 100%;
+            object-fit: cover;
             transform: scale(1);
             transition: transform 250ms;
           }
