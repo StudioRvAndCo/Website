@@ -8,7 +8,6 @@
 
 <h3 align="center">Website</h3>
 
-![GitHub deployments](https://img.shields.io/github/deployments/StudioRvAndCo/Website/github-pages?label=Deployment)&nbsp;
 ![Website version](https://img.shields.io/github/package-json/v/StudioRvAndCo/Website?label=Version)&nbsp;
 ![Project License](https://img.shields.io/github/license/StudioRvAndCo/Website?label=License)&nbsp;
 ![Website build size](https://img.shields.io/badge/Build%20size-11.1%20MB-blue)
@@ -143,7 +142,7 @@ A new `dist` folder will appear containing the entire compiled website.
 - [x] Carousel of other projects
 - [x] Presentation of the association
   - [x] Presentation of the members
-  - [ ] Sync with Instagram API for latest posts
+  - [x] Sync with Instagram API for latest posts
 - [x] Contact
 - [x] Sync with Twitch API for live notification
 
