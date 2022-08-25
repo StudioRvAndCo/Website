@@ -34,7 +34,13 @@
       </div>
       <hr />
       <div>
-        <img src="@/assets/img/full_logo.png" alt="Studio Rv & Co" />
+        <img
+          src="@/assets/img/full_logo.webp"
+          alt="Studio Rv & Co"
+          width="246"
+          height="120"
+          loading="lazy"
+        />
       </div>
     </section>
   </article>

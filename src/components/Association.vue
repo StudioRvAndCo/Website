@@ -9,91 +9,181 @@
       <section>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Amandine" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Amandine"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Amandine</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Baptiste" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Baptiste"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Baptiste</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Bastien" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Bastien"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Bastien</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Corentin" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Corentin"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Corentin</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Damian" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Damian"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Damian</p>
         </div>
         <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA">
           <div>
-            <img src="@/assets/img/members/florent.webp" alt="Florent" />
+            <img
+              src="@/assets/img/members/florent.webp"
+              alt="Florent"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Florent</p>
         </a>
         <div>
           <div>
-            <img src="@/assets/img/members/joshua.webp" alt="Joshua" />
+            <img
+              src="@/assets/img/members/joshua.webp"
+              alt="Joshua"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Joshua</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Lucas" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Lucas"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Lucas</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/mael.webp" alt="Maël" />
+            <img
+              src="@/assets/img/members/mael.webp"
+              alt="Maël"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Maël</p>
         </div>
         <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ">
           <div>
-            <img src="@/assets/img/members/mathis.webp" alt="Mathis" />
+            <img
+              src="@/assets/img/members/mathis.webp"
+              alt="Mathis"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Mathis</p>
         </a>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Maxence" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Maxence"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Maxence</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Maxime" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Maxime"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Maxime</p>
         </div>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Quentin" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Quentin"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Quentin</p>
         </div>
         <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg">
           <div>
-            <img src="@/assets/img/members/thomas.webp" alt="Thomas" />
+            <img
+              src="@/assets/img/members/thomas.webp"
+              alt="Thomas"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Thomas</p>
         </a>
         <div>
           <div>
-            <img src="@/assets/img/members/default.webp" alt="Tiffany" />
+            <img
+              src="@/assets/img/members/default.webp"
+              alt="Tiffany"
+              width="120"
+              height="120"
+              loading="lazy"
+            />
           </div>
           <p>Tiffany</p>
         </div>
@@ -111,8 +201,18 @@
             "
             :src="post.media_url"
             alt="Instagram post"
+            width="220"
+            height="220"
+            loading="lazy"
           />
-          <img v-else :src="post.thumbnail_url" alt="Instagram post" />
+          <img
+            v-else
+            :src="post.thumbnail_url"
+            alt="Instagram post"
+            width="220"
+            height="220"
+            loading="lazy"
+          />
         </a>
       </section>
 
