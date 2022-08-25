@@ -321,6 +321,7 @@ header {
 
       > section {
         width: 100%;
+        left: 0;
         text-align: center;
         transform: translateX(320px);
       }
