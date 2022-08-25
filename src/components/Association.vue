@@ -321,7 +321,7 @@ export default {
 
     section:last-of-type {
       display: flex;
-      gap: 3rem 4rem;
+      gap: 3rem;
       justify-content: space-evenly;
       flex-wrap: wrap;
 
