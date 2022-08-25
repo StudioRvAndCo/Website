@@ -313,7 +313,6 @@ header {
         }
 
         section {
-          border: 1px solid red;
           width: 100vw;
           left: unset;
           transform: translateX(320px);
