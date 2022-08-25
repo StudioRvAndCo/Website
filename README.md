@@ -142,7 +142,7 @@ A new `dist` folder will appear containing the entire compiled website.
 - [x] Carousel of other projects
 - [x] Presentation of the association
   - [x] Presentation of the members
-  - [ ] Sync with Instagram API for latest posts
+  - [x] Sync with Instagram API for latest posts
 - [x] Contact
 - [x] Sync with Twitch API for live notification
 
