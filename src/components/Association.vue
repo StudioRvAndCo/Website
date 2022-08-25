@@ -331,8 +331,9 @@ export default {
 
         img {
           border-radius: var(--border-radius);
-          width: 220px;
-          height: 220px;
+          width: 100%;
+          max-width: 220px;
+          aspect-ratio: 1/1;
           object-fit: cover;
           box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
         }
