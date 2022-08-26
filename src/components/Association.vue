@@ -34,7 +34,7 @@
         <div>
           <div>
             <img
-              src="@/assets/img/members/default.webp"
+              src="@/assets/img/members/bastien.webp"
               alt="Bastien"
               width="120"
               height="120"
