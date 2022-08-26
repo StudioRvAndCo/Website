@@ -4,7 +4,13 @@
     <h2>{{ $t("teaser.catchphrase") }}</h2>
     <section>
       <!-- Teaser -->
-      <video autoplay muted loop poster="@/assets/img/thumbnail.webp">
+      <video
+        autoplay
+        muted
+        loop
+        disablePictureInPicture
+        poster="@/assets/img/thumbnail.webp"
+      >
         <source src="@/assets/vid/teaser.mp4" type="video/mp4" />
       </video>
 
