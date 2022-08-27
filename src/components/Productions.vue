@@ -8,6 +8,9 @@
         <img
           src="@/assets/img/productions/en_sursis.webp"
           :alt="$t('productions.en-sursis.self')"
+          width="569"
+          height="320"
+          loading="lazy"
         />
         <div>
           <h3>
@@ -26,6 +29,9 @@
         <img
           src="@/assets/img/productions/un_chemin.webp"
           :alt="$t('productions.un-chemin.self')"
+          width="462"
+          height="260"
+          loading="lazy"
         />
         <div>
           <h3>{{ $t("productions.un-chemin.self") }}</h3>
@@ -41,6 +47,9 @@
         <img
           src="@/assets/img/productions/star_wars_une_quete_de_justice.webp"
           :alt="$t('productions.star-wars-une-quete-de-justice.self')"
+          width="462"
+          height="260"
+          loading="lazy"
         />
         <div>
           <h3>{{ $t("productions.star-wars-une-quete-de-justice.self") }}</h3>
@@ -58,6 +67,9 @@
         <img
           src="@/assets/img/productions/un_ete_entre_amis.webp"
           :alt="$t('productions.un-ete-entre-amis.self')"
+          width="462"
+          height="260"
+          loading="lazy"
         />
         <div>
           <h3>{{ $t("productions.un-ete-entre-amis.self") }}</h3>

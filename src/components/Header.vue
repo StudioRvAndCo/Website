@@ -3,7 +3,13 @@
     <div>
       <!-- Logo -->
       <router-link :to="{ name: 'home' }" @click="mobile = false">
-        <img src="@/assets/img/logo.png" alt="Studio Rv & Co" />
+        <img
+          src="@/assets/img/logo.webp"
+          alt="Studio Rv & Co"
+          width="50"
+          height="60"
+          loading="lazy"
+        />
         <h1>Studio Rv & Co</h1>
       </router-link>
 
@@ -307,7 +313,6 @@ header {
         }
 
         section {
-          border: 1px solid red;
           width: 100vw;
           left: unset;
           transform: translateX(320px);
@@ -316,6 +321,7 @@ header {
 
       > section {
         width: 100%;
+        left: 0;
         text-align: center;
         transform: translateX(320px);
       }

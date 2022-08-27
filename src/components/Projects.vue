@@ -25,6 +25,9 @@
           <img
             src="@/assets/img/projects/les_chroniques.webp"
             :alt="$t('projects.les-chroniques.self')"
+            width="1200"
+            height="330"
+            loading="lazy"
           />
         </SplideSlide>
         <SplideSlide>
@@ -43,6 +46,9 @@
           <img
             src="@/assets/img/projects/concert_polyband.webp"
             :alt="$t('projects.concert-polyband-2022.self')"
+            width="1200"
+            height="330"
+            loading="lazy"
           />
         </SplideSlide>
       </SplideTrack>
