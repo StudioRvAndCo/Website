@@ -10,6 +10,8 @@
         loop
         disablePictureInPicture
         poster="@/assets/img/thumbnail.webp"
+        width="810"
+        height="456"
       >
         <source src="@/assets/vid/teaser.webm" type="video/webm" />
         <source src="@/assets/vid/teaser.mp4" type="video/mp4" />
