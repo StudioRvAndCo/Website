@@ -178,7 +178,7 @@
         <div>
           <div>
             <img
-              src="@/assets/img/members/default.webp"
+              src="@/assets/img/members/tiffany.webp"
               alt="Tiffany"
               width="120"
               height="120"
