@@ -5,10 +5,6 @@
     <section>
       <div>
         <h3>Studio Rv & Co</h3>
-        <p>
-          4 Lotissement Cantalause<br />
-          31450 Montgiscard, France
-        </p>
         <p>Email : <a href="mailto:studio@rvandco.fr">studio@rvandco.fr</a></p>
       </div>
       <hr />
@@ -68,6 +64,7 @@ export default {
     display: grid;
     grid-template-columns: 1fr 0.01fr 1fr 0.01fr 1fr;
     justify-items: center;
+    align-items: center;
     gap: 2rem;
 
     hr {
@@ -84,7 +81,6 @@ export default {
 
       p {
         color: var(--subtext-color);
-        margin-bottom: 0.6rem;
 
         a {
           text-decoration: none;
@@ -94,10 +90,6 @@ export default {
           &:hover {
             color: var(--text-color);
           }
-        }
-
-        &:last-of-type {
-          margin-bottom: unset;
         }
       }
 
