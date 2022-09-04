@@ -10,7 +10,7 @@
 
 ![Website version](https://img.shields.io/github/package-json/v/StudioRvAndCo/Website?label=Version)&nbsp;
 ![Project License](https://img.shields.io/github/license/StudioRvAndCo/Website?label=License)&nbsp;
-![Website build size](https://img.shields.io/badge/Build%20size-7.46%20MB-blue)
+![Website build size](https://img.shields.io/badge/Build%20size-7.15%20MB-blue)
 
   <p align="center">
     Website of the Studio Rv & Co association.
