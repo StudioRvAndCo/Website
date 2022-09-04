@@ -46,7 +46,7 @@
         <div>
           <div>
             <img
-              src="@/assets/img/members/default.webp"
+              src="@/assets/img/members/corentin.webp"
               alt="Corentin"
               width="120"
               height="120"
@@ -58,7 +58,7 @@
         <div>
           <div>
             <img
-              src="@/assets/img/members/default.webp"
+              src="@/assets/img/members/damian.webp"
               alt="Damian"
               width="120"
               height="120"
@@ -142,7 +142,7 @@
         <div>
           <div>
             <img
-              src="@/assets/img/members/default.webp"
+              src="@/assets/img/members/maxime.webp"
               alt="Maxime"
               width="120"
               height="120"
@@ -178,7 +178,7 @@
         <div>
           <div>
             <img
-              src="@/assets/img/members/default.webp"
+              src="@/assets/img/members/tiffany.webp"
               alt="Tiffany"
               width="120"
               height="120"
