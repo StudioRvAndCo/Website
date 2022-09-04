@@ -189,7 +189,7 @@
         </div>
       </section>
 
-      <hr v-if="posts" />
+      <h3 v-if="posts">{{ $t("association.instagram-gallery") }}</h3>
 
       <!-- Instagram posts -->
       <section v-if="posts">
@@ -313,11 +313,14 @@ export default {
       }
     }
 
-    hr {
-      margin: calc(var(--spacing) / 1.5) auto;
-      border-color: rgba(255, 255, 255, 0.4);
-      width: 50%;
-      border-radius: var(--border-radius);
+    h3 {
+      font-size: 1.5em;
+      margin-top: calc(var(--spacing) * 1.4);
+      margin-bottom: calc(var(--spacing) / 2);
+
+      @media (max-width: 450px) {
+        text-align: center;
+      }
     }
 
     section:last-of-type {
