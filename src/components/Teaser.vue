@@ -32,7 +32,7 @@
             {{ $t("teaser.subscribers") }}
           </p>
           <p>
-            <span id="nb-old">{{ yearOld }}</span> {{ $t("teaser.year") }}
+            <span id="nb-old">{{ yearOld }}</span> {{ $t("teaser.years") }}
           </p>
         </div>
         <router-link to="/#association" class="btn">
