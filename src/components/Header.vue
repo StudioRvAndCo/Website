@@ -73,6 +73,9 @@
         <a href="https://twitter.com/studiorvandco" title="Twitter">
           <font-awesome-icon icon="fa-brands fa-twitter" />
         </a>
+        <a href="https://www.facebook.com/studiorvandco" title="Facebook">
+          <font-awesome-icon icon="fa-brands fa-facebook-f" />
+        </a>
         <a href="https://www.instagram.com/studiorvandco" title="Instagram">
           <font-awesome-icon icon="fa-brands fa-instagram" />
         </a>
@@ -206,7 +209,7 @@ header {
     > section {
       justify-self: end;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       font-size: 1.3em;
 
       a {
@@ -293,6 +296,7 @@ header {
         right: 1rem;
         z-index: 1;
         display: unset;
+        font-size: unset;
         transform: translateX(212px);
         transition: transform 250ms;
       }
