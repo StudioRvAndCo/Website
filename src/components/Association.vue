@@ -67,7 +67,7 @@
           </div>
           <p>Damian</p>
         </div>
-        <a href="https://www.youtube.com/@DoTheFlo">
+        <a href="https://linktr.ee/dotheflo">
           <div>
             <img
               src="@/assets/img/members/florent.webp"
