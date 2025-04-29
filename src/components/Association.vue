@@ -43,7 +43,7 @@
           </div>
           <p>Bastien</p>
         </div>
-        <div>
+        <a href="https://www.youtube.com/@CoconutsX38">
           <div>
             <img
               src="@/assets/img/members/corentin.webp"
@@ -54,7 +54,7 @@
             />
           </div>
           <p>Corentin</p>
-        </div>
+        </a>
         <div>
           <div>
             <img
@@ -67,7 +67,7 @@
           </div>
           <p>Damian</p>
         </div>
-        <a href="https://www.youtube.com/channel/UCYl-DuOSdkMfsIbLmVPiPOA">
+        <a href="https://linktr.ee/dotheflo">
           <div>
             <img
               src="@/assets/img/members/florent.webp"
@@ -115,7 +115,7 @@
           </div>
           <p>Maël</p>
         </div>
-        <a href="https://www.youtube.com/channel/UCznR2syShlluEzWRoD7XZRQ">
+        <a href="https://www.youtube.com/@Minarox">
           <div>
             <img
               src="@/assets/img/members/mathis.webp"
@@ -163,7 +163,7 @@
           </div>
           <p>Quentin</p>
         </div>
-        <a href="https://www.youtube.com/channel/UC9ZVyJocXPlUCiwggkHsmDg">
+        <a href="https://www.youtube.com/@l_artilier">
           <div>
             <img
               src="@/assets/img/members/thomas.webp"
@@ -189,10 +189,10 @@
         </div>
       </section>
 
-      <h3 v-if="posts">{{ $t("association.instagram-gallery") }}</h3>
+      <!-- <h3 v-if="posts">{{ $t("association.instagram-gallery") }}</h3> -->
 
       <!-- Instagram posts -->
-      <section v-if="posts">
+      <!-- <section v-if="posts">
         <a v-for="post in posts" :key="post.id" :href="post.permalink">
           <img
             v-if="
@@ -222,7 +222,7 @@
         class="btn"
       >
         {{ $t("association.more-pictures") }}
-      </a>
+      </a> -->
     </div>
   </article>
 </template>
