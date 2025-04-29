@@ -20,6 +20,10 @@
     "self": "Nos productions",
     "new": "Nouveau",
     "watch": "Regarder",
+    "soleil-de-plomb": {
+      "self": "Soleil de Plomb",
+      "description": "Dans le Sud-Ouest de la France, à la frontière avec l'Espagne, la pègre règne. La famille Casseres, qui domine la région, est en conflit avec un clan en plein essor : les Cassin."
+    },
     "en-sursis": {
       "self": "En Sursis",
       "description": "Grâce au jeune lieutenant Jules, le capitaine Patrick Corbier aperçoit enfin sa chance d'atteindre l'insaisissable Vincent, qu'il traque en solitaire depuis de nombreuses années."
@@ -33,7 +37,7 @@
       "description": "La galaxie est déchirée par la guerre entre les Jedi et les Sith. Dans ce contexte mouvementé, la notion de justice est incertaine, chaque camp se l’appropriant pour servir ses intérêts. Mais certains n'hésitent pas à se dresser face à cet affrontement sans fin..."
     },
     "un-ete-entre-amis": {
-      "self": "Un été entre amis",
+      "self": "Un Été Entre Amis",
       "description": "Trois amis s'apprêtent à profiter de vacances assez banales à la campagne. Mais des aventures bien plus palpitantes que prévu les attendent et leurs caractères aussi bien trempés que divergents ne vont pas arranger les choses..."
     }
   },

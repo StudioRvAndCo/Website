@@ -3,6 +3,27 @@
     <!-- Title -->
     <h2>{{ $t("productions.self") }}</h2>
     <article>
+      <!-- Soleil de plomb -->
+      <section>
+        <img
+          src="@/assets/img/productions/soleil_de_plomb.webp"
+          :alt="$t('productions.soleil-de-plomb.self')"
+          width="569"
+          height="320"
+          loading="lazy"
+        />
+        <div>
+          <h3>
+            <span>{{ $t("productions.new") }}</span>
+            {{ $t("productions.soleil-de-plomb.self") }}
+          </h3>
+          <p>{{ $t("productions.soleil-de-plomb.description") }}</p>
+          <a href="https://www.youtube.com/watch?v=sKknMLUcRCE" class="btn">
+            {{ $t("productions.watch") }}
+          </a>
+        </div>
+      </section>
+
       <!-- En Sursis -->
       <section>
         <img
@@ -13,13 +34,10 @@
           loading="lazy"
         />
         <div>
-          <h3>
-            <span>{{ $t("productions.new") }}</span>
-            {{ $t("productions.en-sursis.self") }}
-          </h3>
+          <h3>{{ $t("productions.en-sursis.self") }}</h3>
           <p>{{ $t("productions.en-sursis.description") }}</p>
           <a href="https://www.youtube.com/watch?v=JVPWEmjVV7g" class="btn">
-            Regarder
+            {{ $t("productions.watch") }}
           </a>
         </div>
       </section>
@@ -37,7 +55,7 @@
           <h3>{{ $t("productions.un-chemin.self") }}</h3>
           <p>{{ $t("productions.un-chemin.description") }}</p>
           <a href="https://www.youtube.com/watch?v=GXBSu6fq4Wc" class="btn">
-            Regarder
+            {{ $t("productions.watch") }}
           </a>
         </div>
       </section>
@@ -57,7 +75,7 @@
             {{ $t("productions.star-wars-une-quete-de-justice.description") }}
           </p>
           <a href="https://www.youtube.com/watch?v=RAmWSDmg0so" class="btn">
-            Regarder
+            {{ $t("productions.watch") }}
           </a>
         </div>
       </section>
@@ -78,7 +96,7 @@
             href="https://www.youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB"
             class="btn"
           >
-            Regarder
+            {{ $t("productions.watch") }}
           </a>
         </div>
       </section>
