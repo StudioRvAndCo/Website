@@ -38,5 +38,13 @@
     "sass": "^1.87.0",
     "sass-loader": "^12.6.0",
     "vue-cli-plugin-i18n": "~2.3.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "core-js",
+      "node-sass",
+      "yorkie"
+    ]
   }
 }
