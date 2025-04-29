@@ -20,6 +20,10 @@
     "self": "Our productions",
     "new": "New",
     "watch": "Watch",
+    "soleil-de-plomb": {
+      "self": "Blazing Sun",
+      "description": "In the southwest of France, on the border with Spain, the underworld reigns. The Casseres family, who dominate the region, are in conflict with a rising clan: the Cassin."
+    },
     "en-sursis": {
       "self": "En Sursis",
       "description": "Thanks to the young officer Jules, Captain Patrick Corbier finally sees his chance to reach the elusive Vincent, whom he has been tracking alone for many years."
@@ -33,7 +37,7 @@
       "description": "The galaxy is torn apart by the war between the Jedi and the Sith. In the midst of this turmoil, the notion of justice is uncertain, as each side appropriates it to serve its own interests. But there are those who do not hesitate to stand up to this endless confrontation..."
     },
     "un-ete-entre-amis": {
-      "self": "Un été entre amis",
+      "self": "Un Été entre amis",
       "description": "Three friends are about to enjoy a rather ordinary vacation in the countryside. But adventures much more exciting than expected are waiting for them and their characters as well tempered as divergent will not arrange things..."
     }
   },
