@@ -18,7 +18,7 @@
             {{ $t("productions.soleil-de-plomb.self") }}
           </h3>
           <p>{{ $t("productions.soleil-de-plomb.description") }}</p>
-          <a href="https://www.youtube.com/watch?v=sKknMLUcRCE" class="btn">
+          <a href="https://www.youtube.com/playlist?list=PL6VuKkKwjE2FaJpF8PWwG9JaWQ4nr1wbM" class="btn">
             {{ $t("productions.watch") }}
           </a>
         </div>
