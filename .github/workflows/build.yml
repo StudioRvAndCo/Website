@@ -1,0 +1,53 @@
+name: Build and Test
+
+on:
+    pull_request
+
+env:
+    ASTRO_TELEMETRY_DISABLED: 1
+
+permissions:
+    contents: read
+    pull-requests: write
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    build:
+        name: Build and Test
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout project
+              uses: actions/checkout@v5
+              with:
+                fetch-depth: 1
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+                cache: pnpm
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Check types
+              run: pnpm check
+
+            - name: Run tests
+              run: pnpm test
+
+            - name: Report coverage
+              if: always()
+              uses: davelosert/vitest-coverage-report-action@v2
+              with:
+                file-coverage-mode: all
+
+            - name: Build website
+              run: pnpm build
