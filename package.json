@@ -1,0 +1,21 @@
+{
+	"name": "studiorvandco-website",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro build && wrangler dev",
+		"astro": "astro",
+		"deploy": "astro build && wrangler deploy",
+		"cf-typegen": "wrangler types"
+	},
+	"dependencies": {
+		"@astrojs/cloudflare": "^12.6.8",
+		"astro": "^5.13.6"
+	},
+	"devDependencies": {
+		"@types/node": "^24.3.1",
+		"wrangler": "^4.34.0"
+	}
+}
