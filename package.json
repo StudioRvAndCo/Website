@@ -1,12 +1,32 @@
 {
 	"name": "studiorvandco-website",
+	"description": "Website of the Studio Rv & Co association.",
+	"author": {
+		"name": "Mathis Serrieres Maniecki",
+		"email": "contact@minarox.fr",
+		"url": "https://minarox.fr/"
+	},
+	"bugs": {
+		"url": "https://github.com/StudioRvAndCo/Website/issues",
+		"email": "contact@minarox.fr"
+	},
+	"homepage": "https://rvandco.fr",
+	"readme": "./README.md",
+	"license": "AGPL-3.0-only",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/StudioRvAndCo/Website.git"
+	},
+	"private": true,
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "astro dev",
+		"check": "astro check",
 		"build": "astro build",
+		"test": "vitest run --coverage",
+		"coverage": "astro preview --root ./coverage",
 		"preview": "astro build && wrangler dev",
-		"astro": "astro",
 		"deploy": "astro build && wrangler deploy",
 		"cf-typegen": "wrangler types"
 	},
@@ -16,6 +36,16 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.3.1",
+		"vitest": "^3.2.4",
 		"wrangler": "^4.34.0"
-	}
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"esbuild",
+			"sharp",
+			"workerd"
+		]
+	},
+	"packageManager": "pnpm@10.15.0"
 }
