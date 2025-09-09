@@ -1,0 +1,317 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<header>
+    <div>
+        <!-- Logo -->
+        <a href="/" class="toggle-off-menu">
+            <img src="@/assets/img/logo.webp" alt="Studio Rv & Co" width="50" height="60" loading="lazy" />
+            <h1>Studio Rv & Co</h1>
+        </a>
+
+        <!-- Navigation -->
+        <nav>
+            <Icon name={"mdi:hamburger-menu"} id="mobile" class="toggle-menu" />
+            <section class="mobile">
+                <div>
+                    <a href="/" class="toggle-off-menu" :class="nav === 'home' ? 'current' : ''">
+                        Accueil
+                    </a>
+                    <a href="#productions" class="toggle-off-menu" :class="nav === 'productions' ? 'current' : ''">
+                        Productions
+                    </a>
+                    <a href="#projects" class="toggle-off-menu" :class="nav === 'projects' ? 'current' : ''">
+                        Projets
+                    </a>
+                    <a href="#association" class="toggle-off-menu" :class="nav === 'association' ? 'current' : ''">
+                        Association
+                    </a>
+                    <a href="#contact" class="toggle-off-menu" :class="nav === 'contact' ? 'current' : ''">
+                        Contact
+                    </a>
+                </div>
+            </section>
+            <span class="mobile" class="toggle-off-menu"></span>
+        </nav>
+
+        <!-- Links -->
+        <section class="mobile">
+            <a href="https://youtube.com/channel/UCbTaxj24z8viOFR6NXMKurQ" title="YouTube">
+                <Icon name={"fa6-brands:youtube"} id="mobile" />
+            </a>
+            <a href="https://x.com/studiorvandco" title="Twitter">
+                <Icon name={"fa6-brands:x-twitter"} id="mobile" />
+            </a>
+            <a href="https://instagram.com/studiorvandco" title="Instagram">
+                <Icon name={"fa6-brands:instagram"} id="mobile" />
+            </a>
+            <a href="https://facebook.com/studiorvandco" title="Facebook">
+                <Icon name={"fa6-brands:facebook"} id="mobile" />
+            </a>
+            <a href="https://twitch.tv/studiorvandco" title="Twitch">
+                <Icon name={"fa6-brands:twitch"} id="mobile" />
+            </a>
+        </section>
+    </div>
+</header>
+
+<script>
+    const toggleOffMenuElements = document.querySelectorAll('.toggle-off-menu');
+    const toggleMenuElements = document.querySelectorAll('.toggle-menu');
+    let menu = false;
+
+    function toggleMenu(value?: boolean) {
+        menu = value ?? !menu;
+
+        const body = document.getElementsByTagName("body")[0];
+        if (body) {
+            body.style.overflowY = menu ? "hidden" : "overlay";
+        }
+
+        const elements = document.querySelectorAll('.mobile');
+        elements.forEach((el) => {
+            el.classList.toggle('appear', value);
+        });
+    }
+
+    toggleOffMenuElements.forEach((el) => {
+        el.addEventListener('click', () => toggleMenu(false));
+    });
+
+    toggleMenuElements.forEach((el) => {
+        el.addEventListener('click', () => toggleMenu());
+    });
+</script>
+
+<style lang="scss">
+    $height: 60px;
+
+    header {
+        z-index: 100;
+        height: $height;
+        width: 100%;
+        padding-inline: 1rem;
+        position: sticky;
+        top: 0;
+        background-color: var(--bg-color);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+        0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+        0 8px 16px rgba(0, 0, 0, 0.11);
+
+        > div {
+            max-width: var(--max-width-header);
+            margin-inline: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            position: relative;
+
+            a {
+                transition: color 200ms;
+                text-decoration: none;
+                color: var(--subtext-color);
+
+                &:hover {
+                    color: var(--text-color);
+                }
+            }
+
+            > *:first-child {
+                justify-self: start;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--subtext-color) !important;
+
+                img {
+                    padding: 0.4rem;
+                    max-height: $height;
+                }
+
+                h1 {
+                    font-size: 1.3em;
+                }
+            }
+
+            > nav {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                #mobile {
+                    display: none;
+                    font-size: 1.4em;
+                    padding: 1rem;
+                    cursor: pointer;
+                }
+
+                section div {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    justify-items: center;
+
+                    a {
+                        position: relative;
+
+                        &::after {
+                            transition: all 250ms;
+                            opacity: 0;
+                            border: 1px solid var(--text-color);
+                            border-radius: var(--border-radius);
+                            content: "";
+                            position: absolute;
+                            left: 50%;
+                            right: 50%;
+                            bottom: 0.4rem;
+                        }
+                    }
+                }
+
+                span {
+                    display: none;
+                }
+
+                a {
+                    padding: 1rem 1.5rem;
+                }
+            }
+
+            > section {
+                justify-self: end;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                font-size: 1.3em;
+
+                a {
+                    display: inline-flex;
+                    justify-content: center;
+                    padding: 1rem 0.75rem;
+                }
+            }
+
+            @media (max-width: 1080px) {
+                grid-template-columns: repeat(2, 1fr);
+
+                > section {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 850px) {
+                h1 {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 660px) {
+                grid-template-columns: 1.5fr 0.5fr;
+
+                .appear {
+                    transform: translateX(0) !important;
+                }
+
+                nav {
+                    justify-self: end;
+
+                    #mobile {
+                        display: unset;
+                    }
+
+                    span {
+                        z-index: -1;
+                        position: absolute;
+                        top: $height - 3px;
+                        right: -16px;
+                        width: 100vw;
+                        height: calc(100vh - $height);
+
+                        &.appear {
+                            display: block;
+                        }
+                    }
+
+                    section {
+                        position: fixed;
+                        top: $height;
+                        right: 0;
+                        width: 212px;
+                        height: calc(100vh - $height);
+                        background-color: rgba(57, 57, 57, 0.96);
+                        backdrop-filter: blur(4px);
+                        transform: translateX(212px);
+                        transition: transform 250ms;
+                        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11),
+                        0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11),
+                        0 6px 8px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.11);
+
+                        div {
+                            width: 100%;
+                            height: calc(100vh - $height - 66px);
+                            display: flex;
+                            flex-flow: column nowrap;
+                            overflow-y: overlay;
+                        }
+
+                        a {
+                            width: 100%;
+                            text-align: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+
+                > section {
+                    position: fixed;
+                    bottom: 0.35rem;
+                    right: 1rem;
+                    z-index: 1;
+                    display: unset;
+                    font-size: unset;
+                    transform: translateX(212px);
+                    transition: transform 250ms;
+                }
+
+                h1 {
+                    display: unset;
+                }
+            }
+
+            @media (max-width: 320px) {
+                h1 {
+                    display: none;
+                }
+
+                nav {
+                    span.appear {
+                        display: none;
+                    }
+
+                    section {
+                        width: 100vw;
+                        left: unset;
+                        transform: translateX(320px);
+                    }
+                }
+
+                > section {
+                    width: 100%;
+                    left: 0;
+                    text-align: center;
+                    transform: translateX(320px);
+                }
+            }
+        }
+    }
+
+    .current {
+        color: var(--text-color) !important;
+        position: relative;
+
+        &::after {
+            opacity: 1;
+            left: 1.7rem;
+            right: 1.7rem;
+        }
+    }
+</style>

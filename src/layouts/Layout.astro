@@ -1,22 +1,198 @@
+---
+import { SEO } from "astro-seo";
+import { AstroFont } from "astro-font";
+import Logo from "@assets/svg/astro.svg";
+import Background from "@assets/svg/background.svg";
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+
+const title = "Studio Rv & Co";
+const description = "Le Studio Rv & Co est une association regroupant des amis passionnés par le monde du cinéma."
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+<html lang="fr">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<SEO
+	title={title}
+	description={description}
+	charset="UTF-8"
+	openGraph={{
+		basic: {
+			title: title,
+			type: "website",
+			url: Astro.url.origin,
+			image: Background.src
+		},
+		optional: {
+			locale: "fr-FR",
+		},
+		image: {
+			alt: `${title} banner`,
+			url: Background.src,
+			type: "image/webp"
+		}
+	}}
+	twitter={{
+		creator: `@Minarox_`,
+		card: "summary_large_image",
+		site: Astro.url.origin,
+		title: title,
+		description: description,
+		image: Background.src,
+		imageAlt: `${title} banner`,
+	}}
+	extend={{
+		link: [
+		{ rel: "icon", type: "image/svg+xml", href: Logo.src },
+		{ rel: "sitemap", href: "/sitemap-index.xml" },
+		],
+		meta: [
+		{ name: "viewport", content: "width=device-width,initial-scale=1.0" },
+		{ name: "theme-color", content: "#393939" },
+		{ name: "keywords", content: "Studio, Rv, Co, Association, Cinéma, Films, Vidéos, Production, Audiovisuel, Court-métrage, Long-métrage, Documentaire, Fiction, Création, Réalisation, Montage, Scénario, Acteurs, Équipe technique, Tournage, Post-production, Effets spéciaux, Musique de film, Scénographie, Costumes, Maquillage, Caméra, Lumière, Sonorisation, Distribution, Promotion, Festivals de cinéma" },
+		{ name: "robots", content: "index, follow" },
+		{ name: "language", content: "French" },
+		{ name: "author", content: "Mathis Serrieres Maniecki" }
+		]
+	}}
+	/>
+
+	<AstroFont
+	config={[
+		{
+			name: "Open Sans",
+			src: [],
+			googleFontsURL: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap",
+			preload: true,
+			display: "swap",
+			selector: "body",
+			fallback: "sans-serif",
+			fetch: true,
+			cacheDir: '.astro/font-cache'
+		}
+		]}
+		/>
 	</head>
 	<body>
-		<slot />
-	</body>
-</html>
+		<Header />
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+		<main>
+			<slot />
+		</main>
+
+		<Footer />
+	</body>
+	</html>
+
+	<style lang="scss">
+		:root {
+			--bg-color: #393939;
+			--projects-bg-color: #555555;
+			--association-bg-color: #612626;
+
+			--text-color: #ffffff;
+			--subtext-color: #dfdfdf;
+
+			--btn-color: #be0000;
+
+			--max-width-content: 1200px;
+			--max-width-header: 1450px;
+			--spacing: 3.6rem;
+			--border-radius: 6px;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		::-webkit-scrollbar {
+			width: 14px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			box-shadow: inset 0 0 14px 14px white;
+			border: solid 4px transparent;
+			border-radius: 14px;
+		}
+
+		::-webkit-scrollbar-button {
+			display: none;
+		}
+
+		body {
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			scroll-behavior: smooth;
+			overflow-x: hidden;
+			overflow-y: overlay;
+			font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+			color: var(--text-color);
+			background-color: var(--bg-color);
+
+			img {
+				-webkit-user-drag: none;
+				-khtml-user-drag: none;
+				-moz-user-drag: none;
+				-o-user-drag: none;
+				user-drag: none;
+			}
+
+			h2 {
+				width: min(100%, 1120px);
+				margin-inline: auto;
+				margin-bottom: calc(var(--spacing) / 1.25);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1rem;
+				text-align: center;
+				font-size: 1.6em;
+				font-weight: 700;
+				text-transform: uppercase;
+
+				&::before,
+				&::after {
+					border-top: 0.08em solid;
+					content: "";
+					flex: 1;
+					border-radius: var(--border-radius);
+				}
+			}
+		}
+
+		.btn {
+			display: inline-block;
+			width: 270px;
+			border: none;
+			border-radius: 8px;
+			font-size: 1.1em;
+			font-weight: 600;
+			text-align: center;
+			text-decoration: none !important;
+			line-height: 2.18em;
+			cursor: pointer;
+			color: var(--primary-text);
+			box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0,
+			rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
+			background-color: var(--btn-color);
+			transition: background-color 0.15s;
+
+			&:hover {
+				background-color: rgb(156, 0, 0);
+			}
+
+			@media (max-width: 450px) {
+				width: 100%;
+			}
+		}
+	</style>
