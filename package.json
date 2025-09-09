@@ -32,10 +32,13 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
+		"@iconify-json/fa6-brands": "^1.2.6",
+        "@iconify-json/mdi": "^1.2.3",
 		"@astrojs/cloudflare": "^12.6.8",
 		"@astrojs/sitemap": "^3.5.1",
 		"astro": "^5.13.6",
 		"astro-compressor": "^1.1.2",
+		"astro-icon": "^1.1.5",
 		"astro-meta-tags": "^0.4.0",
 		"typescript": "^5.9.2"
 	},
