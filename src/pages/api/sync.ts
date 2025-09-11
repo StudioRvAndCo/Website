@@ -2,7 +2,25 @@ import type { APIRoute } from 'astro'
 
 export const prerender = false
 
-export const POST: APIRoute = async ({ request, locals, url }) => {
+export const GET: APIRoute = async ({ request, locals, site }) => {
+    const key = request.headers.get('x-api-key')
+    if (locals.runtime.env.SYNC_KEY && key === locals.runtime.env.SYNC_KEY) {
+        return new Response(JSON.stringify({
+            'YOUTUBE_STATISTICS': await locals.runtime.env.STORE.getWithMetadata('YOUTUBE_STATISTICS', { type: 'json' }) || null,
+            'INSTAGRAM_POSTS': await locals.runtime.env.STORE.getWithMetadata('INSTAGRAM_POSTS', { type: 'json' }) || null,
+            'TWITCH_LIVE': await locals.runtime.env.STORE.getWithMetadata('TWITCH_LIVE', { type: 'json' }) || null
+        }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        })
+    }
+
+    // Redirect to website
+    return Response.redirect(site?.origin || 'https://rvandco.fr', 301)
+}
+
+// Sync data from third-party APIs (YouTube, Instagram, Twitch)
+export const POST: APIRoute = async ({ request, locals, site }) => {
     const key = request.headers.get('x-api-key')
     if (locals.runtime.env.SYNC_KEY && key === locals.runtime.env.SYNC_KEY) {
         // Check if tokens are set
@@ -45,7 +63,7 @@ export const POST: APIRoute = async ({ request, locals, url }) => {
         }
 
         // Twitch
-        /* const getTwitchState = async () => {
+        /* const getTwitchLive = async () => {
             try {
                 const request = await fetch("https://api.twitch.tv/helix/streams?user_login=studiorvandco", {
                     headers: {
@@ -58,14 +76,14 @@ export const POST: APIRoute = async ({ request, locals, url }) => {
 
                 const data = result.data[0]
                 if (!data) throw new Error('No data found')
-                else await locals.runtime.env.STORE.put('TWITCH_LIVESTREAM_STATE', JSON.stringify(data), { metadata: { updatedAt: new Date().toISOString() } })
+                else await locals.runtime.env.STORE.put('TWITCH_LIVE', JSON.stringify(data), { metadata: { updatedAt: new Date().toISOString() } })
             }
             catch (e: any) {
                 errors.push(`Instagram API error: ${e.message}`)
             }
         } */
 
-        await Promise.all([getYouTubeStatistics(), getInstagramPosts(), /* getTwitchState() */])
+        await Promise.all([getYouTubeStatistics(), getInstagramPosts(), /* getTwitchLive() */])
 
         // Return errors if any
         if (errors.length) {
@@ -76,5 +94,5 @@ export const POST: APIRoute = async ({ request, locals, url }) => {
     }
 
     // Redirect to website
-	return Response.redirect(url.origin, 301)
+	return Response.redirect(site?.origin || 'https://rvandco.fr', 301)
 }

@@ -8,28 +8,83 @@ beforeEach(() => {
     vi.clearAllMocks()
 })
 
-describe('Sync Social Networks', () => {
+describe('Get Sync Data', () => {
     test('No API key', async () => {
-        const request = new Request('https://example.com/api/sync', { method: 'POST' })
-        const context: any = { request, locals: { runtime: { env: {} } }, url: new URL('https://example.com/api/sync') }
-        const response: Response = await Sync.POST(context)
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'GET' })
+        const context: any = { request, locals: { runtime: { env: {} } }, site: new URL('https://rvandco.fr/api/sync') }
+        const response: Response = await Sync.GET(context)
 
         expect(response.status).toBe(301)
-        expect(response.headers.get('Location')).toBe('https://example.com/')
+        expect(response.headers.get('Location')).toBe('https://rvandco.fr/')
     })
 
     test('Wrong API key', async () => {
-        const request = new Request('https://example.com/api/sync', { method: 'POST', headers: { 'x-api-key': 'wrong' } })
-        const context: any = { request, locals: { runtime: { env: { SYNC_KEY: 'correct' } } }, url: new URL('https://example.com/api/sync') }
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'GET', headers: { 'x-api-key': 'wrong' } })
+        const context: any = { request, locals: { runtime: { env: { SYNC_KEY: 'correct' } } }, site: new URL('https://rvandco.fr/api/sync') }
+        const response: Response = await Sync.GET(context)
+
+        expect(response.status).toBe(301)
+        expect(response.headers.get('Location')).toBe('https://rvandco.fr/')
+    })
+
+    test('Successful data retrieval', async () => {
+        const getMock = vi.fn()
+            .mockResolvedValueOnce({ value: { viewCount: '1000', subscriberCount: '100', videoCount: '10' }, metadata: { updatedAt: '2024-01-01T00:00:00Z' } })
+            .mockResolvedValueOnce({ value: [{ id: '1', media_type: 'IMAGE', media_url: 'https://example.com/image1.jpg', permalink: 'https://instagram.com/p/1' }], metadata: { updatedAt: '2024-01-01T00:00:00Z' } })
+            .mockResolvedValueOnce({ value: { id: '12345', user_id: '67890', user_name: 'studiorvandco', game_id: '0', type: 'live', title: 'Live Stream', viewer_count: 100, started_at: '2024-01-01T00:00:00Z', language: 'en', thumbnail_url: 'https://example.com/thumbnail.jpg', tag_ids: [] }, metadata: { updatedAt: '2024-01-01T00:00:00Z' } })
+
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'GET', headers: { 'x-api-key': 'correct' } })
+        const context: any = {
+            request,
+            locals: {
+                runtime: {
+                    env: {
+                        SYNC_KEY: 'correct',
+                        STORE: { getWithMetadata: getMock }
+                    }
+                }
+            },
+            url: new URL('https://rvandco.fr/api/sync')
+        }
+        const response: Response = await Sync.GET(context)
+
+        expect(response.status).toBe(200)
+        const body: any = await response.json()
+        expect(body).toEqual({
+            YOUTUBE_STATISTICS: { value: { viewCount: '1000', subscriberCount: '100', videoCount: '10' }, metadata: { updatedAt: '2024-01-01T00:00:00Z' } },
+            INSTAGRAM_POSTS: { value: [{ id: '1', media_type: 'IMAGE', media_url: 'https://example.com/image1.jpg', permalink: 'https://instagram.com/p/1' }], metadata: { updatedAt: '2024-01-01T00:00:00Z' } },
+            TWITCH_LIVE: { value: { id: '12345', user_id: '67890', user_name: 'studiorvandco', game_id: '0', type: 'live', title: 'Live Stream', viewer_count: 100, started_at: '2024-01-01T00:00:00Z', language: 'en', thumbnail_url: 'https://example.com/thumbnail.jpg', tag_ids: [] }, metadata: { updatedAt: '2024-01-01T00:00:00Z' } }
+        })
+
+        expect(getMock).toHaveBeenCalledTimes(3)
+        expect(getMock).toHaveBeenNthCalledWith(1, 'YOUTUBE_STATISTICS', { type: 'json' })
+        expect(getMock).toHaveBeenNthCalledWith(2, 'INSTAGRAM_POSTS', { type: 'json' })
+        expect(getMock).toHaveBeenNthCalledWith(3, 'TWITCH_LIVE', { type: 'json' })
+    })
+})
+
+describe('Sync Social Networks', () => {
+    test('No API key', async () => {
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'POST' })
+        const context: any = { request, locals: { runtime: { env: {} } }, site: new URL('https://rvandco.fr/api/sync') }
         const response: Response = await Sync.POST(context)
 
         expect(response.status).toBe(301)
-        expect(response.headers.get('Location')).toBe('https://example.com/')
+        expect(response.headers.get('Location')).toBe('https://rvandco.fr/')
+    })
+
+    test('Wrong API key', async () => {
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'POST', headers: { 'x-api-key': 'wrong' } })
+        const context: any = { request, locals: { runtime: { env: { SYNC_KEY: 'correct' } } }, site: new URL('https://rvandco.fr/api/sync') }
+        const response: Response = await Sync.POST(context)
+
+        expect(response.status).toBe(301)
+        expect(response.headers.get('Location')).toBe('https://rvandco.fr/')
     })
 
     test('Missing tokens', async () => {
-        const request = new Request('https://example.com/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
-        const context: any = { request, locals: { runtime: { env: { SYNC_KEY: 'correct' } } }, url: new URL('https://example.com/api/sync') }
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
+        const context: any = { request, locals: { runtime: { env: { SYNC_KEY: 'correct' } } }, site: new URL('https://rvandco.fr/api/sync') }
         const response: Response = await Sync.POST(context)
 
         expect(response.status).toBe(500)
@@ -54,7 +109,7 @@ describe('Sync Social Networks', () => {
             })
 
         const putMock = vi.fn().mockResolvedValue(undefined)
-        const request = new Request('https://example.com/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
         const context: any = {
             request,
             locals: {
@@ -68,7 +123,7 @@ describe('Sync Social Networks', () => {
                     }
                 }
             },
-            url: new URL('https://example.com/api/sync')
+            site: new URL('https://rvandco.fr/api/sync')
         }
         const response: Response = await Sync.POST(context)
 
@@ -100,7 +155,7 @@ describe('Sync Social Networks', () => {
             })
 
         const putMock = vi.fn().mockResolvedValue(undefined)
-        const request = new Request('https://example.com/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
         const context: any = {
             request,
             locals: {
@@ -114,7 +169,7 @@ describe('Sync Social Networks', () => {
                     }
                 }
             },
-            url: new URL('https://example.com/api/sync')
+            site: new URL('https://rvandco.fr/api/sync')
         }
         const response: Response = await Sync.POST(context)
 
@@ -142,7 +197,7 @@ describe('Sync Social Networks', () => {
             })
 
         const putMock = vi.fn().mockResolvedValue(undefined)
-        const request = new Request('https://example.com/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
+        const request = new Request('https://rvandco.fr/api/sync', { method: 'POST', headers: { 'x-api-key': 'correct' } })
         const context: any = {
             request,
             locals: {
@@ -156,7 +211,7 @@ describe('Sync Social Networks', () => {
                     }
                 }
             },
-            url: new URL('https://example.com/api/sync')
+            site: new URL('https://rvandco.fr/api/sync')
         }
         const response: Response = await Sync.POST(context)
 
