@@ -1,0 +1,28 @@
+[
+    {
+        "name": {
+            "fr": "Les Chroniques",
+            "en": "Les Chroniques"
+        },
+        "description": {
+            "fr": "Talkshow diffusé en direct sur Twitch.",
+            "en": "Talkshow broadcasted live on Twitch."
+        },
+        "picture": "les_chroniques",
+        "link": "https://youtube.com/playlist?list=PLSBzstMGFp53S9n77CvdrQG132hMXSBBM",
+        "createdAt": "2025-06-15"
+    },
+    {
+        "name": {
+            "fr": "Concert PolyBand 2022",
+            "en": "PolyBand Concert 2022"
+        },
+        "description": {
+            "fr": "Captation vidéo et sonore du concert du 17 mars 2022.",
+            "en": "Video and sound recording of the concert of March 17, 2022."
+        },
+        "picture": "concert_polyband",
+        "link": "https://youtube.com/playlist?list=PLSBzstMGFp53nJ4RpcZImbOLHwMvDiJH4",
+        "createdAt": "2025-06-15"
+    }
+]

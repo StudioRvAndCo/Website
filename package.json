@@ -46,6 +46,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.3.1",
+		"sass-embedded": "^1.92.1",
 		"vitest": "^3.2.4",
 		"wrangler": "^4.34.0"
 	},

@@ -1,0 +1,67 @@
+[
+    {
+        "name": {
+            "fr": "Soleil de Plomb",
+            "en": "Blazing Sun"
+        },
+        "description": {
+            "fr": "Dans le Sud-Ouest de la France, à la frontière avec l'Espagne, la pègre règne. La famille Casseres, qui domine la région, est en conflit avec un clan en plein essor : les Cassin.",
+            "en": "In the southwest of France, on the border with Spain, the underworld reigns. The Casseres family, who dominate the region, are in conflict with a rising clan: the Cassin."
+        },
+        "picture": "soleil_de_plomb",
+        "link": "https://youtube.com/playlist?list=PL6VuKkKwjE2FaJpF8PWwG9JaWQ4nr1wbM",
+        "createdAt": "2025-06-15"
+    },
+    {
+        "name": {
+            "fr": "En Sursis",
+            "en": "En Sursis"
+        },
+        "description": {
+            "fr": "Grâce au jeune lieutenant Jules, le capitaine Patrick Corbier aperçoit enfin sa chance d'atteindre l'insaisissable Vincent, qu'il traque en solitaire depuis de nombreuses années.",
+            "en": "Thanks to the young officer Jules, Captain Patrick Corbier finally sees his chance to reach the elusive Vincent, whom he has been tracking alone for many years."
+        },
+        "picture": "en_sursis",
+        "link": "https://youtube.com/watch?v=JVPWEmjVV7g",
+        "createdAt": "2025-06-15"
+    },
+    {
+        "name": {
+            "fr": "Un Chemin",
+            "en": "Un Chemin"
+        },
+        "description": {
+            "fr": "Tandis que l'humanité est terrassée par une pandémie dévastatrice, deux amis tentent de survivre.",
+            "en": "While humanity is struck down by a devastating pandemic, two friends try to survive."
+        },
+        "picture": "un_chemin",
+        "link": "https://youtube.com/watch?v=GXBSu6fq4Wc",
+        "createdAt": "2025-06-15"
+    },
+    {
+        "name": {
+            "fr": "Star Wars : Une quête de justice",
+            "en": "Star Wars : Une quête de justice"
+        },
+        "description": {
+            "fr": "La galaxie est déchirée par la guerre entre les Jedi et les Sith. Dans ce contexte mouvementé, la notion de justice est incertaine, chaque camp se l’appropriant pour servir ses intérêts. Mais certains n'hésitent pas à se dresser face à cet affrontement sans fin...",
+            "en": "The galaxy is torn apart by the war between the Jedi and the Sith. In the midst of this turmoil, the notion of justice is uncertain, as each side appropriates it to serve its own interests. But there are those who do not hesitate to stand up to this endless confrontation..."
+        },
+        "picture": "star_wars_une_quete_de_justice",
+        "link": "https://youtube.com/watch?v=RAmWSDmg0so",
+        "createdAt": "2025-06-15"
+    },
+    {
+        "name": {
+            "fr": "Un Été Entre Amis",
+            "en": "Un Été Entre Amis"
+        },
+        "description": {
+            "fr": "Trois amis s'apprêtent à profiter de vacances assez banales à la campagne. Mais des aventures bien plus palpitantes que prévu les attendent et leurs caractères aussi bien trempés que divergents ne vont pas arranger les choses...",
+            "en": "Three friends are about to enjoy a rather ordinary vacation in the countryside. But adventures much more exciting than expected are waiting for them and their characters as well tempered as divergent will not arrange things..."
+        },
+        "picture": "un_ete_entre_amis",
+        "link": "https://youtube.com/playlist?list=PL6VuKkKwjE2EmFu61Pvn39yP5RvYVpIGB",
+        "createdAt": "2025-06-15"
+    }
+]

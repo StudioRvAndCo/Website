@@ -1,18 +1,27 @@
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import metaTags from 'astro-meta-tags';
-import icon from 'astro-icon';
-import compressor from 'astro-compressor';
-import cloudflare from '@astrojs/cloudflare';
+import { defineConfig } from 'astro/config'
+import sitemap from '@astrojs/sitemap'
+import metaTags from 'astro-meta-tags'
+import icon from 'astro-icon'
+import compressor from 'astro-compressor'
+import cloudflare from '@astrojs/cloudflare'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap(), metaTags(), icon(), compressor()],
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true
-    },
-
-    imageService: "cloudflare"
-  })
-});
+	site: "https://rvandco.fr",
+	base: "/",
+	adapter: cloudflare({
+		imageService: "cloudflare",
+		platformProxy: {
+			enabled: true
+		}
+	},
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					additionalData: `@use "/src/assets/scss/mixin" as *;`
+				}
+			}
+		}
+	}
+})

@@ -1,0 +1,61 @@
+[
+    {
+        "name": "Amendine"
+    },
+    {
+        "name": "Baptiste"
+    },
+    {
+        "name": "Bastien",
+        "picture": "bastien"
+    },
+    {
+        "name": "Corentin",
+        "picture": "corentin",
+        "link": "https://youtube.com/@CoconutsX38"
+    },
+    {
+        "name": "Damian",
+        "picture": "damian"
+    },
+    {
+        "name": "Florent",
+        "picture": "florent",
+        "link": "https://linktr.ee/dotheflo"
+    },
+    {
+        "name": "Joshua",
+        "picture": "joshua"
+    },
+    {
+        "name": "Lucas"
+    },
+    {
+        "name": "Maël",
+        "picture": "mael"
+    },
+    {
+        "name": "Mathis",
+        "picture": "mathis",
+        "link": "https://minarox.fr"
+    },
+    {
+        "name": "Maxence"
+    },
+    {
+        "name": "Maxime",
+        "picture": "maxime"
+    },
+    {
+        "name": "Quentin"
+    },
+    {
+        "name": "Thomas",
+        "picture": "thomas",
+        "link": "https://youtube.com/@l_artilier"
+    },
+    {
+        "name": "Tiffany",
+        "picture": "tiffany"
+    }
+]
