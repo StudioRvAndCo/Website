@@ -1,12 +1,19 @@
 ---
-import { Icon } from 'astro-icon/components';
+import TwitchState from '@components/defer/TwitchState.astro'
+import { Icon } from 'astro-icon/components'
+import { Image } from 'astro:assets'
+import Logo from '@assets/img/logo.webp'
+import Translations from '@assets/json/translations.json'
+
+const locale = Astro.currentLocale ?? 'fr'
+const translations = Translations[locale as keyof typeof Translations].header
 ---
 
 <header>
     <div>
         <!-- Logo -->
         <a href="/" class="toggle-off-menu">
-            <img src="@/assets/img/logo.webp" alt="Studio Rv & Co" width="50" height="60" loading="lazy" />
+            <Image src={Logo} alt="Studio Rv & Co" />
             <h1>Studio Rv & Co</h1>
         </a>
 
@@ -15,20 +22,20 @@ import { Icon } from 'astro-icon/components';
             <Icon name={"mdi:hamburger-menu"} id="mobile" class="toggle-menu" />
             <section class="mobile">
                 <div>
-                    <a href="/" class="toggle-off-menu" :class="nav === 'home' ? 'current' : ''">
-                        Accueil
+                    <a href="/" class="toggle-off-menu current">
+                        {translations.home}
                     </a>
-                    <a href="#productions" class="toggle-off-menu" :class="nav === 'productions' ? 'current' : ''">
-                        Productions
+                    <a href="#productions" class="toggle-off-menu">
+                        {translations.productions}
                     </a>
-                    <a href="#projects" class="toggle-off-menu" :class="nav === 'projects' ? 'current' : ''">
-                        Projets
+                    <a href="#projects" class="toggle-off-menu">
+                        {translations.projects}
                     </a>
-                    <a href="#association" class="toggle-off-menu" :class="nav === 'association' ? 'current' : ''">
-                        Association
+                    <a href="#association" class="toggle-off-menu">
+                        {translations.association}
                     </a>
-                    <a href="#contact" class="toggle-off-menu" :class="nav === 'contact' ? 'current' : ''">
-                        Contact
+                    <a href="#contact" class="toggle-off-menu">
+                        {translations.contact}
                     </a>
                 </div>
             </section>
@@ -49,39 +56,41 @@ import { Icon } from 'astro-icon/components';
             <a href="https://facebook.com/studiorvandco" title="Facebook">
                 <Icon name={"fa6-brands:facebook"} id="mobile" />
             </a>
-            <a href="https://twitch.tv/studiorvandco" title="Twitch">
-                <Icon name={"fa6-brands:twitch"} id="mobile" />
-            </a>
+            <TwitchState server:defer>
+                <a slot="fallback" href="https://twitch.tv/studiorvandco" title="Twitch">
+                    <Icon name={"fa6-brands:twitch"} id="mobile" />
+                </a>
+            </TwitchState>
         </section>
     </div>
 </header>
 
 <script>
-    const toggleOffMenuElements = document.querySelectorAll('.toggle-off-menu');
-    const toggleMenuElements = document.querySelectorAll('.toggle-menu');
-    let menu = false;
+    const toggleOffMenuElements = document.querySelectorAll('.toggle-off-menu')
+    const toggleMenuElements = document.querySelectorAll('.toggle-menu')
+    let menu = false
 
     function toggleMenu(value?: boolean) {
-        menu = value ?? !menu;
+        menu = value ?? !menu
 
-        const body = document.getElementsByTagName("body")[0];
+        const body = document.getElementsByTagName("body")[0]
         if (body) {
-            body.style.overflowY = menu ? "hidden" : "overlay";
+            body.style.overflowY = menu ? "hidden" : "overlay"
         }
 
-        const elements = document.querySelectorAll('.mobile');
+        const elements = document.querySelectorAll('.mobile')
         elements.forEach((el) => {
-            el.classList.toggle('appear', value);
-        });
+            el.classList.toggle('appear', value)
+        })
     }
 
     toggleOffMenuElements.forEach((el) => {
-        el.addEventListener('click', () => toggleMenu(false));
-    });
+        el.addEventListener('click', () => toggleMenu(false))
+    })
 
     toggleMenuElements.forEach((el) => {
-        el.addEventListener('click', () => toggleMenu());
-    });
+        el.addEventListener('click', () => toggleMenu())
+    })
 </script>
 
 <style lang="scss">
@@ -127,6 +136,7 @@ import { Icon } from 'astro-icon/components';
                 img {
                     padding: 0.4rem;
                     max-height: $height;
+                    width: auto;
                 }
 
                 h1 {

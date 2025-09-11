@@ -1,0 +1,70 @@
+---
+import type { Member } from '@types'
+import { Image } from 'astro:assets'
+
+const { member } = Astro.props as { member: Member }
+const memberPictures = import.meta.glob('@assets/img/members/*.webp', { eager: true, import: 'default' })
+const picture = Object.values(memberPictures)
+    .find((image: any) => image.src.includes(member.picture ?? 'default')) as ImageMetadata
+const Wrapper = member.link ? 'a' : 'div'
+---
+
+<Wrapper href={member.link}>
+    <div>
+        <Image src={picture} alt={member.name} />
+    </div>
+    <p>{member.name}</p>
+</Wrapper>
+
+<style lang="scss">
+    a,
+    div {
+        font-weight: 600;
+        width: max-content;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        transform: scale(1);
+        transition: transform 250ms;
+        text-decoration: none;
+
+        > div {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: cover;
+                transform: scale(1);
+                transition: transform 250ms;
+            }
+        }
+
+        p {
+            color: var(--text-color);
+        }
+    }
+
+    a {
+        p::after {
+            content: "";
+            height: 2px;
+            position: absolute;
+            bottom: -0.5rem;
+            left: 2.7rem;
+            right: 2.7rem;
+            border-radius: var(--border-radius);
+            background-color: var(--subtext-color);
+        }
+
+        &:hover div img {
+            transform: scale(1.06);
+        }
+    }
+</style>

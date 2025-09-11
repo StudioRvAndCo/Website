@@ -1,0 +1,74 @@
+---
+import type { YouTubeStatistics } from '@types'
+import Translations from '@assets/json/translations.json'
+
+export const prerender = false
+
+const locale = Astro.currentLocale ?? 'fr'
+const translations = Translations[locale as keyof typeof Translations].teaser
+const statistics = await Astro.locals.runtime.env.STORE.get("YOUTUBE_STATISTICS", "json") as YouTubeStatistics ?? { viewCount: 0, subscriberCount: 0 }
+---
+
+<p><span id="nb-views">{ statistics.viewCount }</span> {translations.views}</p>
+<p><span id="nb-subscribers">{ statistics.subscriberCount }</span> {translations.subscribers}</p>
+
+<script>
+    import { CountUp, type CountUpOptions } from 'countup.js'
+
+    const nbViewsElement = document.getElementById('nb-views')
+    const nbSubscribersElement = document.getElementById('nb-subscribers')
+
+    const countUpOptions: CountUpOptions = {
+        duration: 3,
+        enableScrollSpy: true,
+        scrollSpyOnce: true,
+        separator: ' ',
+        startVal: 0
+    }
+
+    new CountUp("nb-views", Number(nbViewsElement?.innerText), countUpOptions)
+    new CountUp("nb-subscribers", Number(nbSubscribersElement?.innerText), countUpOptions)
+</script>
+
+<style lang="scss">
+    p {
+        width: inherit;
+        padding: 0.8rem;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+        gap: 8px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 2.2em;
+            right: 2.2em;
+            bottom: -1%;
+            height: 2px;
+            border-radius: var(--border-radius);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        &:last-of-type::after {
+            content: none;
+        }
+
+        span {
+            padding-bottom: 2px;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        @media (max-width: 950px) {
+            padding: 0;
+            width: auto;
+
+            &::after {
+                content: unset;
+            }
+        }
+    }
+</style>

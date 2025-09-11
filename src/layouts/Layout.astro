@@ -1,47 +1,52 @@
 ---
-import { SEO } from "astro-seo";
-import { AstroFont } from "astro-font";
-import Logo from "@assets/svg/astro.svg";
-import Background from "@assets/svg/background.svg";
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
+import { SEO } from "astro-seo"
+import { AstroFont } from "astro-font"
+import Logo from "@assets/svg/astro.svg"
+import Background from "@assets/img/background.webp"
+import Thumbnail from "@assets/svg/background.svg"
+import Header from '@layouts/Header.astro'
+import Footer from '@layouts/Footer.astro'
+import Translations from '@assets/json/translations.json'
 
-const title = "Studio Rv & Co";
-const description = "Le Studio Rv & Co est une association regroupant des amis passionnés par le monde du cinéma."
+const site = Astro.site ?? new URL('https://rvandco.fr')
+const background = `url(${Background.src})`
+const locale = Astro.currentLocale ?? 'fr'
+const translations = Translations[locale as keyof typeof Translations]
+const title = "Studio Rv & Co"
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={locale}>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<SEO
 	title={title}
-	description={description}
+	description={translations.description}
 	charset="UTF-8"
 	openGraph={{
 		basic: {
 			title: title,
 			type: "website",
-			url: Astro.url.origin,
-			image: Background.src
+			url: site.origin,
+			image: Thumbnail.src
 		},
 		optional: {
-			locale: "fr-FR",
+			locale:	locale,
 		},
 		image: {
 			alt: `${title} banner`,
-			url: Background.src,
+			url: Thumbnail.src,
 			type: "image/webp"
 		}
 	}}
 	twitter={{
 		creator: `@Minarox_`,
 		card: "summary_large_image",
-		site: Astro.url.origin,
+		site: site.origin,
 		title: title,
-		description: description,
-		image: Background.src,
+		description: translations.description,
+		image: Thumbnail.src,
 		imageAlt: `${title} banner`,
 	}}
 	extend={{
@@ -54,7 +59,7 @@ const description = "Le Studio Rv & Co est une association regroupant des amis p
 		{ name: "theme-color", content: "#393939" },
 		{ name: "keywords", content: "Studio, Rv, Co, Association, Cinéma, Films, Vidéos, Production, Audiovisuel, Court-métrage, Long-métrage, Documentaire, Fiction, Création, Réalisation, Montage, Scénario, Acteurs, Équipe technique, Tournage, Post-production, Effets spéciaux, Musique de film, Scénographie, Costumes, Maquillage, Caméra, Lumière, Sonorisation, Distribution, Promotion, Festivals de cinéma" },
 		{ name: "robots", content: "index, follow" },
-		{ name: "language", content: "French" },
+		{ name: "language", content: locale },
 		{ name: "author", content: "Mathis Serrieres Maniecki" }
 		]
 	}}
@@ -87,7 +92,7 @@ const description = "Le Studio Rv & Co est une association regroupant des amis p
 	</body>
 	</html>
 
-	<style lang="scss">
+	<style lang="scss" define:vars={{ background }} is:global>
 		:root {
 			--bg-color: #393939;
 			--projects-bg-color: #555555;
@@ -125,19 +130,22 @@ const description = "Le Studio Rv & Co est une association regroupant des amis p
 		}
 
 		body {
+			display: grid;
+			grid-template-rows: auto 1fr auto;
+			min-height: 100vh;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
-			-webkit-user-select: none;
-			-khtml-user-select: none;
-			-moz-user-select: none;
-			-o-user-select: none;
-			user-select: none;
 			scroll-behavior: smooth;
 			overflow-x: hidden;
 			overflow-y: overlay;
 			font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
 			color: var(--text-color);
 			background-color: var(--bg-color);
+
+			main {
+				background-image: var(--background);
+				background-attachment: fixed;
+			}
 
 			img {
 				-webkit-user-drag: none;

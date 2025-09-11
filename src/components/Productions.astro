@@ -1,0 +1,26 @@
+---
+import Production from '@components/Production.astro'
+import ProductionsList from '@assets/json/productions.json'
+import Translations from '@assets/json/translations.json'
+
+const locale = Astro.currentLocale ?? 'fr'
+const translations = Translations[locale as keyof typeof Translations].productions
+const productions = ProductionsList.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+---
+
+<article id="productions">
+    <h2>{translations.self}</h2>
+    <div>{productions.map((production, index) => <Production production={production} index={index} />)}</div>
+</article>
+
+<style lang="scss" is:global>
+    #productions {
+        @include max-width(var(--max-width-content));
+        @include full-width-background-color(var(--bg-color));
+        padding: var(--spacing) 0;
+
+        > div {
+            padding: 0;
+        }
+    }
+</style>

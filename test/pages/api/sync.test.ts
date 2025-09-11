@@ -34,7 +34,7 @@ describe('Sync Social Networks', () => {
 
         expect(response.status).toBe(500)
         const body: string = await response.text()
-        expect(body).toBe('Tokens not set')
+        expect(body).toBe('Environment variables not set')
     })
 
     test('Successful sync', async () => {
@@ -61,6 +61,7 @@ describe('Sync Social Networks', () => {
                 runtime: {
                     env: {
                         SYNC_KEY: 'correct',
+                        YOUTUBE_ID: 'youtube-id',
                         YOUTUBE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }
@@ -106,6 +107,7 @@ describe('Sync Social Networks', () => {
                 runtime: {
                     env: {
                         SYNC_KEY: 'correct',
+                        YOUTUBE_ID: 'youtube-id',
                         YOUTUBE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }
@@ -147,6 +149,7 @@ describe('Sync Social Networks', () => {
                 runtime: {
                     env: {
                         SYNC_KEY: 'correct',
+                        YOUTUBE_ID: 'youtube-id',
                         YOUTUBE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }

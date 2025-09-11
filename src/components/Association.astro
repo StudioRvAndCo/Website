@@ -1,0 +1,73 @@
+---
+import InstagramPosts from './defer/InstagramPosts.astro'
+import Background from '@assets/svg/association.svg'
+import Member from '@components/Member.astro'
+import MembersList from '@assets/json/members.json'
+import Translations from '@assets/json/translations.json'
+
+const background = `url(${Background.src})`
+const locale = Astro.currentLocale ?? 'fr'
+const translations = Translations[locale as keyof typeof Translations].association
+const members = MembersList.sort((a, b) => a.name.localeCompare(b.name))
+---
+
+<article id="association">
+    <div>
+        <h2>{translations.self}</h2>
+        <p>{translations.description}</p>
+
+        <section>{members.map((member) => <Member member={member} />)}</section>
+
+        <h3>{translations.instagramGallery}</h3>
+
+        <InstagramPosts server:defer>
+            <Fragment slot="fallback">
+                <!-- TODO: Icon de chargement -->
+                <p>Chargement...</p>
+            </Fragment>
+        </InstagramPosts>
+
+        <a href="https://instagram.com/studiorvandco" class="btn">{translations.morePictures}</a>
+    </div>
+</article>
+
+<style lang="scss" is:global define:vars={{ background }}>
+    #association {
+        background-image: var(--background);
+        @include full-width-background-color(var(--association-bg-color));
+        padding: var(--spacing) 0;
+
+        > div {
+            @include max-width(var(--max-width-content));
+
+            p {
+                text-align: center;
+                color: var(--subtext-color);
+            }
+
+            .btn {
+                margin-top: 3rem;
+                display: block;
+                margin-inline: auto;
+            }
+
+            section:first-of-type {
+                margin-top: calc(var(--spacing) / 1.5);
+                flex-wrap: wrap;
+                display: flex;
+                justify-content: space-around;
+                gap: 4rem;
+            }
+
+            h3 {
+                font-size: 1.5em;
+                margin-top: calc(var(--spacing) * 1.4);
+                margin-bottom: calc(var(--spacing) / 2);
+
+                @media (max-width: 450px) {
+                    text-align: center;
+                }
+            }
+        }
+    }
+</style>
