@@ -17,3 +17,24 @@ export interface Production {
 }
 
 export interface Project extends Production {}
+
+export interface YouTubeStatistics {
+    viewCount: string
+    subscriberCount: string
+    hiddenSubscriberCount: boolean
+    videoCount: string
+}
+
+export enum InstagramMediaType {
+    IMAGE = "IMAGE",
+    VIDEO = "VIDEO",
+    CAROUSEL_ALBUM = "CAROUSEL_ALBUM"
+}
+
+export interface InstagramPost {
+    media_type: InstagramMediaType
+    media_url?: string
+    thumbnail_url?: string
+    permalink: string
+    id: string
+}
