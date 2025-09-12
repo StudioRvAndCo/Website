@@ -1,9 +1,9 @@
 ---
-import TwitchState from '@components/defer/TwitchState.astro'
+import Translations from '@assets/json/translations.json'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import Logo from '@assets/img/logo.webp'
-import Translations from '@assets/json/translations.json'
+import TwitchState from '@components/defer/TwitchState.astro'
 
 const locale = Astro.currentLocale ?? 'fr'
 const translations = Translations[locale as keyof typeof Translations].header

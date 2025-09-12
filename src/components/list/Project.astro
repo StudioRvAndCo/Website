@@ -1,0 +1,55 @@
+---
+import Translations from '@assets/json/translations.json'
+import type { Project } from '@types'
+import { Image } from 'astro:assets'
+
+const locale = Astro.currentLocale ?? 'fr'
+const translations = Translations[locale as keyof typeof Translations].projects
+const project = Astro.props.project as Project
+const projectBackgrounds = import.meta.glob('@assets/img/projects/*.webp', { eager: true, import: 'default' })
+const background = Object.values(projectBackgrounds)
+	.find((image: any) => image.src.includes(project.picture)) as ImageMetadata
+---
+
+<ul class="splide__list">
+	<div>
+		<h3>{project.name[locale as keyof typeof project.name]}</h3>
+		<p>{project.description[locale as keyof typeof project.description]}</p>
+		<a href={project.link} class="btn">{translations.view}</a>
+	</div>
+	<Image src={background} alt={project.name[locale as keyof typeof project.name]} />
+</ul>
+
+<script>
+	import '@splidejs/splide/css'
+</script>
+
+<style lang="scss">
+	.splide__slide {
+		height: 330px !important;
+
+		div {
+			padding: 2rem 4rem;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-flow: column nowrap;
+			gap: 1rem;
+			justify-content: center;
+			background: linear-gradient(
+				35deg,
+				rgba(0, 0, 0, 1) 0%,
+				rgba(0, 0, 0, 0) 70%
+			);
+
+			h3,
+			p {
+				text-shadow: 0 0 0.8em var(--bg-color), 0 0 0.2em var(--bg-color);
+			}
+
+			p {
+				margin-bottom: 1.4rem;
+			}
+		}
+	}
+</style>

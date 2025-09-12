@@ -2,7 +2,7 @@
 import type { Member } from '@types'
 import { Image } from 'astro:assets'
 
-const { member } = Astro.props as { member: Member }
+const member = Astro.props.member as Member
 const memberPictures = import.meta.glob('@assets/img/members/*.webp', { eager: true, import: 'default' })
 const picture = Object.values(memberPictures)
     .find((image: any) => image.src.includes(member.picture ?? 'default')) as ImageMetadata

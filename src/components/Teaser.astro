@@ -1,10 +1,9 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import YouTubeStatistics from '@components/defer/YouTubeStatistics.astro'
+import Translations from '@assets/json/translations.json'
 import Thumbnail from '@assets/img/thumbnail.webp'
 import TeaserWebm from '@assets/vid/teaser.webm'
 import TeaserMp4 from '@assets/vid/teaser.mp4'
-import Translations from '@assets/json/translations.json'
+import YouTubeStatistics from '@components/defer/YouTubeStatistics.astro'
 
 const locale = Astro.currentLocale ?? 'fr'
 const translations = Translations[locale as keyof typeof Translations].teaser
@@ -31,7 +30,7 @@ const translations = Translations[locale as keyof typeof Translations].teaser
                 </YouTubeStatistics>
                 <p><span id="nb-years-old">0</span> {translations.years}</p>
             </div>
-            <a href={getRelativeLocaleUrl(locale, '#association')} class="btn">{translations.readMore}</a>
+            <a href="#association" class="btn">{translations.readMore}</a>
         </div>
     </section>
 </article>

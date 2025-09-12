@@ -1,0 +1,136 @@
+---
+import Translations from '@assets/json/translations.json'
+import ProjectsList from '@assets/json/projects.json'
+import Project from '@components/list/Project.astro'
+import { Icon } from 'astro-icon/components'
+
+const locale = Astro.currentLocale ?? 'fr'
+const translations = Translations[locale as keyof typeof Translations].projects
+const projects = ProjectsList.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+---
+
+<article id="projects">
+	<h2>{translations.self}</h2>
+
+	<section class="splide" aria-label={translations.self}>
+		<div class="splide__track">
+			{projects.map((project) => <Project project={project} />)}
+		</div>
+
+		<div class="splide__arrows">
+			<button class="splide__arrow splide__arrow--prev">
+				<Icon name={"mdi:keyboard-arrow-right"} />
+			</button>
+			<button class="splide__arrow splide__arrow--next">
+				<Icon name={"mdi:keyboard-arrow-right"} />
+			</button>
+		</div>
+
+		<ul class="splide__pagination"></ul>
+	</section>
+</article>
+
+<script>
+	import Splide, { type Options } from '@splidejs/splide'
+	import '@splidejs/splide/css'
+
+	const splideOptions: Options = {
+		type: "loop",
+		rewind: true,
+		rewindByDrag: true,
+		autoplay: true,
+		keyboard: true,
+		cover: true,
+		heightRatio: 0.4,
+		speed: 350,
+		rewindSpeed: 350,
+		easing: "cubic-bezier(0.25, 0, 0.25, 1)",
+		interval: 7500
+	}
+
+	new Splide('.splide', splideOptions).mount()
+</script>
+
+<style lang="scss">
+	#projects {
+		@include max-width(var(--max-width-content));
+		@include full-width-background-color(var(--projects-bg-color));
+		padding: var(--spacing) 0;
+
+		.splide {
+			border-radius: var(--border-radius);
+			overflow: hidden;
+			box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
+			position: relative;
+
+			.splide__arrow {
+				height: 100%;
+				border-radius: unset;
+				color: var(--text-color);
+				font-size: 1.2em;
+				padding: 0 1rem;
+				width: auto;
+				transition: all 250ms;
+			}
+
+			.splide__arrow--prev {
+				left: 0;
+				background: rgb(0, 0, 0);
+				background: -moz-linear-gradient(
+					90deg,
+					rgba(0, 0, 0, 0.8) 0%,
+					rgba(31, 38, 45, 0) 100%
+				);
+				background: -webkit-linear-gradient(
+					90deg,
+					rgba(0, 0, 0, 0.8) 0%,
+					rgba(31, 38, 45, 0) 100%
+				);
+				background: linear-gradient(
+					90deg,
+					rgba(0, 0, 0, 0.8) 0%,
+					rgba(31, 38, 45, 0) 100%
+				);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#1f262d",GradientType=1);
+			}
+
+			.splide__arrow--next {
+				right: 0;
+				background: rgb(0, 0, 0);
+				background: -moz-linear-gradient(
+					270deg,
+					rgba(0, 0, 0, 0.8) 0%,
+					rgba(31, 38, 45, 0) 100%
+				);
+				background: -webkit-linear-gradient(
+					270deg,
+					rgba(0, 0, 0, 0.8) 0%,
+					rgba(31, 38, 45, 0) 100%
+				);
+				background: linear-gradient(
+					270deg,
+					rgba(0, 0, 0, 0.8) 0%,
+					rgba(31, 38, 45, 0) 100%
+				);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#1f262d",GradientType=1);
+			}
+
+			.splide__pagination {
+				gap: 0.5rem;
+				bottom: 0.7rem;
+			}
+		}
+
+		@media (max-width: 450px) {
+			width: 100%;
+
+			h2 {
+				@include max-width(var(--max-width-content));
+			}
+
+			.splide {
+				border-radius: unset;
+			}
+		}
+	}
+</style>

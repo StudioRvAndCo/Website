@@ -1,13 +1,13 @@
 ---
-import InstagramPosts from './defer/InstagramPosts.astro'
-import Background from '@assets/svg/association.svg'
-import Member from '@components/Member.astro'
-import MembersList from '@assets/json/members.json'
 import Translations from '@assets/json/translations.json'
+import Background from '@assets/svg/association.svg'
+import MembersList from '@assets/json/members.json'
+import Member from '@components/list/Member.astro'
+import InstagramPosts from './defer/InstagramPosts.astro'
 
-const background = `url(${Background.src})`
 const locale = Astro.currentLocale ?? 'fr'
 const translations = Translations[locale as keyof typeof Translations].association
+const background = `url(${Background.src})`
 const members = MembersList.sort((a, b) => a.name.localeCompare(b.name))
 ---
 
