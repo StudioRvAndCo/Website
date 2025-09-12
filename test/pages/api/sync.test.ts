@@ -116,7 +116,7 @@ describe('Sync Social Networks', () => {
                 runtime: {
                     env: {
                         SYNC_KEY: 'correct',
-                        YOUTUBE_ID: 'youtube-id',
+                        YOUTUBE_CHANNEL_ID: 'youtube-id',
                         YOUTUBE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }
@@ -162,7 +162,7 @@ describe('Sync Social Networks', () => {
                 runtime: {
                     env: {
                         SYNC_KEY: 'correct',
-                        YOUTUBE_ID: 'youtube-id',
+                        YOUTUBE_CHANNEL_ID: 'youtube-id',
                         YOUTUBE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }
@@ -204,7 +204,7 @@ describe('Sync Social Networks', () => {
                 runtime: {
                     env: {
                         SYNC_KEY: 'correct',
-                        YOUTUBE_ID: 'youtube-id',
+                        YOUTUBE_CHANNEL_ID: 'youtube-id',
                         YOUTUBE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }

@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro'
 
 export const prerender = false
 
+// Get synced data
 export const GET: APIRoute = async ({ request, locals, site }) => {
     const key = request.headers.get('x-api-key')
     if (locals.runtime.env.SYNC_KEY && key === locals.runtime.env.SYNC_KEY) {
@@ -15,16 +16,16 @@ export const GET: APIRoute = async ({ request, locals, site }) => {
         })
     }
 
-    // Redirect to website
+    // Redirect to website by default
     return Response.redirect(site?.origin || 'https://rvandco.fr', 301)
 }
 
-// Sync data from third-party APIs (YouTube, Instagram, Twitch)
+// Sync data
 export const POST: APIRoute = async ({ request, locals, site }) => {
     const key = request.headers.get('x-api-key')
     if (locals.runtime.env.SYNC_KEY && key === locals.runtime.env.SYNC_KEY) {
         // Check if tokens are set
-        if (!locals.runtime.env.YOUTUBE_ID || !locals.runtime.env.YOUTUBE_TOKEN || !locals.runtime.env.INSTAGRAM_TOKEN) {
+        if (!locals.runtime.env.YOUTUBE_CHANNEL_ID || !locals.runtime.env.YOUTUBE_TOKEN || !locals.runtime.env.INSTAGRAM_TOKEN) {
             return new Response('Environment variables not set', { status: 500 })
         }
 
@@ -33,7 +34,7 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
         // YouTube
         const getYouTubeStatistics = async () => {
             try {
-                const request = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${locals.runtime.env.YOUTUBE_ID}&alt=json&fields=items&prettyPrint=true&key=${locals.runtime.env.YOUTUBE_TOKEN}`)
+                const request = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${locals.runtime.env.YOUTUBE_CHANNEL_ID}&alt=json&fields=items&prettyPrint=true&key=${locals.runtime.env.YOUTUBE_TOKEN}`)
                 const result: any = await request.json()
                 if (result?.error) throw new Error(result.error.message)
 
@@ -63,7 +64,7 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
         }
 
         // Twitch
-        /* const getTwitchLive = async () => {
+        const getTwitchLive = async () => {
             try {
                 const request = await fetch("https://api.twitch.tv/helix/streams?user_login=studiorvandco", {
                     headers: {
@@ -81,9 +82,9 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
             catch (e: any) {
                 errors.push(`Instagram API error: ${e.message}`)
             }
-        } */
+        }
 
-        await Promise.all([getYouTubeStatistics(), getInstagramPosts(), /* getTwitchLive() */])
+        await Promise.all([getYouTubeStatistics(), /* getInstagramPosts(), getTwitchLive() */])
 
         // Return errors if any
         if (errors.length) {
@@ -93,6 +94,6 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
         return new Response('OK', { status: 200 })
     }
 
-    // Redirect to website
+    // Redirect to website by default
 	return Response.redirect(site?.origin || 'https://rvandco.fr', 301)
 }
