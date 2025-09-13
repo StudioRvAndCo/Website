@@ -117,7 +117,7 @@ describe('Sync Social Networks', () => {
                     env: {
                         SYNC_KEY: 'correct',
                         YOUTUBE_CHANNEL_ID: 'youtube-id',
-                        YOUTUBE_TOKEN: 'youtube-token',
+                        GOOGLE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }
                     }
@@ -131,7 +131,7 @@ describe('Sync Social Networks', () => {
         const body: string = await response.text()
         expect(body).toBe('OK')
 
-        expect(putMock).toHaveBeenCalledTimes(2)
+        expect(putMock).toHaveBeenCalledTimes(1)
         expect(putMock).toHaveBeenNthCalledWith(1, 'YOUTUBE_STATISTICS', JSON.stringify({ viewCount: '1000', subscriberCount: '100', videoCount: '10' }), expect.any(Object))
         expect(putMock).toHaveBeenNthCalledWith(2, 'INSTAGRAM_POSTS', JSON.stringify([
             { id: '1', media_type: 'IMAGE', media_url: 'https://example.com/image1.jpg', permalink: 'https://instagram.com/p/1' },
@@ -163,7 +163,7 @@ describe('Sync Social Networks', () => {
                     env: {
                         SYNC_KEY: 'correct',
                         YOUTUBE_CHANNEL_ID: 'youtube-id',
-                        YOUTUBE_TOKEN: 'youtube-token',
+                        GOOGLE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }
                     }
@@ -205,7 +205,7 @@ describe('Sync Social Networks', () => {
                     env: {
                         SYNC_KEY: 'correct',
                         YOUTUBE_CHANNEL_ID: 'youtube-id',
-                        YOUTUBE_TOKEN: 'youtube-token',
+                        GOOGLE_TOKEN: 'youtube-token',
                         INSTAGRAM_TOKEN: 'instagram-token',
                         STORE: { put: putMock }
                     }

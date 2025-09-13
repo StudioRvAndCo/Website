@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
     const key = request.headers.get('x-api-key')
     if (locals.runtime.env.SYNC_KEY && key === locals.runtime.env.SYNC_KEY) {
         // Check if tokens are set
-        if (!locals.runtime.env.YOUTUBE_CHANNEL_ID || !locals.runtime.env.YOUTUBE_TOKEN || !locals.runtime.env.INSTAGRAM_TOKEN) {
+        if (!locals.runtime.env.YOUTUBE_CHANNEL_ID || !locals.runtime.env.GOOGLE_TOKEN || !locals.runtime.env.INSTAGRAM_TOKEN) {
             return new Response('Environment variables not set', { status: 500 })
         }
 
@@ -34,9 +34,10 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
         // YouTube
         const getYouTubeStatistics = async () => {
             try {
-                const request = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${locals.runtime.env.YOUTUBE_CHANNEL_ID}&alt=json&fields=items&prettyPrint=true&key=${locals.runtime.env.YOUTUBE_TOKEN}`)
+                const request = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=statistics&id=${locals.runtime.env.YOUTUBE_CHANNEL_ID}&alt=json&fields=items&prettyPrint=true&key=${locals.runtime.env.GOOGLE_TOKEN}`)
                 const result: any = await request.json()
                 if (result?.error) throw new Error(result.error.message)
+                if (request.status !== 200) throw new Error(`YouTube API returned status ${request.status}`)
 
                 const data = result.items[0].statistics
                 if (!data) throw new Error('No data found')
@@ -53,6 +54,7 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
                 const request = await fetch(`https://graph.instagram.com/v11.0/me/media?fields=media_type,media_url,permalink,thumbnail_url&access_token=${locals.runtime.env.INSTAGRAM_TOKEN}`)
                 const result: any = await request.json()
                 if (result?.error) throw new Error(result.error.message)
+                if (request.status !== 200) throw new Error(`Instagram API returned status ${request.status}`)
 
                 const data = result.data.slice(0, 10)
                 if (!data) throw new Error('No data found')
@@ -74,6 +76,7 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
                 })
                 const result: any = await request.json()
                 if (result?.error) throw new Error(result.message)
+                if (request.status !== 200) throw new Error(`Twitch API returned status ${request.status}`)
 
                 const data = result.data[0]
                 if (!data) throw new Error('No data found')
