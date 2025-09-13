@@ -59,12 +59,13 @@ const translations = Translations[locale as keyof typeof Translations].contact
         > section {
             background-color: var(--bg-color);
             border-radius: var(--border-radius);
-            padding: calc(var(--spacing) / 2);
+            padding: 2.5rem;
             display: grid;
             grid-template-columns: 1fr 0.01fr 1fr 0.01fr 1fr;
             justify-items: center;
             align-items: center;
             gap: 2rem;
+            box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%);
 
             hr {
                 align-self: center;

@@ -20,36 +20,36 @@ const title = "Studio Rv & Co"
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<SEO
-	title={title}
-	description={translations.description}
-	charset="UTF-8"
-	openGraph={{
-		basic: {
+		title={title}
+		description={translations.description}
+		charset="UTF-8"
+		openGraph={{
+			basic: {
 				title,
-			type: "website",
-			url: site.origin,
-			image: Thumbnail.src
-		},
-		optional: {
+				type: "website",
+				url: site.origin,
+				image: Thumbnail.src
+			},
+			optional: {
 				locale,
-		},
-		image: {
-			alt: `${title} banner`,
-			url: Thumbnail.src,
-			type: "image/webp"
-		}
-	}}
-	twitter={{
-		creator: `@Minarox_`,
-		card: "summary_large_image",
-		site: site.origin,
+			},
+			image: {
+				alt: `${title} banner`,
+				url: Thumbnail.src,
+				type: "image/webp"
+			}
+		}}
+		twitter={{
+			creator: `@Minarox_`,
+			card: "summary_large_image",
+			site: site.origin,
 			title,
-		description: translations.description,
-		image: Thumbnail.src,
-		imageAlt: `${title} banner`,
-	}}
-	extend={{
-		link: [
+			description: translations.description,
+			image: Thumbnail.src,
+			imageAlt: `${title} banner`,
+		}}
+		extend={{
+			link: [
 				{ rel: "icon", href: "/favicon/favicon-dark.ico", media: "(prefers-color-scheme:light)" },
 				{ rel: "icon", href: "/favicon/favicon-light.ico", media: "(prefers-color-scheme:dark)" },
 				{ rel: "icon", href: "/favicon/favicon.ico", media: "(prefers-color-scheme:default)" },
@@ -59,33 +59,33 @@ const title = "Studio Rv & Co"
 				{ rel: "icon", type: "image/png", href: "/favicon/favicon-32x32.png", sizes: "32x32" },
 				{ rel: "icon", type: "image/png", href: "/favicon/favicon-16x16.png", sizes: "16x16" },
 				{ rel: "manifest", href: "/favicon/site.webmanifest" },
-		{ rel: "sitemap", href: "/sitemap-index.xml" },
-		],
-		meta: [
-		{ name: "viewport", content: "width=device-width,initial-scale=1.0" },
-		{ name: "theme-color", content: "#393939" },
-		{ name: "keywords", content: "Studio, Rv, Co, Association, Cinéma, Films, Vidéos, Production, Audiovisuel, Court-métrage, Long-métrage, Documentaire, Fiction, Création, Réalisation, Montage, Scénario, Acteurs, Équipe technique, Tournage, Post-production, Effets spéciaux, Musique de film, Scénographie, Costumes, Maquillage, Caméra, Lumière, Sonorisation, Distribution, Promotion, Festivals de cinéma" },
-		{ name: "robots", content: "index, follow" },
-		{ name: "language", content: locale },
-		{ name: "author", content: "Mathis Serrieres Maniecki" }
-		]
-	}}
+				{ rel: "sitemap", href: "/sitemap-index.xml" },
+			],
+			meta: [
+				{ name: "viewport", content: "width=device-width,initial-scale=1.0" },
+				{ name: "theme-color", content: "#393939" },
+				{ name: "keywords", content: "Studio, Rv, Co, Association, Cinéma, Films, Vidéos, Production, Audiovisuel, Court-métrage, Long-métrage, Documentaire, Fiction, Création, Réalisation, Montage, Scénario, Acteurs, Équipe technique, Tournage, Post-production, Effets spéciaux, Musique de film, Scénographie, Costumes, Maquillage, Caméra, Lumière, Sonorisation, Distribution, Promotion, Festivals de cinéma" },
+				{ name: "robots", content: "index, follow" },
+				{ name: "language", content: locale },
+				{ name: "author", content: "Mathis Serrieres Maniecki" }
+			]
+		}}
 	/>
 
 	<AstroFont
-	config={[
-		{
-			name: "Open Sans",
-			src: [],
-			googleFontsURL: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap",
-			preload: true,
-			display: "swap",
-			selector: "body",
-			fallback: "sans-serif",
-			fetch: true,
-			cacheDir: '.astro/font-cache'
-		}
-		]}
+		config={[
+			{
+				name: "Open Sans",
+				src: [],
+				googleFontsURL: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap",
+				preload: true,
+				display: "swap",
+				selector: "body",
+				fallback: "sans-serif",
+				fetch: true,
+				cacheDir: '.astro/font-cache'
+			}
+			]}
 		/>
 	</head>
 	<body>
@@ -112,7 +112,7 @@ const title = "Studio Rv & Co"
 
 			--max-width-content: 1200px;
 			--max-width-header: 1450px;
-			--spacing: 3.6rem;
+			--spacing: 5rem;
 			--border-radius: 6px;
 		}
 
@@ -165,7 +165,7 @@ const title = "Studio Rv & Co"
 			h2 {
 				width: min(100%, 1120px);
 				margin-inline: auto;
-				margin-bottom: calc(var(--spacing) / 1.25);
+				margin-bottom: 3rem;
 				display: flex;
 				align-items: center;
 				justify-content: center;

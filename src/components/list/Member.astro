@@ -45,6 +45,10 @@ const Wrapper = member.link ? 'a' : 'div'
             }
         }
 
+        &:hover div img {
+            transform: scale(1.06);
+        }
+
         p {
             color: var(--text-color);
         }
@@ -60,10 +64,6 @@ const Wrapper = member.link ? 'a' : 'div'
             right: 2.7rem;
             border-radius: var(--border-radius);
             background-color: var(--subtext-color);
-        }
-
-        &:hover div img {
-            transform: scale(1.06);
         }
     }
 </style>

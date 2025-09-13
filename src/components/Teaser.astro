@@ -65,10 +65,10 @@ const translations = Translations[locale as keyof typeof Translations].teaser
 <style lang="scss">
     #teaser {
         @include max-width(var(--max-width-content));
-        padding: var(--spacing) 0;
+        padding: 3rem 0 var(--spacing);
 
         h2 {
-            margin-bottom: calc(var(--spacing) / 2);
+            margin-bottom: 2.5rem;
             font-size: 2.2em;
             font-weight: 800;
             text-shadow: 0 0 0.8em var(--bg-color), 0 0 0.2em var(--bg-color);
@@ -84,7 +84,7 @@ const translations = Translations[locale as keyof typeof Translations].teaser
             grid-template-columns: 1.7fr 0.7fr;
             align-items: center;
             justify-content: space-between;
-            gap: var(--spacing);
+            gap: 2.5rem;
 
             video {
                 object-fit: cover;

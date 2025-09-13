@@ -11,17 +11,17 @@ const translations = Translations[locale as keyof typeof Translations].header
 <header>
     <div>
         <!-- Logo -->
-        <a href="/" class="toggle-off-menu">
+        <div>
             <img src={Logo.src} alt="Studio Rv & Co" width={Logo.width} height={Logo.height} loading="lazy" decoding="async" />
             <h1>Studio Rv & Co</h1>
-        </a>
+        </div>
 
         <!-- Navigation -->
         <nav>
             <Icon name={"mdi:hamburger-menu"} id="mobile" class="toggle-menu" />
             <section class="mobile">
                 <div>
-                    <a href="/" class="toggle-off-menu current">
+                    <a href="#home" class="toggle-off-menu">
                         {translations.home}
                     </a>
                     <a href="#productions" class="toggle-off-menu">
@@ -315,12 +315,12 @@ const translations = Translations[locale as keyof typeof Translations].header
 
     .current {
         color: var(--text-color) !important;
-        position: relative;
+        position: relative !important;
 
         &::after {
-            opacity: 1;
-            left: 1.7rem;
-            right: 1.7rem;
+            opacity: 1 !important;
+            left: 1.7rem !important;
+            right: 1.7rem !important;
         }
     }
 </style>
