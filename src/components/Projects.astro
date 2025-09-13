@@ -14,7 +14,9 @@ const projects = ProjectsList.sort((a, b) => new Date(b.createdAt).getTime() - n
 
 	<section class="splide" aria-label={translations.self}>
 		<div class="splide__track">
-			{projects.map((project) => <Project project={project} />)}
+			<ul class="splide__list">
+				{projects.map((project) => <Project project={project} />)}
+			</ul>
 		</div>
 
 		<div class="splide__arrows">
@@ -62,6 +64,11 @@ const projects = ProjectsList.sort((a, b) => new Date(b.createdAt).getTime() - n
 			overflow: hidden;
 			box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
 			position: relative;
+
+			.splide__list {
+				max-width: 1200px;
+				width: 100vw;
+			}
 
 			.splide__arrow {
 				height: 100%;
