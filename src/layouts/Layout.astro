@@ -1,9 +1,8 @@
 ---
 import { SEO } from "astro-seo"
 import { AstroFont } from "astro-font"
-import Logo from "@assets/svg/astro.svg"
 import Background from "@assets/img/background.webp"
-import Thumbnail from "@assets/svg/background.svg"
+import Thumbnail from "@assets/img/thumbnail.webp"
 import Header from '@layouts/Header.astro'
 import Footer from '@layouts/Footer.astro'
 import Translations from '@assets/json/translations.json'
@@ -26,13 +25,13 @@ const title = "Studio Rv & Co"
 	charset="UTF-8"
 	openGraph={{
 		basic: {
-			title: title,
+				title,
 			type: "website",
 			url: site.origin,
 			image: Thumbnail.src
 		},
 		optional: {
-			locale:	locale,
+				locale,
 		},
 		image: {
 			alt: `${title} banner`,
@@ -44,14 +43,22 @@ const title = "Studio Rv & Co"
 		creator: `@Minarox_`,
 		card: "summary_large_image",
 		site: site.origin,
-		title: title,
+			title,
 		description: translations.description,
 		image: Thumbnail.src,
 		imageAlt: `${title} banner`,
 	}}
 	extend={{
 		link: [
-		{ rel: "icon", type: "image/svg+xml", href: Logo.src },
+				{ rel: "icon", href: "/favicon/favicon-dark.ico", media: "(prefers-color-scheme:light)" },
+				{ rel: "icon", href: "/favicon/favicon-light.ico", media: "(prefers-color-scheme:dark)" },
+				{ rel: "icon", href: "/favicon/favicon.ico", media: "(prefers-color-scheme:default)" },
+				{ rel: "icon", type: "image/png", href: "/favicon/android-chrome-192x192.png", sizes: "192x192" },
+				{ rel: "icon", type: "image/png", href: "/favicon/android-chrome-512x512.png", sizes: "512x512" },
+				{ rel: "apple-touch-icon", type: "image/png", href: "/favicon/apple-touch-icon.png", sizes: "180x180" },
+				{ rel: "icon", type: "image/png", href: "/favicon/favicon-32x32.png", sizes: "32x32" },
+				{ rel: "icon", type: "image/png", href: "/favicon/favicon-16x16.png", sizes: "16x16" },
+				{ rel: "manifest", href: "/favicon/site.webmanifest" },
 		{ rel: "sitemap", href: "/sitemap-index.xml" },
 		],
 		meta: [
@@ -84,7 +91,7 @@ const title = "Studio Rv & Co"
 	<body>
 		<Header />
 
-		<main>
+		<main id="home">
 			<slot />
 		</main>
 
