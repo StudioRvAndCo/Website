@@ -3,7 +3,7 @@ import Translations from '@assets/json/translations.json'
 import Background from '@assets/svg/association.svg'
 import MembersList from '@assets/json/members.json'
 import Member from '@components/list/Member.astro'
-import InstagramPosts from './defer/InstagramPosts.astro'
+// import InstagramPosts from './defer/InstagramPosts.astro'
 
 const locale = Astro.currentLocale ?? 'fr'
 const translations = Translations[locale as keyof typeof Translations].association
@@ -18,16 +18,14 @@ const members = MembersList.sort((a, b) => a.name.localeCompare(b.name))
 
         <section>{members.map((member) => <Member member={member} />)}</section>
 
-        <h3>{translations.instagramGallery}</h3>
+        <!-- <h3>{translations.instagramGallery}</h3> -->
 
-        <InstagramPosts server:defer>
-            <Fragment slot="fallback">
-                <!-- TODO: Icon de chargement -->
-                <p>Chargement...</p>
-            </Fragment>
-        </InstagramPosts>
+        <!-- <InstagramPosts server:defer> -->
+            <!-- TODO: Icon de chargement -->
+            <!-- <p slot="fallback">Chargement...</p> -->
+        <!-- </InstagramPosts> -->
 
-        <a href="https://instagram.com/studiorvandco" class="btn">{translations.morePictures}</a>
+        <!-- <a href="https://instagram.com/studiorvandco" class="btn">{translations.morePictures}</a> -->
     </div>
 </article>
 
