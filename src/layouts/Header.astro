@@ -1,7 +1,6 @@
 ---
 import Translations from '@assets/json/translations.json'
 import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
 import Logo from '@assets/img/logo.webp'
 import TwitchState from '@components/defer/TwitchState.astro'
 
@@ -13,7 +12,7 @@ const translations = Translations[locale as keyof typeof Translations].header
     <div>
         <!-- Logo -->
         <a href="/" class="toggle-off-menu">
-            <Image src={Logo} alt="Studio Rv & Co" />
+            <img src={Logo.src} alt="Studio Rv & Co" width={Logo.width} height={Logo.height} loading="lazy" decoding="async" />
             <h1>Studio Rv & Co</h1>
         </a>
 

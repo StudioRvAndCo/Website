@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets"
 import FullLogo from "@assets/img/full_logo.webp"
 import { Icon } from 'astro-icon/components'
 import Translations from '@assets/json/translations.json'
@@ -43,7 +42,7 @@ const translations = Translations[locale as keyof typeof Translations].contact
         <hr />
 
         <div>
-            <Image src={FullLogo} alt="Studio Rv & Co" />
+            <img src={FullLogo.src} alt="Studio Rv & Co" width={FullLogo.width} height={FullLogo.height} loading="lazy" decoding="async" />
         </div>
     </section>
 </article>
