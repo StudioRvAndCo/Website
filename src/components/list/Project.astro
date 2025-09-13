@@ -17,7 +17,7 @@ const background = Object.values(projectBackgrounds)
 		<p>{project.description[locale as keyof typeof project.description]}</p>
 		<a href={project.link} class="btn">{translations.view}</a>
 	</div>
-	<Image src={background} alt={project.name[locale as keyof typeof project.name]} />
+	<img src={background.src} alt={project.name[locale as keyof typeof project.name]} width={background.width} height={background.height} loading="lazy" decoding="async" />
 </ul>
 
 <script>

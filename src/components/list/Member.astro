@@ -1,6 +1,5 @@
 ---
 import type { Member } from '@types'
-import { Image } from 'astro:assets'
 
 const member = Astro.props.member as Member
 const memberPictures = import.meta.glob('@assets/img/members/*.webp', { eager: true, import: 'default' })
@@ -11,7 +10,7 @@ const Wrapper = member.link ? 'a' : 'div'
 
 <Wrapper href={member.link}>
     <div>
-        <Image src={picture} alt={member.name} />
+        <img src={picture.src} alt={member.name} width={picture.width} height={picture.height} loading="lazy" decoding="async" />
     </div>
     <p>{member.name}</p>
 </Wrapper>

@@ -1,6 +1,5 @@
 ---
 import type { Production } from '@types'
-import { Image } from 'astro:assets'
 import Translations from '@assets/json/translations.json'
 
 const locale = Astro.currentLocale ?? 'fr'
@@ -12,7 +11,7 @@ const thumbnail = Object.values(productionThumbnails)
 ---
 
 <section class={index % 2 !== 0 ? 'reverse' : ''}>
-    <Image src={thumbnail} alt={production.name[locale as keyof typeof production.name]} />
+    <img src={thumbnail.src} alt={production.name[locale as keyof typeof production.name]} width={thumbnail.width} height={thumbnail.height} loading="lazy" decoding="async" />
     <div>
         <h3>
             {index === 0 && <span>{translations.new}</span>}
