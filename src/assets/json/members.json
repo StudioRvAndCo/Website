@@ -1,6 +1,6 @@
 [
     {
-        "name": "Amendine"
+        "name": "Amandine"
     },
     {
         "name": "Baptiste"
@@ -32,7 +32,8 @@
     },
     {
         "name": "Maël",
-        "picture": "mael"
+        "picture": "mael",
+        "link": "https://maelchiotti.dev"
     },
     {
         "name": "Mathis",
