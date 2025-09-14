@@ -12,7 +12,7 @@ const translations = Translations[locale as keyof typeof Translations].teaser
 <article id="teaser">
     <h2>{translations.catchphrase}</h2>
     <section>
-        <video autoplay muted loop disablepictureinpicture poster={Thumbnail.src} width="810" height="456">
+        <video autoplay muted loop disablepictureinpicture playsinline poster={Thumbnail.src} width="810" height="456">
             <source src={TeaserWebm} type="video/webm" />
             <source src={TeaserMp4} type="video/mp4" />
         </video>
