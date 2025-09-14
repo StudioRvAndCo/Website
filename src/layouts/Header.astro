@@ -44,20 +44,20 @@ const translations = Translations[locale as keyof typeof Translations].header
         <!-- Links -->
         <section class="mobile">
             <a href="https://youtube.com/@studiorvandco" title="YouTube">
-                <Icon name={"fa6-brands:youtube"} id="mobile" />
+                <Icon name={"fa6-brands:youtube"} />
             </a>
             <a href="https://x.com/studiorvandco" title="Twitter">
-                <Icon name={"fa6-brands:x-twitter"} id="mobile" />
+                <Icon name={"fa6-brands:x-twitter"} />
             </a>
             <a href="https://instagram.com/studiorvandco" title="Instagram">
-                <Icon name={"fa6-brands:instagram"} id="mobile" />
+                <Icon name={"fa6-brands:instagram"} />
             </a>
             <a href="https://facebook.com/studiorvandco" title="Facebook">
-                <Icon name={"fa6-brands:facebook"} id="mobile" />
+                <Icon name={"fa6-brands:facebook"} />
             </a>
             <TwitchState server:defer>
                 <a slot="fallback" href="https://twitch.tv/studiorvandco" title="Twitch">
-                    <Icon name={"fa6-brands:twitch"} id="mobile" />
+                    <Icon name={"fa6-brands:twitch"} />
                 </a>
             </TwitchState>
         </section>
@@ -151,8 +151,9 @@ const translations = Translations[locale as keyof typeof Translations].header
                 #mobile {
                     display: none;
                     font-size: 1.4em;
-                    padding: 1rem;
                     cursor: pointer;
+                    width: 26px;
+                    height: 26px;
                 }
 
                 section div {
@@ -195,7 +196,7 @@ const translations = Translations[locale as keyof typeof Translations].header
                 a {
                     display: inline-flex;
                     justify-content: center;
-                    padding: 1rem 0.75rem;
+                    padding: 1rem 0.55rem;
                 }
             }
 
