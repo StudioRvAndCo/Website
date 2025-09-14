@@ -58,6 +58,7 @@ const projects = ProjectsList.sort((a, b) => new Date(b.createdAt).getTime() - n
 		@include max-width(var(--max-width-content));
 		@include full-width-background-color(var(--projects-bg-color));
 		padding: var(--spacing) 0;
+		scroll-margin-top: 1.5em;
 
 		.splide {
 			border-radius: var(--border-radius);

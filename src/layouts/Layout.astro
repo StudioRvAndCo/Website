@@ -134,22 +134,26 @@ const title = "Studio Rv & Co"
 			display: none;
 		}
 
+		html {
+			scroll-behavior: smooth;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+		}
+
 		body {
 			display: grid;
 			grid-template-rows: auto 1fr auto;
 			min-height: 100vh;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			scroll-behavior: smooth;
 			overflow-x: hidden;
 			overflow-y: overlay;
-			font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
 			color: var(--text-color);
 			background-color: var(--bg-color);
 
 			main {
 				background-image: var(--background);
 				background-attachment: fixed;
+				scroll-margin-top: 4em;
 			}
 
 			img {
