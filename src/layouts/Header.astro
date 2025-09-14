@@ -11,10 +11,10 @@ const translations = Translations[locale as keyof typeof Translations].header
 <header>
     <div>
         <!-- Logo -->
-        <div>
+        <a href="#home">
             <img src={Logo.src} alt="Studio Rv & Co" width={Logo.width} height={Logo.height} loading="lazy" decoding="async" />
             <h1>Studio Rv & Co</h1>
-        </div>
+        </a>
 
         <!-- Navigation -->
         <nav>
@@ -67,6 +67,11 @@ const translations = Translations[locale as keyof typeof Translations].header
 <script>
     const toggleOffMenuElements = document.querySelectorAll('.toggle-off-menu')
     const toggleMenuElements = document.querySelectorAll('.toggle-menu')
+    const homeSection = document.getElementById("home")
+    const productionsSection = document.getElementById("productions")
+    const projectsSection = document.getElementById("projects")
+    const associationSection = document.getElementById("association")
+    const contactSection = document.getElementById("contact")
     let menu = false
 
     function toggleMenu(value?: boolean) {
@@ -89,6 +94,28 @@ const translations = Translations[locale as keyof typeof Translations].header
 
     toggleMenuElements.forEach((el) => {
         el.addEventListener('click', () => toggleMenu())
+    })
+
+    document.addEventListener('scroll', () => {
+        const position = window.scrollY + 60
+
+        document.querySelectorAll('header nav section div a').forEach((el) => {
+            el.classList.remove('current')
+        })
+
+        if (contactSection && position >= contactSection.offsetTop) {
+            document.querySelector('header nav section div a[href="#contact"]')?.classList.add('current')
+        } else if (associationSection && position >= associationSection.offsetTop) {
+            document.querySelector('header nav section div a[href="#association"]')?.classList.add('current')
+        } else if (projectsSection && position >= projectsSection.offsetTop) {
+            document.querySelector('header nav section div a[href="#projects"]')?.classList.add('current')
+        } else if (productionsSection && position >= productionsSection.offsetTop) {
+            document.querySelector('header nav section div a[href="#productions"]')?.classList.add('current')
+        } else if (homeSection && position >= homeSection.offsetTop) {
+            document.querySelector('header nav section div a[href="#home"]')?.classList.add('current')
+        } else {
+            document.querySelector('header nav section div a[href="#home"]')?.classList.add('current')
+        }
     })
 </script>
 
