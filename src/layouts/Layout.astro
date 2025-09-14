@@ -154,9 +154,11 @@ const title = "Studio Rv & Co"
 				background-image: var(--background);
 				background-attachment: fixed;
 				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
 				scroll-margin-top: 4em;
+
+				@media (pointer: coarse) {
+					background-size: auto 15%;
+				}
 			}
 
 			img {
