@@ -1,46 +1,63 @@
-# Astro Starter Kit: Basics
+<div align="center">
+  <img src=".github/logo.webp" alt="Studio Rv & Co logo" width="112px">
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+  <h1>Website</h1>
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+  <a href="https://github.com/StudioRvAndCo/Website">Website</a> of the Studio Rv & Co association. <br />
+  <a href="https://rvandco.fr"><b>Visit »</b></a>
 
-## 🚀 Project Structure
+  <div align="center">
+    <a href="https://rvandco.fr">
+      <img src=".github/screenshot.webp" alt="Website screenshot">
+    </a>
+  </div>
+</div>
 
-Inside of your Astro project, you'll see the following folders and files:
+## ⭐️ Features
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+- 🖼️ Show productions, projects and members of the association
+- ⚙️ Show social networks data
+- 🗣️ English and French translations
+- 📱 Responsive
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 📚 Tech Stack
 
-## 🧞 Commands
+- [Astro](https://astro.build/)
+- [Sass](https://sass-lang.com/)
+- [Iconify](https://iconify.design/)
+- [SplideJS](https://splidejs.com/)
+- [CountUp](https://github.com/inorganik/countUp.js)
+- [Cloudflare Workers](https://workers.cloudflare.com/)
+- [Vitest](https://vitest.dev/)
 
-All commands are run from the root of the project, from a terminal:
+## 🎨 Color Reference
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| Color                        | Hex                                                                    | Description                   |
+| :--------------------------- | :--------------------------------------------------------------------- |:----------------------------- |
+| Text color                   | ![#FFFFFFFF](https://placehold.co/15x15/FFFFFF/FFFFFF.png) `#FFFFFFFF` | Titles and subtitles          |
+| Subtext color                | ![#DFDFDFFF](https://placehold.co/15x15/DFDFDF/DFDFDF.png) `#DFDFDFFF` | Texts and description         |
+| Button background color      | ![#BE0000FF](https://placehold.co/15x15/BE0000/BE0000.png) `#BE0000FF` | Background for buttons        |
+| Background color             | ![#393939FF](https://placehold.co/15x15/393939/393939.png) `#393939FF` | Global background             |
+| Projects background color    | ![#555555FF](https://placehold.co/15x15/555555/555555.png) `#555555FF` | Background for other projects |
+| Association background color | ![#612626FF](https://placehold.co/15x15/612626/612626.png) `#612626FF` | Background for association    |
 
-## 👀 Want to learn more?
+## ⚙️ Scripts
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This project use [pnpm](https://pnpm.io) as package manager.
+You can also use [npm](https://www.npmjs.com) but you have to edit commands from documentation to make it work properly.
+
+| Command           | Action                                         |
+| :---------------- | :--------------------------------------------- |
+| `pnpm install`    | Installs dependencies                          |
+| `pnpm dev`        | Starts local dev server at `localhost:4321`    |
+| `pnpm check`      | Scan source files for warnings and errors      |
+| `pnpm test`       | Run unit tests                                 |
+| `pnpm coverage`   | Preview code coverage from unit tests          |
+| `pnpm build`      | Build your production site to `./dist/`        |
+| `pnpm preview`    | Preview your build locally, before deploying   |
+| `pnpm deploy`     | Build and deploy project to Cloudflare Workers |
+| `pnpm cf-typegen` | Update .env IntelliSense autocompletion        |
+
+## 💼 License
+
+GNU AGPLv3 © [Mathis Serrieres Maniecki](https://github.com/Minarox)
