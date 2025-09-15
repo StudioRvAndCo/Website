@@ -2,7 +2,7 @@
 import Translations from '@assets/json/translations.json'
 import { Icon } from 'astro-icon/components'
 import Logo from '@assets/img/logo.webp'
-import TwitchState from '@components/defer/TwitchState.astro'
+import TwitchLivestream from '@components/defer/TwitchLivestream.astro'
 
 const locale = Astro.currentLocale ?? 'fr'
 const translations = Translations[locale as keyof typeof Translations].header
@@ -46,7 +46,7 @@ const translations = Translations[locale as keyof typeof Translations].header
             <a href="https://youtube.com/@studiorvandco" title="YouTube">
                 <Icon name={"fa6-brands:youtube"} />
             </a>
-            <a href="https://x.com/studiorvandco" title="Twitter">
+            <a href="https://x.com/studiorvandco" title="X">
                 <Icon name={"fa6-brands:x-twitter"} />
             </a>
             <a href="https://instagram.com/studiorvandco" title="Instagram">
@@ -55,11 +55,11 @@ const translations = Translations[locale as keyof typeof Translations].header
             <a href="https://facebook.com/studiorvandco" title="Facebook">
                 <Icon name={"fa6-brands:facebook"} />
             </a>
-            <TwitchState server:defer>
+            <TwitchLivestream server:defer>
                 <a slot="fallback" href="https://twitch.tv/studiorvandco" title="Twitch">
                     <Icon name={"fa6-brands:twitch"} />
                 </a>
-            </TwitchState>
+            </TwitchLivestream>
         </section>
     </div>
 </header>

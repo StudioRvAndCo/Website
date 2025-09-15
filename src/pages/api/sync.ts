@@ -9,7 +9,7 @@ export const GET: APIRoute = async ({ request, locals, site }) => {
         return new Response(JSON.stringify({
             'YOUTUBE_STATISTICS': await locals.runtime.env.STORE.getWithMetadata('YOUTUBE_STATISTICS', { type: 'json' }) || null,
             'INSTAGRAM_POSTS': await locals.runtime.env.STORE.getWithMetadata('INSTAGRAM_POSTS', { type: 'json' }) || null,
-            'TWITCH_LIVE': await locals.runtime.env.STORE.getWithMetadata('TWITCH_LIVE', { type: 'json' }) || null
+            'TWITCH_LIVESTREAM': await locals.runtime.env.STORE.getWithMetadata('TWITCH_LIVESTREAM', { type: 'json' }) || null
         }), {
             status: 200,
             headers: { 'Content-Type': 'application/json' }
@@ -25,11 +25,15 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
     const key = request.headers.get('x-api-key')
     if (locals.runtime.env.SYNC_KEY && key === locals.runtime.env.SYNC_KEY) {
         // Check if tokens are set
-        if (!locals.runtime.env.YOUTUBE_CHANNEL_ID || !locals.runtime.env.GOOGLE_TOKEN || !locals.runtime.env.INSTAGRAM_TOKEN) {
+        if (
+            !locals.runtime.env.GOOGLE_TOKEN || !locals.runtime.env.YOUTUBE_CHANNEL_ID ||
+            !locals.runtime.env.TWITCH_USER || !locals.runtime.env.TWITCH_CLIENT_ID || !locals.runtime.env.TWITCH_CLIENT_SECRET
+        ) {
             return new Response('Environment variables not set', { status: 500 })
         }
 
         const errors: string[] = []
+        let twitchTokenRenewed = false
 
         // YouTube
         const getYouTubeStatistics = async () => {
@@ -49,7 +53,7 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
         }
 
         // Instagram
-        const getInstagramPosts = async () => {
+        /* const getInstagramPosts = async () => {
             try {
                 const request = await fetch(`https://graph.instagram.com/v11.0/me/media?fields=media_type,media_url,permalink,thumbnail_url&access_token=${locals.runtime.env.INSTAGRAM_TOKEN}`)
                 const result: any = await request.json()
@@ -63,31 +67,65 @@ export const POST: APIRoute = async ({ request, locals, site }) => {
             catch (e: any) {
                 errors.push(`Instagram API error: ${e.message}`)
             }
-        }
+        } */
 
         // Twitch
+        const getTwitchToken = async () => {
+            const request = await fetch('https://id.twitch.tv/oauth2/token', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    client_id: locals.runtime.env.TWITCH_CLIENT_ID,
+                    client_secret: locals.runtime.env.TWITCH_CLIENT_SECRET,
+                    grant_type: 'client_credentials'
+                })
+            })
+            const result: any = await request.json()
+            if (request.status !== 200) throw new Error(`Twitch Token API returned status ${request.status}`)
+
+            const data = result.access_token
+            if (!data) throw new Error('No data found')
+            else await locals.runtime.env.STORE.put('TWITCH_TOKEN', data, { metadata: { updatedAt: new Date().toISOString() } })
+        }
+
         const getTwitchLive = async () => {
             try {
-                const request = await fetch("https://api.twitch.tv/helix/streams?user_login=studiorvandco", {
+                let twitchToken = await locals.runtime.env.STORE.get('TWITCH_TOKEN') ?? ''
+                if (!twitchToken) {
+                    twitchTokenRenewed = true
+                    await getTwitchToken()
+                    twitchToken = await locals.runtime.env.STORE.get('TWITCH_TOKEN') ?? ''
+                }
+
+                const request = await fetch(`https://api.twitch.tv/helix/streams?user_login=${locals.runtime.env.TWITCH_USER}`, {
                     headers: {
-                        "Client-Id": locals.runtime.env.TWITCH_ID,
-                        "Authorization": `Bearer ${locals.runtime.env.TWITCH_TOKEN}`
+                        'Client-ID': locals.runtime.env.TWITCH_CLIENT_ID,
+                        'Authorization': `Bearer ${twitchToken}`
                     }
                 })
-                const result: any = await request.json()
-                if (result?.error) throw new Error(result.message)
-                if (request.status !== 200) throw new Error(`Twitch API returned status ${request.status}`)
+                if (request.status === 401 && !twitchTokenRenewed) {
+                    twitchTokenRenewed = true
+                    await getTwitchToken()
+                    await getTwitchLive()
+                } else {
+                    const result: any = await request.json()
+                    if (result?.error) throw new Error(result.message)
+                    if (request.status !== 200) throw new Error(`Twitch API returned status ${request.status}`)
 
-                const data = result.data[0]
-                if (!data) throw new Error('No data found')
-                else await locals.runtime.env.STORE.put('TWITCH_LIVE', JSON.stringify(data), { metadata: { updatedAt: new Date().toISOString() } })
+                    const data = result.data?.[0] || {}
+                    await locals.runtime.env.STORE.put('TWITCH_LIVESTREAM', JSON.stringify(data), { metadata: { updatedAt: new Date().toISOString() } })
+                }
             }
             catch (e: any) {
-                errors.push(`Instagram API error: ${e.message}`)
+                errors.push(`Twitch API error: ${e.message}`)
             }
         }
 
-        await Promise.all([getYouTubeStatistics(), /* getInstagramPosts(), getTwitchLive() */])
+        await Promise.all([
+            getYouTubeStatistics(),
+            // getInstagramPosts(),
+            getTwitchLive()
+        ])
 
         // Return errors if any
         if (errors.length) {

@@ -3,13 +3,12 @@ import { Icon } from 'astro-icon/components'
 
 export const prerender = false
 
-const isLive = false
-// const isLive = Boolean(await Astro.locals.runtime.env.STORE.get("TWITCH_STATE", "text"))
-// if (isLive) classList.push("on-air")
+const livestreamData = await Astro.locals.runtime.env.STORE.get("TWITCH_LIVESTREAM", "json")
+const isLive = Object.keys(livestreamData || {}).length > 0
 ---
 
 <a class={isLive && 'on-air' || ''} href="https://twitch.tv/studiorvandco" title="Twitch">
-    <Icon name={"fa6-brands:twitch"} id="mobile" />
+    <Icon name={"fa6-brands:twitch"} />
 </a>
 
 <style lang="scss">
