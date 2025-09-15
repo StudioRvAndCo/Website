@@ -1,19 +1,18 @@
 import { test, expect, describe } from 'vitest'
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import TwitchLivestream from '@components/defer/TwitchLivestream.astro'
+import YouTubeStatistics from '@components/defer/YouTubeStatistics.astro'
 
-describe('TwitchLivestream component', () => {
-	test('Is live', async () => {
+describe('YouTubeStatistics component', () => {
+	test('With statistics', async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(TwitchLivestream, {
+		const component: Response = await container.renderToResponse(YouTubeStatistics, {
 			locals: {
 				runtime: {
 					env: {
 						STORE: {
 							get: () => ({
-								"title": "Just Chatting",
-								"viewer_count": 42,
-								"started_at": "2024-01-01T00:00:00Z"
+								"subscriberCount": 1234,
+								"viewCount": 5678
 							})
 						}
 					}
@@ -25,14 +24,14 @@ describe('TwitchLivestream component', () => {
 		expect(component.headers.get('Content-Type')).toBe('text/html')
 
 		const body: string = await component.text()
-		expect(body).toContain('<a class="on-air" href=')
-		expect(body).toContain('title="Twitch"')
+		expect(body).toContain('>5678</span> Vues')
+		expect(body).toContain('>1234</span> Abonnés')
 	})
 
 
-	test('Is not live', async () => {
+	test('Without statistics', async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(TwitchLivestream, {
+		const component: Response = await container.renderToResponse(YouTubeStatistics, {
 			locals: {
 				runtime: {
 					env: {
@@ -48,7 +47,7 @@ describe('TwitchLivestream component', () => {
 		expect(component.headers.get('Content-Type')).toBe('text/html')
 
 		const body: string = await component.text()
-		expect(body).toContain('<a class href=')
-		expect(body).toContain('title="Twitch"')
+		expect(body).toContain('></span> Vues')
+		expect(body).toContain('></span> Abonnés')
 	})
 })

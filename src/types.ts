@@ -38,3 +38,12 @@ export interface InstagramPost {
     permalink: string
     id: string
 }
+
+export function decodeHTMLEntities(text: string): string {
+    return text.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(dec))
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&apos;/g, "'")
+}
