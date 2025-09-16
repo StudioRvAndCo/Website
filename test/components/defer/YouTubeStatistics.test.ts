@@ -1,11 +1,11 @@
 import { test, expect, describe } from 'vitest'
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import YouTubeStatistics from '@components/defer/YouTubeStatistics.astro'
+import YouTubeStatisticsComponent from '@components/defer/YouTubeStatistics.astro'
 
 describe('YouTubeStatistics component', () => {
 	test('With statistics', async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(YouTubeStatistics, {
+		const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
 			locals: {
 				runtime: {
 					env: {
@@ -31,7 +31,7 @@ describe('YouTubeStatistics component', () => {
 
 	test('Without statistics', async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(YouTubeStatistics, {
+		const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
 			locals: {
 				runtime: {
 					env: {

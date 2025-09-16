@@ -2,6 +2,7 @@ import { test, expect, describe } from 'vitest'
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
 import Layout from '@layouts/Layout.astro'
 import { decodeHTMLEntities } from '@types'
+import Thumbnail from "@assets/img/thumbnail.webp"
 
 describe('Layout', () => {
 	test('Head tags', async () => {
@@ -19,11 +20,11 @@ describe('Layout', () => {
 		expect(body).toContain(`<title>${title}</title>`)
 		expect(body).toContain(`<meta name="description" content="${description}">`)
 		expect(body).toContain(`<meta property="og:title" content="${title}">`)
-		// expect(body).toContain('<meta property="og:image" content="/banner.png">')
+		expect(body).toContain(`<meta property="og:image" content="${Thumbnail.src}">`)
 		expect(body).toContain(`<meta property="og:image:alt" content="${title} banner">`)
 		expect(body).toContain(`<meta name="twitter:title" content="${title}">`)
 		expect(body).toContain(`<meta name="twitter:description" content="${description}">`)
-		// expect(body).toContain('<meta name="twitter:image" content="/banner.png">')
+		expect(body).toContain(`<meta name="twitter:image" content="${Thumbnail.src}">`)
 		expect(body).toContain(`<meta name="twitter:image:alt" content="${title} banner">`)
 		expect(body).toContain(`<meta name="theme-color" content="${color}">`)
 		expect(body).toContain('<link rel="sitemap" href="/sitemap-index.xml">')

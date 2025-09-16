@@ -1,11 +1,11 @@
 import { test, expect, describe } from 'vitest'
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import TwitchLivestream from '@components/defer/TwitchLivestream.astro'
+import TwitchLivestreamComponent from '@components/defer/TwitchLivestream.astro'
 
 describe('TwitchLivestream component', () => {
 	test('Is live', async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(TwitchLivestream, {
+		const component: Response = await container.renderToResponse(TwitchLivestreamComponent, {
 			locals: {
 				runtime: {
 					env: {
@@ -32,7 +32,7 @@ describe('TwitchLivestream component', () => {
 
 	test('Is not live', async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(TwitchLivestream, {
+		const component: Response = await container.renderToResponse(TwitchLivestreamComponent, {
 			locals: {
 				runtime: {
 					env: {

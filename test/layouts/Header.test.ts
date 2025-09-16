@@ -1,11 +1,11 @@
 import { test, expect, describe } from 'vitest'
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import Header from '@layouts/Header.astro'
+import HeaderLayout from '@layouts/Header.astro'
 
 describe('Header layout', () => {
 	test('Render', async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(Header, {
+		const component: Response = await container.renderToResponse(HeaderLayout, {
 			locals: {
 				runtime: {
 					env: {
