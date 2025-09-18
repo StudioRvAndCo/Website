@@ -3,6 +3,7 @@ import { SEO } from "astro-seo"
 import { AstroFont } from "astro-font"
 import Background from "@assets/img/background.webp"
 import Thumbnail from "@assets/img/thumbnail.webp"
+import LanguageSelection from "@components/LanguageSelection.astro"
 import Header from '@layouts/Header.astro'
 import Footer from '@layouts/Footer.astro'
 import Translations from '@assets/json/translations.json'
@@ -83,19 +84,8 @@ const title = "Studio Rv & Co"
 				selector: "body",
 				fallback: "sans-serif"
 			}
-			]}
-		/>
-	</head>
-	<body>
-		<Header />
-
-		<main id="home">
-			<slot />
-		</main>
-
-		<Footer />
-	</body>
-	</html>
+		]}
+	/>
 
 	<style lang="scss" define:vars={{ background }} is:global>
 		:root {
@@ -218,3 +208,15 @@ const title = "Studio Rv & Co"
 			}
 		}
 	</style>
+</head>
+<body>
+	<LanguageSelection />
+	<Header />
+
+	<main id="home">
+		<slot />
+	</main>
+
+	<Footer />
+</body>
+</html>
