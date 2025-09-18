@@ -112,7 +112,7 @@ const translations = Translations[locale as keyof typeof Translations].header
                 a {
                     display: inline-flex;
                     justify-content: center;
-                    padding: 1rem 0.55rem;
+                    padding: 1rem 0.65rem;
                 }
             }
 
@@ -147,7 +147,7 @@ const translations = Translations[locale as keyof typeof Translations].header
                     span {
                         z-index: -1;
                         position: absolute;
-                        top: $height - 3px;
+                        top: $height - 16px;
                         right: -16px;
                         width: 100vw;
                         height: calc(100vh - $height);
@@ -196,6 +196,10 @@ const translations = Translations[locale as keyof typeof Translations].header
                     font-size: unset;
                     transform: translateX(212px);
                     transition: transform 250ms;
+
+                    a {
+                        padding: 1rem 0.55rem;
+                    }
                 }
 
                 h1 {
@@ -272,7 +276,7 @@ const translations = Translations[locale as keyof typeof Translations].header
                     </a>
                 </div>
             </section>
-            <span class="mobile" class="toggle-off-menu"></span>
+            <span class="toggle-off-menu mobile"></span>
         </nav>
 
         <!-- Links -->
