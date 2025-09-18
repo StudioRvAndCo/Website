@@ -10,6 +10,10 @@ const statistics = await Astro.locals.runtime.env.STORE.get("YOUTUBE_STATISTICS"
 ---
 
 <style lang="scss">
+    .hidden {
+        display: none;
+    }
+
     p {
         width: inherit;
         padding: 0.8rem;
@@ -52,14 +56,17 @@ const statistics = await Astro.locals.runtime.env.STORE.get("YOUTUBE_STATISTICS"
     }
 </style>
 
-<p><span id="nb-views">{ statistics.viewCount }</span> {translations.views}</p>
-<p><span id="nb-subscribers">{ statistics.subscriberCount }</span> {translations.subscribers}</p>
+<p id="nb-views-value" class="hidden">{statistics.viewCount}</p>
+<p id="nb-subscribers-value" class="hidden">{statistics.subscriberCount}</p>
+
+<p><span id="nb-views">0</span> {translations.views}</p>
+<p><span id="nb-subscribers">0</span> {translations.subscribers}</p>
 
 <script>
     import { CountUp, type CountUpOptions } from 'countup.js'
 
-    const nbViewsElement = document.getElementById('nb-views')
-    const nbSubscribersElement = document.getElementById('nb-subscribers')
+    const nbViewsElement = document.getElementById('nb-views-value')!
+    const nbSubscribersElement = document.getElementById('nb-subscribers-value')!
 
     const countUpOptions: CountUpOptions = {
         duration: 3,
@@ -69,6 +76,9 @@ const statistics = await Astro.locals.runtime.env.STORE.get("YOUTUBE_STATISTICS"
         startVal: 0
     }
 
-    new CountUp("nb-views", Number(nbViewsElement?.innerText), countUpOptions)
-    new CountUp("nb-subscribers", Number(nbSubscribersElement?.innerText), countUpOptions)
+    new CountUp("nb-views", Number(nbViewsElement.innerText), countUpOptions)
+    new CountUp("nb-subscribers", Number(nbSubscribersElement.innerText), countUpOptions)
+
+    nbViewsElement.remove()
+    nbSubscribersElement.remove()
 </script>
