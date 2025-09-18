@@ -10,20 +10,6 @@ const thumbnail = Object.values(productionThumbnails)
     .find((image: any) => image.src.includes(production.picture)) as ImageMetadata
 ---
 
-<section class={index % 2 !== 0 ? 'reverse' : ''}>
-    <img src={thumbnail.src} alt={production.name[locale as keyof typeof production.name]} width={thumbnail.width} height={thumbnail.height} loading="lazy" decoding="async" />
-    <div>
-        <h3>
-            {index === 0 && <span>{translations.new}</span>}
-            {production.name[locale as keyof typeof production.name]}
-        </h3>
-        <p>{production.description[locale as keyof typeof production.description]}</p>
-        <a href={production.link} class="btn">
-            {translations.watch}
-        </a>
-    </div>
-</section>
-
 <style lang="scss">
     .reverse {
         flex-direction: row-reverse;
@@ -108,3 +94,17 @@ const thumbnail = Object.values(productionThumbnails)
         }
     }
 </style>
+
+<section class={index % 2 !== 0 ? 'reverse' : ''}>
+    <img src={thumbnail.src} alt={production.name[locale as keyof typeof production.name]} width={thumbnail.width} height={thumbnail.height} loading="lazy" decoding="async" />
+    <div>
+        <h3>
+            {index === 0 && <span>{translations.new}</span>}
+            {production.name[locale as keyof typeof production.name]}
+        </h3>
+        <p>{production.description[locale as keyof typeof production.description]}</p>
+        <a href={production.link} class="btn">
+            {translations.watch}
+        </a>
+    </div>
+</section>

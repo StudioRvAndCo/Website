@@ -10,15 +10,6 @@ const background = Object.values(projectBackgrounds)
 	.find((image: any) => image.src.includes(project.picture)) as ImageMetadata
 ---
 
-<ul class="splide__slide">
-	<div>
-		<h3>{project.name[locale as keyof typeof project.name]}</h3>
-		<p>{project.description[locale as keyof typeof project.description]}</p>
-		<a href={project.link} class="btn">{translations.view}</a>
-	</div>
-	<img src={background.src} alt={project.name[locale as keyof typeof project.name]} width={background.width} height={background.height} loading="lazy" decoding="async" />
-</ul>
-
 <style lang="scss">
 	.splide__slide {
 		height: 330px !important;
@@ -48,3 +39,12 @@ const background = Object.values(projectBackgrounds)
 		}
 	}
 </style>
+
+<ul class="splide__slide">
+	<div>
+		<h3>{project.name[locale as keyof typeof project.name]}</h3>
+		<p>{project.description[locale as keyof typeof project.description]}</p>
+		<a href={project.link} class="btn">{translations.view}</a>
+	</div>
+	<img src={background.src} alt={project.name[locale as keyof typeof project.name]} width={background.width} height={background.height} loading="lazy" decoding="async" />
+</ul>

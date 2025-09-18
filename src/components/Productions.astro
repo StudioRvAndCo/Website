@@ -8,12 +8,7 @@ const translations = Translations[locale as keyof typeof Translations].productio
 const productions = ProductionsList.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
 ---
 
-<article id="productions">
-    <h2>{translations.self}</h2>
-    <div>{productions.map((production, index) => <Production production={production} index={index} />)}</div>
-</article>
-
-<style lang="scss" is:global>
+<style lang="scss">
     #productions {
         @include max-width(var(--max-width-content));
         @include full-width-background-color(var(--bg-color));
@@ -25,3 +20,8 @@ const productions = ProductionsList.sort((a, b) => new Date(b.createdAt).getTime
         }
     }
 </style>
+
+<article id="productions">
+    <h2>{translations.self}</h2>
+    <div>{productions.map((production, index) => <Production production={production} index={index} />)}</div>
+</article>

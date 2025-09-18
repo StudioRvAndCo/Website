@@ -8,13 +8,6 @@ const picture = Object.values(memberPictures)
 const Wrapper = member.link ? 'a' : 'div'
 ---
 
-<Wrapper href={member.link}>
-    <div>
-        <img src={picture.src} alt={member.name} width={picture.width} height={picture.height} loading="lazy" decoding="async" />
-    </div>
-    <p>{member.name}</p>
-</Wrapper>
-
 <style lang="scss">
     a,
     div {
@@ -67,3 +60,10 @@ const Wrapper = member.link ? 'a' : 'div'
         }
     }
 </style>
+
+<Wrapper href={member.link}>
+    <div>
+        <img src={picture.src} alt={member.name} width={picture.width} height={picture.height} loading="lazy" decoding="async" />
+    </div>
+    <p>{member.name}</p>
+</Wrapper>

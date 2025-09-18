@@ -3,7 +3,7 @@ import Translations from '@assets/json/translations.json'
 import Background from '@assets/svg/association.svg'
 import MembersList from '@assets/json/members.json'
 import Member from '@components/list/Member.astro'
-// import InstagramPosts from './defer/InstagramPosts.astro'
+// import InstagramPosts from '@components/defer/InstagramPosts.astro'
 
 const locale = Astro.currentLocale ?? 'fr'
 const translations = Translations[locale as keyof typeof Translations].association
@@ -11,25 +11,7 @@ const background = `url(${Background.src})`
 const members = MembersList.sort((a, b) => a.name.localeCompare(b.name))
 ---
 
-<article id="association">
-    <div>
-        <h2>{translations.self}</h2>
-        <p>{translations.description}</p>
-
-        <section>{members.map((member) => <Member member={member} />)}</section>
-
-        <!-- <h3>{translations.instagramGallery}</h3> -->
-
-        <!-- <InstagramPosts server:defer> -->
-            <!-- TODO: Icon de chargement -->
-            <!-- <p slot="fallback">Chargement...</p> -->
-        <!-- </InstagramPosts> -->
-
-        <!-- <a href="https://instagram.com/studiorvandco" class="btn">{translations.morePictures}</a> -->
-    </div>
-</article>
-
-<style lang="scss" is:global define:vars={{ background }}>
+<style lang="scss" define:vars={{ background }}>
     #association {
         background-image: var(--background);
         @include full-width-background-color(var(--association-bg-color));
@@ -58,15 +40,33 @@ const members = MembersList.sort((a, b) => a.name.localeCompare(b.name))
                 gap: 2rem;
             }
 
-            h3 {
-                font-size: 1.5em;
-                margin-top: calc(var(--spacing) * 1.4);
-                margin-bottom: calc(var(--spacing) / 2);
+            // h3 {
+            //     font-size: 1.5em;
+            //     margin-top: calc(var(--spacing) * 1.4);
+            //     margin-bottom: calc(var(--spacing) / 2);
 
-                @media (max-width: 450px) {
-                    text-align: center;
-                }
-            }
+            //     @media (max-width: 450px) {
+            //         text-align: center;
+            //     }
+            // }
         }
     }
 </style>
+
+<article id="association">
+    <div>
+        <h2>{translations.self}</h2>
+        <p>{translations.description}</p>
+
+        <section>{members.map((member) => <Member member={member} />)}</section>
+
+        <!-- <h3>{translations.instagramGallery}</h3> -->
+
+        <!-- <InstagramPosts server:defer> -->
+            <!-- TODO: Icon de chargement -->
+            <!-- <p slot="fallback">Chargement...</p> -->
+        <!-- </InstagramPosts> -->
+
+        <!-- <a href="https://instagram.com/studiorvandco" class="btn">{translations.morePictures}</a> -->
+    </div>
+</article>

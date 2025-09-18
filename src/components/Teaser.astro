@@ -9,59 +9,6 @@ const locale = Astro.currentLocale ?? 'fr'
 const translations = Translations[locale as keyof typeof Translations].teaser
 ---
 
-<article id="teaser">
-    <h2>{translations.catchphrase}</h2>
-    <section>
-        <video autoplay muted loop disablepictureinpicture playsinline poster={Thumbnail.src} width="810" height="456">
-            <source src={TeaserWebm} type="video/webm" />
-            <source src={TeaserMp4} type="video/mp4" />
-        </video>
-
-        <div>
-            <h3>{translations.numbers}</h3>
-            <div>
-                <p><span id="nb-members">0</span> {translations.members}</p>
-                <p><span id="nb-projects">0</span> {translations.projects}</p>
-                <YouTubeStatistics server:defer>
-                    <Fragment slot="fallback">
-                        <p><span>0</span> {translations.views}</p>
-                        <p><span>0</span> {translations.subscribers}</p>
-                    </Fragment>
-                </YouTubeStatistics>
-                <p><span id="nb-years-old">0</span> {translations.years}</p>
-            </div>
-            <a href="#association" class="btn">{translations.readMore}</a>
-        </div>
-    </section>
-</article>
-
-<script>
-    import { CountUp, type CountUpOptions } from 'countup.js'
-    import MembersList from '@assets/json/members.json'
-    import ProjectsList from '@assets/json/projects.json'
-    import type { Member, Project } from '@types'
-
-    const members: Member[] = MembersList
-    const projects: Project[] = ProjectsList
-
-    const startDate = new Date('2020-09-09')
-    const now = new Date()
-    const diffMs = now.getTime() - startDate.getTime()
-    const nbYears = Math.abs(new Date(diffMs).getUTCFullYear() - 1970)
-
-    const countUpOptions: CountUpOptions = {
-        duration: 3,
-        enableScrollSpy: true,
-        scrollSpyOnce: true,
-        separator: ' ',
-        startVal: 0
-    }
-
-    new CountUp("nb-members", members.length, countUpOptions)
-    new CountUp("nb-projects", projects.length, countUpOptions)
-    new CountUp("nb-years-old", nbYears, countUpOptions)
-</script>
-
 <style lang="scss">
     #teaser {
         @include max-width(var(--max-width-content));
@@ -212,3 +159,56 @@ const translations = Translations[locale as keyof typeof Translations].teaser
         }
     }
 </style>
+
+<article id="teaser">
+    <h2>{translations.catchphrase}</h2>
+    <section>
+        <video autoplay muted loop disablepictureinpicture playsinline poster={Thumbnail.src} width="810" height="456">
+            <source src={TeaserWebm} type="video/webm" />
+            <source src={TeaserMp4} type="video/mp4" />
+        </video>
+
+        <div>
+            <h3>{translations.numbers}</h3>
+            <div>
+                <p><span id="nb-members">0</span> {translations.members}</p>
+                <p><span id="nb-projects">0</span> {translations.projects}</p>
+                <YouTubeStatistics server:defer>
+                    <Fragment slot="fallback">
+                        <p><span>0</span> {translations.views}</p>
+                        <p><span>0</span> {translations.subscribers}</p>
+                    </Fragment>
+                </YouTubeStatistics>
+                <p><span id="nb-years-old">0</span> {translations.years}</p>
+            </div>
+            <a href="#association" class="btn">{translations.readMore}</a>
+        </div>
+    </section>
+</article>
+
+<script>
+    import { CountUp, type CountUpOptions } from 'countup.js'
+    import MembersList from '@assets/json/members.json'
+    import ProjectsList from '@assets/json/projects.json'
+    import type { Member, Project } from '@types'
+
+    const members: Member[] = MembersList
+    const projects: Project[] = ProjectsList
+
+    const startDate = new Date('2020-09-09')
+    const now = new Date()
+    const diffMs = now.getTime() - startDate.getTime()
+    const nbYears = Math.abs(new Date(diffMs).getUTCFullYear() - 1970)
+
+    const countUpOptions: CountUpOptions = {
+        duration: 3,
+        enableScrollSpy: true,
+        scrollSpyOnce: true,
+        separator: ' ',
+        startVal: 0
+    }
+
+    new CountUp("nb-members", members.length, countUpOptions)
+    new CountUp("nb-projects", projects.length, countUpOptions)
+    new CountUp("nb-years-old", nbYears, countUpOptions)
+</script>
