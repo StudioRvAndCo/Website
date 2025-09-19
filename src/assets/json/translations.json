@@ -1,6 +1,7 @@
 {
 	"en": {
 		"description":"Studio Rv & Co is a group of friends who are passionate about the world of cinema.",
+		"onAir": "We are live!",
 		"header": {
 			"home": "Home",
 			"productions": "Productions",
@@ -43,6 +44,7 @@
 	},
 	"fr": {
 		"description": "Le Studio Rv & Co est une association regroupant des amis passionnés par le monde du cinéma.",
+		"onAir": "Nous sommes en direct !",
 		"header": {
 			"home": "Accueil",
 			"productions": "Productions",

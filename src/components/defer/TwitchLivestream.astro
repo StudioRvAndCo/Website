@@ -1,9 +1,10 @@
 ---
 import { Icon } from 'astro-icon/components'
+import type { TwitchLivestream } from '@types'
 
 export const prerender = false
 
-const livestreamData = await Astro.locals.runtime.env.STORE.get("TWITCH_LIVESTREAM", "json")
+const livestreamData = await Astro.locals.runtime.env.STORE.get("TWITCH_LIVESTREAM", "json") as TwitchLivestream | null
 const isLive = Object.keys(livestreamData || {}).length > 0
 ---
 
@@ -56,3 +57,10 @@ const isLive = Object.keys(livestreamData || {}).length > 0
 <a class={isLive && 'on-air' || ''} href="https://twitch.tv/studiorvandco" title="Twitch">
     <Icon name={"fa6-brands:twitch"} />
 </a>
+
+<script define:vars={{ isLive, livestreamData }} is:inline>
+    if (!isLive) return
+    document.dispatchEvent(
+        new CustomEvent('twitch', { detail: livestreamData })
+    )
+</script>
