@@ -1,13 +1,40 @@
 ---
-import type { YouTubeStatistics } from '@types'
-import Translations from '@assets/json/translations.json'
+import Translations from "@assets/json/translations.json"
+import type { YouTubeStatistics } from "@types"
 
 export const prerender = false
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].teaser
 const statistics = await Astro.locals.runtime.env.STORE.get("YOUTUBE_STATISTICS", "json") as YouTubeStatistics ?? { viewCount: 0, subscriberCount: 0 }
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].teaser
 ---
+
+<p id="nb-views-value" class="hidden">{statistics.viewCount}</p>
+<p id="nb-subscribers-value" class="hidden">{statistics.subscriberCount}</p>
+
+<p><span id="nb-views">0</span> {translation.views}</p>
+<p><span id="nb-subscribers">0</span> {translation.subscribers}</p>
+
+<script>
+    import { CountUp, type CountUpOptions } from "countup.js"
+
+    const nbViewsElement = document.getElementById("nb-views-value")!
+    const nbSubscribersElement = document.getElementById("nb-subscribers-value")!
+
+    const countUpOptions: CountUpOptions = {
+        duration: 3,
+        enableScrollSpy: true,
+        scrollSpyOnce: true,
+        separator: ' ',
+        startVal: 0
+    }
+
+    new CountUp("nb-views", Number(nbViewsElement.innerText), countUpOptions)
+    new CountUp("nb-subscribers", Number(nbSubscribersElement.innerText), countUpOptions)
+
+    nbViewsElement.remove()
+    nbSubscribersElement.remove()
+</script>
 
 <style lang="scss">
     .hidden {
@@ -55,30 +82,3 @@ const statistics = await Astro.locals.runtime.env.STORE.get("YOUTUBE_STATISTICS"
         }
     }
 </style>
-
-<p id="nb-views-value" class="hidden">{statistics.viewCount}</p>
-<p id="nb-subscribers-value" class="hidden">{statistics.subscriberCount}</p>
-
-<p><span id="nb-views">0</span> {translations.views}</p>
-<p><span id="nb-subscribers">0</span> {translations.subscribers}</p>
-
-<script>
-    import { CountUp, type CountUpOptions } from 'countup.js'
-
-    const nbViewsElement = document.getElementById('nb-views-value')!
-    const nbSubscribersElement = document.getElementById('nb-subscribers-value')!
-
-    const countUpOptions: CountUpOptions = {
-        duration: 3,
-        enableScrollSpy: true,
-        scrollSpyOnce: true,
-        separator: ' ',
-        startVal: 0
-    }
-
-    new CountUp("nb-views", Number(nbViewsElement.innerText), countUpOptions)
-    new CountUp("nb-subscribers", Number(nbSubscribersElement.innerText), countUpOptions)
-
-    nbViewsElement.remove()
-    nbSubscribersElement.remove()
-</script>

@@ -1,13 +1,57 @@
 ---
-import Translations from '@assets/json/translations.json'
-import ProjectsList from '@assets/json/projects.json'
-import Project from '@components/list/Project.astro'
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components"
+import Project from "@components/list/Project.astro"
+import ProjectsList from "@assets/json/projects.json"
+import Translations from "@assets/json/translations.json"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].projects
 const projects = ProjectsList.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].projects
 ---
+
+<article id="projects">
+	<h2>{translation.self}</h2>
+
+	<section class="splide" aria-label={translation.self}>
+		<div class="splide__track">
+			<ul class="splide__list">
+				{projects.map((project) => <Project project={project} />)}
+			</ul>
+		</div>
+
+		<div class="splide__arrows">
+			<button class="splide__arrow splide__arrow--prev">
+				<Icon name={"mdi:keyboard-arrow-right"} />
+			</button>
+			<button class="splide__arrow splide__arrow--next">
+				<Icon name={"mdi:keyboard-arrow-right"} />
+			</button>
+		</div>
+
+		<ul class="splide__pagination"></ul>
+	</section>
+</article>
+
+<script>
+	import Splide, { type Options } from "@splidejs/splide"
+	import "@splidejs/splide/css"
+
+	const splideOptions: Options = {
+		type: "loop",
+		rewind: true,
+		rewindByDrag: true,
+		autoplay: true,
+		keyboard: true,
+		cover: true,
+		heightRatio: 0.4,
+		speed: 350,
+		rewindSpeed: 350,
+		easing: "cubic-bezier(0.25, 0, 0.25, 1)",
+		interval: 7500
+	}
+
+	new Splide(".splide", splideOptions).mount()
+</script>
 
 <style lang="scss">
 	#projects {
@@ -98,47 +142,3 @@ const projects = ProjectsList.sort((a, b) => new Date(b.createdAt).getTime() - n
 		}
 	}
 </style>
-
-<article id="projects">
-	<h2>{translations.self}</h2>
-
-	<section class="splide" aria-label={translations.self}>
-		<div class="splide__track">
-			<ul class="splide__list">
-				{projects.map((project) => <Project project={project} />)}
-			</ul>
-		</div>
-
-		<div class="splide__arrows">
-			<button class="splide__arrow splide__arrow--prev">
-				<Icon name={"mdi:keyboard-arrow-right"} />
-			</button>
-			<button class="splide__arrow splide__arrow--next">
-				<Icon name={"mdi:keyboard-arrow-right"} />
-			</button>
-		</div>
-
-		<ul class="splide__pagination"></ul>
-	</section>
-</article>
-
-<script>
-	import Splide, { type Options } from '@splidejs/splide'
-	import '@splidejs/splide/css'
-
-	const splideOptions: Options = {
-		type: "loop",
-		rewind: true,
-		rewindByDrag: true,
-		autoplay: true,
-		keyboard: true,
-		cover: true,
-		heightRatio: 0.4,
-		speed: 350,
-		rewindSpeed: 350,
-		easing: "cubic-bezier(0.25, 0, 0.25, 1)",
-		interval: 7500
-	}
-
-	new Splide('.splide', splideOptions).mount()
-</script>

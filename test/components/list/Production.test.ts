@@ -1,10 +1,10 @@
-import { test, expect, describe } from 'vitest'
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import ProductionComponent from '@components/list/Production.astro'
-import { decodeHTMLEntities, type Production } from '@types'
-import EnSursisThumbnail from '@assets/img/productions/en_sursis.webp'
+import { test, expect, describe } from "vitest"
+import { experimental_AstroContainer as AstroContainer } from "astro/container"
+import ProductionComponent from "@components/list/Production.astro"
+import { decodeHTMLEntities, type Production } from "@types"
+import EnSursisThumbnail from "@assets/img/productions/en_sursis.webp"
 
-describe('Production component', () => {
+describe("Production component", () => {
     const production: Production = {
         name: {
             fr: "Nom en français",
@@ -18,14 +18,14 @@ describe('Production component', () => {
         link: "https://rvandco.fr"
     }
 
-    test('With index = 0', async () => {
+    test("With index = 0", async () => {
         const container = await AstroContainer.create()
         const component: Response = await container.renderToResponse(ProductionComponent, {
             props: { production, index: 0 }
         })
 
         expect(component.status).toBe(200)
-        expect(component.headers.get('Content-Type')).toBe('text/html')
+        expect(component.headers.get("Content-Type")).toBe("text/html")
 
         const body: string = decodeHTMLEntities(await component.text())
         expect(body).toContain(`<section class`)
@@ -41,14 +41,14 @@ describe('Production component', () => {
     })
 
 
-    test('With odd index != 0', async () => {
+    test("With odd index != 0", async () => {
         const container = await AstroContainer.create()
         const component: Response = await container.renderToResponse(ProductionComponent, {
             props: { production, index: 1 }
         })
 
         expect(component.status).toBe(200)
-        expect(component.headers.get('Content-Type')).toBe('text/html')
+        expect(component.headers.get("Content-Type")).toBe("text/html")
 
         const body: string = decodeHTMLEntities(await component.text())
         expect(body).toContain(`<section class="reverse"`)

@@ -1,14 +1,23 @@
 ---
-import Translations from '@assets/json/translations.json'
-import type { Project } from '@types'
+import Translations from "@assets/json/translations.json"
+import type { Project } from "@types"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].projects
 const project = Astro.props.project as Project
-const projectBackgrounds = import.meta.glob('@assets/img/projects/*.webp', { eager: true, import: 'default' })
+const projectBackgrounds = import.meta.glob("@assets/img/projects/*.webp", { eager: true, import: "default" })
 const background = Object.values(projectBackgrounds)
 	.find((image: any) => image.src.includes(project.picture)) as ImageMetadata
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].projects
 ---
+
+<ul class="splide__slide">
+	<div>
+		<h3>{project.name[locale as keyof typeof project.name]}</h3>
+		<p>{project.description[locale as keyof typeof project.description]}</p>
+		<a href={project.link} class="btn">{translation.view}</a>
+	</div>
+	<img src={background.src} alt={project.name[locale as keyof typeof project.name]} width={background.width} height={background.height} loading="lazy" decoding="async" />
+</ul>
 
 <style lang="scss">
 	.splide__slide {
@@ -39,12 +48,3 @@ const background = Object.values(projectBackgrounds)
 		}
 	}
 </style>
-
-<ul class="splide__slide">
-	<div>
-		<h3>{project.name[locale as keyof typeof project.name]}</h3>
-		<p>{project.description[locale as keyof typeof project.description]}</p>
-		<a href={project.link} class="btn">{translations.view}</a>
-	</div>
-	<img src={background.src} alt={project.name[locale as keyof typeof project.name]} width={background.width} height={background.height} loading="lazy" decoding="async" />
-</ul>

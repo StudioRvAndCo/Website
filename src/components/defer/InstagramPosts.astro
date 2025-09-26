@@ -6,6 +6,21 @@ export const prerender = false
 const posts = await Astro.locals.runtime.env.STORE.get("INSTAGRAM_POSTS", "json") as InstagramPost[] ?? []
 ---
 
+<section>
+    {posts.map((poste) =>
+        <a href={poste.permalink}>
+            <img
+                src={([InstagramMediaType.IMAGE, InstagramMediaType.CAROUSEL_ALBUM].includes(poste.media_type) ? poste.media_url : poste.thumbnail_url) ?? ''}
+                alt="Instagram post"
+                width="220"
+                height="220"
+                loading="lazy"
+                decoding="async"
+            />
+        </a>
+    )}
+</section>
+
 <style lang="scss">
     section {
         display: flex;
@@ -32,18 +47,3 @@ const posts = await Astro.locals.runtime.env.STORE.get("INSTAGRAM_POSTS", "json"
         }
     }
 </style>
-
-<section>
-    {posts.map((poste) =>
-        <a href={poste.permalink}>
-            <img
-                src={([InstagramMediaType.IMAGE, InstagramMediaType.CAROUSEL_ALBUM].includes(poste.media_type) ? poste.media_url : poste.thumbnail_url) ?? ''}
-                alt="Instagram post"
-                width="220"
-                height="220"
-                loading="lazy"
-                decoding="async"
-            />
-        </a>
-    )}
-</section>

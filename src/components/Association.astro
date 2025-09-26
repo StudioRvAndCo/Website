@@ -1,15 +1,33 @@
 ---
-import Translations from '@assets/json/translations.json'
-import Background from '@assets/svg/association.svg'
-import MembersList from '@assets/json/members.json'
-import Member from '@components/list/Member.astro'
 // import InstagramPosts from '@components/defer/InstagramPosts.astro'
+import Member from "@components/list/Member.astro"
+import MembersList from "@assets/json/members.json"
+import Background from "@assets/svg/association.svg"
+import Translations from "@assets/json/translations.json"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].association
 const background = `url(${Background.src})`
 const members = MembersList.sort((a, b) => a.name.localeCompare(b.name))
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].association
 ---
+
+<article id="association">
+    <div>
+        <h2>{translation.self}</h2>
+        <p>{translation.description}</p>
+
+        <section>{members.map((member) => <Member member={member} />)}</section>
+
+        <!-- <h3>{translations.instagramGallery}</h3> -->
+
+        <!-- <InstagramPosts server:defer> -->
+            <!-- TODO: Icon de chargement -->
+            <!-- <p slot="fallback">Chargement...</p> -->
+        <!-- </InstagramPosts> -->
+
+        <!-- <a href="https://instagram.com/studiorvandco" class="btn">{translation.morePictures}</a> -->
+    </div>
+</article>
 
 <style lang="scss" define:vars={{ background }}>
     #association {
@@ -52,21 +70,3 @@ const members = MembersList.sort((a, b) => a.name.localeCompare(b.name))
         }
     }
 </style>
-
-<article id="association">
-    <div>
-        <h2>{translations.self}</h2>
-        <p>{translations.description}</p>
-
-        <section>{members.map((member) => <Member member={member} />)}</section>
-
-        <!-- <h3>{translations.instagramGallery}</h3> -->
-
-        <!-- <InstagramPosts server:defer> -->
-            <!-- TODO: Icon de chargement -->
-            <!-- <p slot="fallback">Chargement...</p> -->
-        <!-- </InstagramPosts> -->
-
-        <!-- <a href="https://instagram.com/studiorvandco" class="btn">{translations.morePictures}</a> -->
-    </div>
-</article>

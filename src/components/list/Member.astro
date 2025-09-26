@@ -1,12 +1,19 @@
 ---
-import type { Member } from '@types'
+import type { Member } from "@types"
 
 const member = Astro.props.member as Member
-const memberPictures = import.meta.glob('@assets/img/members/*.webp', { eager: true, import: 'default' })
+const memberPictures = import.meta.glob("@assets/img/members/*.webp", { eager: true, import: "default" })
 const picture = Object.values(memberPictures)
-    .find((image: any) => image.src.includes(member.picture ?? 'default')) as ImageMetadata
-const Wrapper = member.link ? 'a' : 'div'
+    .find((image: any) => image.src.includes(member.picture ?? "default")) as ImageMetadata
+const Wrapper = member.link ? 'a' : "div"
 ---
+
+<Wrapper href={member.link}>
+    <div>
+        <img src={picture.src} alt={member.name} width={picture.width} height={picture.height} loading="lazy" decoding="async" />
+    </div>
+    <p>{member.name}</p>
+</Wrapper>
 
 <style lang="scss">
     a,
@@ -60,10 +67,3 @@ const Wrapper = member.link ? 'a' : 'div'
         }
     }
 </style>
-
-<Wrapper href={member.link}>
-    <div>
-        <img src={picture.src} alt={member.name} width={picture.width} height={picture.height} loading="lazy" decoding="async" />
-    </div>
-    <p>{member.name}</p>
-</Wrapper>

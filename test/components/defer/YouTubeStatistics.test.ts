@@ -1,9 +1,9 @@
-import { test, expect, describe } from 'vitest'
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import YouTubeStatisticsComponent from '@components/defer/YouTubeStatistics.astro'
+import { test, expect, describe } from "vitest"
+import { experimental_AstroContainer as AstroContainer } from "astro/container"
+import YouTubeStatisticsComponent from "@components/defer/YouTubeStatistics.astro"
 
-describe('YouTubeStatistics component', () => {
-	test('With statistics', async () => {
+describe("YouTubeStatistics component", () => {
+	test("With statistics", async () => {
 		const container = await AstroContainer.create()
 		const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
 			locals: {
@@ -21,15 +21,15 @@ describe('YouTubeStatistics component', () => {
 		})
 
 		expect(component.status).toBe(200)
-		expect(component.headers.get('Content-Type')).toBe('text/html')
+		expect(component.headers.get("Content-Type")).toBe("text/html")
 
 		const body: string = await component.text()
-		expect(body).toContain('>5678</span> Vues')
-		expect(body).toContain('>1234</span> Abonnés')
+		expect(body).toContain(">5678</span> Vues")
+		expect(body).toContain(">1234</span> Abonnés")
 	})
 
 
-	test('Without statistics', async () => {
+	test("Without statistics", async () => {
 		const container = await AstroContainer.create()
 		const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
 			locals: {
@@ -44,10 +44,10 @@ describe('YouTubeStatistics component', () => {
 		})
 
 		expect(component.status).toBe(200)
-		expect(component.headers.get('Content-Type')).toBe('text/html')
+		expect(component.headers.get("Content-Type")).toBe("text/html")
 
 		const body: string = await component.text()
-		expect(body).toContain('></span> Vues')
-		expect(body).toContain('></span> Abonnés')
+		expect(body).toContain("></span> Vues")
+		expect(body).toContain("></span> Abonnés")
 	})
 })

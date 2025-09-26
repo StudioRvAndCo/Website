@@ -1,17 +1,17 @@
-import { test, expect, describe } from 'vitest'
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import ProjectsComponent from '@components/Projects.astro'
-import { decodeHTMLEntities } from '@types'
-import Translations from '@assets/json/translations.json'
-import ProjectsList from '@assets/json/projects.json'
+import { test, expect, describe } from "vitest"
+import { experimental_AstroContainer as AstroContainer } from "astro/container"
+import ProjectsComponent from "@components/Projects.astro"
+import { decodeHTMLEntities } from "@types"
+import Translations from "@assets/json/translations.json"
+import ProjectsList from "@assets/json/projects.json"
 
-describe('Projects component', () => {
-	test('Render', async () => {
+describe("Projects component", () => {
+	test("Render", async () => {
 		const container = await AstroContainer.create()
 		const component: Response = await container.renderToResponse(ProjectsComponent)
 
 		expect(component.status).toBe(200)
-		expect(component.headers.get('Content-Type')).toBe('text/html')
+		expect(component.headers.get("Content-Type")).toBe("text/html")
 
 		const body: string = decodeHTMLEntities(await component.text())
 		expect(body).toContain(`>${Translations.fr.projects.self}</h2>`)

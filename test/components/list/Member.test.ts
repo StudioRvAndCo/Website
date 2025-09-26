@@ -1,16 +1,16 @@
-import { test, expect, describe } from 'vitest'
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import MemberComponent from '@components/list/Member.astro'
-import { decodeHTMLEntities, type Member } from '@types'
-import DefaultPicture from '@assets/img/members/default.webp'
+import { test, expect, describe } from "vitest"
+import { experimental_AstroContainer as AstroContainer } from "astro/container"
+import MemberComponent from "@components/list/Member.astro"
+import { decodeHTMLEntities, type Member } from "@types"
+import DefaultPicture from "@assets/img/members/default.webp"
 
-describe('Member component', () => {
+describe("Member component", () => {
 	const member: Member = {
 		name: "Studio Rv & Co",
-		picture: 'default.webp'
+		picture: "default.webp"
 	}
 
-	test('With link', async () => {
+	test("With link", async () => {
 		const memberWithLink = {
 			...member,
 			link: "https://rvandco.fr"
@@ -22,7 +22,7 @@ describe('Member component', () => {
 		})
 
 		expect(component.status).toBe(200)
-		expect(component.headers.get('Content-Type')).toBe('text/html')
+		expect(component.headers.get("Content-Type")).toBe("text/html")
 
 		const body: string = decodeHTMLEntities(await component.text())
 		expect(body).toContain(`<a href="${memberWithLink.link}"`)
@@ -34,14 +34,14 @@ describe('Member component', () => {
 	})
 
 
-	test('Without link', async () => {
+	test("Without link", async () => {
 		const container = await AstroContainer.create()
 		const component: Response = await container.renderToResponse(MemberComponent, {
 			props: { member }
 		})
 
 		expect(component.status).toBe(200)
-		expect(component.headers.get('Content-Type')).toBe('text/html')
+		expect(component.headers.get("Content-Type")).toBe("text/html")
 
 		const body: string = decodeHTMLEntities(await component.text())
 		expect(body).not.toContain(`<a href="`)

@@ -3,21 +3,21 @@ const locale = Astro.currentLocale
 ---
 
 {!locale && <script>
-    const preferredLocale = localStorage.getItem('preferredLocale');
+    const preferredLocale = localStorage.getItem("preferredLocale")
     if (!preferredLocale) {
-        let browserLang = navigator.language?.split('-')[0] || 'fr';
-        if (!['en', 'fr'].includes(browserLang)) {
-            browserLang = 'en';
+        let browserLang = navigator.language?.split('-')[0] || "fr"
+        if (!["en", "fr"].includes(browserLang)) {
+            browserLang = "en"
         }
 
         if (browserLang !== document.documentElement.lang) {
-            window.location.pathname = `/${browserLang}${window.location.pathname}`;
+            window.location.pathname = `/${browserLang}${window.location.pathname}`
         }
 
-        localStorage.setItem('preferredLocale', browserLang);
+        localStorage.setItem("preferredLocale", browserLang)
     } else {
         if (preferredLocale !== document.documentElement.lang) {
-            window.location.pathname = `/${preferredLocale}${window.location.pathname}`;
+            window.location.pathname = `/${preferredLocale}${window.location.pathname}`
         }
     }
 </script>}

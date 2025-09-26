@@ -1,14 +1,28 @@
 ---
-import type { Production } from '@types'
-import Translations from '@assets/json/translations.json'
+import Translations from "@assets/json/translations.json"
+import type { Production } from "@types"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].productions
 const { production, index } = Astro.props as { production: Production, index: number }
-const productionThumbnails = import.meta.glob('@assets/img/productions/*.webp', { eager: true, import: 'default' })
+const productionThumbnails = import.meta.glob("@assets/img/productions/*.webp", { eager: true, import: "default" })
 const thumbnail = Object.values(productionThumbnails)
     .find((image: any) => image.src.includes(production.picture)) as ImageMetadata
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].productions
 ---
+
+<section class={index % 2 !== 0 ? "reverse" : ''}>
+    <img src={thumbnail.src} alt={production.name[locale as keyof typeof production.name]} width={thumbnail.width} height={thumbnail.height} loading="lazy" decoding="async" />
+    <div>
+        <h3>
+            {index === 0 && <span>{translation.new}</span>}
+            {production.name[locale as keyof typeof production.name]}
+        </h3>
+        <p>{production.description[locale as keyof typeof production.description]}</p>
+        <a href={production.link} class="btn">
+            {translation.watch}
+        </a>
+    </div>
+</section>
 
 <style lang="scss">
     .reverse {
@@ -94,17 +108,3 @@ const thumbnail = Object.values(productionThumbnails)
         }
     }
 </style>
-
-<section class={index % 2 !== 0 ? 'reverse' : ''}>
-    <img src={thumbnail.src} alt={production.name[locale as keyof typeof production.name]} width={thumbnail.width} height={thumbnail.height} loading="lazy" decoding="async" />
-    <div>
-        <h3>
-            {index === 0 && <span>{translations.new}</span>}
-            {production.name[locale as keyof typeof production.name]}
-        </h3>
-        <p>{production.description[locale as keyof typeof production.description]}</p>
-        <a href={production.link} class="btn">
-            {translations.watch}
-        </a>
-    </div>
-</section>

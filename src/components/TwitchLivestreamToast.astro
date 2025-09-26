@@ -1,10 +1,38 @@
 ---
-import Translations from '@assets/json/translations.json'
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components"
+import Translations from "@assets/json/translations.json"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations]
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations]
 ---
+
+<section id="toast" class="hidden">
+    <a href="https://twitch.tv/studiorvandco">
+        <p><i class="on-air"></i>{translation.onAir}</p>
+        <p id="stream-title"></p>
+    </a>
+    <span>
+        <Icon name={"mdi:close"} />
+    </span>
+</section>
+
+<script>
+    import type { TwitchLivestream } from "@types"
+
+    const toast = document.querySelector("#toast")
+    const closeBtn = toast?.querySelector("span")
+    const streamTitle = document.querySelector("#stream-title")
+
+    document.addEventListener("twitch", (event: any) => {
+        const livestreamData = event.detail as TwitchLivestream
+        streamTitle!.textContent = livestreamData.title
+        toast?.classList.remove("hidden")
+    })
+
+    closeBtn?.addEventListener("click", () => {
+        toast?.classList.add("hidden")
+    })
+</script>
 
 <style lang="scss">
     #toast {
@@ -99,31 +127,3 @@ const translations = Translations[locale as keyof typeof Translations]
         }
     }
 </style>
-
-<section id="toast" class="hidden">
-    <a href="https://twitch.tv/studiorvandco">
-        <p><i class="on-air"></i>{translations.onAir}</p>
-        <p id="stream-title"></p>
-    </a>
-    <span>
-        <Icon name={"mdi:close"} />
-    </span>
-</section>
-
-<script>
-    import type { TwitchLivestream } from "@types";
-
-    const toast = document.querySelector('#toast');
-    const closeBtn = toast?.querySelector('span');
-    const streamTitle = document.querySelector('#stream-title');
-
-    document.addEventListener('twitch', (event: any) => {
-        const livestreamData = event.detail as TwitchLivestream;
-        streamTitle!.textContent = livestreamData.title;
-        toast?.classList.remove('hidden');
-    })
-
-    closeBtn?.addEventListener('click', () => {
-        toast?.classList.add('hidden');
-    });
-</script>

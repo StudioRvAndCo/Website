@@ -1,7 +1,7 @@
 version: 2
 updates:
     - package-ecosystem: "github-actions"
-      directory: "/"
+      directory: '/'
       schedule:
         interval: "monthly"
         time: "09:00"
@@ -10,7 +10,7 @@ updates:
       - "dependencies"
 
     - package-ecosystem: "npm"
-      directory: "/"
+      directory: '/'
       schedule:
         interval: "monthly"
         time: "09:00"

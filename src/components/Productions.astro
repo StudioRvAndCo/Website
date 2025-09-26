@@ -1,12 +1,17 @@
 ---
-import Translations from '@assets/json/translations.json'
-import ProductionsList from '@assets/json/productions.json'
-import Production from '@components/list/Production.astro'
+import Production from "@components/list/Production.astro"
+import ProductionsList from "@assets/json/productions.json"
+import Translations from "@assets/json/translations.json"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].productions
 const productions = ProductionsList.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].productions
 ---
+
+<article id="productions">
+    <h2>{translation.self}</h2>
+    <div>{productions.map((production, index) => <Production production={production} index={index} />)}</div>
+</article>
 
 <style lang="scss">
     #productions {
@@ -20,8 +25,3 @@ const productions = ProductionsList.sort((a, b) => new Date(b.createdAt).getTime
         }
     }
 </style>
-
-<article id="productions">
-    <h2>{translations.self}</h2>
-    <div>{productions.map((production, index) => <Production production={production} index={index} />)}</div>
-</article>

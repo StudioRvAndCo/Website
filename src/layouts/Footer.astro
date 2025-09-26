@@ -1,9 +1,26 @@
 ---
-import Translations from '@assets/json/translations.json'
+import Translations from "@assets/json/translations.json"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].footer
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].footer
 ---
+
+<footer>
+    <p>
+        &copy; <span id="current-year"></span> &nbsp;|&nbsp;
+        <a href="/" class="">RvAndCo.fr</a>
+    </p>
+    <p>
+        {translation.createdBy}
+        <a href="https://github.com/Minarox">Mathis</a>.
+    </p>
+</footer>
+
+<script>
+    const element = document.getElementById("current-year")!
+    const currentYear = new Date().getFullYear()
+    element.textContent = currentYear.toString()
+</script>
 
 <style lang="scss">
     footer {
@@ -41,20 +58,3 @@ const translations = Translations[locale as keyof typeof Translations].footer
         }
     }
 </style>
-
-<footer>
-    <p>
-        &copy; <span id="current-year"></span> &nbsp;|&nbsp;
-        <a href="/" class="">RvAndCo.fr</a>
-    </p>
-    <p>
-        {translations.createdBy}
-        <a href="https://github.com/Minarox">Mathis</a>.
-    </p>
-</footer>
-
-<script>
-    const element = document.getElementById('current-year')!
-    const currentYear = new Date().getFullYear()
-    element.textContent = currentYear.toString()
-</script>

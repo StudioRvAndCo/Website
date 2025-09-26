@@ -32,12 +32,12 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
-		"@astrojs/cloudflare": "^12.6.8",
+		"@astrojs/cloudflare": "^12.6.9",
 		"@astrojs/sitemap": "^3.6.0",
 		"@iconify-json/fa6-brands": "^1.2.6",
 		"@iconify-json/mdi": "^1.2.3",
 		"@splidejs/splide": "^4.1.4",
-		"astro": "^5.13.9",
+		"astro": "^5.14.0",
 		"astro-compressor": "^1.1.2",
 		"astro-font": "^1.1.0",
 		"astro-icon": "^1.1.5",
@@ -49,9 +49,9 @@
 	"devDependencies": {
 		"@types/node": "^24.5.2",
 		"@vitest/coverage-v8": "3.2.4",
-		"sass-embedded": "^1.92.1",
+		"sass-embedded": "^1.93.2",
 		"vitest": "^3.2.4",
-		"wrangler": "^4.38.0"
+		"wrangler": "^4.40.1"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [

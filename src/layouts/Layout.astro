@@ -4,15 +4,15 @@ import { AstroFont } from "astro-font"
 import Background from "@assets/img/background.webp"
 import Thumbnail from "@assets/img/thumbnail.webp"
 import LanguageSelection from "@components/LanguageSelection.astro"
-import Header from '@layouts/Header.astro'
-import Footer from '@layouts/Footer.astro'
-import Translations from '@assets/json/translations.json'
+import Header from "@layouts/Header.astro"
+import Footer from "@layouts/Footer.astro"
+import Translations from "@assets/json/translations.json"
 
-const site = Astro.site ?? new URL('https://rvandco.fr')
+const site = Astro.site ?? new URL("https://rvandco.fr")
 const background = `url(${Background.src})`
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations]
 const title = "Studio Rv & Co"
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations]
 ---
 
 <!doctype html>
@@ -22,7 +22,7 @@ const title = "Studio Rv & Co"
 
 	<SEO
 		title={title}
-		description={translations.description}
+		description={translation.description}
 		charset="UTF-8"
 		openGraph={{
 			basic: {
@@ -41,11 +41,11 @@ const title = "Studio Rv & Co"
 			}
 		}}
 		twitter={{
-			creator: `@Minarox_`,
+			creator: "@Minarox_",
 			card: "summary_large_image",
 			site: site.origin,
 			title,
-			description: translations.description,
+			description: translation.description,
 			image: Thumbnail.src,
 			imageAlt: `${title} banner`,
 		}}
@@ -86,8 +86,20 @@ const title = "Studio Rv & Co"
 			}
 		]}
 	/>
+</head>
+<body>
+	<LanguageSelection />
+	<Header />
 
-	<style lang="scss" define:vars={{ background }} is:global>
+	<main>
+		<slot />
+	</main>
+
+	<Footer />
+</body>
+</html>
+
+<style lang="scss" define:vars={{ background }} is:global>
 		:root {
 			--bg-color: #393939;
 			--projects-bg-color: #555555;
@@ -208,15 +220,3 @@ const title = "Studio Rv & Co"
 			}
 		}
 	</style>
-</head>
-<body>
-	<LanguageSelection />
-	<Header />
-
-	<main id="home">
-		<slot />
-	</main>
-
-	<Footer />
-</body>
-</html>

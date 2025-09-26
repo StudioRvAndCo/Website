@@ -1,12 +1,126 @@
 ---
-import Translations from '@assets/json/translations.json'
-import { Icon } from 'astro-icon/components'
-import Logo from '@assets/img/logo.webp'
-import TwitchLivestream from '@components/defer/TwitchLivestream.astro'
+import { Icon } from "astro-icon/components"
+import Logo from "@assets/img/logo.webp"
+import TwitchLivestream from "@components/defer/TwitchLivestream.astro"
+import Translations from "@assets/json/translations.json"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].header
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].header
 ---
+
+<header>
+    <div>
+        <!-- Logo -->
+        <a href="#home">
+            <img src={Logo.src} alt="Studio Rv & Co" width={Logo.width} height={Logo.height} loading="lazy" decoding="async" />
+            <h1>Studio Rv & Co</h1>
+        </a>
+
+        <!-- Navigation -->
+        <nav>
+            <Icon name={"mdi:hamburger-menu"} id="mobile" class="toggle-menu" />
+            <section class="mobile">
+                <div>
+                    <a href="#home" class="toggle-off-menu">
+                        {translation.home}
+                    </a>
+                    <a href="#productions" class="toggle-off-menu">
+                        {translation.productions}
+                    </a>
+                    <a href="#projects" class="toggle-off-menu">
+                        {translation.projects}
+                    </a>
+                    <a href="#association" class="toggle-off-menu">
+                        {translation.association}
+                    </a>
+                    <a href="#contact" class="toggle-off-menu">
+                        {translation.contact}
+                    </a>
+                </div>
+            </section>
+            <span class="toggle-off-menu mobile"></span>
+        </nav>
+
+        <!-- Links -->
+        <section class="mobile">
+            <a href="https://youtube.com/@studiorvandco" title="YouTube">
+                <Icon name={"fa6-brands:youtube"} />
+            </a>
+            <a href="https://x.com/studiorvandco" title="X">
+                <Icon name={"fa6-brands:x-twitter"} />
+            </a>
+            <a href="https://instagram.com/studiorvandco" title="Instagram">
+                <Icon name={"fa6-brands:instagram"} />
+            </a>
+            <a href="https://facebook.com/studiorvandco" title="Facebook">
+                <Icon name={"fa6-brands:facebook"} />
+            </a>
+            <TwitchLivestream server:defer>
+                <a slot="fallback" href="https://twitch.tv/studiorvandco" title="Twitch">
+                    <Icon name={"fa6-brands:twitch"} />
+                </a>
+            </TwitchLivestream>
+        </section>
+    </div>
+</header>
+
+<script>
+    const toggleOffMenuElements = document.querySelectorAll(".toggle-off-menu")
+    const toggleMenuElements = document.querySelectorAll(".toggle-menu")
+    const homeSection = document.getElementById("home")
+    const productionsSection = document.getElementById("productions")
+    const projectsSection = document.getElementById("projects")
+    const associationSection = document.getElementById("association")
+    const contactSection = document.getElementById("contact")
+    let menu = false
+
+    function toggleMenu(value?: boolean): void {
+        menu = value ?? !menu
+
+        const body = document.getElementsByTagName("body")[0]
+        if (body) {
+            body.style.overflowY = menu ? "hidden" : "overlay"
+        }
+
+        const elements = document.querySelectorAll(".mobile")
+        elements.forEach((el) => {
+            el.classList.toggle("appear", value)
+        })
+    }
+
+    toggleOffMenuElements.forEach((el) => {
+        el.addEventListener("click", () => toggleMenu(false))
+    })
+
+    toggleMenuElements.forEach((el) => {
+        el.addEventListener("click", () => toggleMenu())
+    })
+
+    function setCurrentMenu(): void {
+        const position = window.scrollY + 60
+
+        document.querySelectorAll("header nav section div a").forEach((el) => {
+            el.classList.remove("current")
+        })
+
+        if (contactSection && position >= contactSection.offsetTop) {
+            document.querySelector("header nav section div a[href=\"#contact\"]")?.classList.add("current")
+        } else if (associationSection && position >= associationSection.offsetTop) {
+            document.querySelector("header nav section div a[href=\"#association\"]")?.classList.add("current")
+        } else if (projectsSection && position >= projectsSection.offsetTop) {
+            document.querySelector("header nav section div a[href=\"#projects\"]")?.classList.add("current")
+        } else if (productionsSection && position >= productionsSection.offsetTop) {
+            document.querySelector("header nav section div a[href=\"#productions\"]")?.classList.add("current")
+        } else if (homeSection && position >= homeSection.offsetTop) {
+            document.querySelector("header nav section div a[href=\"#home\"]")?.classList.add("current")
+        } else {
+            document.querySelector("header nav section div a[href=\"#home\"]")?.classList.add("current")
+        }
+    }
+
+    document.addEventListener("scroll", setCurrentMenu)
+    setCurrentMenu()
+</script>
 
 <style lang="scss">
     $height: 60px;
@@ -246,117 +360,3 @@ const translations = Translations[locale as keyof typeof Translations].header
         }
     }
 </style>
-
-<header>
-    <div>
-        <!-- Logo -->
-        <a href="#home">
-            <img src={Logo.src} alt="Studio Rv & Co" width={Logo.width} height={Logo.height} loading="lazy" decoding="async" />
-            <h1>Studio Rv & Co</h1>
-        </a>
-
-        <!-- Navigation -->
-        <nav>
-            <Icon name={"mdi:hamburger-menu"} id="mobile" class="toggle-menu" />
-            <section class="mobile">
-                <div>
-                    <a href="#home" class="toggle-off-menu">
-                        {translations.home}
-                    </a>
-                    <a href="#productions" class="toggle-off-menu">
-                        {translations.productions}
-                    </a>
-                    <a href="#projects" class="toggle-off-menu">
-                        {translations.projects}
-                    </a>
-                    <a href="#association" class="toggle-off-menu">
-                        {translations.association}
-                    </a>
-                    <a href="#contact" class="toggle-off-menu">
-                        {translations.contact}
-                    </a>
-                </div>
-            </section>
-            <span class="toggle-off-menu mobile"></span>
-        </nav>
-
-        <!-- Links -->
-        <section class="mobile">
-            <a href="https://youtube.com/@studiorvandco" title="YouTube">
-                <Icon name={"fa6-brands:youtube"} />
-            </a>
-            <a href="https://x.com/studiorvandco" title="X">
-                <Icon name={"fa6-brands:x-twitter"} />
-            </a>
-            <a href="https://instagram.com/studiorvandco" title="Instagram">
-                <Icon name={"fa6-brands:instagram"} />
-            </a>
-            <a href="https://facebook.com/studiorvandco" title="Facebook">
-                <Icon name={"fa6-brands:facebook"} />
-            </a>
-            <TwitchLivestream server:defer>
-                <a slot="fallback" href="https://twitch.tv/studiorvandco" title="Twitch">
-                    <Icon name={"fa6-brands:twitch"} />
-                </a>
-            </TwitchLivestream>
-        </section>
-    </div>
-</header>
-
-<script>
-    const toggleOffMenuElements = document.querySelectorAll('.toggle-off-menu')
-    const toggleMenuElements = document.querySelectorAll('.toggle-menu')
-    const homeSection = document.getElementById("home")
-    const productionsSection = document.getElementById("productions")
-    const projectsSection = document.getElementById("projects")
-    const associationSection = document.getElementById("association")
-    const contactSection = document.getElementById("contact")
-    let menu = false
-
-    function toggleMenu(value?: boolean): void {
-        menu = value ?? !menu
-
-        const body = document.getElementsByTagName("body")[0]
-        if (body) {
-            body.style.overflowY = menu ? "hidden" : "overlay"
-        }
-
-        const elements = document.querySelectorAll('.mobile')
-        elements.forEach((el) => {
-            el.classList.toggle('appear', value)
-        })
-    }
-
-    toggleOffMenuElements.forEach((el) => {
-        el.addEventListener('click', () => toggleMenu(false))
-    })
-
-    toggleMenuElements.forEach((el) => {
-        el.addEventListener('click', () => toggleMenu())
-    })
-
-    function setCurrentMenu(): void {
-        const position = window.scrollY + 60
-
-        document.querySelectorAll('header nav section div a').forEach((el) => {
-            el.classList.remove('current')
-        })
-
-        if (contactSection && position >= contactSection.offsetTop) {
-            document.querySelector('header nav section div a[href="#contact"]')?.classList.add('current')
-        } else if (associationSection && position >= associationSection.offsetTop) {
-            document.querySelector('header nav section div a[href="#association"]')?.classList.add('current')
-        } else if (projectsSection && position >= projectsSection.offsetTop) {
-            document.querySelector('header nav section div a[href="#projects"]')?.classList.add('current')
-        } else if (productionsSection && position >= productionsSection.offsetTop) {
-            document.querySelector('header nav section div a[href="#productions"]')?.classList.add('current')
-        } else if (homeSection && position >= homeSection.offsetTop) {
-            document.querySelector('header nav section div a[href="#home"]')?.classList.add('current')
-        } else {
-            document.querySelector('header nav section div a[href="#home"]')?.classList.add('current')
-        }
-    }
-
-    document.addEventListener('scroll', setCurrentMenu)
-    setCurrentMenu()
-</script>

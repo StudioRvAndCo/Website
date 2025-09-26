@@ -4,9 +4,6 @@ dist/
 # coverage output
 coverage/
 
-# fonts output
-public/__astro_font_generated__
-
 # generated types
 .astro/
 

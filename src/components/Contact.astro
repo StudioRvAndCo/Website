@@ -1,11 +1,51 @@
 ---
+import { Icon } from "astro-icon/components"
 import FullLogo from "@assets/img/full_logo.webp"
-import { Icon } from 'astro-icon/components'
-import Translations from '@assets/json/translations.json'
+import Translations from "@assets/json/translations.json"
 
-const locale = Astro.currentLocale ?? 'fr'
-const translations = Translations[locale as keyof typeof Translations].contact
+const locale = Astro.currentLocale ?? "fr"
+const translation = Translations[locale as keyof typeof Translations].contact
 ---
+
+<article id="contact">
+    <h2>{translation.self}</h2>
+
+    <section>
+        <div>
+            <h3>Studio Rv & Co</h3>
+            <p>Email : <a href="mailto:studio@rvandco.fr">studio@rvandco.fr</a></p>
+        </div>
+
+        <hr />
+
+        <div>
+            <h3>{translation.socialNetworks}</h3>
+            <section>
+                <a href="https://youtube.com/@studiorvandco" title="YouTube">
+                    <Icon name={"fa6-brands:youtube"} />
+                </a>
+                <a href="https://x.com/studiorvandco" title="X">
+                    <Icon name={"fa6-brands:x-twitter"} />
+                </a>
+                <a href="https://instagram.com/studiorvandco" title="Instagram">
+                    <Icon name={"fa6-brands:instagram"} />
+                </a>
+                <a href="https://facebook.com/studiorvandco" title="Facebook">
+                    <Icon name={"fa6-brands:facebook"} />
+                </a>
+                <a href="https://twitch.tv/studiorvandco" title="Twitch">
+                    <Icon name={"fa6-brands:twitch"} />
+                </a>
+            </section>
+        </div>
+
+        <hr />
+
+        <div>
+            <img src={FullLogo.src} alt="Studio Rv & Co" width={FullLogo.width} height={FullLogo.height} loading="lazy" decoding="async" />
+        </div>
+    </section>
+</article>
 
 <style lang="scss">
     #contact {
@@ -120,43 +160,3 @@ const translations = Translations[locale as keyof typeof Translations].contact
         }
     }
 </style>
-
-<article id="contact">
-    <h2>{translations.self}</h2>
-
-    <section>
-        <div>
-            <h3>Studio Rv & Co</h3>
-            <p>Email : <a href="mailto:studio@rvandco.fr">studio@rvandco.fr</a></p>
-        </div>
-
-        <hr />
-
-        <div>
-            <h3>{translations.socialNetworks}</h3>
-            <section>
-                <a href="https://youtube.com/@studiorvandco" title="YouTube">
-                    <Icon name={"fa6-brands:youtube"} />
-                </a>
-                <a href="https://x.com/studiorvandco" title="X">
-                    <Icon name={"fa6-brands:x-twitter"} />
-                </a>
-                <a href="https://instagram.com/studiorvandco" title="Instagram">
-                    <Icon name={"fa6-brands:instagram"} />
-                </a>
-                <a href="https://facebook.com/studiorvandco" title="Facebook">
-                    <Icon name={"fa6-brands:facebook"} />
-                </a>
-                <a href="https://twitch.tv/studiorvandco" title="Twitch">
-                    <Icon name={"fa6-brands:twitch"} />
-                </a>
-            </section>
-        </div>
-
-        <hr />
-
-        <div>
-            <img src={FullLogo.src} alt="Studio Rv & Co" width={FullLogo.width} height={FullLogo.height} loading="lazy" decoding="async" />
-        </div>
-    </section>
-</article>

@@ -1,9 +1,9 @@
-import { test, expect, describe } from 'vitest'
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import TwitchLivestreamComponent from '@components/defer/TwitchLivestream.astro'
+import { test, expect, describe } from "vitest"
+import { experimental_AstroContainer as AstroContainer } from "astro/container"
+import TwitchLivestreamComponent from "@components/defer/TwitchLivestream.astro"
 
-describe('TwitchLivestream component', () => {
-	test('Is live', async () => {
+describe("TwitchLivestream component", () => {
+	test("Is live", async () => {
 		const container = await AstroContainer.create()
 		const component: Response = await container.renderToResponse(TwitchLivestreamComponent, {
 			locals: {
@@ -22,15 +22,15 @@ describe('TwitchLivestream component', () => {
 		})
 
 		expect(component.status).toBe(200)
-		expect(component.headers.get('Content-Type')).toBe('text/html')
+		expect(component.headers.get("Content-Type")).toBe("text/html")
 
 		const body: string = await component.text()
-		expect(body).toContain('<a class="on-air" href=')
-		expect(body).toContain('title="Twitch"')
+		expect(body).toContain("<a class=\"on-air\" href=")
+		expect(body).toContain("title=\"Twitch\"")
 	})
 
 
-	test('Is not live', async () => {
+	test("Is not live", async () => {
 		const container = await AstroContainer.create()
 		const component: Response = await container.renderToResponse(TwitchLivestreamComponent, {
 			locals: {
@@ -45,10 +45,10 @@ describe('TwitchLivestream component', () => {
 		})
 
 		expect(component.status).toBe(200)
-		expect(component.headers.get('Content-Type')).toBe('text/html')
+		expect(component.headers.get("Content-Type")).toBe("text/html")
 
 		const body: string = await component.text()
-		expect(body).toContain('<a class href=')
-		expect(body).toContain('title="Twitch"')
+		expect(body).toContain("<a class href=")
+		expect(body).toContain("title=\"Twitch\"")
 	})
 })

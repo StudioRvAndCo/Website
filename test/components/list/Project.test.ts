@@ -1,10 +1,10 @@
-import { test, expect, describe } from 'vitest'
-import { experimental_AstroContainer as AstroContainer } from 'astro/container'
-import ProjectComponent from '@components/list/Project.astro'
-import { decodeHTMLEntities, type Project } from '@types'
-import LesChroniquesBackground from '@assets/img/projects/les_chroniques.webp'
+import { test, expect, describe } from "vitest"
+import { experimental_AstroContainer as AstroContainer } from "astro/container"
+import ProjectComponent from "@components/list/Project.astro"
+import { decodeHTMLEntities, type Project } from "@types"
+import LesChroniquesBackground from "@assets/img/projects/les_chroniques.webp"
 
-describe('Production component', () => {
+describe("Production component", () => {
     const project: Project = {
         name: {
             fr: "Nom en français",
@@ -18,17 +18,17 @@ describe('Production component', () => {
         link: "https://rvandco.fr"
     }
 
-    test('Render', async () => {
+    test("Render", async () => {
         const container = await AstroContainer.create()
         const component: Response = await container.renderToResponse(ProjectComponent, {
             props: { project }
         })
 
         expect(component.status).toBe(200)
-        expect(component.headers.get('Content-Type')).toBe('text/html')
+        expect(component.headers.get("Content-Type")).toBe("text/html")
 
         const body: string = decodeHTMLEntities(await component.text())
-        expect(body).toContain('<ul class="splide__slide"')
+        expect(body).toContain("<ul class=\"splide__slide\"")
         expect(body).toContain(`>${project.name.fr}</h3>`)
         expect(body).toContain(`>${project.description.fr}</p>`)
         expect(body).toContain(`href="${project.link}"`)
