@@ -1,6 +1,6 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import HeaderLayout from "@layouts/Header.astro"
+import HeaderLayout from "@components/Header.astro"
 
 describe("Header layout", () => {
 	test("Render", async () => {

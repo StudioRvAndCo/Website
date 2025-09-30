@@ -1,6 +1,6 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import FooterLayout from "@layouts/Footer.astro"
+import FooterLayout from "@components/Footer.astro"
 
 describe("Footer layout", () => {
 	test("Render", async () => {

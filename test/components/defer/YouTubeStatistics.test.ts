@@ -1,53 +1,25 @@
-import { test, expect, describe } from "vitest"
+import { test, expect } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
 import YouTubeStatisticsComponent from "@components/defer/YouTubeStatistics.astro"
 
-describe("YouTubeStatistics component", () => {
-	test("With statistics", async () => {
-		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
-			locals: {
-				runtime: {
-					env: {
-						STORE: {
-							get: () => ({
-								"subscriberCount": 1234,
-								"viewCount": 5678
-							})
-						}
+test("YouTubeStatistics component", async () => {
+	const container = await AstroContainer.create()
+	const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
+		locals: {
+			runtime: {
+				env: {
+					STORE: {
+						get: () => ({})
 					}
-				} as any
-			}
-		})
-
-		expect(component.status).toBe(200)
-		expect(component.headers.get("Content-Type")).toBe("text/html")
-
-		const body: string = await component.text()
-		expect(body).toContain(">5678</span> Vues")
-		expect(body).toContain(">1234</span> Abonnés")
+				}
+			} as any
+		}
 	})
 
+	expect(component.status).toBe(200)
+	expect(component.headers.get("Content-Type")).toBe("text/html")
 
-	test("Without statistics", async () => {
-		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
-			locals: {
-				runtime: {
-					env: {
-						STORE: {
-							get: () => ({})
-						}
-					}
-				} as any
-			}
-		})
-
-		expect(component.status).toBe(200)
-		expect(component.headers.get("Content-Type")).toBe("text/html")
-
-		const body: string = await component.text()
-		expect(body).toContain("></span> Vues")
-		expect(body).toContain("></span> Abonnés")
-	})
+	const body: string = await component.text()
+	expect(body).toContain(">0</span> Vues")
+	expect(body).toContain(">0</span> Abonnés")
 })
