@@ -37,7 +37,7 @@
 		"@iconify-json/fa6-brands": "^1.2.6",
 		"@iconify-json/mdi": "^1.2.3",
 		"@splidejs/splide": "^4.1.4",
-		"astro": "^5.13.9",
+		"astro": "^5.14.1",
 		"astro-compressor": "^1.1.2",
 		"astro-font": "^1.1.0",
 		"astro-icon": "^1.1.5",
