@@ -45,13 +45,13 @@
 		"astro-seo": "^0.8.4",
 		"countup.js": "^2.9.0",
 		"sass": "^1.93.2",
-		"typescript": "^5.9.2"
+		"typescript": "^5.9.3"
 	},
 	"devDependencies": {
-		"@types/node": "^24.6.0",
+		"@types/node": "^24.6.2",
 		"@vitest/coverage-v8": "3.2.4",
 		"vitest": "^3.2.4",
-		"wrangler": "^4.40.2"
+		"wrangler": "^4.41.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [

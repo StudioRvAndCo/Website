@@ -8,7 +8,7 @@ const translation = Translations[locale as keyof typeof Translations].footer
 <footer>
     <p>
         &copy; <span id="current-year"></span> &nbsp;|&nbsp;
-        <a href="/" class="">RvAndCo.fr</a>
+        <a href="#home">RvAndCo.fr</a>
     </p>
     <p>
         {translation.createdBy}
@@ -17,9 +17,15 @@ const translation = Translations[locale as keyof typeof Translations].footer
 </footer>
 
 <script>
+    const homeButton = document.querySelector('a[href="#home"]')!
     const element = document.getElementById("current-year")!
     const currentYear = new Date().getFullYear()
     element.textContent = currentYear.toString()
+
+    homeButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        window.scrollTo({ top: 0, behavior: "smooth" })
+    })
 </script>
 
 <style lang="scss">

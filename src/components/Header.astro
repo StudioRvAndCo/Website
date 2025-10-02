@@ -66,9 +66,9 @@ const translation = Translations[locale as keyof typeof Translations].header
 </header>
 
 <script>
+    const homeButtons = document.querySelectorAll('a[href="#home"]')
     const toggleOffMenuElements = document.querySelectorAll(".toggle-off-menu")
     const toggleMenuElements = document.querySelectorAll(".toggle-menu")
-    const homeSection = document.getElementById("home")
     const productionsSection = document.getElementById("productions")
     const projectsSection = document.getElementById("projects")
     const associationSection = document.getElementById("association")
@@ -97,6 +97,14 @@ const translation = Translations[locale as keyof typeof Translations].header
         el.addEventListener("click", () => toggleMenu())
     })
 
+    homeButtons.forEach((el) => {
+        el.addEventListener("click", (e) => {
+            e.preventDefault()
+            toggleMenu(false)
+            window.scrollTo({ top: 0, behavior: "smooth" })
+        })
+    })
+
     function setCurrentMenu(): void {
         const position = window.scrollY + 60
 
@@ -112,8 +120,6 @@ const translation = Translations[locale as keyof typeof Translations].header
             document.querySelector("header nav section div a[href=\"#projects\"]")?.classList.add("current")
         } else if (productionsSection && position >= productionsSection.offsetTop) {
             document.querySelector("header nav section div a[href=\"#productions\"]")?.classList.add("current")
-        } else if (homeSection && position >= homeSection.offsetTop) {
-            document.querySelector("header nav section div a[href=\"#home\"]")?.classList.add("current")
         } else {
             document.querySelector("header nav section div a[href=\"#home\"]")?.classList.add("current")
         }
@@ -161,7 +167,7 @@ const translation = Translations[locale as keyof typeof Translations].header
                 display: flex;
                 align-items: center;
                 gap: 0.5rem;
-                color: var(--subtext-color) !important;
+                color: var(--text-color) !important;
 
                 img {
                     padding: 0.4rem;
