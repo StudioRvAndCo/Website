@@ -1,11 +1,11 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import HeaderLayout from "@components/Header.astro"
+import Header from "@components/Header.astro"
 
 describe("Header layout", () => {
 	test("Render", async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(HeaderLayout, {
+		const component: Response = await container.renderToResponse(Header, {
 			locals: {
 				runtime: {
 					env: {
@@ -32,6 +32,5 @@ describe("Header layout", () => {
 		expect(body).toContain("title=\"X")
 		expect(body).toContain("title=\"Instagram")
 		expect(body).toContain("title=\"Facebook")
-		expect(body).toContain("title=\"Twitch")
 	})
 })

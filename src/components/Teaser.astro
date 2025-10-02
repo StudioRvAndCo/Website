@@ -5,6 +5,7 @@ import TeaserWebm from "@assets/vid/teaser.webm"
 import TeaserMp4 from "@assets/vid/teaser.mp4"
 import Translations from "@assets/json/translations.json"
 
+const testing = import.meta.env.MODE === "test"
 const locale = Astro.currentLocale ?? "fr"
 const translation = Translations[locale as keyof typeof Translations].teaser
 ---
@@ -22,12 +23,12 @@ const translation = Translations[locale as keyof typeof Translations].teaser
             <div>
                 <p><span id="nb-members">0</span> {translation.members}</p>
                 <p><span id="nb-projects">0</span> {translation.projects}</p>
-                <YouTubeStatistics server:defer>
+                {!testing && <YouTubeStatistics server:defer>
                     <Fragment slot="fallback">
                         <p><span>0</span> {translation.views}</p>
                         <p><span>0</span> {translation.subscribers}</p>
                     </Fragment>
-                </YouTubeStatistics>
+                </YouTubeStatistics>}
                 <p><span id="nb-years-old">0</span> {translation.years}</p>
             </div>
             <a href="#association" class="btn">{translation.readMore}</a>

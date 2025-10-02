@@ -1,11 +1,11 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import ProductionComponent from "@components/list/Production.astro"
-import { decodeHTMLEntities, type Production } from "@types"
+import Production from "@components/list/Production.astro"
+import { decodeHTMLEntities, type Production as ProductionInterface } from "@types"
 import EnSursisThumbnail from "@assets/img/productions/en_sursis.webp"
 
 describe("Production component", () => {
-    const production: Production = {
+    const production: ProductionInterface = {
         name: {
             fr: "Nom en français",
             en: "Name in English"
@@ -20,7 +20,7 @@ describe("Production component", () => {
 
     test("With index = 0", async () => {
         const container = await AstroContainer.create()
-        const component: Response = await container.renderToResponse(ProductionComponent, {
+        const component: Response = await container.renderToResponse(Production, {
             props: { production, index: 0 }
         })
 
@@ -43,7 +43,7 @@ describe("Production component", () => {
 
     test("With odd index != 0", async () => {
         const container = await AstroContainer.create()
-        const component: Response = await container.renderToResponse(ProductionComponent, {
+        const component: Response = await container.renderToResponse(Production, {
             props: { production, index: 1 }
         })
 

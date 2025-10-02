@@ -1,11 +1,11 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import MemberComponent from "@components/list/Member.astro"
-import { decodeHTMLEntities, type Member } from "@types"
+import Member from "@components/list/Member.astro"
+import { decodeHTMLEntities, type Member as MemberInterface } from "@types"
 import DefaultPicture from "@assets/img/members/default.webp"
 
 describe("Member component", () => {
-	const member: Member = {
+	const member: MemberInterface = {
 		name: "Studio Rv & Co",
 		picture: "default.webp"
 	}
@@ -17,7 +17,7 @@ describe("Member component", () => {
 		}
 
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(MemberComponent, {
+		const component: Response = await container.renderToResponse(Member, {
 			props: { member: memberWithLink }
 		})
 
@@ -36,7 +36,7 @@ describe("Member component", () => {
 
 	test("Without link", async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(MemberComponent, {
+		const component: Response = await container.renderToResponse(Member, {
 			props: { member }
 		})
 

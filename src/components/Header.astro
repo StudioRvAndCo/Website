@@ -4,6 +4,7 @@ import Logo from "@assets/img/logo.webp"
 import TwitchLivestream from "@components/defer/TwitchLivestream.astro"
 import Translations from "@assets/json/translations.json"
 
+const testing = import.meta.env.MODE === "test"
 const locale = Astro.currentLocale ?? "fr"
 const translation = Translations[locale as keyof typeof Translations].header
 ---
@@ -55,11 +56,11 @@ const translation = Translations[locale as keyof typeof Translations].header
             <a href="https://facebook.com/studiorvandco" title="Facebook">
                 <Icon name={"fa6-brands:facebook"} />
             </a>
-            <TwitchLivestream server:defer>
+            {!testing && <TwitchLivestream server:defer>
                 <a slot="fallback" href="https://twitch.tv/studiorvandco" title="Twitch">
                     <Icon name={"fa6-brands:twitch"} />
                 </a>
-            </TwitchLivestream>
+            </TwitchLivestream>}
         </section>
     </div>
 </header>

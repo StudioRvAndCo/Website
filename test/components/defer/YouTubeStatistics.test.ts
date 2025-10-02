@@ -1,10 +1,10 @@
 import { test, expect } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import YouTubeStatisticsComponent from "@components/defer/YouTubeStatistics.astro"
+import YouTubeStatistics from "../../../src/components/defer/YouTubeStatistics.astro"
 
 test("YouTubeStatistics component", async () => {
 	const container = await AstroContainer.create()
-	const component: Response = await container.renderToResponse(YouTubeStatisticsComponent, {
+	const component: Response = await container.renderToResponse(YouTubeStatistics, {
 		locals: {
 			runtime: {
 				env: {

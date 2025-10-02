@@ -1,11 +1,11 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import ProjectComponent from "@components/list/Project.astro"
-import { decodeHTMLEntities, type Project } from "@types"
+import Project from "@components/list/Project.astro"
+import { decodeHTMLEntities, type Project as ProjectInterface } from "@types"
 import LesChroniquesBackground from "@assets/img/projects/les_chroniques.webp"
 
 describe("Production component", () => {
-    const project: Project = {
+    const project: ProjectInterface = {
         name: {
             fr: "Nom en français",
             en: "Name in English"
@@ -20,7 +20,7 @@ describe("Production component", () => {
 
     test("Render", async () => {
         const container = await AstroContainer.create()
-        const component: Response = await container.renderToResponse(ProjectComponent, {
+        const component: Response = await container.renderToResponse(Project, {
             props: { project }
         })
 

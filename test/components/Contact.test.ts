@@ -1,6 +1,6 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import ContactComponent from "@components/Contact.astro"
+import Contact from "@components/Contact.astro"
 import { decodeHTMLEntities } from "@types"
 import Translations from "@assets/json/translations.json"
 import FullLogo from "@assets/img/full_logo.webp"
@@ -8,7 +8,7 @@ import FullLogo from "@assets/img/full_logo.webp"
 describe("Contact component", () => {
 	test("Render", async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(ContactComponent)
+		const component: Response = await container.renderToResponse(Contact)
 
 		expect(component.status).toBe(200)
 		expect(component.headers.get("Content-Type")).toBe("text/html")

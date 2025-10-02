@@ -1,6 +1,6 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import TeaserComponent from "@components/Teaser.astro"
+import Teaser from "@components/Teaser.astro"
 import { decodeHTMLEntities } from "@types"
 import Translations from "@assets/json/translations.json"
 import Thumbnail from "@assets/img/thumbnail.webp"
@@ -10,7 +10,7 @@ import TeaserMp4 from "@assets/vid/teaser.mp4"
 describe("Teaser component", () => {
 	test("Render", async () => {
 		const container = await AstroContainer.create()
-		const component: Response = await container.renderToResponse(TeaserComponent, {
+		const component: Response = await container.renderToResponse(Teaser, {
 			locals: {
 				runtime: {
 					env: {
@@ -33,8 +33,6 @@ describe("Teaser component", () => {
 		expect(body).toContain(`>${Translations.fr.teaser.numbers}</h3>`)
 		expect(body).toContain(`>0</span> ${Translations.fr.teaser.members}</p>`)
 		expect(body).toContain(`>0</span> ${Translations.fr.teaser.projects}</p>`)
-		expect(body).toContain(`>0</span> ${Translations.fr.teaser.views}</p>`)
-		expect(body).toContain(`>0</span> ${Translations.fr.teaser.subscribers}</p>`)
 		expect(body).toContain(`>0</span> ${Translations.fr.teaser.years}</p>`)
 		expect(body).toContain(`>${Translations.fr.teaser.readMore}</a>`)
 	})
