@@ -1,6 +1,6 @@
 import { test, expect, describe } from "vitest"
 import { experimental_AstroContainer as AstroContainer } from "astro/container"
-import InstagramPosts from "../../../src/components/defer/InstagramPosts.astro"
+import InstagramPosts from "../../../src/components/list/InstagramPosts.astro"
 
 describe("InstagramPosts component", () => {
     test("renders posts correctly", async () => {

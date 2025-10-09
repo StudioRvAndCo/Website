@@ -1,10 +1,8 @@
 ---
 import { Icon } from "astro-icon/components"
 import Logo from "@assets/img/logo.webp"
-import TwitchLivestream from "@components/defer/TwitchLivestream.astro"
 import Translations from "@assets/json/translations.json"
 
-const testing = import.meta.env.MODE === "test"
 const locale = Astro.currentLocale ?? "fr"
 const translation = Translations[locale as keyof typeof Translations].header
 ---
@@ -56,16 +54,16 @@ const translation = Translations[locale as keyof typeof Translations].header
             <a href="https://facebook.com/studiorvandco" title="Facebook">
                 <Icon name={"fa6-brands:facebook"} />
             </a>
-            {!testing && <TwitchLivestream server:defer>
-                <a slot="fallback" href="https://twitch.tv/studiorvandco" title="Twitch">
-                    <Icon name={"fa6-brands:twitch"} />
-                </a>
-            </TwitchLivestream>}
+            <a href="https://twitch.tv/studiorvandco" title="Twitch">
+                <Icon name={"fa6-brands:twitch"} />
+            </a>
         </section>
     </div>
 </header>
 
 <script>
+    import { actions } from "astro:actions"
+
     const homeButtons = document.querySelectorAll('a[href="#home"]')
     const toggleOffMenuElements = document.querySelectorAll(".toggle-off-menu")
     const toggleMenuElements = document.querySelectorAll(".toggle-menu")
@@ -127,6 +125,18 @@ const translation = Translations[locale as keyof typeof Translations].header
 
     document.addEventListener("scroll", setCurrentMenu)
     setCurrentMenu()
+
+    // Fetch Twitch livestream data from the server action
+    const twitchElement = document.querySelector('a[title="Twitch"]')!
+    const livestreamData = await actions.getTwitchLivestream.orThrow()
+    const isLive = Object.keys(livestreamData || {}).length > 0
+
+    if (isLive) {
+        twitchElement.classList.add("on-air")
+        document.dispatchEvent(
+            new CustomEvent("twitch", { detail: livestreamData })
+        )
+    }
 </script>
 
 <style lang="scss">
@@ -235,6 +245,37 @@ const translation = Translations[locale as keyof typeof Translations].header
                     display: inline-flex;
                     justify-content: center;
                     padding: 1rem 0.65rem;
+
+                    &.on-air {
+                        position: relative;
+
+                        &::before,
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 13px;
+                            right: 11px;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background-color: var(--btn-color);
+                        }
+
+                        &::after {
+                            animation: pulse-scale 2.6s infinite;
+                        }
+
+                        @keyframes pulse-scale {
+                            0% {
+                                opacity: 0.7;
+                                transform: scale(1);
+                            }
+                            100% {
+                                opacity: 0;
+                                transform: scale(2.4);
+                            }
+                        }
+                    }
                 }
             }
 

@@ -1,0 +1,53 @@
+<section id="instagram-posts" />
+
+<script>
+    import { actions } from "astro:actions"
+    import { type InstagramPost, InstagramMediaType } from "@types"
+
+    const instagramPosts = await actions.getInstagramPosts.orThrow()
+    const section = document.getElementById("instagram-posts")!
+
+    instagramPosts.map((post: InstagramPost) => {
+        const link = document.createElement("a")
+        link.href = post.permalink
+
+        const img = document.createElement("img")
+        img.width = 220
+        img.height = 220
+        img.loading = "lazy"
+        img.decoding = "async"
+        img.alt = "Instagram post"
+        img.src = ([InstagramMediaType.IMAGE, InstagramMediaType.CAROUSEL_ALBUM].includes(post.media_type) ? post.media_url : post.thumbnail_url) ?? ''
+
+        link.appendChild(img)
+        section.appendChild(link)
+    })
+
+</script>
+
+<style>
+    section {
+        display: flex;
+        gap: 3rem;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        a {
+            transform: scale(1);
+            transition: transform 250ms;
+
+            img {
+                border-radius: var(--border-radius);
+                width: 100%;
+                max-width: 220px;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                box-shadow: rgba(0, 0, 0, 0.15) 0 8px 16px 0;
+            }
+
+            &:hover {
+                transform: scale(1.04);
+            }
+        }
+    }
+</style>

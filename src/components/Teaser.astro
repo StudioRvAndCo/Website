@@ -1,11 +1,9 @@
 ---
-import YouTubeStatistics from "@components/defer/YouTubeStatistics.astro"
 import Thumbnail from "@assets/img/thumbnail.webp"
 import TeaserWebm from "@assets/vid/teaser.webm"
 import TeaserMp4 from "@assets/vid/teaser.mp4"
 import Translations from "@assets/json/translations.json"
 
-const testing = import.meta.env.MODE === "test"
 const locale = Astro.currentLocale ?? "fr"
 const translation = Translations[locale as keyof typeof Translations].teaser
 ---
@@ -23,12 +21,8 @@ const translation = Translations[locale as keyof typeof Translations].teaser
             <div>
                 <p><span id="nb-members">0</span> {translation.members}</p>
                 <p><span id="nb-projects">0</span> {translation.projects}</p>
-                {!testing && <YouTubeStatistics server:defer>
-                    <Fragment slot="fallback">
-                        <p><span>0</span> {translation.views}</p>
-                        <p><span>0</span> {translation.subscribers}</p>
-                    </Fragment>
-                </YouTubeStatistics>}
+                <p><span id="nb-views">0</span> {translation.views}</p>
+                <p><span id="nb-subscribers">0</span> {translation.subscribers}</p>
                 <p><span id="nb-years-old">0</span> {translation.years}</p>
             </div>
             <a href="#association" class="btn">{translation.readMore}</a>
@@ -37,6 +31,7 @@ const translation = Translations[locale as keyof typeof Translations].teaser
 </article>
 
 <script>
+    import { actions } from "astro:actions"
     import { CountUp, type CountUpOptions } from "countup.js"
     import MembersList from "@assets/json/members.json"
     import ProjectsList from "@assets/json/projects.json"
@@ -61,6 +56,14 @@ const translation = Translations[locale as keyof typeof Translations].teaser
     new CountUp("nb-members", members.length, countUpOptions)
     new CountUp("nb-projects", projects.length, countUpOptions)
     new CountUp("nb-years-old", nbYears, countUpOptions)
+
+    // Fetch YouTube statistics from the server action
+    const youtubeStatistics = await actions.getYouTubeStatistics.orThrow()
+    const views = Number(youtubeStatistics?.viewCount || 0)
+    const subscribers = Number(youtubeStatistics?.subscriberCount || 0)
+
+    new CountUp("nb-views", views, countUpOptions)
+    new CountUp("nb-subscribers", subscribers, countUpOptions)
 </script>
 
 <style lang="scss">
