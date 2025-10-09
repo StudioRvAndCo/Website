@@ -48,10 +48,10 @@
 		"typescript": "^5.9.3"
 	},
 	"devDependencies": {
-		"@types/node": "^24.7.0",
+		"@types/node": "^24.7.1",
 		"@vitest/coverage-v8": "3.2.4",
 		"vitest": "^3.2.4",
-		"wrangler": "^4.42.1"
+		"wrangler": "^4.42.2"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
@@ -61,5 +61,5 @@
 			"workerd"
 		]
 	},
-	"packageManager": "pnpm@10.17.1"
+	"packageManager": "pnpm@10.18.1"
 }
