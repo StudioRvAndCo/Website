@@ -6,10 +6,11 @@ export const prerender = false
 export const GET: APIRoute = async ({ request, locals, site }) => {
     const key = request.headers.get("x-api-key")
     if (locals.runtime.env.SYNC_KEY && key === locals.runtime.env.SYNC_KEY) {
+        const data = await locals.runtime.env.STORE.getWithMetadata(['YOUTUBE_STATISTICS', 'INSTAGRAM_POSTS', 'TWITCH_LIVESTREAM'], { type: "json" })
         return new Response(JSON.stringify({
-            "YOUTUBE_STATISTICS": await locals.runtime.env.STORE.getWithMetadata("YOUTUBE_STATISTICS", { type: "json" }) || null,
-            "INSTAGRAM_POSTS": await locals.runtime.env.STORE.getWithMetadata("INSTAGRAM_POSTS", { type: "json" }) || null,
-            "TWITCH_LIVESTREAM": await locals.runtime.env.STORE.getWithMetadata("TWITCH_LIVESTREAM", { type: "json" }) || null
+            "YOUTUBE_STATISTICS": data.get("YOUTUBE_STATISTICS") || null,
+            "INSTAGRAM_POSTS": data.get("INSTAGRAM_POSTS") || null,
+            "TWITCH_LIVESTREAM": data.get("TWITCH_LIVESTREAM") || null
         }), {
             status: 200,
             headers: { "Content-Type": "application/json" }
