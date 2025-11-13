@@ -22,8 +22,7 @@
 	"kv_namespaces": [
 		{
 			"binding": "STORE",
-      		"id": "659e20388a8a4efb9401112221c73ac8",
-			"remote": true
+      		"id": "659e20388a8a4efb9401112221c73ac8"
 		}
 	]
 }
