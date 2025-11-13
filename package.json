@@ -36,6 +36,7 @@
 		"@astrojs/sitemap": "^3.6.0",
 		"@iconify-json/fa6-brands": "^1.2.6",
 		"@iconify-json/mdi": "^1.2.3",
+		"@plausible-analytics/tracker": "^0.4.4",
 		"@splidejs/splide": "^4.1.4",
 		"astro": "^5.15.5",
 		"astro-compressor": "^1.2.0",
