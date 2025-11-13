@@ -31,9 +31,13 @@ describe("Get Sync Data", () => {
 
     test("Successful data retrieval", async () => {
         const getMock = vi.fn()
-            .mockResolvedValueOnce({ value: { viewCount: "1000", subscriberCount: "100", videoCount: "10" }, metadata: { updatedAt: "2024-01-01T00:00:00Z" } })
-            .mockResolvedValueOnce({ value: [{ id: '1', media_type: "IMAGE", media_url: "https://example.com/image1.jpg", permalink: "https://instagram.com/p/1" }], metadata: { updatedAt: "2024-01-01T00:00:00Z" } })
-            .mockResolvedValueOnce({ value: { id: "12345", user_id: "67890", user_name: "studiorvandco", game_id: '0', type: "live", title: "Live Stream", viewer_count: 100, started_at: "2024-01-01T00:00:00Z", language: "en", thumbnail_url: "https://example.com/thumbnail.jpg", tag_ids: [] }, metadata: { updatedAt: "2024-01-01T00:00:00Z" } })
+            .mockResolvedValueOnce(
+                new Map([
+                    ["YOUTUBE_STATISTICS", { viewCount: "1000", subscriberCount: "100", videoCount: "10" }],
+                    ["INSTAGRAM_POSTS", [{ id: '1', media_type: "IMAGE", media_url: "https://example.com/image1.jpg", permalink: "https://instagram.com/p/1" }]],
+                    ["TWITCH_LIVESTREAM", { id: "12345", user_id: "67890", user_name: "studiorvandco", game_id: '0', type: "live", title: "Live Stream", viewer_count: 100, started_at: "2024-01-01T00:00:00Z", language: "en", thumbnail_url: "https://example.com/thumbnail.jpg", tag_ids: [] }]
+                ])
+            )
 
         const request = new Request("https://rvandco.fr/api/sync", { method: "GET", headers: { "x-api-key": "correct" } })
         const context: any = {
@@ -53,15 +57,12 @@ describe("Get Sync Data", () => {
         expect(response.status).toBe(200)
         const body: any = await response.json()
         expect(body).toEqual({
-            YOUTUBE_STATISTICS: { value: { viewCount: "1000", subscriberCount: "100", videoCount: "10" }, metadata: { updatedAt: "2024-01-01T00:00:00Z" } },
-            INSTAGRAM_POSTS: { value: [{ id: '1', media_type: "IMAGE", media_url: "https://example.com/image1.jpg", permalink: "https://instagram.com/p/1" }], metadata: { updatedAt: "2024-01-01T00:00:00Z" } },
-            TWITCH_LIVESTREAM: { value: { id: "12345", user_id: "67890", user_name: "studiorvandco", game_id: '0', type: "live", title: "Live Stream", viewer_count: 100, started_at: "2024-01-01T00:00:00Z", language: "en", thumbnail_url: "https://example.com/thumbnail.jpg", tag_ids: [] }, metadata: { updatedAt: "2024-01-01T00:00:00Z" } }
+            YOUTUBE_STATISTICS: { viewCount: "1000", subscriberCount: "100", videoCount: "10" },
+            INSTAGRAM_POSTS: [{ id: '1', media_type: "IMAGE", media_url: "https://example.com/image1.jpg", permalink: "https://instagram.com/p/1" }],
+            TWITCH_LIVESTREAM: { id: "12345", user_id: "67890", user_name: "studiorvandco", game_id: '0', type: "live", title: "Live Stream", viewer_count: 100, started_at: "2024-01-01T00:00:00Z", language: "en", thumbnail_url: "https://example.com/thumbnail.jpg", tag_ids: [] }
         })
 
-        expect(getMock).toHaveBeenCalledTimes(3)
-        expect(getMock).toHaveBeenNthCalledWith(1, "YOUTUBE_STATISTICS", { type: "json" })
-        expect(getMock).toHaveBeenNthCalledWith(2, "INSTAGRAM_POSTS", { type: "json" })
-        expect(getMock).toHaveBeenNthCalledWith(3, "TWITCH_LIVESTREAM", { type: "json" })
+        expect(getMock).toHaveBeenCalledTimes(1)
     })
 })
 
