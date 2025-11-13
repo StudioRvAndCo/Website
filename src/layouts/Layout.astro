@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo"
 import { AstroFont } from "astro-font"
+import Plausible from "@components/Plausible.astro"
 import Background from "@assets/img/background.webp"
 import Thumbnail from "@assets/img/thumbnail.webp"
 import LanguageSelection from "@components/LanguageSelection.astro"
@@ -96,6 +97,7 @@ const translation = Translations[locale as keyof typeof Translations]
 	</main>
 
 	<Footer />
+	<Plausible />
 </body>
 </html>
 
