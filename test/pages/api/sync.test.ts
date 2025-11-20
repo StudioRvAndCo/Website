@@ -1,6 +1,5 @@
-import { test, expect, vi } from "vitest"
+import { test, expect, vi, beforeEach, describe } from "vitest"
 import * as Sync from "@pages/api/sync"
-import { beforeEach, describe } from "node:test"
 
 vi.stubGlobal("fetch", vi.fn())
 
