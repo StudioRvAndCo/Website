@@ -1,6 +1,6 @@
 {
    "name": "studiorvandco-website",
-   "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+   "image": "mcr.microsoft.com/devcontainers/javascript-node:25",
    "features": {
       "ghcr.io/devcontainers-extra/features/pnpm:2": {},
       "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
