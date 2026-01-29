@@ -10,7 +10,7 @@ export default getViteConfig({
 		coverage: {
 			reporter: ["text", "html", "json-summary", "json"],
 			include: ["src/**/*"],
-			exclude: ["src/**/index.astro"],
+			exclude: ["src/**/index.astro", "src/assets/**", "src/**/*.d.ts"],
 			reportOnFailure: true,
 			thresholds: {
 				lines: 80,
