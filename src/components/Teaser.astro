@@ -35,10 +35,12 @@ const translation = Translations[locale as keyof typeof Translations].teaser
     import { CountUp, type CountUpOptions } from "countup.js"
     import MembersList from "@assets/json/members.json"
     import ProjectsList from "@assets/json/projects.json"
-    import type { Member, Project } from "@types"
+    import ProductionsList from "@assets/json/productions.json"
+    import type { Member, Production, Project } from "@types"
 
     const members: Member[] = MembersList
     const projects: Project[] = ProjectsList
+    const productions: Production[] = ProductionsList
 
     const startDate = new Date("2020-09-09")
     const now = new Date()
@@ -54,7 +56,7 @@ const translation = Translations[locale as keyof typeof Translations].teaser
     }
 
     new CountUp("nb-members", members.length, countUpOptions)
-    new CountUp("nb-projects", projects.length, countUpOptions)
+    new CountUp("nb-projects", projects.length + productions.length, countUpOptions)
     new CountUp("nb-years-old", nbYears, countUpOptions)
 
     // Fetch YouTube statistics from the server action
