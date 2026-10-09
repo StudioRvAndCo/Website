@@ -29,7 +29,7 @@ describe("Header layout", () => {
 		expect(body).toContain("Contact")
 
 		expect(body).toContain("title=\"YouTube")
-		expect(body).toContain("title=\"X")
+		expect(body).toContain("title=\"BlueSky")
 		expect(body).toContain("title=\"Instagram")
 		expect(body).toContain("title=\"Facebook")
 	})
